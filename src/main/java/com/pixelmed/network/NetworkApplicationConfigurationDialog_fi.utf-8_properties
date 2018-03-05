@@ -1,0 +1,34 @@
+addButtonLabelText=Lisää
+editButtonLabelText=Muokkaa
+removeButtonLabelText=Tyhjennä
+doneButtonLabelText=Valmis
+
+addButtonToolTipText=Lisää AE Application Entities -etäyksikköjen luetteloon
+editButtonToolTipText=Muokkaa AE:tä Application Entities -etäyksikköjen luettelossa
+removeButtonToolTipText=Poista AE Application Entities -etäyksikköjen luettelosta
+doneButtonToolTipText=Muokkaukset on tehty, joten palauta sovellus uuden määrityksen käyttöä varten
+
+selectNetworkTargetToEditLabelText=Valitse muokattava AE
+selectNetworkTargetToRemoveLabelText=Valitse poistettava AE
+
+listenerHeaderLabelText=DICOM-verkon ominaisuudet
+callingAETitleLabelText=Oma AE-Title
+calledAETitleLabelText=Haettu AE-Title
+listeningPortLabelText=Kuunteluportti
+acceptorMaximumLengthReceivedLabelText=Hyväksyjän PDU-enimmäispituus vastaanotettu
+acceptorSocketReceiveBufferSizeLabelText=Hyväksyjän TCP-portin vastaanottopuskurin koko
+acceptorSocketSendBufferSizeLabelText=Hyväksyjän TCP-portin lähetyspuskurin koko
+initiatorMaximumLengthReceivedLabelText=Alustajan PDU-enimmäispituus vastaanotettu
+initiatorSocketReceiveBufferSizeLabelText=Alustajan TCP-portin vastaanottopuskurin koko
+initiatorSocketSendBufferSizeLabelText=Alustajan TCP-portin lähetyspuskurin koko
+remoteHeaderPanelLabelText=AE DICOM -etäverkon ominaisuudet
+
+callingAETitleJLabelToolTipText=AE-Title, jota käytetään haettaessa toista AE:tä (alustettaessa yhteyttä siihen)
+calledAETitleJLabelToolTipText=AE-Title, jota toinen AE (hyväksyttäessä yhteys siitä) käyttää haussa; yleensä sama kuin oma AE-Title
+listeningPortJLabelToolTipText=Portti, josta kuunnellaan toisen AE:n saapuvia yhteyksiä
+acceptorMaximumLengthReceivedJLabelToolTipText=PDU-enimmäispituus, joka hyväksytään saapuvilta yhteyksiltä (0 jos rajoittamaton)
+acceptorSocketReceiveBufferSizeJLabelToolTipText=TCP-portin vastaanottopuskurin koko, joka asetetaan hyväksyttäessä yhteyksiä (arvo 0, jos kokoa ei haluta muuttaa tai halutaan käyttää alustan oletusarvoa)
+acceptorSocketSendBufferSizeJLabelToolTipText=TCP-portin lähetyspuskurin koko, joka asetetaan hyväksyttäessä yhteyksiä (arvo 0, jos kokoa ei haluta muuttaa tai halutaan käyttää alustan oletusarvoa)
+initiatorMaximumLengthReceivedJLabelToolTipText=PDU-enimmäispituus, jota pyydetään hyväksyjiltä alustettaessa yhteyksiä (0 jos rajoittamaton)
+initiatorSocketReceiveBufferSizeJLabelToolTipText=TCP-portin vastaanottopuskurin koko, joka asetetaan alustettaessa yhteyksiä (arvo 0, jos kokoa ei haluta muuttaa tai halutaan käyttää alustan oletusarvoa)
+initiatorSocketSendBufferSizeJLabelToolTipText=TCP-portin lähetyspuskurin koko, joka asetetaan alustettaessa yhteyksiä (arvo 0, jos kokoa ei haluta muuttaa tai halutaan käyttää alustan oletusarvoa)

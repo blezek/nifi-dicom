@@ -1,0 +1,25 @@
+applicationTitle=Przeredaguj obraz DICOM
+
+blackoutPreviousButtonLabelText=Poprzedni
+blackoutApplyButtonLabelText=Zastosuj
+blackoutSaveButtonLabelText=Zapisz
+blackoutNextButtonLabelText=Następny
+blackoutApplySaveAllButtonLabelText=Zastosuj wszystko i zapisz
+blackoutCancelButtonLabelText=Anuluj
+
+blackoutPreviousButtonToolTipText=Przejdź do poprzedniego obrazu, pomijając bieżący, jeśli nie został jeszcze zapisany
+blackoutApplyButtonToolTipText=Przeredaguj obszary
+blackoutSaveButtonToolTipText=Zapisz przeredagowany obraz
+blackoutNextButtonToolTipText=Przejdź do następnego obrazu, pomijając bieżący, jeśli nie został jeszcze zapisany
+blackoutApplySaveAllButtonToolTipText=Przeredaguj wybrane obszary i zapisz przeredagowany obraz w przypadku tego i wszystkich pozostałych wybranych obrazów
+blackoutCancelButtonToolTipText=Anuluj działania wykonane dla tego obrazu, jeśli nie został jeszcze zapisany, i pomiń wszystkie pozostałe obrazy
+
+keepOverlaysCheckBoxLabelText=Nakładki
+usePixelPaddingBlackoutValueCheckBoxLabelText=Zastosuj wypełnienie
+useZeroBlackoutValueCheckBoxLabelText=Zastosuj zero
+
+keepOverlaysCheckBoxToolTipText=Wyświetl lub ukryj nakładki; jeśli mają być widoczne, umieść je na obrazie na stałe i usuń z nagłówka
+usePixelPaddingBlackoutValueCheckBoxToolTipText=Włącz lub wyłącz opcję wypełniania dla redagowanych pikseli zamiast najniższej możliwej, domyślnej wartości pikseli określonej na podstawie reprezentacji numerycznej i głębi bitowej
+useZeroBlackoutValueCheckBoxToolTipText=Włącz lub wyłącz opcję wartości zerowej dla redagowanych pikseli zamiast opcji wypełniania lub najniższej możliwej, domyślnej wartości pikseli określonej na podstawie reprezentacji numerycznej i głębi bitowej
+
+statusBarHelpText=Przyciski: lewy – regulacja okna; przeciągnięcie prawym – rysowanie pola; kliknięcie prawym – wybór pola; klawisz Delete – odrzucenie wyboru

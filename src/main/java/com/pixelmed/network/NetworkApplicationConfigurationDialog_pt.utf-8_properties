@@ -1,0 +1,34 @@
+addButtonLabelText=Adic
+editButtonLabelText=Editar
+removeButtonLabelText=Eliminar
+doneButtonLabelText=Concluído
+
+addButtonToolTipText=Adicionar um AE à lista de entidades de aplicação remotas
+editButtonToolTipText=Editar um AE na lista de entidades de aplicação remotas
+removeButtonToolTipText=Remover um AE da lista de entidades de aplicação remotas
+doneButtonToolTipText=Edição terminada; reponha a aplicação para utilizar a nova configuração
+
+selectNetworkTargetToEditLabelText=Selecione AE para editar
+selectNetworkTargetToRemoveLabelText=Selecione AE para remover
+
+listenerHeaderLabelText=Propriedades da nossa rede DICOM
+callingAETitleLabelText=Abrir título AE
+calledAETitleLabelText=Título AE aberto
+listeningPortLabelText=Porta de audição
+acceptorMaximumLengthReceivedLabelText=Comprimento máximo de PDU do aceitador recebido
+acceptorSocketReceiveBufferSizeLabelText=Tamanho da memória intermédia para receber o conector TCP do aceitador
+acceptorSocketSendBufferSizeLabelText=Tamanho da memória intermédia para enviar o conector TCP do aceitador
+initiatorMaximumLengthReceivedLabelText=Comprimento máximo de PDU do iniciador recebido
+initiatorSocketReceiveBufferSizeLabelText=Tamanho da memória intermédia para receber o conector TCP do iniciador
+initiatorSocketSendBufferSizeLabelText=Tamanho da memória intermédia para enviar o conector TCP do iniciador
+remoteHeaderPanelLabelText=Propriedades da rede DICOM AE remota
+
+callingAETitleJLabelToolTipText=Título AE utilizado ao abrir (iniciar em associação com) outro AE
+calledAETitleJLabelToolTipText=Título AE que se espera que seja aberto por (ao aceitar uma associação de) outro AE; normalmente o mesmo do título AE aberto
+listeningPortJLabelToolTipText=Porta pela qual se ouvem ligações de entrada de outro AE
+acceptorMaximumLengthReceivedJLabelToolTipText=Comprimento máximo de PDU que é aceite pelas associações de entrada (0 se ilimitado)
+acceptorSocketReceiveBufferSizeJLabelToolTipText=Tamanho da memória intermédia para receber o conector TCP para definição ao aceitar associações (ou 0 para manter inalterado e utilizar a predefinição de plataforma)
+acceptorSocketSendBufferSizeJLabelToolTipText=Tamanho da memória intermédia para enviar o conector TCP para definição ao aceitar associações (ou 0 para manter inalterado e utilizar a predefinição de plataforma)
+initiatorMaximumLengthReceivedJLabelToolTipText=Comprimento máximo de PDU a ser solicitado de aceitadores ao iniciar associações (0 se ilimitado)
+initiatorSocketReceiveBufferSizeJLabelToolTipText=Tamanho da memória intermédia para receber o conector TCP para definição ao iniciar associações (ou 0 para manter inalterado e utilizar a predefinição de plataforma)
+initiatorSocketSendBufferSizeJLabelToolTipText=Tamanho da memória intermédia para enviar o conector TCP para definição ao iniciar associações (ou 0 para manter inalterado e utilizar a predefinição de plataforma)

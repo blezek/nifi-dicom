@@ -1,0 +1,30 @@
+FileChooser.acceptAllFileFilterText=Toate fişierele
+
+FileChooser.cancelButtonText=Anulare
+
+FileChooser.chooseButtonText=Selectare
+
+FileChooser.folderNameLabelText=Nume fișier:
+FileChooser.fileNameLabelText=Fişier:
+FileChooser.filesOfTypeLabelText=Format fişier:
+
+FileChooser.lookInLabelText=Căutare în:
+
+FileChooser.openButtonText=Deschidere
+
+FileChooser.openDialogTitleText=Deschidere
+
+FileChooser.win32.newFolder=Dosar nou
+FileChooser.win32.newFolder.subsequent=Dosar nou {0}
+
+FileChooser.detailsViewActionLabelText=Detalii
+FileChooser.listViewActionLabelText=Listă
+FileChooser.newFolderActionLabelText=Dosar nou
+FileChooser.refreshActionLabelText=Reîmprospătare
+FileChooser.viewMenuLabelText=Vizualizare
+
+FileChooser.cancelButtonToolTipText=Dialog pentru selectarea abandonării fişierului
+FileChooser.newFolderToolTipText=Creare dosar nou
+FileChooser.openButtonToolTipText=Deschidere fişier selectat
+FileChooser.upFolderToolTipText=Urcare un nivel
+FileChooser.viewMenuButtonToolTipText=Vizualizare

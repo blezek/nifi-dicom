@@ -1,0 +1,25 @@
+applicationTitle=Noircissement d'images Dicom
+
+blackoutPreviousButtonLabelText=Précédente
+blackoutApplyButtonLabelText=Appliquer
+blackoutSaveButtonLabelText=Enregistrer
+blackoutNextButtonLabelText=Suivante
+blackoutApplySaveAllButtonLabelText=Tout appliquer et Enregistrer
+blackoutCancelButtonLabelText=Annuler
+
+blackoutPreviousButtonToolTipText=Accéder à l'image précédente, en ignorant cette image, si elle n'est pas déjà enregistrée
+blackoutApplyButtonToolTipText=Noircir les régions
+blackoutSaveButtonToolTipText=Enregistrer l'image noircie
+blackoutNextButtonToolTipText=Accéder à l'image suivante, en ignorant cette image, si elle n'est pas déjà enregistrée
+blackoutApplySaveAllButtonToolTipText=Noircir les régions et enregistrer l'image noircie pour cette image et toutes les autres images sélectionnées
+blackoutCancelButtonToolTipText=Annuler le travail sur cette image, si elle n'est pas déjà enregistrée, et ignorer toutes les autres images
+
+keepOverlaysCheckBoxLabelText=Surimpressions
+usePixelPaddingBlackoutValueCheckBoxLabelText=Utiliser le remplissage
+useZeroBlackoutValueCheckBoxLabelText=Utiliser la valeur zéro
+
+keepOverlaysCheckBoxToolTipText=Choisir d'afficher ou non les superpositions et, en cas d'affichage, les graver dans l'image et les supprimer de l'en-tête
+usePixelPaddingBlackoutValueCheckBoxToolTipText=Choisir d'utiliser ou non la valeur de remplissage de pixel pour les pixels noircis, plutôt que la valeur de pixel minimum possible par défaut en fonction de la signature ou non des pixels et de la profondeur de bit
+useZeroBlackoutValueCheckBoxToolTipText=Choisir d'utiliser ou non la valeur zéro pour les pixels noircis, plutôt que la valeur de remplissage de pixel ou la valeur de pixel minimum possible par défaut en fonction de la signature ou non des pixels et de la profondeur de bit
+
+statusBarHelpText=Boutons : Gauche : permet le fenêtrage ; Droit : dessine une fenêtre par glissement ; Clic droit : sélectionne la fenêtre ; Touche Supprimer : supprime la sélection

@@ -1,0 +1,9 @@
+localNameLabelText=Lokalt navn
+dicomAETitleLabelText=AE-title
+hostnameLabelText=Vertsnavn eller IP-adresse
+portLabelText=Port
+
+localNameToolTipText=Navnet vi bruker for å referere til denne eksterne AE-en (som kan være forskjellig fra AE-tittelen)
+dicomAETitleToolTipText=Åpnet AE-tittel for den eksterne AE-en (AE-tittelen den forventer å åpnes som)
+hostnameToolTipText=Navnet til den eksterne verten innen det gjeldende domenet, eller fullstendig kvalifisert vertsnavn eller IPV4-adressen til den eksterne AE-en
+portToolTipText=Porten på den eksterne verten det skal kobles til (porten som den eksterne AE-en lytter til, for innkommende tilknytninger fra en annen AE)

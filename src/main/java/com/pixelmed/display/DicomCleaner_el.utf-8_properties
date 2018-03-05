@@ -1,0 +1,104 @@
+applicationTitle=Πρόγραμμα καθαρισμού Dicom
+
+DatabaseRootTitleForOriginal=Αρχικό
+DatabaseRootTitleForCleaned=Έχει υποβληθεί σε καθαρισμό
+
+defaultReplacementPatientName=ΟΝΟΜΑ^ΚΑΝΕΝΑ
+defaultReplacementPatientID=ΧΩΡΙΣΑΝΑΓΝΩΡ
+defaultReplacementAccessionNumber=
+defaultRandomReplacementPatientNamePrefix=Ανών^
+defaultModifyDatesEpoch=20000101
+
+queryIntroductionLabelText=Ερώτημα
+queryPatientNameLabelText=Όνομα ασθενούς
+queryPatientIDLabelText=Αναγνωριστικό ασθενούς
+queryStudyDateLabelText=Ημερομηνία μελέτης
+queryAccessionNumberLabelText=Αριθμός εισαγωγής
+
+queryPatientNameToolTipText=Το κείμενο που πρέπει να χρησιμοποιηθεί για το Όνομα ασθενούς κατά το ερώτημα
+queryPatientIDToolTipText=Το κείμενο που πρέπει να χρησιμοποιηθεί για το Αναγνωριστικό ασθενούς κατά το ερώτημα
+queryStudyDateToolTipText=Το κείμενο που πρέπει να χρησιμοποιηθεί για την Ημερομηνία μελέτης κατά το ερώτημα
+queryAccessionNumberToolTipText=Το κείμενο που πρέπει να χρησιμοποιηθεί για τον Αριθμό εισαγωγής κατά το ερώτημα
+
+replacementIntroductionLabelText=Αντικατάσταση
+replacementPatientNameLabelText=Όνομα ασθενούς
+replacementPatientIDLabelText=Αναγνωριστικό ασθενούς
+replacementAccessionNumberLabelText=Αριθμός εισαγωγής
+modifyDatesIntroductionLabelText=Ημερομηνίες και ώρες
+modifyDatesLabelText=Μετακίνηση παλαιότερης ημερομηνίας σε
+
+replacementPatientNameToolTipText=Το κείμενο που πρέπει να χρησιμοποιηθεί για το Όνομα ασθενούς κατά τον καθαρισμό (διαφορετικά παραβλέπεται)
+replacementPatientIDToolTipText=Το κείμενο που πρέπει να χρησιμοποιηθεί για το Αναγνωριστικό ασθενούς κατά τον καθαρισμό (διαφορετικά παραβλέπεται)
+replacementAccessionNumberToolTipText=Το κείμενο που πρέπει να χρησιμοποιηθεί για τον Αριθμό εισαγωγής κατά τον καθαρισμό (διαφορετικά παραβλέπεται)
+modifyDatesToolTipText=Η ημερομηνία που πρέπει να χρησιμοποιηθεί για τη χρονική σήμανση στην οποία θα μετακινηθεί η παλαιότερη ημερομηνία και ώρα, καθώς και όλες οι υπόλοιπες που σχετίζονται με αυτήν (διαφορετικά παραβλέπεται)
+
+removeIdentityLabelText=Κατάργηση όλων μη αντικατ. αναγνωρ.
+removeDescriptionsLabelText=Κατάργηση περιγραφών
+removeSeriesDescriptionsLabelText=Κατάργηση περιγραφής σειράς
+removeProtocolNameLabelText=Κατάργηση ονόματος πρωτοκόλλου λήψης
+removeCharacteristicsLabelText=Κατάργηση χαρακτηριστικών ασθενούς
+removeDeviceIdentityLabelText=Κατάργηση αναγνωριστικών συσκευής
+removeInstitutionIdentityLabelText=Κατάργηση αναγνωριστικών ιδρύματος
+cleanUIDsLabelText=Αντικατάσταση όλων των UID
+removePrivateLabelText=Κατάργηση μη ασφαλών ιδιωτικών χαρακτηριστικών
+addContributingEquipmentLabelText=Προσθήκη συνεισφέροντος εξοπλισμού
+removeClinicalTrialAttributesLabelText=Κατάργηση χαρακτηριστικών κλινικής δοκιμής
+zipExportLabelText=Αρχεία που έχουν εξαχθεί από Zip
+
+hierarchicalExportLabelText=Ιεραρχικά ονόματα σε εξαγωγή
+hierarchicalExportToolTipText=Χρησιμοποιήστε περιγραφική ιεραρχία Ασθενούς/Μελέτης/Σειράς/Περίπτωσης για τα ονόματα φακέλων και αρχείων (τα οποία είναι ΜΗ ΕΠΙΤΡΕΠΤΑ στα μέσα DICOM και ΜΗ ΕΓΚΥΡΑ για CS VR στο DICOMDIR)
+
+acceptAnyTransferSyntaxLabelText=Αποδοχή οποιασδήποτε σύνταξης μεταφοράς
+acceptAnyTransferSyntaxToolTipText=Αποδοχή οποιασδήποτε σύνταξης μεταφοράς (γνωστής, με συμπίεση) που λαμβάνεται μέσω δικτύου ή κατά την εισαγωγή από το σύστημα αρχείων, ακόμα και εάν δεν υπάρχει διαθέσιμος κωδικοποιητής για αποσυμπίεση
+
+configureButtonLabelText=Διαμόρφωση
+configureButtonToolTipText=Διαμόρφωση της εφαρμογής, συμπεριλαμβανομένων των ιδιοτήτων δικτύου DICOM
+
+logButtonLabelText=Αρχείο καταγραφής
+logButtonToolTipText=Εμφάνιση του αρχείου καταγραφής δραστηριοτήτων
+
+queryButtonLabelText=Ερώτημα
+queryButtonToolTipText=Ερώτημα σε έναν απομακρυσμένο κεντρικό υπολογιστή δικτύου
+querySelectDialogTitle=Ερώτημα
+querySelectMessage=Επιλέξτε απομακρυσμένο σύστημα
+
+retrieveButtonLabelText=Ανάκτηση
+retrieveButtonToolTipText=Ανάκτηση επιλογής ερωτήματος από απομακρυσμένο κεντρικό υπολογιστή
+
+importButtonLabelText=Εισαγωγή
+importButtonToolTipText=Εισαγωγή από μέσα στη βάση δεδομένων πρωτοτύπων
+
+cleanButtonLabelText=Καθαρισμός
+cleanButtonToolTipText=Καθαρισμός των επιλεγμένων πρωτοτύπων και αντιγραφή στη βάση δεδομένων που έχει υποβληθεί σε καθαρισμό
+
+blackoutButtonLabelText=Αμαύρωση
+blackoutButtonToolTipText=Αμαύρωση εικόνων όταν υπάρχουν εγγεγραμμένα δεδομένα στο σχολιασμό, στα επιλεγμένα αρχεία βάσης δεδομένων που έχουν υποβληθεί σε καθαρισμό
+
+exportButtonLabelText=Εξαγωγή
+exportButtonToolTipText=Εξαγωγή από μια βάση δεδομένων που έχει υποβληθεί σε καθαρισμό σε φάκελο με DICOMDIR για την εγγραφή σε ένα μέσο
+
+sendButtonLabelText=Αποστολή
+sendButtonToolTipText=Αποστολή των επιλεγμένων αντικειμένων που έχουν υποβληθεί σε καθαρισμό μέσω του δικτύου
+sendSelectDialogTitle=Αποστολή
+sendSelectMessage=Επιλέξτε προορισμό
+
+purgeButtonLabelText=Εκκαθάριση
+purgeButtonToolTipText=Κατάργηση επιλεγμένων καταχωρίσεων από τις βάσεις δεδομένων πρωτότυπων εικόνων και εικόνων που έχουν υποβληθεί σε καθαρισμό και διαγραφή κάθε τοπικού αντιγράφου αρχείων
+
+cancelButtonLabelText=Ακύρωση
+cancelButtonToolTipText=Ακύρωση της τρέχουσας δραστηριότητας που βρίσκεται σε εξέλιξη, εάν δεν έχει ακόμα ολοκληρωθεί
+
+earliestYearButtonLabelText=Παλαιότερο έτος
+earliestYearButtonToolTipText=Συμπλήρωση χρονικής σήμανσης ημερομηνίας με την 1η Ιανουαρίου στο παλαιότερο έτος του επιλεγμένου συνόλου
+
+randomYearButtonLabelText=Τυχαίο έτος
+randomYearButtonToolTipText=Συμπλήρωση χρονικής σήμανσης ημερομηνίας με την 1η Ιανουαρίου σε ένα τυχαίο έτος μεταξύ 1970 και 2070
+
+defaultYearButtonLabelText=Προεπιλεγμένο έτος
+defaultYearButtonToolTipText=Συμπλήρωση χρονικής σήμανσης ημερομηνίας με την 1η Ιανουαρίου στο προεπιλεγμένο έτος 2000
+
+randomReplacementButtonLabelText=Τυχαίο
+randomReplacementButtonToolTipText=Συμπλήρωση κειμένου αντικατάστασης με τυχαίες τιμές
+
+defaultReplacementButtonLabelText=Προεπιλογή
+defaultReplacementButtonToolTipText=Συμπλήρωση κειμένου αντικατάστασης με προεπιλεγμένες τιμές

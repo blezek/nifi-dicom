@@ -1,0 +1,25 @@
+applicationTitle=Αμαύρωση εικόνας Dicom
+
+blackoutPreviousButtonLabelText=Προηγούμενη
+blackoutApplyButtonLabelText=Εφαρμογή
+blackoutSaveButtonLabelText=Αποθήκευση
+blackoutNextButtonLabelText=Επόμενη
+blackoutApplySaveAllButtonLabelText=Εφαρμογή όλων και αποθήκευση
+blackoutCancelButtonLabelText=Ακύρωση
+
+blackoutPreviousButtonToolTipText=Μετακίνηση στην προηγούμενη εικόνα, παράλειψη αυτής της εικόνας, εάν δεν έχει αποθηκευτεί ήδη
+blackoutApplyButtonToolTipText=Αμαύρωση των περιοχών
+blackoutSaveButtonToolTipText=Αποθήκευση της αμαυρωμένης εικόνας
+blackoutNextButtonToolTipText=Μετακίνηση στην επόμενη εικόνα, παράλειψη αυτής της εικόνας, εάν δεν έχει αποθηκευτεί ήδη
+blackoutApplySaveAllButtonToolTipText=Αμαύρωση των περιοχών και αποθήκευση της αμαυρωμένης εικόνας για αυτήν και για όλες τις επιλεγμένες εικόνες που απομένουν
+blackoutCancelButtonToolTipText=Ακύρωση εργασίας σε αυτήν την εικόνα, εάν δεν έχει ήδη αποθηκευτεί, και παράλειψη όλων των εικόνων που απομένουν
+
+keepOverlaysCheckBoxLabelText=Επικαλύψεις
+usePixelPaddingBlackoutValueCheckBoxLabelText=Χρήση αναπλήρωσης
+useZeroBlackoutValueCheckBoxLabelText=Χρήση μηδενισμού
+
+keepOverlaysCheckBoxToolTipText=Εναλλαγή εμφάνισης ή απόκρυψης επικαλύψεων και, σε περίπτωση εμφάνισης, εγγραφή τους στην εικόνα και κατάργησή τους από την κεφαλίδα
+usePixelPaddingBlackoutValueCheckBoxToolTipText=Εναλλαγή χρήσης ή μη χρήσης της τιμής αναπλήρωσης εικονοστοιχείων για εικονοστοιχεία αμαύρωσης, αντί για την προεπιλεγμένη ελάχιστη δυνατή τιμή εικονοστοιχείων βάσει της ιδιότητας μεταβλητών που αντιπροσωπεύει αριθμούς (signedness) και του βάθους bit
+useZeroBlackoutValueCheckBoxToolTipText=Εναλλαγή χρήσης ή μη χρήσης μηδενικής τιμής για εικονοστοιχεία αμαύρωσης, αντί για την τιμή αναπλήρωσης εικονοστοιχείων ή την προεπιλεγμένη ελάχιστη δυνατή τιμή εικονοστοιχείων βάσει της ιδιότητας μεταβλητών που αντιπροσωπεύει αριθμούς (signedness) και του βάθους bit
+
+statusBarHelpText=Κουμπιά: αριστερό - ρύθμιση πλάτους και ύψους παραθύρου, δεξιό - μεταφορά για σχεδίαση πλαισίου, δεξί κλικ - επιλογή πλαισίου, πλήκτρο Delete - απόρριψη επιλογής

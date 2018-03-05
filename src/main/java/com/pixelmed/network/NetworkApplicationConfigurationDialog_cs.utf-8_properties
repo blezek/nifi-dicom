@@ -1,0 +1,34 @@
+addButtonLabelText=Přidat
+editButtonLabelText=Upravit
+removeButtonLabelText=Odstranit
+doneButtonLabelText=Provedeno
+
+addButtonToolTipText=Přidání AE do seznamu vzdálených aplikačních entit
+editButtonToolTipText=Úprava AE v seznamu vzdálených aplikačních entit
+removeButtonToolTipText=Odebrání AE ze seznamu vzdálených aplikačních entit
+doneButtonToolTipText=Dokončené úpravy, aby proběhl reset aplikace za účelem použití nové konfigurace
+
+selectNetworkTargetToEditLabelText=Vyberte AE pro úpravu
+selectNetworkTargetToRemoveLabelText=Vyberte AE pro odebrání
+
+listenerHeaderLabelText=Vlastnosti naší sítě DICOM
+callingAETitleLabelText=Volání názvu AE
+calledAETitleLabelText=Volán název AE
+listeningPortLabelText=Naslouchající port
+acceptorMaximumLengthReceivedLabelText=Akceptor PDU – maximální přijatá délka
+acceptorSocketReceiveBufferSizeLabelText=Akceptor TCP – zásuvka přijetí velikosti vyrovnávací paměti
+acceptorSocketSendBufferSizeLabelText=Akceptor TCP – zásuvka odeslání velikosti vyrovnávací paměti
+initiatorMaximumLengthReceivedLabelText=Iniciátor PDU – maximální přijatá délka
+initiatorSocketReceiveBufferSizeLabelText=Iniciátor TCP – zásuvka přijetí velikosti vyrovnávací paměti
+initiatorSocketSendBufferSizeLabelText=Iniciátor TCP – zásuvka odeslání velikosti vyrovnávací paměti
+remoteHeaderPanelLabelText=Vzdálené AE – vlastnosti sítě DICOM
+
+callingAETitleJLabelToolTipText=Název AE, který používáme pro sebe, když voláme (zahajujeme spojení s) další AE
+calledAETitleJLabelToolTipText=Název AE, který očekáváme, že bude volán (když přijímáme spojení z) jiným AE; obvykle stený jako volající název AE
+listeningPortJLabelToolTipText=Port, na kterém nasloucháme příchozímu připojení z jiného AE
+acceptorMaximumLengthReceivedJLabelToolTipText=Maximální délka PDU, která bude přijata z příchozího připojení (0, pokud neomezené)
+acceptorSocketReceiveBufferSizeJLabelToolTipText=Velikost přijaté vyrovnávací paměti zásuvky TCP pro nastavení při přijímání spojení (nebo 0, aby zůstalo nezměněné a použito výchozí nastavení platformy)
+acceptorSocketSendBufferSizeJLabelToolTipText=Velikost odeslané vyrovnávací paměti zásuvky TCP pro nastavení při přijímání spojení (nebo 0, aby zůstalo nezměněné a použito výchozí nastavení platformy)
+initiatorMaximumLengthReceivedJLabelToolTipText=Maximální délka PDU, která bude požadována od akeptory při zahajování spojení (0, pokud neomezené)
+initiatorSocketReceiveBufferSizeJLabelToolTipText=Velikost přijaté vyrovnávací paměti zásuvky TCP pro nastavení při zahajování spojení (nebo 0, aby zůstalo nezměněné a použito výchozí nastavení platformy)
+initiatorSocketSendBufferSizeJLabelToolTipText=Velikost odeslané vyrovnávací paměti zásuvky TCP pro nastavení při zahajování spojení (nebo 0, aby zůstalo nezměněné a použito výchozí nastavení platformy)

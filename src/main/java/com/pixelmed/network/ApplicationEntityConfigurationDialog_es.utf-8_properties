@@ -1,0 +1,9 @@
+localNameLabelText=Nombre local
+dicomAETitleLabelText=Título EA
+hostnameLabelText=Nombre host o dirección IP
+portLabelText=Puerto
+
+localNameToolTipText=Nombre con el que nos referimos a esta EA remota (que puede ser diferente de su título EA)
+dicomAETitleToolTipText=Título EA de la EA remota (título de la EA esperado para consulta)
+hostnameToolTipText=Nombre de host remoto en el dominio actual, o nombre de host completo o dirección IPV4 de la EA remota
+portToolTipText=Puerto del host remoto al que conectarse (el puerto al que escucha la EA para conexiones entrantes desde otra EA)

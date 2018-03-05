@@ -1,0 +1,25 @@
+applicationTitle=Blackout obrazu Dicom
+
+blackoutPreviousButtonLabelText=Předchozí
+blackoutApplyButtonLabelText=Použít
+blackoutSaveButtonLabelText=Uložit
+blackoutNextButtonLabelText=Další
+blackoutApplySaveAllButtonLabelText=Použít vše a uložit
+blackoutCancelButtonLabelText=Zrušit
+
+blackoutPreviousButtonToolTipText=Přejít na předchozí přeskočením tohoto snímku, pokud již nebyl uložen
+blackoutApplyButtonToolTipText=Blackout oblastí
+blackoutSaveButtonToolTipText=Uložit zatemněný snímek
+blackoutNextButtonToolTipText=Přejít na další přeskočením tohoto snímku, pokud již nebyl uložen
+blackoutApplySaveAllButtonToolTipText=Blackout oblastí a uložit zatemněný snímek pro tento a všechny zbývající vybrané snímky
+blackoutCancelButtonToolTipText=Zrušit práci na tomto snímku, pokud již nebyl uložen, a přeskočit všechny zbývající snímky
+
+keepOverlaysCheckBoxLabelText=Vrstvy
+usePixelPaddingBlackoutValueCheckBoxLabelText=Použít vyplňování
+useZeroBlackoutValueCheckBoxLabelText=Použít nuly
+
+keepOverlaysCheckBoxToolTipText=Přepínat mezi zobrazením nebo skrytím vrstev, a pokud jsou zobrazené, vypit je do snímku a odebrat je ze záhlaví
+usePixelPaddingBlackoutValueCheckBoxToolTipText=Přepínat mezi použitím a nepoužitím hodnoty vyplňování pixelů pro blackout pixely, spíše než výchozí minimální hodnoty pixelů založené na znakovosti a bitové hloubce
+useZeroBlackoutValueCheckBoxToolTipText=Přepínat mezi použitím a nepoužitím hodnoty nuly pro blackout pixely, spíše než hodnoty vyplňování pixelů nebo výchozí minimální hodnoty pixelů založené na znakovosti a bitové hloubce
+
+statusBarHelpText=Tlařítka: levé – okna; pravé – přetažením nakreslí políčko; klepnutí pravým tlačítkem myši – vybere políčko; klávesa Delete – zruší výběr

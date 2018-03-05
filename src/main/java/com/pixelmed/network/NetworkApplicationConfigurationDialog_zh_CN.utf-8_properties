@@ -1,0 +1,34 @@
+addButtonLabelText=添加
+editButtonLabelText=编辑
+removeButtonLabelText=删除
+doneButtonLabelText=完成
+
+addButtonToolTipText=添加 AE 至远程应用程序实体列表
+editButtonToolTipText=编辑远程应用程序实体列表中的 AE
+removeButtonToolTipText=从远程应用程序实体列表中删除 AE
+doneButtonToolTipText=已完成编辑，因此将应用程序重置为使用新配置
+
+selectNetworkTargetToEditLabelText=选择 AE 以编辑
+selectNetworkTargetToRemoveLabelText=选择 AE 以删除
+
+listenerHeaderLabelText=我们的 DICOM 网络属性
+callingAETitleLabelText=正在调用 AE 标题
+calledAETitleLabelText=调用的 AE 标题
+listeningPortLabelText=接收端口
+acceptorMaximumLengthReceivedLabelText=已接收接收器 PDU 最大长度
+acceptorSocketReceiveBufferSizeLabelText=接收器 TCP 插口接收缓存大小
+acceptorSocketSendBufferSizeLabelText=接收器 TCP 插口发送缓存大小
+initiatorMaximumLengthReceivedLabelText=已接收启动器 PDU 最大长度
+initiatorSocketReceiveBufferSizeLabelText=启动器 TCP 插口接收缓存大小
+initiatorSocketSendBufferSizeLabelText=启动器 TCP 插口发送缓存大小
+remoteHeaderPanelLabelText=远程 AE DICOM 网络属性
+
+callingAETitleJLabelToolTipText=调用另一（启动连接至） AE 时我们为自己使用的 AE 标题
+calledAETitleJLabelToolTipText=被（当接收连接自）另一 AE 调用的我们的 AE 标题，通常与调用 AE 标题相同
+listeningPortJLabelToolTipText=我们侦听来自另一 AE 入站连接的端口
+acceptorMaximumLengthReceivedJLabelToolTipText=将从进入连接接受的最大 PDU 长度（未限制时为 0）
+acceptorSocketReceiveBufferSizeJLabelToolTipText=接受连接时，设置的 TCP 插口接收缓存大小（或设置为 0 以保持不变并使用平台默认值）
+acceptorSocketSendBufferSizeJLabelToolTipText=接受连接时，设置的 TCP 插口发送缓存大小（或设置为 0 以保持不变并使用平台默认值）
+initiatorMaximumLengthReceivedJLabelToolTipText=启动连接时，要从接收器请求的最大 PDU 长度（未限制时为 0）
+initiatorSocketReceiveBufferSizeJLabelToolTipText=启动连接时，设置的 TCP 插口接收缓存大小（或设置为 0 以保持不变并使用平台默认值）
+initiatorSocketSendBufferSizeJLabelToolTipText=启动连接时，设置的 TCP 插口发送缓存大小（或设置为 0 以保持不变并使用平台默认值）

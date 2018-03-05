@@ -1,0 +1,25 @@
+applicationTitle=Dicom afbeeldingsverduistering
+
+blackoutPreviousButtonLabelText=Vorige
+blackoutApplyButtonLabelText=Gebruiken
+blackoutSaveButtonLabelText=Opslaan
+blackoutNextButtonLabelText=Volgende
+blackoutApplySaveAllButtonLabelText=Alles toepassen en opslaan
+blackoutCancelButtonLabelText=Annuleren
+
+blackoutPreviousButtonToolTipText=Ga naar het vorige beeld en sla het huidige beeld over als het nog niet is opgeslagen
+blackoutApplyButtonToolTipText=De regio's verduisteren
+blackoutSaveButtonToolTipText=Het verduisterde beeld opslaan
+blackoutNextButtonToolTipText=Ga naar het vorige beeld en sla het huidige beeld over als het nog niet is opgeslagen
+blackoutApplySaveAllButtonToolTipText=De regio's verduisteren en het verduisterde beeld opslaan voor dit beeld en alle resterende geselecteerde beelden
+blackoutCancelButtonToolTipText=Werken aan dit beeld annuleren als het nog niet is opgeslagen en alle resterende beelden overslaan
+
+keepOverlaysCheckBoxLabelText=Overlays
+usePixelPaddingBlackoutValueCheckBoxLabelText=Padding gebruiken
+useZeroBlackoutValueCheckBoxLabelText=Nul gebruiken
+
+keepOverlaysCheckBoxToolTipText=Weergave van overlays in- of uitschakelen en in het beeld branden als weergave is ingeschakeld en uit de header verwijderen
+usePixelPaddingBlackoutValueCheckBoxToolTipText=In- of uitschakelen of de pixelpaddingwaarde wordt gebruikt voor verduisteringspixels, in plaats van de minimale mogelijke standaard pixelwaarde op basis van getekendheid en bitdiepte
+useZeroBlackoutValueCheckBoxToolTipText=In- of uitschakelen of een nulwaarde moet worden gebruikt voor verduisteringspixels in plaats van de pixelpaddingwaarde of een minimale mogelijke standaardpixelwaarde op basis van getekendheid en bitdiepte
+
+statusBarHelpText=Knoppen: links; vensterbewerking, rechts slepen; vak tekenen, rechts klikken; vak selecteren, delete-knop; selectie ongedaan maken

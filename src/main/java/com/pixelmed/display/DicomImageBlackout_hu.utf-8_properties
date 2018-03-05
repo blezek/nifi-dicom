@@ -1,0 +1,25 @@
+applicationTitle=Dicom kép kisatírozása
+
+blackoutPreviousButtonLabelText=Előző
+blackoutApplyButtonLabelText=Alkalmaz
+blackoutSaveButtonLabelText=Mentés
+blackoutNextButtonLabelText=Következő
+blackoutApplySaveAllButtonLabelText=Összes alkalmazása és mentés
+blackoutCancelButtonLabelText=Mégse
+
+blackoutPreviousButtonToolTipText=Lépés az élőzőre és ennek a képnek a kihagyása, ha az még nincs mentve
+blackoutApplyButtonToolTipText=Terület kisatírozása
+blackoutSaveButtonToolTipText=Mentés és a kép kisatírozása
+blackoutNextButtonToolTipText=Lépés a következőre, ennek a képnek a kihagyása, ha az még nincs mentve
+blackoutApplySaveAllButtonToolTipText=A területek kisatírozása, és a kisatírozott kép mentése ennél a képnél és a többi kijelölt kép esetében
+blackoutCancelButtonToolTipText=A módosítások visszavonása ezen a képen, ha azok még nem lettek mentve, és a fennmaradó képek kihagyása
+
+keepOverlaysCheckBoxLabelText=Rétegek
+usePixelPaddingBlackoutValueCheckBoxLabelText=Kitöltés használata
+useZeroBlackoutValueCheckBoxLabelText=Nulla használata
+
+keepOverlaysCheckBoxToolTipText=A rétegek megjelenítésének be- és kikapcsolása. Beállatható továbbá, hogy megjelenítés esetén azokat az alkalmazás beleégesse a képbe és eltávolítsa a fejlécből.
+usePixelPaddingBlackoutValueCheckBoxToolTipText=Az előjel és a bitmélység alapján meghatározott alapértelmezett minimális lehetséges pixelérték helyett a pixelkitöltési érték használata a kisatírozó pixelekhez
+useZeroBlackoutValueCheckBoxToolTipText=A pixelkitöltési érték, illetve az előjel és bitmélység alapján meghatározott alapértelmezett minimális lehetséges pixelérték helyett a null érték használat a kisatírozó pixelekhez
+
+statusBarHelpText=Gombok: bal – ablakok; jobb – mező felrajzolása húzással; jobbkattintás – mező kijelölése; Delete gomb – kijelölés elvetése

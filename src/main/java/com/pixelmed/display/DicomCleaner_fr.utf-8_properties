@@ -1,0 +1,104 @@
+applicationTitle=Nettoyeur Dicom
+
+DatabaseRootTitleForOriginal=Original
+DatabaseRootTitleForCleaned=Nettoyé
+
+defaultReplacementPatientName=NOM^AUCUN
+defaultReplacementPatientID=AUCUNID
+defaultReplacementAccessionNumber=
+defaultRandomReplacementPatientNamePrefix=Anon.^
+defaultModifyDatesEpoch=20000101
+
+queryIntroductionLabelText=Requête
+queryPatientNameLabelText=Nom du patient
+queryPatientIDLabelText=ID patient
+queryStudyDateLabelText=Date de l'étude
+queryAccessionNumberLabelText=N° de dossier
+
+queryPatientNameToolTipText=Le texte à utiliser pour le nom du patient lors de l'interrogation
+queryPatientIDToolTipText=Le texte à utiliser pour l'ID patient lors de l'interrogation
+queryStudyDateToolTipText=Le texte à utiliser pour la date de l'examen lors de l'interrogation
+queryAccessionNumberToolTipText=Le texte à utiliser pour le numéro de dossier lors de l'interrogation
+
+replacementIntroductionLabelText=Remplacer
+replacementPatientNameLabelText=Nom du patient
+replacementPatientIDLabelText=ID patient
+replacementAccessionNumberLabelText=N° de dossier
+modifyDatesIntroductionLabelText=Dates et heures
+modifyDatesLabelText=Déplacer la première date vers
+
+replacementPatientNameToolTipText=Le texte à utiliser pour le nom du patient lors du nettoyage (ignoré autrement)
+replacementPatientIDToolTipText=Le texte à utiliser pour l'ID patient lors du nettoyage (ignoré autrement)
+replacementAccessionNumberToolTipText=Le texte à utiliser pour le numéro de dossier lors du nettoyage (ignoré autrement)
+modifyDatesToolTipText=La date à utiliser pour la période vers laquelle déplacer la première date et la première heure, et toutes les autres dates et heures s'y rapportant (ignorées autrement)
+
+removeIdentityLabelText=Supprimer toutes les identités non remplacées
+removeDescriptionsLabelText=Supprimer les descriptions
+removeSeriesDescriptionsLabelText=Supprimer la description de série
+removeProtocolNameLabelText=Supprimer le nom du protocole d'acquisition
+removeCharacteristicsLabelText=Supprimer les caractéristiques du patient
+removeDeviceIdentityLabelText=Supprimer les identifiants de périphérique
+removeInstitutionIdentityLabelText=Supprimer les identifiants d'institution
+cleanUIDsLabelText=Remplacer tous les UID
+removePrivateLabelText=Supprimer les attributs privés non sécurisés
+addContributingEquipmentLabelText=Ajouter un équipement contribuant
+removeClinicalTrialAttributesLabelText=Supprimer les attributs d'essai clinique
+zipExportLabelText=Compresser les fichiers exportés
+
+hierarchicalExportLabelText=Noms hiérarchiques pour exportation
+hierarchicalExportToolTipText=Utiliser l'arborescence de noms de dossiers et de fichiers descriptive Patient/Examen/Série/Instance (noms illégaux sur un support DICOM et non valides pour CS VR dans DICOMDIR)
+
+acceptAnyTransferSyntaxLabelText=Accepter n'importe quelle syntaxe de transfert
+acceptAnyTransferSyntaxToolTipText=Accepter n'importe quelle syntaxe de transfert (reconnue, compression) reçue via le réseau ou lors d'une importation à partir du système de fichiers, même si aucun codec n'est disponible pour la décompression
+
+configureButtonLabelText=Configurer
+configureButtonToolTipText=Configurer l'application, y compris les propriétés du réseau DICOM
+
+logButtonLabelText=Journal
+logButtonToolTipText=Afficher le journal d'activités
+
+queryButtonLabelText=Requête
+queryButtonToolTipText=Interroger un hôte réseau distant
+querySelectDialogTitle=Requête
+querySelectMessage=Sélectionner un système distant
+
+retrieveButtonLabelText=Récupérer
+retrieveButtonToolTipText=Récupérer la sélection de requêtes depuis l'hôte distant
+
+importButtonLabelText=Importer
+importButtonToolTipText=Importer depuis un support vers la base de données des originaux
+
+cleanButtonLabelText=Nettoyer
+cleanButtonToolTipText=Nettoyer les originaux sélectionnés et copier vers la base de données nettoyée
+
+blackoutButtonLabelText=Noircir
+blackoutButtonToolTipText=Noircir les images lorsque des données sont gravées dans l'annotation dans les fichiers sélectionnés de la base de données nettoyée
+
+exportButtonLabelText=Exporter
+exportButtonToolTipText=Exporter depuis la base de données nettoyée vers un dossier avec DICOMDIR pour gravure sur un support
+
+sendButtonLabelText=Envoyer
+sendButtonToolTipText=Envoyer les objets nettoyés sélectionnés via le réseau
+sendSelectDialogTitle=Envoyer
+sendSelectMessage=Sélectionner une destination
+
+purgeButtonLabelText=Purger
+purgeButtonToolTipText=Supprimer les entrées sélectionnées dans l'original ainsi que dans les bases de données nettoyées et supprimer toutes les copies locales des fichiers
+
+cancelButtonLabelText=Annuler
+cancelButtonToolTipText=Annuler l'activité en cours si elle n'est pas encore terminée
+
+earliestYearButtonLabelText=Première année
+earliestYearButtonToolTipText=Renseigner la date du 1<sup>er</sup> janvier dans le champ de la période pour la première année de l'ensemble sélectionné
+
+randomYearButtonLabelText=Année aléatoire
+randomYearButtonToolTipText=Renseigner la date du 1<sup>er</sup> janvier dans le champ de la période pour une année aléatoire entre 1970 et 2070
+
+defaultYearButtonLabelText=Année par défaut
+defaultYearButtonToolTipText=Renseigner la date du 1<sup>er</sup> janvier dans le champ de la période pour l'année 2000 par défaut
+
+randomReplacementButtonLabelText=Aléatoire
+randomReplacementButtonToolTipText=Renseigner le texte de remplacement avec des valeurs aléatoires
+
+defaultReplacementButtonLabelText=Par défaut
+defaultReplacementButtonToolTipText=Renseigner le texte de remplacement avec des valeurs par défaut

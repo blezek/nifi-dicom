@@ -1,0 +1,30 @@
+FileChooser.acceptAllFileFilterText=Alle bestanden
+
+FileChooser.cancelButtonText=Annuleren
+
+FileChooser.chooseButtonText=Kiezen
+
+FileChooser.folderNameLabelText=Mapnaam:
+FileChooser.fileNameLabelText=Bestand:
+FileChooser.filesOfTypeLabelText=Bestandsindeling:
+
+FileChooser.lookInLabelText=Zoeken in:
+
+FileChooser.openButtonText=Openen
+
+FileChooser.openDialogTitleText=Openen
+
+FileChooser.win32.newFolder=Nieuwe map
+FileChooser.win32.newFolder.subsequent=Nieuwe map {0}
+
+FileChooser.detailsViewActionLabelText=Details
+FileChooser.listViewActionLabelText=Lijst
+FileChooser.newFolderActionLabelText=Nieuwe map
+FileChooser.refreshActionLabelText=Vernieuwen
+FileChooser.viewMenuLabelText=Menu weergeven
+
+FileChooser.cancelButtonToolTipText=Dialoogvenster bestandskeuze afbreken
+FileChooser.newFolderToolTipText=Nieuwe map maken
+FileChooser.openButtonToolTipText=Geselecteerd bestand openen
+FileChooser.upFolderToolTipText=Eén niveau omhoog
+FileChooser.viewMenuButtonToolTipText=Menu weergeven

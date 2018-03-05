@@ -1,0 +1,104 @@
+applicationTitle=Programa de limpeza Dicom
+
+DatabaseRootTitleForOriginal=Original
+DatabaseRootTitleForCleaned=Limpo
+
+defaultReplacementPatientName=NOME^NENHUM
+defaultReplacementPatientID=SEMID
+defaultReplacementAccessionNumber=
+defaultRandomReplacementPatientNamePrefix=Anónimo
+defaultModifyDatesEpoch=20000101
+
+queryIntroductionLabelText=Pesquisa
+queryPatientNameLabelText=Nome de paciente
+queryPatientIDLabelText=ID de paciente
+queryStudyDateLabelText=Data do estudo
+queryAccessionNumberLabelText=Número de acesso
+
+queryPatientNameToolTipText=Texto a utilizar para a pesquisa pelo nome de paciente
+queryPatientIDToolTipText=Texto a utilizar para a pesquisa pela ID de paciente
+queryStudyDateToolTipText=Texto a utilizar para a pesquisa pela data do estudo
+queryAccessionNumberToolTipText=Texto a utilizar para a pesquisa pelo número de acesso
+
+replacementIntroductionLabelText=Substituir
+replacementPatientNameLabelText=Nome de paciente
+replacementPatientIDLabelText=ID de paciente
+replacementAccessionNumberLabelText=Número de acesso
+modifyDatesIntroductionLabelText=Datas e horas
+modifyDatesLabelText=Mover data mais antiga para
+
+replacementPatientNameToolTipText=Texto a utilizar para o nome de paciente durante a limpeza (caso contrário ignorado)
+replacementPatientIDToolTipText=Texto a utilizar para a ID de paciente durante a limpeza (caso contrário ignorado)
+replacementAccessionNumberToolTipText=Texto a utilizar para o número de acesso durante a limpeza (caso contrário ignorado)
+modifyDatesToolTipText=Data a utilizar para a época para a qual mover a hora e data mais antigas e todas as outras datas correspondentes (caso contrário ignoradas)
+
+removeIdentityLabelText=Remover todas as identidades não substituídas
+removeDescriptionsLabelText=Remover descrições
+removeSeriesDescriptionsLabelText=Remover descrição da série
+removeProtocolNameLabelText=Remover nome do protocolo de aquisição
+removeCharacteristicsLabelText=Remover dados do paciente
+removeDeviceIdentityLabelText=Remover identificadores do dispositivo
+removeInstitutionIdentityLabelText=Remover identificadores da instituição
+cleanUIDsLabelText=Substituir todas as UID
+removePrivateLabelText=Remover atributos privados não seguros
+addContributingEquipmentLabelText=Adicionar equipamento participante
+removeClinicalTrialAttributesLabelText=Remover atributos provenientes de ensaios clínicos
+zipExportLabelText=Comprimir ficheiros exportados
+
+hierarchicalExportLabelText=Nomes hierárquicos em exportação
+hierarchicalExportToolTipText=Utilizar hierarquia descritiva de paciente/estudo/série/instância da pasta e nomes de ficheiro (que são ILEGAIS em suportes DICOM e INVÁLIDOS para CS VR em DICOMDIR)
+
+acceptAnyTransferSyntaxLabelText=Aceitar qualquer sintaxe de transferência
+acceptAnyTransferSyntaxToolTipText=Aceitar qualquer sintaxe de transferência (reconhecida, de compressão) recebida pela rede ou durante a importação do sistema do ficheiro, mesmo que nenhum codec esteja disponível para a descompressão
+
+configureButtonLabelText=Configurar
+configureButtonToolTipText=Configurar a aplicação, incluindo as propriedades da rede DICOM
+
+logButtonLabelText=Registo
+logButtonToolTipText=Mostrar registo de atividades
+
+queryButtonLabelText=Pesquisa
+queryButtonToolTipText=Pesquisar por um anfitrião remoto da rede
+querySelectDialogTitle=Pesquisa
+querySelectMessage=Selecione o sistema remoto
+
+retrieveButtonLabelText=Recuperar
+retrieveButtonToolTipText=Recuperar seleção da pesquisa do anfitrião remoto
+
+importButtonLabelText=Importar
+importButtonToolTipText=Importar de suportes para a base de dados de originais
+
+cleanButtonLabelText=Limpar
+cleanButtonToolTipText=Limpar as originais selecionadas e copiar para a base de dados limpa
+
+blackoutButtonLabelText=Tornar indisponível
+blackoutButtonToolTipText=Imagens indisponíveis quando os dados são gravados na anotação nos ficheiros da base de dados limpa selecionada
+
+exportButtonLabelText=Exportar
+exportButtonToolTipText=Exportar da base de dados limpa para a pasta com DICOMDIR para gravar em suportes
+
+sendButtonLabelText=Enviar
+sendButtonToolTipText=Enviar os objetos limpos selecionados pela rede
+sendSelectDialogTitle=Enviar
+sendSelectMessage=Selecione o destino
+
+purgeButtonLabelText=Remover
+purgeButtonToolTipText=Retirar as entradas selecionadas da original e das bases de dados limpas e eliminar todas as cópias locais dos ficheiros
+
+cancelButtonLabelText=Cancelar
+cancelButtonToolTipText=Cancelar a atividade atual em curso se ainda não estiver concluída
+
+earliestYearButtonLabelText=Ano mais antigo
+earliestYearButtonToolTipText=Preencher a época da data com 1 de janeiro do ano mais antigo do conjunto selecionado
+
+randomYearButtonLabelText=Ano aleatório
+randomYearButtonToolTipText=Preencher a época da data com 1 de janeiro de um ano aleatório entre 1970 e 2070
+
+defaultYearButtonLabelText=Ano predefinido
+defaultYearButtonToolTipText=Preencher a época da data com 1 de janeiro no ano predefinido de 2000
+
+randomReplacementButtonLabelText=Aleatório
+randomReplacementButtonToolTipText=Preencher o texto de substituição com valores aleatórios
+
+defaultReplacementButtonLabelText=Predefinição
+defaultReplacementButtonToolTipText=Preencher o texto de substituição com valores predefinidos

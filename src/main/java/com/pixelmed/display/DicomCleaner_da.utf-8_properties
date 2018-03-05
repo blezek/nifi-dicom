@@ -1,0 +1,104 @@
+applicationTitle=Dicom-renser
+
+DatabaseRootTitleForOriginal=Original
+DatabaseRootTitleForCleaned=Renset
+
+defaultReplacementPatientName=NAVN^INTET
+defaultReplacementPatientID=INTETID
+defaultReplacementAccessionNumber=
+defaultRandomReplacementPatientNamePrefix=Anon^
+defaultModifyDatesEpoch=20000101
+
+queryIntroductionLabelText=Anmodning
+queryPatientNameLabelText=Patientnavn
+queryPatientIDLabelText=Patient-id
+queryStudyDateLabelText=Undersøgelsesdato
+queryAccessionNumberLabelText=Optagelsesnr.
+
+queryPatientNameToolTipText=Teksten, som skal bruges for patientnavnet ved anmodning
+queryPatientIDToolTipText=Teksten, som skal bruges for patient-id'et ved anmodning
+queryStudyDateToolTipText=Teksten, som skal bruges for undersøgelsesdatoen ved anmodning
+queryAccessionNumberToolTipText=Teksten, som skal bruges for optagelsesnummeret ved anmodning
+
+replacementIntroductionLabelText=Erstat
+replacementPatientNameLabelText=Patientnavn
+replacementPatientIDLabelText=Patient-id
+replacementAccessionNumberLabelText=Optagelsesnr.
+modifyDatesIntroductionLabelText=Datoer og klokkeslæt
+modifyDatesLabelText=Flyt tidligste dato til
+
+replacementPatientNameToolTipText=Teksten, som skal bruges for patientnavnet ved rensning (ignoreres ellers)
+replacementPatientIDToolTipText=Teksten, som skal bruges for patient-id'et ved rensning (ignoreres ellers)
+replacementAccessionNumberToolTipText=Teksten, som skal bruges for optagelsesnummeret ved rensning (ignoreres ellers)
+modifyDatesToolTipText=Datoen, der skal bruges for epoken, som tidligste dato og klokkeslæt og alle andre relaterede skal flyttes til (ignoreres ellers)
+
+removeIdentityLabelText=Fjern alle ikke-erstattede identiteter
+removeDescriptionsLabelText=Fjern beskrivelser
+removeSeriesDescriptionsLabelText=Fjern beskrivelse af serie
+removeProtocolNameLabelText=Fjern protokolnavn for optagelse
+removeCharacteristicsLabelText=Fjern patientkarakteristika
+removeDeviceIdentityLabelText=Fjern enheds-id'er
+removeInstitutionIdentityLabelText=Fjern institutions-id'er
+cleanUIDsLabelText=Erstat all UID'er
+removePrivateLabelText=Fjern usikre private attributter
+addContributingEquipmentLabelText=Tilføj hjælpeudstyr
+removeClinicalTrialAttributesLabelText=Fjern attributter for klinisk undersøgelse
+zipExportLabelText=Zip eksporterede filer
+
+hierarchicalExportLabelText=Hierarkiske navne i eksport
+hierarchicalExportToolTipText=Brug beskrivende Patient/Undersøgelse/Serie/Forekomst-hierarki i mappe- og filnavne (som ikke er tilladte på DICOM-medier og ugyldige for CS VR i DICOMDIR)
+
+acceptAnyTransferSyntaxLabelText=Accepter enhver overførselssyntaks
+acceptAnyTransferSyntaxToolTipText=Accepter enhver (anerkendt, komprimeret) overførselssyntaks, som modtages over netværket eller ved import fra filsystem, også selvom der ikke findes et codec for dekomprimering
+
+configureButtonLabelText=Konfigurer
+configureButtonToolTipText=Konfigurer applikationen, herunder egenskaber for DICOM-netværket
+
+logButtonLabelText=Loghistorik
+logButtonToolTipText=Vis loghistorikken for aktiviteter
+
+queryButtonLabelText=Anmodning
+queryButtonToolTipText=Send anmodning til en fjernvært for netværk
+querySelectDialogTitle=Anmodning
+querySelectMessage=Vælg eksternt system
+
+retrieveButtonLabelText=Hent
+retrieveButtonToolTipText=Hent valgte anmodninger fra fjernvært
+
+importButtonLabelText=Importer
+importButtonToolTipText=Importer fra medier til database over originale
+
+cleanButtonLabelText=Ryd
+cleanButtonToolTipText=Ryd valgte originale, og kopiér dem til renset database
+
+blackoutButtonLabelText=Mørklægning
+blackoutButtonToolTipText=Mørklæg billeder, når data brændes i kommentar i de valgte rensede databasefiler
+
+exportButtonLabelText=Eksport
+exportButtonToolTipText=Eksporter fra renset database til mappe med DICOMDIR for brænding til medier
+
+sendButtonLabelText=Send
+sendButtonToolTipText=Send de valgte rensede elementer over netværket
+sendSelectDialogTitle=Send
+sendSelectMessage=Vælg destination
+
+purgeButtonLabelText=Rens
+purgeButtonToolTipText=Fjern valgte poster fra de originale og rensede databaser, og slet eventuelle lokale kopier af filer
+
+cancelButtonLabelText=Annullér
+cancelButtonToolTipText=Annullér den aktuelle aktivitet, som er i gang, hvis den ikke er afsluttet
+
+earliestYearButtonLabelText=Tidligste år
+earliestYearButtonToolTipText=Udfyld datoperiode med 1. januar i tidligste år for det valgte sæt
+
+randomYearButtonLabelText=Tilfældigt år
+randomYearButtonToolTipText=Udfyld datoperiode med 1. januar i et tilfældigt år mellem 1970 og 2070
+
+defaultYearButtonLabelText=Standardår
+defaultYearButtonToolTipText=Udfyld datoperiode med 1. januar i standardåret 2000
+
+randomReplacementButtonLabelText=Tilfældigt
+randomReplacementButtonToolTipText=Udfyld erstatningstekst med tilfældige værdier
+
+defaultReplacementButtonLabelText=Standard
+defaultReplacementButtonToolTipText=Udfyld erstatningstekst med standardværdier

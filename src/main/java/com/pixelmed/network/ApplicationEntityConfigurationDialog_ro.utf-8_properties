@@ -1,0 +1,9 @@
+localNameLabelText=Nume local
+dicomAETitleLabelText=Titlu AE
+hostnameLabelText=Nume gazdă sau adresă IP
+portLabelText=Port
+
+localNameToolTipText=Numele folosit pentru a face referire la acest AE de la distanţă (care poate fi diferit de titlul AE)
+dicomAETitleToolTipText=Titlul AE apelat pentru AE de la distanţă (titlul AE cu care se aşteaptă că va fi apelat)
+hostnameToolTipText=Numele gazdei de la distanţă din domeniul curent sau numele gazdei complet calificate sau adresa IPV4 pentru AE de la distanţă.
+portToolTipText=Portul de la gazda de la distanţă la care se va conecta (portul la care ascultă AE pentru conexiunile interne de la alt AE)

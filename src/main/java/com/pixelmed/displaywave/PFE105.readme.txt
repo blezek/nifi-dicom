@@ -1,0 +1,18 @@
+This ZIP file contains the 12 ECG test records for SCP compression/decompression.
+The 12 files contains pure ECG data. 
+Before testing SCP implementation demographic data (e.g. patient identification,
+date/time of acquisition) must be added. 
+
+
+Describtion of the data format of the ECG data
+-------------------------------------------------------------------------- 
+- Each file contains 5000 samples * 8 leads * 2 bytes/sample = 80000 bytes.
+- Signed 16 bit per sample
+- The ECG data are stored in sample order.
+- The data are recorded at 500Hz; the sample interval is 2ms.
+- The amplitude value multilpier for these data is 1 µV/LSB.
+- The included 8 leads are: I, II, V1, V2, V3, V4, V5 and V6.
+- The least significant byte is transmitted first, the most significant byte last.
+  (little-endian byte order)
+
+

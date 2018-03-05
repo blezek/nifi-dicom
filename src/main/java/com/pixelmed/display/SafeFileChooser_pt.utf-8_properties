@@ -1,0 +1,30 @@
+FileChooser.acceptAllFileFilterText=Todos os ficheiros
+
+FileChooser.cancelButtonText=Cancelar
+
+FileChooser.chooseButtonText=Selecionar
+
+FileChooser.folderNameLabelText=Nome da pasta:
+FileChooser.fileNameLabelText=Ficheiro:
+FileChooser.filesOfTypeLabelText=Formato do ficheiro:
+
+FileChooser.lookInLabelText=Procurar em:
+
+FileChooser.openButtonText=Abrir
+
+FileChooser.openDialogTitleText=Abrir
+
+FileChooser.win32.newFolder=Nova pasta
+FileChooser.win32.newFolder.subsequent=Nova pasta {0}
+
+FileChooser.detailsViewActionLabelText=Detalhes
+FileChooser.listViewActionLabelText=Lista
+FileChooser.newFolderActionLabelText=Nova pasta
+FileChooser.refreshActionLabelText=Atualizar
+FileChooser.viewMenuLabelText=Ver menu
+
+FileChooser.cancelButtonToolTipText=Abortar a caixa de diálogo do seletor de ficheiros
+FileChooser.newFolderToolTipText=Criar nova pasta
+FileChooser.openButtonToolTipText=Abrir ficheiro selecionado
+FileChooser.upFolderToolTipText=Um nível acima
+FileChooser.viewMenuButtonToolTipText=Ver menu

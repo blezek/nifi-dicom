@@ -1,0 +1,9 @@
+localNameLabelText=Nome locale
+dicomAETitleLabelText=Titolo AE
+hostnameLabelText=Nome host o indirizzo IP
+portLabelText=Porta
+
+localNameToolTipText=Nome utilizzato per l'AE remoto (può essere diverso dal titolo AE)
+dicomAETitleToolTipText=Titolo AE chiamato dell'AE remoto (il titolo AE con il quale dovrebbe essere chiamato)
+hostnameToolTipText=Nome host remoto nel dominio corrente o nome host pienamente qualificato o indirizzo IPV4 dell'AE remoto
+portToolTipText=Porta sull'host remoto al quale connettersi (la porta di ascolto dell'AE remoto per le connessioni in ingresso da un altro AE)

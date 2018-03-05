@@ -1,0 +1,30 @@
+FileChooser.acceptAllFileFilterText=Všechny soubory
+
+FileChooser.cancelButtonText=Zrušit
+
+FileChooser.chooseButtonText=Vybrat
+
+FileChooser.folderNameLabelText=Název složky:
+FileChooser.fileNameLabelText=Soubor:
+FileChooser.filesOfTypeLabelText=Formát souboru:
+
+FileChooser.lookInLabelText=Podívat se do:
+
+FileChooser.openButtonText=Otevřít
+
+FileChooser.openDialogTitleText=Otevřít
+
+FileChooser.win32.newFolder=Nová složka
+FileChooser.win32.newFolder.subsequent=Nová složka {0}
+
+FileChooser.detailsViewActionLabelText=Podrobnosti
+FileChooser.listViewActionLabelText=Seznam
+FileChooser.newFolderActionLabelText=Nová složka
+FileChooser.refreshActionLabelText=Aktualizovat
+FileChooser.viewMenuLabelText=Nabídka pohledu
+
+FileChooser.cancelButtonToolTipText=Přerušit dialog toho, kdo vybírá soubor
+FileChooser.newFolderToolTipText=Vytvořit novou složku
+FileChooser.openButtonToolTipText=Otevřít vybraný soubor
+FileChooser.upFolderToolTipText=O jednu úroveň nahoru
+FileChooser.viewMenuButtonToolTipText=Nabídka pohledu

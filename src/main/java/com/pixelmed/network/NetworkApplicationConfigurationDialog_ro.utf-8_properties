@@ -1,0 +1,34 @@
+addButtonLabelText=Adăugare
+editButtonLabelText=Editare
+removeButtonLabelText=Eliminare
+doneButtonLabelText=Finalizat
+
+addButtonToolTipText=Adaugă un AE în lista entităţilor de aplicaţie de la distanţă
+editButtonToolTipText=Editează un AE din lista entităţilor de aplicaţie de la distanţă
+removeButtonToolTipText=Elimină un AE din lista entităţilor de aplicaţie de la distanţă
+doneButtonToolTipText=Editările au fost finalizate, resetaţi aplicaţia pentru a utiliza noua configurare
+
+selectNetworkTargetToEditLabelText=Selectaţi AE pentru editare
+selectNetworkTargetToRemoveLabelText=Selectaţi AE pentru eliminare
+
+listenerHeaderLabelText=Proprietăţile reţelei noastre DICOM
+callingAETitleLabelText=Titlu AE care apelează
+calledAETitleLabelText=Titlu AE apelat
+listeningPortLabelText=Port de ascultare
+acceptorMaximumLengthReceivedLabelText=Lungime maximă PDU primită pentru receptor
+acceptorSocketReceiveBufferSizeLabelText=Dimensiune buffer de primire al racordului TCP pentru receptor
+acceptorSocketSendBufferSizeLabelText=Dimensiune buffer de trimitere al racordului TCP pentru receptor
+initiatorMaximumLengthReceivedLabelText=Lungime maximă PDU primită pentru iniţiator
+initiatorSocketReceiveBufferSizeLabelText=Dimensiune buffer de primire al racordului TCP pentru iniţiator
+initiatorSocketSendBufferSizeLabelText=Dimensiune buffer de trimitere al racordului TCP pentru iniţiator
+remoteHeaderPanelLabelText=Proprietăţi reţea DICOM AE de la distanţă
+
+callingAETitleJLabelToolTipText=Titlul AE pe care îl utilizăm în nume propriu atunci când efectuăm apeluri (iniţierea unei asocieri) către un alt AE
+calledAETitleJLabelToolTipText=Titlul AE cu care ne aşteptăm să fim apelaţi (atunci când acceptăm o asociere) de către un alt AE, de obicei acelaşi ca şi titlul AE care apelează
+listeningPortJLabelToolTipText=Portul pe care îl ascultăm pentru conexiunile primite de la un alt AE
+acceptorMaximumLengthReceivedJLabelToolTipText=Lungimea PDU maximă care va fi acceptată de la asocierile primite (0 dacă este nelimitată)
+acceptorSocketReceiveBufferSizeJLabelToolTipText=Dimensiunea buffer-ului de primire pentru racordul TCP, care trebuie setată pentru acceptarea asocierilor (sau 0 pentru a o lăsa neschimbată şi pentru a utiliza valorile implicite pentru platformă)
+acceptorSocketSendBufferSizeJLabelToolTipText=Dimensiunea buffer-ului de trimitere pentru racordul TCP, care trebuie setată pentru acceptarea asocierilor (sau 0 pentru a o lăsa neschimbată şi pentru a utiliza valorile implicite pentru platformă)
+initiatorMaximumLengthReceivedJLabelToolTipText=Lungimea PDU maximă care va fi solicitată de la receptori la iniţierea asocierilor (0 dacă este nelimitată)
+initiatorSocketReceiveBufferSizeJLabelToolTipText=Dimensiunea buffer-ului de primire pentru racordul TCP, care trebuie setată pentru iniţierea asocierilor (sau 0 pentru a o lăsa neschimbată şi pentru a utiliza valorile implicite pentru platformă)
+initiatorSocketSendBufferSizeJLabelToolTipText=Dimensiunea buffer-ului de trimitere pentru racordul TCP, care trebuie setată pentru iniţierea asocierilor (sau 0 pentru a o lăsa neschimbată şi pentru a utiliza valorile implicite pentru platformă)

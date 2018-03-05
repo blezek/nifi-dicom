@@ -1,0 +1,9 @@
+localNameLabelText=Helyi név
+dicomAETitleLabelText=Alkalmazásegyed neve
+hostnameLabelText=Hostnév vagy IP-cím
+portLabelText=Port
+
+localNameToolTipText=A távoli alkalmazásegyed neve (amely eltérhet az alkalmazásegyed nevétől)
+dicomAETitleToolTipText=A távoli alkalmazásegyed meghívott alkalmazásegyed neve (az alkalmazásegyed-név, amelyen a távoli alkalmazásegyed a meghívást várja)
+hostnameToolTipText=A távoli host neve a tartományon belül, vagy teljesen minősített állomásnév, vagy a távoli alkalmazásegyed IPV4-címe
+portToolTipText=A távoli host portja, amelyhez csatlakozni lehet (az a port, amelyen az alkalmazásegyed figyeli a más alkalmazásegyedektől érkező bejövő kapcsolatokat)

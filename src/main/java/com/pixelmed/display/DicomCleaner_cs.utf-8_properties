@@ -1,0 +1,104 @@
+applicationTitle=Čistič Dicom
+
+DatabaseRootTitleForOriginal=Původní
+DatabaseRootTitleForCleaned=Vyčištěný
+
+defaultReplacementPatientName=NÁZEV^ŽÁDNÝ
+defaultReplacementPatientID=ŽÁDNÉID
+defaultReplacementAccessionNumber=
+defaultRandomReplacementPatientNamePrefix=Anon^
+defaultModifyDatesEpoch=20000101
+
+queryIntroductionLabelText=Dotaz
+queryPatientNameLabelText=Jméno pacientky
+queryPatientIDLabelText=ID pacientky
+queryStudyDateLabelText=Datum vyšetření
+queryAccessionNumberLabelText=Č. přístupu
+
+queryPatientNameToolTipText=Text, který se má používat při dotazování na Jméno pacientky
+queryPatientIDToolTipText=Text, který se má používat při dotazování na ID pacientky
+queryStudyDateToolTipText=Text, který se má používat při dotazování na Datum vyšetření
+queryAccessionNumberToolTipText=Text, který se má používat při dotazování na Č. přístupu
+
+replacementIntroductionLabelText=Nahradit
+replacementPatientNameLabelText=Jméno pacientky
+replacementPatientIDLabelText=ID pacientky
+replacementAccessionNumberLabelText=Č. přístupu
+modifyDatesIntroductionLabelText=Data a časy
+modifyDatesLabelText=Přesunout dřívější datum do
+
+replacementPatientNameToolTipText=Text, který se má používat při čištění Jméno pacientky (jinak ignorováno)
+replacementPatientIDToolTipText=Text, který se má používat při čištění ID pacientky (jinak ignorováno)
+replacementAccessionNumberToolTipText=Text, který se má používat při čištění Č. přístupu (jinak ignorováno)
+modifyDatesToolTipText=Datum, které se má používat pro epochu, do které se má přesunout dřívější datum a čas a vše ostatní s tím související (jinak ignorováno)
+
+removeIdentityLabelText=Odebrat všechny nenahrazené identity
+removeDescriptionsLabelText=Odebrat popisy
+removeSeriesDescriptionsLabelText=Odebrat popis série
+removeProtocolNameLabelText=Odebrat název protokolu akvizice
+removeCharacteristicsLabelText=Odebrat charakteristiky pacienta
+removeDeviceIdentityLabelText=Odebrat identifikátory zařízení
+removeInstitutionIdentityLabelText=Odebrat identifikátory instituce
+cleanUIDsLabelText=Nahradit všechny UID
+removePrivateLabelText=Odebrat nebezpečné privátní atributy
+addContributingEquipmentLabelText=Přidat přispívající zařízení
+removeClinicalTrialAttributesLabelText=Odebrat atributy klinického testování
+zipExportLabelText=Komprimovat exportované soubory
+
+hierarchicalExportLabelText=Hierarchické názvy v exportu
+hierarchicalExportToolTipText=Používejte popisnou hierarchii složky pacienta/studie/sérií/instance a názvy souborů (které jsou ZAKÁZANÉ u médií DICOM a NEPLATNÉ pro CS VR v adresáři DICOMDIR)
+
+acceptAnyTransferSyntaxLabelText=Přijmout každý transferový systax
+acceptAnyTransferSyntaxToolTipText=Přijmout každý (rozpoznaný, komprimovaný) transferový syntax přijatý ze sítě nebo při importu ze souborového systému, dokonce i když není dostupný kodek pro zrušení komprese
+
+configureButtonLabelText=Konfigurovat
+configureButtonToolTipText=Konfigurovat aplikaci, včetně vlastností sítě DICOM
+
+logButtonLabelText=Protokol
+logButtonToolTipText=Zobrazit protokol činností
+
+queryButtonLabelText=Dotaz
+queryButtonToolTipText=Dotaz na vzdálený síťový hostitelský počítač
+querySelectDialogTitle=Dotaz
+querySelectMessage=Zvolit vzdálený systém
+
+retrieveButtonLabelText=Načtení
+retrieveButtonToolTipText=Načtení volby dotazu ze vzdáleného hostitelského počítače
+
+importButtonLabelText=Import
+importButtonToolTipText=Import z média do databáze původních snímků
+
+cleanButtonLabelText=Čistit
+cleanButtonToolTipText=Čistit vybrané původní snímky a kopírovat do databáze kopírovaných snímků
+
+blackoutButtonLabelText=Blackout
+blackoutButtonToolTipText=Vypálený blackout v poznámce ve vybraných souborech databáze vyčištěných snímků
+
+exportButtonLabelText=Export
+exportButtonToolTipText=Export z databáze vyčištěných snímků do složky s adresářem DICOMDIR za účelem vypálení na médium
+
+sendButtonLabelText=Odeslat
+sendButtonToolTipText=Odeslat vybrané vyčištěné objekty po síti
+sendSelectDialogTitle=Odeslat
+sendSelectMessage=Zvolit cílové umístění
+
+purgeButtonLabelText=Použití funkce Purge (Vyčistit)
+purgeButtonToolTipText=Odebrat vybrané záznamy z databází původních a vyčištěných snímků a odstranit všechny místní kopie souborů
+
+cancelButtonLabelText=Zrušit
+cancelButtonToolTipText=Zrušit aktuální rozpracované činnosti, pokud ještě nebyly dokončeny
+
+earliestYearButtonLabelText=Počáteční rok
+earliestYearButtonToolTipText=Doplnit epochu data prvním lednem počátečního roku vybrané sady
+
+randomYearButtonLabelText=Náhodný rok
+randomYearButtonToolTipText=Doplnit epochu data prvním lednem náhodného roku mezi 1970 a 2070
+
+defaultYearButtonLabelText=Výchozí rok
+defaultYearButtonToolTipText=Doplnit epochu data prvním lednem výchozího roku 2000
+
+randomReplacementButtonLabelText=Náhodné
+randomReplacementButtonToolTipText=Doplnit náhradní text náhodnými hodnotami
+
+defaultReplacementButtonLabelText=Výchozí
+defaultReplacementButtonToolTipText=Doplnit náhradní text výchozími hodnotami

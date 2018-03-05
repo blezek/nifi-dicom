@@ -1,0 +1,30 @@
+FileChooser.acceptAllFileFilterText=Kaikki tiedostot
+
+FileChooser.cancelButtonText=Peruuta
+
+FileChooser.chooseButtonText=Valitse
+
+FileChooser.folderNameLabelText=Kansion nimi:
+FileChooser.fileNameLabelText=Tiedosto:
+FileChooser.filesOfTypeLabelText=Tiedostomuoto:
+
+FileChooser.lookInLabelText=Hakukohde:
+
+FileChooser.openButtonText=Avaa
+
+FileChooser.openDialogTitleText=Avaa
+
+FileChooser.win32.newFolder=Uusi kansio
+FileChooser.win32.newFolder.subsequent=Uusi kansio {0}
+
+FileChooser.detailsViewActionLabelText=Yks.kohdat
+FileChooser.listViewActionLabelText=Luettelo
+FileChooser.newFolderActionLabelText=Uusi kansio
+FileChooser.refreshActionLabelText=Päivitä
+FileChooser.viewMenuLabelText=Näytä valikko
+
+FileChooser.cancelButtonToolTipText=Sulje tiedostonvalinnan valintaikkuna
+FileChooser.newFolderToolTipText=Luo uusi kansio
+FileChooser.openButtonToolTipText=Avaa valittu tiedosto
+FileChooser.upFolderToolTipText=Yksi taso ylöspäin
+FileChooser.viewMenuButtonToolTipText=Näytä valikko

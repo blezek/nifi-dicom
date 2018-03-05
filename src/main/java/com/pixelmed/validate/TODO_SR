@@ -1,0 +1,39 @@
+- template inclusion - propagate relationship from inclusion to content
+
+- template inclusion - support type UC (may only be present if)
+
+- root template - check that invokeroottemplate only invokes those with root flag and converse for includetemplate
+
+- check in source at compile time that supplied value types and relationships are legitimate
+
+- should compare coding scheme versions, not just cv and csd when comparing codes
+
+- would be nice to check (sanitized) versions of code meanings and warn if different
+
+- when checking value set CID, should make use of baseline, defined or enumerated flags
+
+- would be nice to allow context groups to recursively include other context groups
+
+- would be nice to check laterality requirement for paired or not as permissable by anatomic location
+
+- need to check parameters for templates, including context groups
+
+- for mandatory text content items, should check not zero length
+
+- would be nice to force check of RI, blood glucose, incubation period, based on modality perhaps ?
+
+- check unitsCID
+
+- check conceptNameCID
+
+- need to update CID 5000 three letter codes against "http://www.loc.gov/standards/iso639-2/php/English_list.php"
+
+- need to support in CID 5000 compound lanaguage-country as per RFC3006 (by separating string components before performing lookup)
+
+grep valueSetCID com/pixelmed/validate/DicomSRDescriptionsSource.xml | sed -e 's/^.*valueSetCID/valueSetCID/' -e 's/[ ]*valueSetBDE.*$//' | sort -u
+
+
+
+
+
+

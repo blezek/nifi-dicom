@@ -1,0 +1,9 @@
+localNameLabelText=Lokalt namn
+dicomAETitleLabelText=AE-titel
+hostnameLabelText=Värdnamn eller IP-adress
+portLabelText=Port
+
+localNameToolTipText=Det namn som används för att hänvisa till den här fjärr-AE (vilket kan skilja sig från AE-titeln)
+dicomAETitleToolTipText=Den anropade AE-titeln för fjärr-AE (den AE-titel som den förväntas anropas som)
+hostnameToolTipText=Fjärrvärdnamnet i den aktuella domänen, eller det fullständiga värdnamnet eller IPV4-adressen till fjärr-AE
+portToolTipText=Den port på fjärrvärden där anslutningen ska göras (den port där fjärr-AE lyssnar efter inkommande anslutningar från en annan AE)

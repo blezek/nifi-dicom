@@ -1,0 +1,34 @@
+addButtonLabelText=Toevoegen
+editButtonLabelText=Bewerken
+removeButtonLabelText=Wissen
+doneButtonLabelText=Gereed
+
+addButtonToolTipText=Een AE aan de lijst met externe toepassingseenheden toevoegen
+editButtonToolTipText=Een AE in de lijst met externe toepassingseenheden bewerken
+removeButtonToolTipText=Een AE uit de lijst met externe toepassingseenheden verwijderen
+doneButtonToolTipText=Bewerken voltooid. Reset de toepassing om de nieuwe configuratie te gebruiken
+
+selectNetworkTargetToEditLabelText=AE selecteren om te bewerken
+selectNetworkTargetToRemoveLabelText=AE selecteren om te verwijderen
+
+listenerHeaderLabelText=Onze DICOM-netwerkeigenschappen
+callingAETitleLabelText=Eigen AE-title
+calledAETitleLabelText=Opgeroepen AE-titel
+listeningPortLabelText=Luisterpoort
+acceptorMaximumLengthReceivedLabelText=Maximale ontvangen lengte acceptor PDU
+acceptorSocketReceiveBufferSizeLabelText=Stekker ontvangstbuffergrootte acceptor TCP
+acceptorSocketSendBufferSizeLabelText=Stekker verzendbuffergrootte acceptor TCP
+initiatorMaximumLengthReceivedLabelText=Maximale ontvangen lengte Initiator PDU
+initiatorSocketReceiveBufferSizeLabelText=Stekker ontvangstbuffergrootte Initiator TCP
+initiatorSocketSendBufferSizeLabelText=Stekker verzendbuffergrootte Initiator TCP
+remoteHeaderPanelLabelText=Netwerkeigenschappen externe AE DICOM
+
+callingAETitleJLabelToolTipText=De AE-titel die we zelf gebruiken bij het oproepen van een andere AE (een verbinding starten)
+calledAETitleJLabelToolTipText=De verwachte AE-titel als we worden gebeld door een andere AE (een verbinding accepteren); normaal gesproken dezelfde als de opgeroepen AE-titel
+listeningPortJLabelToolTipText=De luisterpoort voor inkomende verbindingen vanaf een andere AE
+acceptorMaximumLengthReceivedJLabelToolTipText=De maximale PDU-lengte die door inkomende verbindingen wordt geaccepteerd (0 bij geen limiet)
+acceptorSocketReceiveBufferSizeJLabelToolTipText=De ontvangstbuffergrootte van de TCP-stekker die moet worden ingesteld bij het accepteren van verbindingen (of 0 om deze ongewijzigd te laten en de standaard van het platform te gebruiken)
+acceptorSocketSendBufferSizeJLabelToolTipText=De verzendbuffergrootte van de TCP-stekker die moet worden ingesteld bij het accepteren van verbindingen (of 0 om deze ongewijzigd te laten en de standaard van het platform te gebruiken)
+initiatorMaximumLengthReceivedJLabelToolTipText=De maximale PDU-lengte die van acceptors mag worden gevraagd bij het leggen van verbindingen (0 bij geen limiet)
+initiatorSocketReceiveBufferSizeJLabelToolTipText=De ontvangstbuffergrootte van de TCP-stekker die moet worden ingesteld bij het leggen van verbindingen (of 0 om deze ongewijzigd te laten en de standaard van het platform te gebruiken)
+initiatorSocketSendBufferSizeJLabelToolTipText=De TCP stekker verzendbuffergrootte die moet worden ingesteld bij het accepteren van verbindingen (of 0 om deze ongewijzigd te laten en de standaard van het platform te gebruiken)

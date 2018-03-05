@@ -1,0 +1,25 @@
+applicationTitle=Indisponibilidade de imagem Dicom
+
+blackoutPreviousButtonLabelText=Anterior
+blackoutApplyButtonLabelText=Aplicar
+blackoutSaveButtonLabelText=Guardar
+blackoutNextButtonLabelText=Seguinte
+blackoutApplySaveAllButtonLabelText=Aplicar a tudo e guardar
+blackoutCancelButtonLabelText=Cancelar
+
+blackoutPreviousButtonToolTipText=Deslocar para a anterior, ignorando esta imagem se não estiver já guardada
+blackoutApplyButtonToolTipText=Tornar as regiões indisponíveis
+blackoutSaveButtonToolTipText=Guardar a imagem indisponível
+blackoutNextButtonToolTipText=Deslocar para a seguinte, ignorando esta imagem se não estiver já guardada
+blackoutApplySaveAllButtonToolTipText=Tornar as regiões indisponíveis e guardar a imagem indisponível para esta e todas as imagens selecionadas restantes
+blackoutCancelButtonToolTipText=Cancelar o trabalho nesta imagem, se não estiver já guardado, e ignorar todas as imagens restantes
+
+keepOverlaysCheckBoxLabelText=Sobreposições
+usePixelPaddingBlackoutValueCheckBoxLabelText=Utilizar tolerância
+useZeroBlackoutValueCheckBoxLabelText=Utilizar zero
+
+keepOverlaysCheckBoxToolTipText=Alterne entre apresentar ou não sobreposições; caso sejam apresentadas, grave-as na imagem e retire-as do cabeçalho
+usePixelPaddingBlackoutValueCheckBoxToolTipText=Alterne entre utilizar ou não o valor de tolerância de píxel para os píxeis indisponíveis em vez do valor mínimo possível predefinido de píxel com base na capacidade e qualidade do sinal
+useZeroBlackoutValueCheckBoxToolTipText=Alterne entre utilizar ou não um valor zero para os píxeis indisponíveis em vez do valor de tolerância de píxel ou o valor mínimo possível predefinido de píxel com base na capacidade e qualidade do sinal
+
+statusBarHelpText=Botões: esquerdo - janelas; direito - arrastar desenha uma caixa; clicar com o botão direito do rato - seleciona uma caixa; tecla Eliminar - cancela a seleção

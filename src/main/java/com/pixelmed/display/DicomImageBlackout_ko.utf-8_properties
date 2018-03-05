@@ -1,0 +1,25 @@
+applicationTitle=Dicom 영상 블랙아웃
+
+blackoutPreviousButtonLabelText=이전
+blackoutApplyButtonLabelText=적용
+blackoutSaveButtonLabelText=저장
+blackoutNextButtonLabelText=다음
+blackoutApplySaveAllButtonLabelText=모두 적용 및 저장
+blackoutCancelButtonLabelText=취소
+
+blackoutPreviousButtonToolTipText=저장되지 않은 경우 이 영상을 건너뛰고 이전으로 이동
+blackoutApplyButtonToolTipText=영역 블랙아웃
+blackoutSaveButtonToolTipText=블랙아웃된 영상 저장
+blackoutNextButtonToolTipText=저장되지 않은 경우 이 영상을 건너뛰고 다음으로 이동
+blackoutApplySaveAllButtonToolTipText=해당 영역을 블랙아웃하고 이 항목과 선택된 나머지 전체 영상에 대해 블랙아웃된 영상 저장
+blackoutCancelButtonToolTipText=저장되지 않은 경우 이 영상에 대한 작업을 취소하고 모든 나머지 영상을 건너뜁니다.
+
+keepOverlaysCheckBoxLabelText=오버레이
+usePixelPaddingBlackoutValueCheckBoxLabelText=패딩 사용
+useZeroBlackoutValueCheckBoxLabelText=0 사용
+
+keepOverlaysCheckBoxToolTipText=오버레이 표시 여부를 전환하고 표시된 경우 오버레이를 영상에 기록한 다음 헤더에서 제거
+usePixelPaddingBlackoutValueCheckBoxToolTipText=부호성과 비트 심도에 기반한 기본 최소 픽셀값이 아닌 블랙아웃 픽셀에 대한 픽셀 패딩값 사용 여부 전환
+useZeroBlackoutValueCheckBoxToolTipText=부호성과 비트 심도에 기반한 기본 최소 픽셀값이 아닌 블랙아웃 픽셀에 대한 0 값 사용 여부 전환
+
+statusBarHelpText=버튼: 왼쪽 너비/중심 조정; 오른쪽 드래그 상자 이동; 마우스 오른쪽 버튼 클릭 상자 선택; 삭제 키 선택 취소

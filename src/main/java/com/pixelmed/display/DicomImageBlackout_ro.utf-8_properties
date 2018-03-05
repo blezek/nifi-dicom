@@ -1,0 +1,25 @@
+applicationTitle=Suprimare imagini Dicom
+
+blackoutPreviousButtonLabelText=Anterior
+blackoutApplyButtonLabelText=Aplicare
+blackoutSaveButtonLabelText=Salvare
+blackoutNextButtonLabelText=Următor
+blackoutApplySaveAllButtonLabelText=Aplicare totală şi salvare
+blackoutCancelButtonLabelText=Anulare
+
+blackoutPreviousButtonToolTipText=Treceţi la imaginea anterioară şi omiteţi-o pe cea curentă, dacă nu este deja salvată
+blackoutApplyButtonToolTipText=Suprimaţi regiunile
+blackoutSaveButtonToolTipText=Salvaţi imaginea suprimată
+blackoutNextButtonToolTipText=Treceţi la imaginea următoare şi omiteţi-o pe cea curentă, dacă nu este deja salvată
+blackoutApplySaveAllButtonToolTipText=Suprimaţi regiunile şi salvaţi imaginea suprimată pentru această imagine şi pentru toate imaginile selectate rămase
+blackoutCancelButtonToolTipText=Anulaţi lucrările de pe această imagine, dacă nu este deja salvată, şi omiteţi toate imaginile rămase
+
+keepOverlaysCheckBoxLabelText=Suprapuneri
+usePixelPaddingBlackoutValueCheckBoxLabelText=Utilizare valori de atenuare
+useZeroBlackoutValueCheckBoxLabelText=Utilizare valori zero
+
+keepOverlaysCheckBoxToolTipText=Comutaţi între afişarea sau neafişarea suprapunerilor şi, dacă acestea se afişează, inscripţionarea lor pe imagine şi eliminarea acestora de pe antet
+usePixelPaddingBlackoutValueCheckBoxToolTipText=Comutaţi între utilizarea sau neutilizarea valorii de atenuare a pixelilor pentru pixelii suprimaţi, în loc de a utiliza valoarea implicită minimă posibilă a pixelilor în funcţie de reprezentarea valorilor pozitive şi a celor negative şi adâncimea biţilor
+useZeroBlackoutValueCheckBoxToolTipText=Comutaţi între utilizarea sau neutilizarea unei valori zero pixelilor pentru pixelii suprimaţi, în loc de a utiliza valoarea de atenuare a pixelilor sau valoarea implicită minimă posibilă a pixelilor în funcţie de reprezentarea valorilor pozitive şi a celor negative şi adâncimea biţilor
+
+statusBarHelpText=Butoane: stâng pentru încadrare; glisare dreapta pentru tragerea casete; clic dreapta pentru selectarea casetei; tasta „delete” (ştergere) elimină selecţia

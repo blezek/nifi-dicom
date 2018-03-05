@@ -1,0 +1,104 @@
+applicationTitle=Agent de curăţare Dicom
+
+DatabaseRootTitleForOriginal=Original
+DatabaseRootTitleForCleaned=Curăţat
+
+defaultReplacementPatientName=NAME^NONE
+defaultReplacementPatientID=NOID
+defaultReplacementAccessionNumber=
+defaultRandomReplacementPatientNamePrefix=Anon^
+defaultModifyDatesEpoch=20000101
+
+queryIntroductionLabelText=Interogare
+queryPatientNameLabelText=Numele pacientului
+queryPatientIDLabelText=ID pacient
+queryStudyDateLabelText=Dată studiu
+queryAccessionNumberLabelText=Nr. acces
+
+queryPatientNameToolTipText=Textul care va fi utilizat pentru numele pacientului la interogare
+queryPatientIDToolTipText=Textul care va fi utilizat pentru ID-ul pacientului la interogare
+queryStudyDateToolTipText=Textul care va fi utilizat pentru data studiului la interogare
+queryAccessionNumberToolTipText=Textul care va fi utilizat pentru numărul de acces la interogare
+
+replacementIntroductionLabelText=Înlocuire
+replacementPatientNameLabelText=Numele pacientului
+replacementPatientIDLabelText=ID pacient
+replacementAccessionNumberLabelText=Nr. acces
+modifyDatesIntroductionLabelText=Date şi ore
+modifyDatesLabelText=Mutare cea mai recentă dată la
+
+replacementPatientNameToolTipText=Textul care va fi utilizat pentru numele pacientului la curăţare (ignorat în alte cazuri)
+replacementPatientIDToolTipText=Textul care va fi utilizat pentru ID-ul pacientului la curăţare (ignorat în alte cazuri)
+replacementAccessionNumberToolTipText=Textul care va fi utilizat pentru numărul de acces la curăţare (ignorat în alte cazuri)
+modifyDatesToolTipText=Data care va fi utilizată pentru perioada în care se va muta cea mai timpurie dată şi oră şi toate celelalte elemente asociate acesteia (ignorată în alte cazuri)
+
+removeIdentityLabelText=Eliminare toate identităţile neînlocuite
+removeDescriptionsLabelText=Eliminare descrieri
+removeSeriesDescriptionsLabelText=Eliminare descrieri de serii
+removeProtocolNameLabelText=Eliminare nume de protocol de achiziţie
+removeCharacteristicsLabelText=Eliminare caracteristici pacient
+removeDeviceIdentityLabelText=Eliminare identificatori dispozitiv
+removeInstitutionIdentityLabelText=Eliminare identificatori instituţie
+cleanUIDsLabelText=Înlocuire toate UID-urile
+removePrivateLabelText=Eliminare atribute private nesigure
+addContributingEquipmentLabelText=Adăugare echipament contributiv
+removeClinicalTrialAttributesLabelText=Eliminare atribute de teste clinice
+zipExportLabelText=Arhivare fişiere exportate
+
+hierarchicalExportLabelText=Nume ierarhice în export
+hierarchicalExportToolTipText=Utilizaţi ierarhie descriptivă pentru pacient/studiu/serie/instanţă pentru numele dosarelor şi ale fişierelor (care sunt ILEGALE pe suporturile DICOM şi NEVALIDE pentru CS VR în DICOMDIR)
+
+acceptAnyTransferSyntaxLabelText=Acceptare orice sintaxă de transfer
+acceptAnyTransferSyntaxToolTipText=Acceptaţi orice sintaxă de transfer (recunoscută, comprimată) primită în reţea sau la importul din sistemul de fişiere, chiar dacă nu este disponibil niciun codec pentru decomprimare
+
+configureButtonLabelText=Configurare
+configureButtonToolTipText=Configuraţi aplicaţia, inclusiv proprietăţile de reţea DICOM
+
+logButtonLabelText=Jurnal
+logButtonToolTipText=Afişează jurnalul de activităţi
+
+queryButtonLabelText=Interogare
+queryButtonToolTipText=Interogaţi o gazdă de reţea de la distanţă
+querySelectDialogTitle=Interogare
+querySelectMessage=Selectaţi sistemul de la distanţă
+
+retrieveButtonLabelText=Extragere
+retrieveButtonToolTipText=Extrageţi selecţia de interogare de la gazda de la distanţă
+
+importButtonLabelText=Import
+importButtonToolTipText=Importaţi din suportul de stocare în baza de date a fişierelor originale
+
+cleanButtonLabelText=Curăţare
+cleanButtonToolTipText=Curăţaţi fişierele originale selectate şi copiaţi-le în baza de date a fişierelor curăţate
+
+blackoutButtonLabelText=Suprimare
+blackoutButtonToolTipText=Suprimaţi adnotările inscripţionate în fişierele selectate din baza de date a fişierelor curăţate.
+
+exportButtonLabelText=Export
+exportButtonToolTipText=Exportaţi din baza de date a fişierelor curăţate în dosarul cu DICOMDIR pentru inscripţionare pe suporturile de stocare
+
+sendButtonLabelText=Trimitere
+sendButtonToolTipText=Trimiteţi în reţea obiectele curăţate selectate
+sendSelectDialogTitle=Trimitere
+sendSelectMessage=Selectaţi destinaţia
+
+purgeButtonLabelText=Golire
+purgeButtonToolTipText=Eliminaţi intrările selectate din bazele de date cu fişiere originale şi curăţate şi ştergeţi orice copie locală a fişierelor
+
+cancelButtonLabelText=Anulare
+cancelButtonToolTipText=Anulaţi activitatea curentă aflată în curs de desfăşurare, dacă aceasta încă nu este finalizată
+
+earliestYearButtonLabelText=Cel mai timpuriu an
+earliestYearButtonToolTipText=Populaţi perioada datei cu prima zi a lunii ianuarie din cel mai timpuriu an din setul selectat
+
+randomYearButtonLabelText=An aleator
+randomYearButtonToolTipText=Populaţi perioada datei cu prima zi a lunii ianuarie dintr-un an aleator, cuprins între 1970 şi 2070
+
+defaultYearButtonLabelText=An implicit
+defaultYearButtonToolTipText=Populaţi perioada datei cu prima zi a lunii ianuarie din anul implicit 2000
+
+randomReplacementButtonLabelText=Aleator
+randomReplacementButtonToolTipText=Populaţi textul de înlocuire cu valori aleatorii
+
+defaultReplacementButtonLabelText=Implicit
+defaultReplacementButtonToolTipText=Populaţi textul de înlocuire cu valori implicite

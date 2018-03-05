@@ -1,0 +1,30 @@
+FileChooser.acceptAllFileFilterText=Wszystkie pliki
+
+FileChooser.cancelButtonText=Anuluj
+
+FileChooser.chooseButtonText=Wybierz
+
+FileChooser.folderNameLabelText=Nazwa folderu:
+FileChooser.fileNameLabelText=Plik:
+FileChooser.filesOfTypeLabelText=Format pliku:
+
+FileChooser.lookInLabelText=Szukaj w:
+
+FileChooser.openButtonText=Otwórz
+
+FileChooser.openDialogTitleText=Otwórz
+
+FileChooser.win32.newFolder=Nowy folder
+FileChooser.win32.newFolder.subsequent=Nowy folder {0}
+
+FileChooser.detailsViewActionLabelText=Szczegóły
+FileChooser.listViewActionLabelText=Lista
+FileChooser.newFolderActionLabelText=Nowy folder
+FileChooser.refreshActionLabelText=Odśwież
+FileChooser.viewMenuLabelText=Menu Widok
+
+FileChooser.cancelButtonToolTipText=Zamknij okno wyboru plików
+FileChooser.newFolderToolTipText=Utwórz nowy folder
+FileChooser.openButtonToolTipText=Otwórz wybrany plik
+FileChooser.upFolderToolTipText=Jeden poziom w górę
+FileChooser.viewMenuButtonToolTipText=Menu Widok

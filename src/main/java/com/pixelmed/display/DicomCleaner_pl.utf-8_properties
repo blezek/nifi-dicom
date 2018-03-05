@@ -1,0 +1,104 @@
+applicationTitle=Aplikacja czyszcząca Dicom
+
+DatabaseRootTitleForOriginal=Oryginał
+DatabaseRootTitleForCleaned=Po czyszczeniu
+
+defaultReplacementPatientName=NAZWA^BRAK
+defaultReplacementPatientID=BRAKID
+defaultReplacementAccessionNumber=
+defaultRandomReplacementPatientNamePrefix=Anon^
+defaultModifyDatesEpoch=20000101
+
+queryIntroductionLabelText=Zapytanie
+queryPatientNameLabelText=Imię i nazwisko pacjenta
+queryPatientIDLabelText=ID pacjenta
+queryStudyDateLabelText=Data badania
+queryAccessionNumberLabelText=Nr dostępu
+
+queryPatientNameToolTipText=Tekst zastępujący imię i nazwisko pacjenta podczas definiowania zapytań
+queryPatientIDToolTipText=Tekst zastępujący ID pacjenta podczas definiowania zapytań
+queryStudyDateToolTipText=Tekst zastępujący datę badania podczas definiowania zapytań
+queryAccessionNumberToolTipText=Tekst zastępujący nr dostępu podczas definiowania zapytań
+
+replacementIntroductionLabelText=Zastąp
+replacementPatientNameLabelText=Imię i nazwisko pacjenta
+replacementPatientIDLabelText=ID pacjenta
+replacementAccessionNumberLabelText=Nr dostępu
+modifyDatesIntroductionLabelText=Data i godzina
+modifyDatesLabelText=Zmień najwcześniejszą datę na
+
+replacementPatientNameToolTipText=Tekst zastępujący imię i nazwisko pacjenta podczas czyszczenia (w innych przypadkach ignorowany)
+replacementPatientIDToolTipText=Tekst zastępujący ID pacjenta podczas czyszczenia (w innych przypadkach ignorowany)
+replacementAccessionNumberToolTipText=Tekst zastępujący nr dostępu podczas czyszczenia (w innych przypadkach ignorowany)
+modifyDatesToolTipText=Data definiująca początek przedziału czasowego, która ma zostać zastosowana dla najwcześniejszej daty i godziny oraz wszystkich innych powiązanych elementów (w innych przypadkach ignorowana)
+
+removeIdentityLabelText=Usuń wszystkie niezastąpione dane tożsamości
+removeDescriptionsLabelText=Usuń opisy
+removeSeriesDescriptionsLabelText=Usuń opis serii
+removeProtocolNameLabelText=Usuń nazwę protokołu akwizycji
+removeCharacteristicsLabelText=Usuń informacje o pacjencie
+removeDeviceIdentityLabelText=Usuń identyfikatory urządzeń
+removeInstitutionIdentityLabelText=Usuń identyfikatory instytucji
+cleanUIDsLabelText=Zastąp wszystkie UID
+removePrivateLabelText=Usuń niebezpieczne atrybuty danych prywatnych
+addContributingEquipmentLabelText=Dodaj uwzględniony sprzęt
+removeClinicalTrialAttributesLabelText=Usuń atrybuty badań klinicznych
+zipExportLabelText=Spakuj wyeksportowane dane do pliku ZIP
+
+hierarchicalExportLabelText=Eksport z użyciem nazw hierarchicznych
+hierarchicalExportToolTipText=Użyj hierarchii pacjent/badanie/seria/wystąpienie z nazwy folderu i pliku (co jest NIEDOZWOLONE w przypadku nośników DICOM i NIEPRAWIDŁOWE dla CS VR w pliku DICOMDIR)
+
+acceptAnyTransferSyntaxLabelText=Akceptuj każdy zbiór reguł Transfer Syntax
+acceptAnyTransferSyntaxToolTipText=Akceptuj każdy (rozpoznany, skompresowany) zbiór reguł Transfer Syntax otrzymany za pośrednictwem sieci lub podczas importu z systemu plików, nawet jeśli nie jest dostępny kodek do dekompresji
+
+configureButtonLabelText=Konfiguruj
+configureButtonToolTipText=Konfiguruj aplikacje wraz z właściwościami sieci DICOM
+
+logButtonLabelText=Dziennik
+logButtonToolTipText=Wyświetl dziennik działań
+
+queryButtonLabelText=Zapytanie
+queryButtonToolTipText=Wyślij zapytanie do zdalnego hosta sieciowego
+querySelectDialogTitle=Zapytanie
+querySelectMessage=Wybierz system zdalny
+
+retrieveButtonLabelText=Pobierz
+retrieveButtonToolTipText=Pobierz wybrane zapytania ze zdalnego hosta
+
+importButtonLabelText=Importuj
+importButtonToolTipText=Importuj z nośnika do bazy danych oryginalnych
+
+cleanButtonLabelText=Wyczyść
+cleanButtonToolTipText=Wyczyść wybrane dane oryginalne i skopiuj do bazy danych wyczyszczonych
+
+blackoutButtonLabelText=Przeredaguj
+blackoutButtonToolTipText=Przeredaguj zamieszczoną na stałe adnotację w obrębie wybranych plików bazy danych wyczyszczonych
+
+exportButtonLabelText=Eksportuj
+exportButtonToolTipText=Wyeksportuj z bazy danych wyczyszczonych do folderu z plikiem DICOMDIR, aby nagrać dane na nośniku
+
+sendButtonLabelText=Wyślij
+sendButtonToolTipText=Wyślij obiekty poddane czyszczeniu za pośrednictwem sieci
+sendSelectDialogTitle=Wyślij
+sendSelectMessage=Wybierz miejsce docelowe
+
+purgeButtonLabelText=Usuń na stałe
+purgeButtonToolTipText=Usuń wybrane pozycje z bazy danych oryginalnych i wyczyszczonych wraz z wszystkimi lokalnymi kopiami plików
+
+cancelButtonLabelText=Anuluj
+cancelButtonToolTipText=Anuluj bieżące działania, jeśli nie zostało jeszcze zakończone
+
+earliestYearButtonLabelText=Najwcześniejszy rok
+earliestYearButtonToolTipText=Użyj dla początku przedziału czasowego pierwszy dzień stycznia najwcześniejszego roku z wybranego zbioru
+
+randomYearButtonLabelText=Losowy wybór roku
+randomYearButtonToolTipText=Użyj dla początku przedziału czasowego pierwszy dzień stycznia wybranego losowo roku z zakresu od 1970 do 2070
+
+defaultYearButtonLabelText=Domyślny rok
+defaultYearButtonToolTipText=Użyj dla początku przedziału czasowego pierwszy dzień stycznia domyślnego roku 2000
+
+randomReplacementButtonLabelText=Losowe
+randomReplacementButtonToolTipText=Wprowadź w polu tekstu zastępczego wartości losowe
+
+defaultReplacementButtonLabelText=Domyślne
+defaultReplacementButtonToolTipText=Wprowadź w polu tekstu zastępczego wartości domyślne

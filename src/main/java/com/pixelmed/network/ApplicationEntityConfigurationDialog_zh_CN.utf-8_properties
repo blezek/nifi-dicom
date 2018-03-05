@@ -1,0 +1,9 @@
+localNameLabelText=本地名称
+dicomAETitleLabelText=AE 标题
+hostnameLabelText=主机名或 IP 地址
+portLabelText=端口
+
+localNameToolTipText=指代该远程 AE 的名称（可与其 AE 标题不同）
+dicomAETitleToolTipText=调用的远程 AE 的 AE 标题（应调用的 AE 标题）
+hostnameToolTipText=当前域内的远程主机名，或远程 AE 的完全合格主机名或 IPV4 地址
+portToolTipText=要连接的远程主机端口（远程 AE 用来帧听另一 AE 入站连接的端口）

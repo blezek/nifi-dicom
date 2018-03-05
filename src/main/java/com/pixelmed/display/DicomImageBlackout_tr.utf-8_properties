@@ -1,0 +1,25 @@
+applicationTitle=Dicom Görüntü Karartma
+
+blackoutPreviousButtonLabelText=Önceki
+blackoutApplyButtonLabelText=Uygula
+blackoutSaveButtonLabelText=Kaydet
+blackoutNextButtonLabelText=Sonraki
+blackoutApplySaveAllButtonLabelText=Tümünü Uygula ve Kaydet
+blackoutCancelButtonLabelText=İptal
+
+blackoutPreviousButtonToolTipText=Henüz kaydedilmediyse bu görüntüyü atlayarak bir önceki görüntüye git
+blackoutApplyButtonToolTipText=Bölgeleri karart
+blackoutSaveButtonToolTipText=Karartılmış görüntüyü kaydet
+blackoutNextButtonToolTipText=Henüz kaydedilmediyse bu görüntüyü atlayarak bir sonraki görüntüye git
+blackoutApplySaveAllButtonToolTipText=Bölgeleri karart; bu ve seçilmiş diğer tüm görüntüler için karartılmış görüntüyü kaydet
+blackoutCancelButtonToolTipText=Henüz kaydedilmediyse bu görüntü üzerinde çalışmayı bırak ve diğer tüm görüntüleri atla
+
+keepOverlaysCheckBoxLabelText=Yer paylaşımları
+usePixelPaddingBlackoutValueCheckBoxLabelText=Doldurma değerini kullan
+useZeroBlackoutValueCheckBoxLabelText=Sıfır değerini kullan
+
+keepOverlaysCheckBoxToolTipText=Yer paylaşımlarının görüntülenip görüntülenmeyeceğini belirleyin; görüntüleniyorlarsa bunları görüntüye yazıp başlıktan kaldırın
+usePixelPaddingBlackoutValueCheckBoxToolTipText=Pikselleri karartmak için işaretlilik ve bit derinliğine dayalı varsayılan olası minimum piksel değeri yerine piksel doldurma değerinin kullanılıp kullanılmayacağını belirleyin
+useZeroBlackoutValueCheckBoxToolTipText=Pikselleri karartmak için işaretlilik ve bit derinliğine dayalı piksel doldurma değeri veya varsayılan olası minimum piksel değeri yerine sıfır değerinin kullanılıp kullanılmayacağını belirleyin
+
+statusBarHelpText=Düğmeler: sol pencereler; sağa sürükleyerek kutu çizilir; sağa tıklayarak kutu seçilir; silme tuşuyla seçim kaldırılır

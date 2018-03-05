@@ -1,0 +1,25 @@
+applicationTitle=DICOM-bildemørkelegging
+
+blackoutPreviousButtonLabelText=Tidligere
+blackoutApplyButtonLabelText=Bruk
+blackoutSaveButtonLabelText=Lagre
+blackoutNextButtonLabelText=Neste
+blackoutApplySaveAllButtonLabelText=Bruk alle og lagre
+blackoutCancelButtonLabelText=Avbryt
+
+blackoutPreviousButtonToolTipText=Gå til forrige, og hopp over dette bildet, hvis det ikke er lagret fra før
+blackoutApplyButtonToolTipText=Mørkelegg områdene
+blackoutSaveButtonToolTipText=Lagre det mørkelagte bildet
+blackoutNextButtonToolTipText=Gå til neste, og hopp over dette bildet, hvis det ikke er lagret fra før
+blackoutApplySaveAllButtonToolTipText=Mørkelegg områdene, og lagre det mørkelagte bildet for dette og alle gjenværende valgte bilder
+blackoutCancelButtonToolTipText=Avbryt arbeid på dette bildet, hvis ikke lagret fra før, og hopp over alle gjenværende bilder
+
+keepOverlaysCheckBoxLabelText=Overlegg
+usePixelPaddingBlackoutValueCheckBoxLabelText=Bruk utfylling
+useZeroBlackoutValueCheckBoxLabelText=Bruk null
+
+keepOverlaysCheckBoxToolTipText=Veksle mellom å vise overlegg eller ikke. Hvis de vises, brenner du dem inn i bildet og fjerner dem fra toppteksten
+usePixelPaddingBlackoutValueCheckBoxToolTipText=Veksle mellom å bruke pikselutfyllingsfunksjonen eller ikke for mørkelagte piksler, heller enn standard minste mulige pikselverdi basert på fortegn og bitdybde
+useZeroBlackoutValueCheckBoxToolTipText=Veksle mellom å bruke en nullverdi eller ikke for mørkelagte piksler, heller enn standard minste mulige pikselverdi basert på fortegn og bitdybde
+
+statusBarHelpText=Knapper: venstre – endre vindu, høyre – dra for å tegne boks, høyreklikk – velge boks, slettetast – forkaste valg

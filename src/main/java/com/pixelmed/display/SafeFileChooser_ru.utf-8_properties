@@ -1,0 +1,30 @@
+FileChooser.acceptAllFileFilterText=Все файлы
+
+FileChooser.cancelButtonText=Отмена
+
+FileChooser.chooseButtonText=Выбрать
+
+FileChooser.folderNameLabelText=Имя папки:
+FileChooser.fileNameLabelText=Файл:
+FileChooser.filesOfTypeLabelText=Формат файла:
+
+FileChooser.lookInLabelText=Искать в:
+
+FileChooser.openButtonText=Открыть
+
+FileChooser.openDialogTitleText=Открыть
+
+FileChooser.win32.newFolder=Новая папка
+FileChooser.win32.newFolder.subsequent=Новая папка {0}
+
+FileChooser.detailsViewActionLabelText=Сведения
+FileChooser.listViewActionLabelText=Список
+FileChooser.newFolderActionLabelText=Новая папка
+FileChooser.refreshActionLabelText=Обновить
+FileChooser.viewMenuLabelText=Открыть меню
+
+FileChooser.cancelButtonToolTipText=Закрыть окно выбора файлов
+FileChooser.newFolderToolTipText=Создать новую папку
+FileChooser.openButtonToolTipText=Открыть выбранный файл
+FileChooser.upFolderToolTipText=На один уровень вверх
+FileChooser.viewMenuButtonToolTipText=Открыть меню

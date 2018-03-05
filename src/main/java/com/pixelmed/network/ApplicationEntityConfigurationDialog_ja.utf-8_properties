@@ -1,0 +1,9 @@
+localNameLabelText=ローカル名
+dicomAETitleLabelText=AE-タイトル
+hostnameLabelText=ホスト名またはIPアドレス
+portLabelText=ポート
+
+localNameToolTipText=このリモートAEを参照する名前（AE-タイトルとは異なる場合あり）
+dicomAETitleToolTipText=リモートAEの独自のAE-タイトル（想定されるAE-タイトル）
+hostnameToolTipText=現在のドメイン内のリモートホスト、完全修飾ホスト名、またはリモートAEのIPV4アドレス
+portToolTipText=接続先のリモートホスト上のポート（リモートAEが別のAEからの着信接続をリッスンするポート）

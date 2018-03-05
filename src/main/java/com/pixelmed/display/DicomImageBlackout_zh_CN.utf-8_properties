@@ -1,0 +1,25 @@
+applicationTitle=Dicom 图像黑色像素填充
+
+blackoutPreviousButtonLabelText=上一个
+blackoutApplyButtonLabelText=应用
+blackoutSaveButtonLabelText=保存
+blackoutNextButtonLabelText=下一个
+blackoutApplySaveAllButtonLabelText=应用全部并保存
+blackoutCancelButtonLabelText=取消
+
+blackoutPreviousButtonToolTipText=移至上一个，跳过此图像（如果尚未保存）
+blackoutApplyButtonToolTipText=将此区域黑色像素填充
+blackoutSaveButtonToolTipText=保存黑色像素填充的图像
+blackoutNextButtonToolTipText=移至下一个，跳过此图像（如果尚未保存）
+blackoutApplySaveAllButtonToolTipText=将此区域黑色像素填充并保存其黑色像素填充图像以及剩余所有选定图像
+blackoutCancelButtonToolTipText=取消该图像上的工作（如果尚未保存），并跳过所有其余图像
+
+keepOverlaysCheckBoxLabelText=覆盖
+usePixelPaddingBlackoutValueCheckBoxLabelText=使用填充
+useZeroBlackoutValueCheckBoxLabelText=使用 0
+
+keepOverlaysCheckBoxToolTipText=切换或不切换至显示覆盖，如果显示，将他们刻录到图像中并将其从标题删除。
+usePixelPaddingBlackoutValueCheckBoxToolTipText=在是否对黑色像素填充像素使用像素衰减值之间切换，而不使用基于符号类型和位深度的默认最小可能像素值。
+useZeroBlackoutValueCheckBoxToolTipText=在是否对黑色像素填充像素使用 0 值之间切换，而不使用基于符号类型和位深度的像素衰减值或默认最小可能像素值。
+
+statusBarHelpText=按钮:左侧窗口;右侧拖放绘制框;右键单击选择框;删除按键放弃选择

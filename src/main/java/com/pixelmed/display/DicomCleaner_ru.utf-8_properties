@@ -1,0 +1,104 @@
+applicationTitle=Средство удаления данных DICOM
+
+DatabaseRootTitleForOriginal=Исходная
+DatabaseRootTitleForCleaned=Очищенная
+
+defaultReplacementPatientName=НЕТ^ИМЕНИ
+defaultReplacementPatientID=НЕТID
+defaultReplacementAccessionNumber=
+defaultRandomReplacementPatientNamePrefix=Анонимно^
+defaultModifyDatesEpoch=20000101
+
+queryIntroductionLabelText=Запрос
+queryPatientNameLabelText=Имя пациента
+queryPatientIDLabelText=ID пациента
+queryStudyDateLabelText=Дата исследования
+queryAccessionNumberLabelText=№ обращения
+
+queryPatientNameToolTipText=Текст, используемый в качестве имени пациента при запросе
+queryPatientIDToolTipText=Текст, используемый в качестве ID пациента при запросе
+queryStudyDateToolTipText=Текст, используемый в качестве даты исследования при запросе
+queryAccessionNumberToolTipText=Текст, используемый в качестве номера обращения при запросе
+
+replacementIntroductionLabelText=Заменить
+replacementPatientNameLabelText=Имя пациента
+replacementPatientIDLabelText=ID пациента
+replacementAccessionNumberLabelText=№ обращения
+modifyDatesIntroductionLabelText=Даты и время
+modifyDatesLabelText=Перенести самую раннюю дату на
+
+replacementPatientNameToolTipText=Текст, используемый в качестве имени пациента при чистке (в противном случае пропускается)
+replacementPatientIDToolTipText=Текст, используемый в качестве идентификатора при чистке (в противном случае пропускается)
+replacementAccessionNumberToolTipText=Текст, используемый в качестве номера обращения при чистке (в противном случае пропускается)
+modifyDatesToolTipText=Дата, к которой будут перенесены самые ранние дата и время, а также остальные даты, относящиеся к ней (в противном случае пропускается)
+
+removeIdentityLabelText=Удалить все незамененные идентификаторы
+removeDescriptionsLabelText=Удалить описания
+removeSeriesDescriptionsLabelText=Удалить описание серии
+removeProtocolNameLabelText=Удалить имя протокола получения изображений
+removeCharacteristicsLabelText=Удалить характеристики пациента
+removeDeviceIdentityLabelText=Удалить идентификаторы устройств
+removeInstitutionIdentityLabelText=Удалить идентификаторы учреждения
+cleanUIDsLabelText=Заменить все UID
+removePrivateLabelText=Удалить небезопасные частные атрибуты
+addContributingEquipmentLabelText=Добавить дополнительное оборудование
+removeClinicalTrialAttributesLabelText=Удалить атрибуты клинического исследования
+zipExportLabelText=Поместить экспортированные файлы в Zip
+
+hierarchicalExportLabelText=Иерархический порядок имен при экспорте
+hierarchicalExportToolTipText=Использовать для пациентов/исследований/серий/учреждений в папке и файлах (которые несовместимы с носителями DICOM и недопустимы для CS VR в DICOMDIR) иерархию с описанием
+
+acceptAnyTransferSyntaxLabelText=Принимать любой синтаксис передачи
+acceptAnyTransferSyntaxToolTipText=Принимать любой синтаксис передачи (распознанный, с сжатием данных), полученный по сети или при импорте из файловой системы, даже если нет кодека для распаковки данных
+
+configureButtonLabelText=Настройка
+configureButtonToolTipText=Настройка приложения, включая свойства сети DICOM
+
+logButtonLabelText=Журнал
+logButtonToolTipText=Показать журнал событий
+
+queryButtonLabelText=Запрос
+queryButtonToolTipText=Запрос удаленного узла сети
+querySelectDialogTitle=Запрос
+querySelectMessage=Выберите удаленную систему
+
+retrieveButtonLabelText=Извлечение
+retrieveButtonToolTipText=Извлечение выбранных запросов из удаленного узла
+
+importButtonLabelText=Импорт
+importButtonToolTipText=Импорт из носителя в исходную базу данных
+
+cleanButtonLabelText=Чистка
+cleanButtonToolTipText=Чистка выбранных исходных данных и копирование в очищенную базу данных
+
+blackoutButtonLabelText=Затемнение
+blackoutButtonToolTipText=Затемнение аннотаций выбранных файлов очищенной базы данных
+
+exportButtonLabelText=Экспорт
+exportButtonToolTipText=Экспорт из очищенной базы данных в папку с DICOMDIR для записи данных на носитель
+
+sendButtonLabelText=Отправка
+sendButtonToolTipText=Отправка выбранных очищенных объектов по сети
+sendSelectDialogTitle=Отправка
+sendSelectMessage=Выберите место назначения
+
+purgeButtonLabelText=Удаление
+purgeButtonToolTipText=Удаление выбранных данных из исходной и очищенной баз данных, а также всех локальных копий файлов
+
+cancelButtonLabelText=Отмена
+cancelButtonToolTipText=Отмена выполняемого действия, которое еще не было завершено
+
+earliestYearButtonLabelText=Самый ранний год
+earliestYearButtonToolTipText=Задание в поле даты 1 января самого раннего года из выбранного промежутка
+
+randomYearButtonLabelText=Случайный год
+randomYearButtonToolTipText=Задание в поле даты 1 января случайно выбранного года из промежутка между 1970 и 2070 гг.
+
+defaultYearButtonLabelText=Год по умолчанию
+defaultYearButtonToolTipText=Задание в поле даты 1 января 2000 года (год по умолчанию)
+
+randomReplacementButtonLabelText=Случайные
+randomReplacementButtonToolTipText=Заполнение поля замещаемого текста случайными значениями
+
+defaultReplacementButtonLabelText=По умолчанию
+defaultReplacementButtonToolTipText=Заполнение поля замещаемого текста значениями по умолчанию

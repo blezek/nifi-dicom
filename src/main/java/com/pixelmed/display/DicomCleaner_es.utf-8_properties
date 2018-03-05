@@ -1,0 +1,104 @@
+applicationTitle=Limpiador Dicom
+
+DatabaseRootTitleForOriginal=Original
+DatabaseRootTitleForCleaned=Limpio
+
+defaultReplacementPatientName=NOMBRE^NINGUNO
+defaultReplacementPatientID=SINID
+defaultReplacementAccessionNumber=
+defaultRandomReplacementPatientNamePrefix=Anón^
+defaultModifyDatesEpoch=20000101
+
+queryIntroductionLabelText=Consulta
+queryPatientNameLabelText=Nombre paciente
+queryPatientIDLabelText=ID paciente
+queryStudyDateLabelText=Fecha del estudio
+queryAccessionNumberLabelText=N.º acceso
+
+queryPatientNameToolTipText=Texto para Nombre de paciente durante la consulta
+queryPatientIDToolTipText=Texto para ID de paciente durante la consulta
+queryStudyDateToolTipText=Texto para Fecha del estudio durante la consulta
+queryAccessionNumberToolTipText=Texto para N.º de acceso durante la consulta
+
+replacementIntroductionLabelText=Sustituir
+replacementPatientNameLabelText=Nombre paciente
+replacementPatientIDLabelText=ID paciente
+replacementAccessionNumberLabelText=N.º acceso
+modifyDatesIntroductionLabelText=Fechas y horas
+modifyDatesLabelText=Cambiar fecha más temprana a
+
+replacementPatientNameToolTipText=Texto para Nombre de paciente durante la limpieza (si no, se ignorará)
+replacementPatientIDToolTipText=Texto para ID de paciente durante la limpieza (si no, se ignorará)
+replacementAccessionNumberToolTipText=Texto para N.º de acceso durante la limpieza (si no, se ignorará)
+modifyDatesToolTipText=Fecha que usar para cambiar la fecha y hora más tempranas, y todas las fechas relacionadas (si no, se ignorará)
+
+removeIdentityLabelText=Quitar identidades no sustituidas
+removeDescriptionsLabelText=Quitar descripciones
+removeSeriesDescriptionsLabelText=Quitar descrip. series
+removeProtocolNameLabelText=Quitar nombre de protocolo de adquisición
+removeCharacteristicsLabelText=Quitar característ. de paciente
+removeDeviceIdentityLabelText=Quitar ID de dispositivo
+removeInstitutionIdentityLabelText=Quitar ID de institución
+cleanUIDsLabelText=Sustituir las UID
+removePrivateLabelText=Quitar atributos privados inseguros
+addContributingEquipmentLabelText=Añadir equip contribuy.
+removeClinicalTrialAttributesLabelText=Quitar atributos de ensayos clínicos
+zipExportLabelText=Exportaciones Zip
+
+hierarchicalExportLabelText=Nombres jerárquicos en exportación
+hierarchicalExportToolTipText=Usar jerarquía descriptiva Paciente/Estudio/Serie/Instancia de nombres de carpetas y archivos (que son ILEGAL en medios DICOM e INVÁLIDO para CS VR en DICOMDIR)
+
+acceptAnyTransferSyntaxLabelText=Acept cualquier sintaxis transferencia
+acceptAnyTransferSyntaxToolTipText=Aceptar cualquier sintaxis de transferencia (reconocida, compresión) recibida a través de la red o al importar del sistema de archivos, incluso sin códec de descompresión
+
+configureButtonLabelText=Config.
+configureButtonToolTipText=Configura la aplicación, incluidas las propiedades de red DICOM
+
+logButtonLabelText=Reg.
+logButtonToolTipText=Vea registro de actividades
+
+queryButtonLabelText=Consult
+queryButtonToolTipText=Consulta a host de red remoto
+querySelectDialogTitle=Consult
+querySelectMessage=Seleccionar un sistema remoto
+
+retrieveButtonLabelText=Recuperar
+retrieveButtonToolTipText=Recupera consulta del host remoto
+
+importButtonLabelText=Import.
+importButtonToolTipText=Importa de medio a base datos originales
+
+cleanButtonLabelText=Limp.
+cleanButtonToolTipText=Limpia originales escogidas y copia en base de datos limpia
+
+blackoutButtonLabelText=Oscurecer
+blackoutButtonToolTipText=Oscurecer anotaciones grabadas en archivos escogidos de base de datos limpia
+
+exportButtonLabelText=Export.
+exportButtonToolTipText=Exporta de base de datos limpia a carpeta con DICOMDIR para grabar en medio
+
+sendButtonLabelText=Enviar
+sendButtonToolTipText=Envía los objetos limpios seleccionados por la red
+sendSelectDialogTitle=Enviar
+sendSelectMessage=Seleccionar un destino
+
+purgeButtonLabelText=Purgar
+purgeButtonToolTipText=Quita entradas escogidas de bases de datos originales y limpias y elimina la copia local de archivos
+
+cancelButtonLabelText=Cancelar
+cancelButtonToolTipText=Cancela la actividad actual en curso si no ha finalizado
+
+earliestYearButtonLabelText=Año más temprano
+earliestYearButtonToolTipText=Introduce fecha de 1 de enero del año más temprano del conjunto seleccionado
+
+randomYearButtonLabelText=Año aleatorio
+randomYearButtonToolTipText=Introduce fecha de 1 de enero de un año aleatorio entre 1970 y 2070
+
+defaultYearButtonLabelText=Año predet.
+defaultYearButtonToolTipText=Introduce fecha de 1 de enero del año predeterminado 2000
+
+randomReplacementButtonLabelText=Aleatorio
+randomReplacementButtonToolTipText=Introduce texto de sustitución con valores aleatorios
+
+defaultReplacementButtonLabelText=Por defecto
+defaultReplacementButtonToolTipText=Introduce texto de sustitución con valores por defecto

@@ -1,0 +1,9 @@
+localNameLabelText=Paikallinen nimi
+dicomAETitleLabelText=AE-Title
+hostnameLabelText=Isäntänimi tai IP-osoite
+portLabelText=Portti
+
+localNameToolTipText=Nimi, jolla tähän etä-AE:hen viitataan (voi olla muu kuin AE-Title)
+dicomAETitleToolTipText=Etä-AE:n haettu AE-Title (AE-Title, jolla sitä oletetaan haettavan)
+hostnameToolTipText=Nykyisen toimialueen etäisännän nimi tai etä-AE:n täysin kelvollinen isäntänimi tai IPV4-osoite
+portToolTipText=Etäisännän portti, johon yhteys muodostetaan (portti, jota etä-AE kuuntelee toisen AE:n lähettämien tietojen varalta)

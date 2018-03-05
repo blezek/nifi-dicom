@@ -1,0 +1,104 @@
+applicationTitle=Dicom-tisztító
+
+DatabaseRootTitleForOriginal=Eredeti
+DatabaseRootTitleForCleaned=Megtisztított
+
+defaultReplacementPatientName=NÉV^NINCS
+defaultReplacementPatientID=Nincs azonosító
+defaultReplacementAccessionNumber=
+defaultRandomReplacementPatientNamePrefix=Anonim
+defaultModifyDatesEpoch=20000101
+
+queryIntroductionLabelText=Lekérdezés
+queryPatientNameLabelText=Beteg neve
+queryPatientIDLabelText=Betegazonosító
+queryStudyDateLabelText=Vizsgálat dátuma
+queryAccessionNumberLabelText=Nyilvántartási szám
+
+queryPatientNameToolTipText=A Beteg neve mezőnél használandó szöveg lekérdezésnél
+queryPatientIDToolTipText=A Betegazonosító mezőnél használandó szöveg lekérdezésnél
+queryStudyDateToolTipText=A Vizsgálat dátuma mezőnél használandó szöveg lekérdezésnél
+queryAccessionNumberToolTipText=A Nyilvántartási szám mezőnél használandó szöveg lekérdezésnél
+
+replacementIntroductionLabelText=Csere
+replacementPatientNameLabelText=Beteg neve
+replacementPatientIDLabelText=Betegazonosító
+replacementAccessionNumberLabelText=Nyilvántartási szám
+modifyDatesIntroductionLabelText=Időpontok
+modifyDatesLabelText=Legkorábbi időpont áthelyezése
+
+replacementPatientNameToolTipText=A Beteg neve mezőnél használandó szöveg tisztításnál (egyébként figyelmen kívül hagyva)
+replacementPatientIDToolTipText=A Betegazonosító mezőnél használandó szöveg tisztításnál (egyébként figyelmen kívül hagyva)
+replacementAccessionNumberToolTipText=A Nyilvántartási szám mezőnél használandó szöveg tisztításnál (egyébként figyelmen kívül hagyva)
+modifyDatesToolTipText=Az intervallum azon dátumának használata, ahová a legkorábbi időpontot át szeretné helyezni, valamint minden egyéb, kapcsolódó elem (egyébként figyelmen kívül hagyva)
+
+removeIdentityLabelText=Minden meghagyott identitás eltávolítása
+removeDescriptionsLabelText=Leírások eltávolítása
+removeSeriesDescriptionsLabelText=Sorozatleírások eltávolítása
+removeProtocolNameLabelText=Felvételi protokoll nevének eltávolítása
+removeCharacteristicsLabelText=Betegjellemzők eltávolítása
+removeDeviceIdentityLabelText=Eszközazonosítók eltávolítása
+removeInstitutionIdentityLabelText=Intézményazonosítók eltávolítása
+cleanUIDsLabelText=Összes UID cseréje
+removePrivateLabelText=Nem biztonságos személyes jellemzők eltávolítása
+addContributingEquipmentLabelText=Közreműködő berendezés hozzáadása
+removeClinicalTrialAttributesLabelText=Klinikaivizsgálat-jellemzők eltávolítása
+zipExportLabelText=Exportált fájlok tömörítése
+
+hierarchicalExportLabelText=Nevek hierarchiába rendezése exportálásnál
+hierarchicalExportToolTipText=Leíró beteg/vizsgálat/sorozat/példány hierarchia használata a mappa- és fájlneveknél (melyek TÖRVÉNYTELENEK a DICOM adathordozón és ÉRVÉNYTELENEK a CS VR esetén a DICOMDIR-nál)
+
+acceptAnyTransferSyntaxLabelText=Bármilyen átviteli szintaktika elfogadása
+acceptAnyTransferSyntaxToolTipText=Bármilyen (felismert, tömörítési), a hálózaton keresztül fogadott vagy a fájlrendszerből importált átviteli szintaktika elfogadása, még ha a kitömörítéshez nem is áll rendelkezésre kodek
+
+configureButtonLabelText=Konfigurálás
+configureButtonToolTipText=Az alkalmazás (beleértve a DICOM hálózati tulajdonságokat) konfigurálása
+
+logButtonLabelText=Napló
+logButtonToolTipText=A tevékenységi naplók megjelenítése
+
+queryButtonLabelText=Lekérdezés
+queryButtonToolTipText=Egy távoli hálózati host lekérdezése
+querySelectDialogTitle=Lekérdezés
+querySelectMessage=Távoli rendszer kiválasztása
+
+retrieveButtonLabelText=Letöltés
+retrieveButtonToolTipText=Kijelölt lekérdezés letöltése egy távoli hostról
+
+importButtonLabelText=Importálás
+importButtonToolTipText=Importálás adathordozóról az eredeti elemek adatbázisába
+
+cleanButtonLabelText=Tisztítás
+cleanButtonToolTipText=A kijelölt eredeti elemek megtisztítása és átmásolása a megtisztított adatbázisba
+
+blackoutButtonLabelText=Kisatírozás
+blackoutButtonToolTipText=A képre ráégetett feliratok kisatírozása a kijelölt megtisztított adatbázisfájlokban
+
+exportButtonLabelText=Exportálás
+exportButtonToolTipText=Exportálás a megtisztított adatbázisból egy DICOMDIR mappába, adathordozóra írás céljából
+
+sendButtonLabelText=Küldés
+sendButtonToolTipText=A kijelölt megtisztított objektumok küldése a hálózaton keresztül
+sendSelectDialogTitle=Küldés
+sendSelectMessage=Cél kiválasztása
+
+purgeButtonLabelText=Végleges törlés
+purgeButtonToolTipText=A kijelölt bejegyzések eltávolítása az eredeti és a megtisztított adatbázisból, valamint a fájlok minden helyi példányának törlése
+
+cancelButtonLabelText=Mégse
+cancelButtonToolTipText=A folyamatban lévő tevékenység megszakítása
+
+earliestYearButtonLabelText=Legkorábbi év
+earliestYearButtonToolTipText=A dátumintervallum kitöltése január 1-ével a kijelölt intervallum legkorábbi évében
+
+randomYearButtonLabelText=Véletlen év
+randomYearButtonToolTipText=A dátumintervallum kitöltése január 1-ével egy véletlenszerűen kiválasztott évben 1970 és 2070 között
+
+defaultYearButtonLabelText=Alapértelmezett év
+defaultYearButtonToolTipText=A dátumintervallum kitöltése január 1-ével az alapértelmezett évben (2000)
+
+randomReplacementButtonLabelText=Véletlen
+randomReplacementButtonToolTipText=A csereszöveg kitöltése véletlenszerű értékekkel
+
+defaultReplacementButtonLabelText=Alapértelmezett
+defaultReplacementButtonToolTipText=A csereszöveg kitöltése az alapértelmezett értékekkel

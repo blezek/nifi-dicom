@@ -1,0 +1,104 @@
+applicationTitle=Dicom-rensning
+
+DatabaseRootTitleForOriginal=Original
+DatabaseRootTitleForCleaned=Rensat
+
+defaultReplacementPatientName=NAMN^INGET
+defaultReplacementPatientID=INGETID
+defaultReplacementAccessionNumber=
+defaultRandomReplacementPatientNamePrefix=Anonymt^
+defaultModifyDatesEpoch=20000101
+
+queryIntroductionLabelText=Fråga
+queryPatientNameLabelText=Patientnamn
+queryPatientIDLabelText=Patient-ID
+queryStudyDateLabelText=Studiedatum
+queryAccessionNumberLabelText=Löpnummer
+
+queryPatientNameToolTipText=Text som används för patientens namn vid förfrågan
+queryPatientIDToolTipText=Text som används för patientens ID vid förfrågan
+queryStudyDateToolTipText=Text som används för studiedatumet vid förfrågan
+queryAccessionNumberToolTipText=Text som används för löpnumret vid förfrågan
+
+replacementIntroductionLabelText=Ersätt
+replacementPatientNameLabelText=Patientnamn
+replacementPatientIDLabelText=Patient-ID
+replacementAccessionNumberLabelText=Löpnummer
+modifyDatesIntroductionLabelText=Datum och tider
+modifyDatesLabelText=Flytta tidigaste datum till
+
+replacementPatientNameToolTipText=Text som används för patientens namn vid rensning (ignoreras i annat fall)
+replacementPatientIDToolTipText=Text som används för patientens ID vid rensning (ignoreras i annat fall)
+replacementAccessionNumberToolTipText=Text som används för löpnumret vid rensning (ignoreras i annat fall)
+modifyDatesToolTipText=Det datum som används för period till vilken tidigaste datum och tidpunkt, och övriga som är relativa till det, ska flyttas (ignoreras i annat fall)
+
+removeIdentityLabelText=Ta bort alla ej ersatta identiteter
+removeDescriptionsLabelText=Ta bort beskrivningar
+removeSeriesDescriptionsLabelText=Ta bort seriebeskrivning
+removeProtocolNameLabelText=Ta bort protokollnamn för insamling
+removeCharacteristicsLabelText=Ta bort patientegenskaper
+removeDeviceIdentityLabelText=Ta bort enhets-ID:n
+removeInstitutionIdentityLabelText=Ta bort institutions-ID:n
+cleanUIDsLabelText=Ersätt alla UID:n
+removePrivateLabelText=Ta bort alla ej säkra privata attribut
+addContributingEquipmentLabelText=Lägg till medverkande utrustning
+removeClinicalTrialAttributesLabelText=Ta bort attribut från kliniska prövningar
+zipExportLabelText=Zippa ihop exporterade filer
+
+hierarchicalExportLabelText=Hierarkinamn i export
+hierarchicalExportToolTipText=Använd beskrivande patient-/studie-/serie-/förekomsthierarki för mapp- och filnamn (som är ej tillåtet för DICOM-media och ogiltigt för CS VR i DICOMDIR)
+
+acceptAnyTransferSyntaxLabelText=Acceptera all överföringssyntax
+acceptAnyTransferSyntaxToolTipText=Acceptera all (identifierad, komprimeringsrelaterad) överföringssyntax som tas emot via nätverk eller vid import från filsystem, även om ingen codec för dekomprimering finns tillgänglig
+
+configureButtonLabelText=Konfigurera
+configureButtonToolTipText=Konfigurera programmet, inklusive DICOM-nätverksegenskaper
+
+logButtonLabelText=Logg
+logButtonToolTipText=Visa logg för aktiviteter
+
+queryButtonLabelText=Fråga
+queryButtonToolTipText=Förfrågan till en fjärrnätverksvärd
+querySelectDialogTitle=Fråga
+querySelectMessage=Välj fjärrsystem
+
+retrieveButtonLabelText=Hämta
+retrieveButtonToolTipText=Hämta frågeurval från fjärrvärd
+
+importButtonLabelText=Importera
+importButtonToolTipText=Importera från media till originaldatabas
+
+cleanButtonLabelText=Rensa
+cleanButtonToolTipText=Rensa de valda originalen och kopiera till rensad databas
+
+blackoutButtonLabelText=Anonymisera
+blackoutButtonToolTipText=Anonymisera inbränd annotering i de valda rensade databasfilerna
+
+exportButtonLabelText=Exportera
+exportButtonToolTipText=Exportera från rensad databas till mapp med DICOMDIR för bränning till media
+
+sendButtonLabelText=Skicka
+sendButtonToolTipText=Skicka de valda rensade objekten via nätverket
+sendSelectDialogTitle=Skicka
+sendSelectMessage=Välj destination
+
+purgeButtonLabelText=Töm
+purgeButtonToolTipText=Ta bort valda poster från originaldatabasen och den rensade databasen och ta bort alla lokala filkopior
+
+cancelButtonLabelText=Avbryt
+cancelButtonToolTipText=Avbryt aktuell pågående aktivitet om den inte slutförts
+
+earliestYearButtonLabelText=Tidigaste år
+earliestYearButtonToolTipText=Fyll i datumperiod med den första januari för tidigaste år i den valda följden
+
+randomYearButtonLabelText=Slumpmässigt år
+randomYearButtonToolTipText=Fyll i datumperiod med den första januari för ett slumpmässigt år mellan 1970 och 2070
+
+defaultYearButtonLabelText=Standardår
+defaultYearButtonToolTipText=Fyll i datumperiod med den första januari för standardåret 2000
+
+randomReplacementButtonLabelText=Slumpmässigt
+randomReplacementButtonToolTipText=Fyll i ersättningstext med slumpmässiga värden
+
+defaultReplacementButtonLabelText=Standard
+defaultReplacementButtonToolTipText=Fyll i ersättningstext med standardvärden

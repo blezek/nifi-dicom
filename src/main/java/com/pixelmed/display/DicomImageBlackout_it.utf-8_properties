@@ -1,0 +1,25 @@
+applicationTitle=Oscuramento immagini Dicom
+
+blackoutPreviousButtonLabelText=Indietro
+blackoutApplyButtonLabelText=Applica
+blackoutSaveButtonLabelText=Salva
+blackoutNextButtonLabelText=Avanti
+blackoutApplySaveAllButtonLabelText=Applica a tutto e salva
+blackoutCancelButtonLabelText=Annulla
+
+blackoutPreviousButtonToolTipText=Consente di andare all'immagine precedente, saltando quella visualizzata, se non è stata salvata
+blackoutApplyButtonToolTipText=Oscura le regioni
+blackoutSaveButtonToolTipText=Salva l'immagine oscurata
+blackoutNextButtonToolTipText=Consente di andare all'immagine successiva, saltando quella visualizzata, se non è stata salvata
+blackoutApplySaveAllButtonToolTipText=Oscura le regioni e salva l'immagine oscurata per questa e per tutte le immagini selezionate rimanenti
+blackoutCancelButtonToolTipText=Consente di annullare l'operazione sull'immagine, se non è stata salvata, e di saltare tutte le immagini rimanenti
+
+keepOverlaysCheckBoxLabelText=Sovrapposizioni
+usePixelPaddingBlackoutValueCheckBoxLabelText=Usa riempimento
+useZeroBlackoutValueCheckBoxLabelText=Usa zero
+
+keepOverlaysCheckBoxToolTipText=Consente di attivare/disattivare la visualizzazione delle sovrapposizioni e, se visualizzate, di copiarle nell'immagine e rimuoverle dall'intestazione
+usePixelPaddingBlackoutValueCheckBoxToolTipText=Consente di attivare/disattivare l'utilizzo del valore di riempimento dei pixel per i pixel oscurati invece del valore dei pixel più basso possibile predefinito basato sul segno e sulla profondità dei bit
+useZeroBlackoutValueCheckBoxToolTipText=Consente di attivare/disattivare l'utilizzo del valore zero per i pixel oscurati, invece del valore di riempimento dei pixel o il valore dei pixel più basso possibile predefinito basato sul segno e sulla profondità dei bit
+
+statusBarHelpText=Pulsanti: sinistro - sposta le finestre; destro - trascinare per disegnare la casella; clic con il pulsante destro - seleziona la casella; tasto Canc - annulla la selezione

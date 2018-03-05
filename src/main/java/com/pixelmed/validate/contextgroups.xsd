@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified"
+	attributeFormDefault="unqualified">
+  <xs:element name="definecontextgroups">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" ref="definecontextgroup"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="definecontextgroup">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" maxOccurs="unbounded" ref="contextgroupcode"/>
+      </xs:sequence>
+      <xs:attribute name="cid" use="required" type="xs:string"/>
+      <xs:attribute name="extensible" use="required" type="xs:boolean"/>
+      <xs:attribute name="name" use="required" type="xs:NMTOKEN"/>
+      <xs:attribute name="version" use="required" type="xs:positiveInteger"/>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="contextgroupcode">
+    <xs:complexType>
+      <xs:attribute name="cm" use="required" type="xs:string"/>
+      <xs:attribute name="csd" use="required" type="xs:string"/>
+      <xs:attribute name="cv" use="required" type="xs:string"/>
+      <xs:attribute name="csv" type="xs:string"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,1 @@
+java -Djava.awt.headless=true -Xms128m -Xmx512m -cp .\pixelmed.jar;.\hsqldb.jar;.\commons-compress-1.12.jar;.\vecmath1.2-1.14.jar;.\commons-codec-1.3.jar com.pixelmed.web.RequestTypeServer .\testwadodb .\testwadoimages 4007 WADOTEST 7091

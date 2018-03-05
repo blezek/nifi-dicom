@@ -1,0 +1,34 @@
+addButtonLabelText=Ajouter
+editButtonLabelText=Édition
+removeButtonLabelText=Supprimer
+doneButtonLabelText=Effectué
+
+addButtonToolTipText=Ajouter un AE à la liste des entités d'application distantes
+editButtonToolTipText=Modifier un AE dans la liste des entités d'application distantes
+removeButtonToolTipText=Supprimer un AE de la liste des entités d'application distantes
+doneButtonToolTipText=Modifications terminées, réinitialiser l'application afin d'utiliser la nouvelle configuration
+
+selectNetworkTargetToEditLabelText=Sélectionner un AE à modifier
+selectNetworkTargetToRemoveLabelText=Sélectionnez un AE à supprimer
+
+listenerHeaderLabelText=Nos propriétés de réseau DICOM
+callingAETitleLabelText=AE-Title personnalisé
+calledAETitleLabelText=AE-Title appelé
+listeningPortLabelText=Port d'écoute
+acceptorMaximumLengthReceivedLabelText=Longueur maximale reçue pour le PDU de l'accepteur
+acceptorSocketReceiveBufferSizeLabelText=Taille du tampon de réception du socket TCP de l'accepteur
+acceptorSocketSendBufferSizeLabelText=Taille du tampon d'envoi du socket TCP de l'accepteur
+initiatorMaximumLengthReceivedLabelText=Longueur maximale reçue pour le PDU de l'initiateur
+initiatorSocketReceiveBufferSizeLabelText=Taille du tampon de réception du socket TCP de l'initiateur
+initiatorSocketSendBufferSizeLabelText=Taille du tampon d'envoi du socket TCP de l'initiateur
+remoteHeaderPanelLabelText=Propriétés du réseau DICOM AE distant
+
+callingAETitleJLabelToolTipText=L'AE-Title que nous utilisons pour nous-mêmes lorsque nous appelons un autre AE (lors de la création d'une association vers un autre AE)
+calledAETitleJLabelToolTipText=L'AE-Title attendu pour être appelés par un autre AE (lors de l'acceptation d'une association émanant d'un autre AE) ; généralement le même que l'AE-Title personnalisé
+listeningPortJLabelToolTipText=Le port depuis lequel nous écoutons les connexions entrantes d'un autre AE
+acceptorMaximumLengthReceivedJLabelToolTipText=La longueur maximale pour le PDU qui sera acceptée concernant les associations entrantes (0 pour une longueur illimitée)
+acceptorSocketReceiveBufferSizeJLabelToolTipText=La taille du tampon de réception du socket TCP à définir lors de l'acceptation d'associations (ou 0 pour laisser tel quel et utiliser la plateforme par défaut)
+acceptorSocketSendBufferSizeJLabelToolTipText=La taille du tampon d'envoi du socket TCP à définir lors de l'acceptation d'associations (ou 0 pour laisser tel quel et utiliser la plateforme par défaut)
+initiatorMaximumLengthReceivedJLabelToolTipText=La longueur maximale pour le PDU qui sera demandée par les accepteurs lors de la création d'associations (0 pour une longueur illimitée)
+initiatorSocketReceiveBufferSizeJLabelToolTipText=La taille du tampon de réception du socket TCP à définir lors de la création d'associations (ou 0 pour laisser tel quel et utiliser la plateforme par défaut)
+initiatorSocketSendBufferSizeJLabelToolTipText=La taille du tampon d'envoi du socket TCP à définir lors de la création d'associations (ou 0 pour laisser tel quel et utiliser la plateforme par défaut)

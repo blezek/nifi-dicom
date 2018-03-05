@@ -1,0 +1,34 @@
+addButtonLabelText=Hinzufügen
+editButtonLabelText=Bearbeiten
+removeButtonLabelText=Löschen
+doneButtonLabelText=Fertig
+
+addButtonToolTipText=AE zur Liste der Remote-Anwendungsentitäten hinzufügen
+editButtonToolTipText=AE in der Liste der Remote-Anwendungsentitäten bearbeiten
+removeButtonToolTipText=AE aus der Liste der Remote-Anwendungsentitäten entfernen
+doneButtonToolTipText=Abschließen der Bearbeitung und Zurücksetzen der Anwendung, damit neue Konfiguration wirksam wird
+
+selectNetworkTargetToEditLabelText=Zu bearbeitende AE auswählen
+selectNetworkTargetToRemoveLabelText=Zu entfernende AE auswählen
+
+listenerHeaderLabelText=Unsere DICOM-Netzwerkeigenschaften
+callingAETitleLabelText=Aufrufender AE-Titel
+calledAETitleLabelText=Aufgerufener AE-Titel
+listeningPortLabelText=Überwachungsport
+acceptorMaximumLengthReceivedLabelText=Empfänger-PDU – max. Länge empfangen
+acceptorSocketReceiveBufferSizeLabelText=Empfangspuffergröße Empfänger-TCP-Socket
+acceptorSocketSendBufferSizeLabelText=Sendepuffergröße Empfänger-TCP-Socket
+initiatorMaximumLengthReceivedLabelText=Initiator-PDU – max. Länge empfangen
+initiatorSocketReceiveBufferSizeLabelText=Empfangspuffergröße Initiator-TCP-Socket
+initiatorSocketSendBufferSizeLabelText=Sendepuffergröße Initiator-TCP-Socket
+remoteHeaderPanelLabelText=Remote-AE-DICOM-Netzwerkeigenschaften
+
+callingAETitleJLabelToolTipText=Der AE-Titel, den wir selbst verwenden, wenn wir eine andere AE aufrufen, d. h. eine Verbindung zu einer anderen AE initiieren
+calledAETitleJLabelToolTipText=Der AE-Titel, vom dem wir aufgerufen werden, wenn wir eine Verbindung mit einer anderen AE annehmen (in der Regel der aufrufende AE-Titel)
+listeningPortJLabelToolTipText=Der Port, über den wir eingehende Verbindungen von einer anderen AE überwachen
+acceptorMaximumLengthReceivedJLabelToolTipText=Die maximale PDU-Länge, die von eingehenden Verbindungen akzeptiert wird (0, falls unbegrenzt)
+acceptorSocketReceiveBufferSizeJLabelToolTipText=Die festzulegende Empfangspuffergröße des TCP-Sockets bei Annahme von Verbindungen (0, falls die Standardeinstellung der Plattform unverändert beibehalten werden soll)
+acceptorSocketSendBufferSizeJLabelToolTipText=Die festzulegende Sendepuffergröße des TCP-Sockets bei Annahme von Verbindungen (0, falls die Standardeinstellung der Plattform unverändert beibehalten werden soll)
+initiatorMaximumLengthReceivedJLabelToolTipText=Die maximale PDU-Länge, die von Empfängern bei der Initiierung von Verbindungen angefordert werden kann (0, falls unbegrenzt)
+initiatorSocketReceiveBufferSizeJLabelToolTipText=Die festzulegende Empfangspuffergröße des TCP-Sockets bei Initiierung von Verbindungen (0, falls die Standardeinstellung der Plattform unverändert beibehalten werden soll)
+initiatorSocketSendBufferSizeJLabelToolTipText=Die festzulegende Sendepuffergröße des TCP-Sockets bei Initiierung von Verbindungen (0, falls die Standardeinstellung der Plattform unverändert beibehalten werden soll)

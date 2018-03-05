@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html
+
+  Copyright (c) 2001-2017, David A. Clunie DBA Pixelmed Publishing. All rights reserved.
+
+-->
+</head>
+<body bgcolor="white">
+<p>Implements a thin wrapper around a subset of classes and methods of SLFJ.</p>
+
+<p>The primary classes of this package are {@link com.pixelmed.slf4j.LoggerFactory LoggerFactory} and {@link com.pixelmed.slf4j.Logger Logger}.</p>
+
+<h2>Package Specification</h2>
+
+<p>Typical usage is as follows:</p>
+
+<pre>
+import com.pixelmed.slf4j.Logger;
+import com.pixelmed.slf4j.LoggerFactory;
+
+public class MyClass {
+
+	private static final Logger slf4jlogger = LoggerFactory.getLogger(MyClass.class);
+	
+	public static void main(String arg[]) {
+		try {
+			if (arg.length > 0) {
+				slf4jlogger.error("Too many arguments - expected 0 got {}",arg.length);
+			}
+		}
+		catch (Exception e) {
+			slf4jlogger.info("Not really expecting this",e);
+		}
+	}
+}
+</pre>
+
+<p>Properties that affect the behavior of the log output even when no SLF4J implementation is provided are as follows:</p>
+<ul>
+  <li>org.slf4j.simpleLogger.defaultLogLevel (default logging detail level for all instances, default is info)</li>
+  <li>org.slf4j.simpleLogger.log.xxxxx (logging detail level for a logger instance named "xxxxx")</li>
+  <li>org.slf4j.simpleLogger.showDateTime (default is false)</li>
+  <li>org.slf4j.simpleLogger.dateTimeFormat (default is ms since start)</li>
+</ul>
+
+<h2>Related Documentation</h2>
+
+For overviews, tutorials, examples, guides, and tool documentation, please see:
+<ul>
+  <li><a href=""></a>
+</ul>
+
+<!-- Put @see and @since tags down here. -->
+
+</body>
+</html>

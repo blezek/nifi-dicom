@@ -1,0 +1,25 @@
+applicationTitle=Dicom-kuvan tummennus
+
+blackoutPreviousButtonLabelText=Edellinen
+blackoutApplyButtonLabelText=Käytä
+blackoutSaveButtonLabelText=Tallenna
+blackoutNextButtonLabelText=Seuraava
+blackoutApplySaveAllButtonLabelText=Käytä kaikkiin ja tallenna
+blackoutCancelButtonLabelText=Peruuta
+
+blackoutPreviousButtonToolTipText=Ohita tämä kuva ja siirry edelliseen, jos kuvaa ei ole vielä tallennettu
+blackoutApplyButtonToolTipText=Tummenna alueet
+blackoutSaveButtonToolTipText=Tallenna tummennettu kuva
+blackoutNextButtonToolTipText=Ohita tämä kuva ja siirry seuraavaan, jos kuvaa ei ole vielä tallennettu
+blackoutApplySaveAllButtonToolTipText=Tummenna alueet ja tallenna tummennettu kuva tätä ja kaikkia jäljellä olevia valittuja kuvia varten
+blackoutCancelButtonToolTipText=Peruuta tämän kuvan käsittely, jos sitä ei ole vielä tallennettu, ja ohita kaikki jäljellä olevat kuvat
+
+keepOverlaysCheckBoxLabelText=Peittokuvat
+usePixelPaddingBlackoutValueCheckBoxLabelText=Käytä paikkausta
+useZeroBlackoutValueCheckBoxLabelText=Käytä nolla-arvoa
+
+keepOverlaysCheckBoxToolTipText=Valitse, näytetäänkö vai piilotetaanko peittokuvat ja tulostetaanko näytetyt peittokuvat kuvaan ja poistetaanko ne otsikosta
+usePixelPaddingBlackoutValueCheckBoxToolTipText=Valitse, käytetäänkö tummennetuissa pikseleissä pikselin paikkausarvoa eikä oletusarvoista pikselin vähimmäisarvoa, joka perustuu etumerkkiin ja bittisyvyyteen
+useZeroBlackoutValueCheckBoxToolTipText=Valitse, käytetäänkö tummennetuissa pikseleissä nolla-arvoa eikä pikselin paikkausarvoa tai oletusarvoista pikselin vähimmäisarvoa, joka perustuu etumerkkiin ja bittisyvyyteen
+
+statusBarHelpText=Painikkeet: vasemmat ikkunat, laatikon piirto oikealle vedettäessä, laatikon valinta oikealla napsautuksella, valinnan hylkäys Delete-näppäimellä

@@ -1,0 +1,34 @@
+addButtonLabelText=Dodaj
+editButtonLabelText=Edytuj
+removeButtonLabelText=Usuń
+doneButtonLabelText=Gotowe
+
+addButtonToolTipText=Dodaj AE do listy zdalnych Application Entities
+editButtonToolTipText=Edytuj AE w obrębie listy zdalnych Application Entities
+removeButtonToolTipText=Usuń AE z listy zdalnych Application Entities
+doneButtonToolTipText=Zakończono edycję; wykonaj reset aplikacji, aby użyć nowej konfiguracji
+
+selectNetworkTargetToEditLabelText=Wybierz AE do edycji
+selectNetworkTargetToRemoveLabelText=Wybierz AE do usunięcia
+
+listenerHeaderLabelText=Właściwości sieci DICOM
+callingAETitleLabelText=Własny AE Title
+calledAETitleLabelText=Wywołany AE Title
+listeningPortLabelText=Port nasłuchu
+acceptorMaximumLengthReceivedLabelText=Akceptacja: maksymalna długość PDU dla odbieranych
+acceptorSocketReceiveBufferSizeLabelText=Akceptacja: rozmiar buforu odbiorczego gniazda TCP
+acceptorSocketSendBufferSizeLabelText=Akceptacja: rozmiar buforu nadawczego gniazda TCP
+initiatorMaximumLengthReceivedLabelText=Inicjowanie: maksymalna długość PDU dla odbieranych
+initiatorSocketReceiveBufferSizeLabelText=Inicjowanie: rozmiar buforu odbiorczego gniazda TCP
+initiatorSocketSendBufferSizeLabelText=Inicjowanie: rozmiar buforu nadawczego gniazda TCP
+remoteHeaderPanelLabelText=Właściwości zdalnej sieci AE DICOM
+
+callingAETitleJLabelToolTipText=AE Title stosowany przez nas podczas wywoływania innej AE (inicjowania skojarzenia)
+calledAETitleJLabelToolTipText=Oczekiwany przez nas AE Title, za pomocą którego będziemy wywoływani (podczas akceptowania skojarzenia wysyłanego) przez inną AE; zazwyczaj taki sam jak Własny AE Title
+listeningPortJLabelToolTipText=Port nasłuchu połączeń przychodzących inicjowanych przez inną AE
+acceptorMaximumLengthReceivedJLabelToolTipText=Maksymalna długość PDU, która będzie akceptowana dla skojarzeń przychodzących (0, jeśli bez ograniczeń)
+acceptorSocketReceiveBufferSizeJLabelToolTipText=Rozmiar buforu odbiorczego gniazda TCP do ustawienia podczas akceptacji skojarzeń (można pozostawić wartość 0 i użyć wartości domyślnej platformy)
+acceptorSocketSendBufferSizeJLabelToolTipText=Rozmiar buforu nadawczego gniazda TCP do ustawienia podczas akceptacji skojarzeń (można pozostawić wartość 0 i użyć wartości domyślnej platformy)
+initiatorMaximumLengthReceivedJLabelToolTipText=Maksymalna długość PDU, która będzie wymagana przez jednostki akceptujące podczas inicjowania skojarzeń (0, jeśli bez ograniczeń)
+initiatorSocketReceiveBufferSizeJLabelToolTipText=Rozmiar buforu odbiorczego gniazda TCP do ustawienia podczas inicjowania skojarzeń (można pozostawić wartość 0 i użyć wartości domyślnej platformy)
+initiatorSocketSendBufferSizeJLabelToolTipText=Rozmiar buforu nadawczego gniazda TCP do ustawienia podczas inicjowania skojarzeń (można pozostawić wartość 0 i użyć wartości domyślnej platformy)

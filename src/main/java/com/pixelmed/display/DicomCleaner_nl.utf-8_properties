@@ -1,0 +1,104 @@
+applicationTitle=Dicom opruimen
+
+DatabaseRootTitleForOriginal=Origineel
+DatabaseRootTitleForCleaned=Opgeruimd
+
+defaultReplacementPatientName=NAAM^GEEN
+defaultReplacementPatientID=GEENID
+defaultReplacementAccessionNumber=
+defaultRandomReplacementPatientNamePrefix=Anon^
+defaultModifyDatesEpoch=20000101
+
+queryIntroductionLabelText=Opvragen
+queryPatientNameLabelText=Patiëntnaam
+queryPatientIDLabelText=Patiënt-ID
+queryStudyDateLabelText=Onderzoeksdatum
+queryAccessionNumberLabelText=Toegangsnummer
+
+queryPatientNameToolTipText=De tekst die bij opvragen wordt gebruikt als patiëntnaam
+queryPatientIDToolTipText=De tekst die bij opvragen wordt gebruikt als patiënt-ID
+queryStudyDateToolTipText=De tekst die bij opvragen wordt gebruikt als onderzoeksdatum
+queryAccessionNumberToolTipText=De tekst die bij opvragen wordt gebruikt als toegangsnummer
+
+replacementIntroductionLabelText=Vervangen
+replacementPatientNameLabelText=Patiëntnaam
+replacementPatientIDLabelText=Patiënt-ID
+replacementAccessionNumberLabelText=Toegangsnummer
+modifyDatesIntroductionLabelText=Data en tijden
+modifyDatesLabelText=Verplaatst de vroegste datum naar
+
+replacementPatientNameToolTipText=De tekst die bij opruimen wordt gebruikt als patiëntnaam (anders genegeerd)
+replacementPatientIDToolTipText=De tekst die bij opruimen wordt gebruikt als patiënt-ID (anders genegeerd)
+replacementAccessionNumberToolTipText=De tekst die bij opruimen wordt gebruikt als toegangsnummer (anders genegeerd)
+modifyDatesToolTipText=De datum die wordt gebruikt om het tijdstip aan te duiden om de vroegste, en alle andere relevante, data en tijden te verplaatsen (anders genegeerd)
+
+removeIdentityLabelText=Alle onvervangen identiteiten verwijderen
+removeDescriptionsLabelText=Beschrijvingen verwijderen
+removeSeriesDescriptionsLabelText=Seriebeschrijving verwijderen
+removeProtocolNameLabelText=Opnameprotocolnaam verwijderen
+removeCharacteristicsLabelText=Patiëntkenmerken verwijderen
+removeDeviceIdentityLabelText=Apparaatidentificators verwijderen
+removeInstitutionIdentityLabelText=Instellingsidentificators verwijderen
+cleanUIDsLabelText=Alle UID's vervangen
+removePrivateLabelText=Onveilige privékenmerken verwijderen
+addContributingEquipmentLabelText=Gebruikte apparatuur toevoegen
+removeClinicalTrialAttributesLabelText=Klinische onderzoekskenmerken verwijderen
+zipExportLabelText=Geëxporteerde bestanden zippen
+
+hierarchicalExportLabelText=Hiërarchische namen bij exporteren
+hierarchicalExportToolTipText=Gebruik een beschrijvende patiënt-/onderzoeks-/serie-/opnamehiërarchie van map- en bestandsnamen (die NIET TOEGESTAAN zijn op DICOM-media en ONGELDIG voor CS VR in DICOMDIR)
+
+acceptAnyTransferSyntaxLabelText=Elke syntaxoverdracht accepteren
+acceptAnyTransferSyntaxToolTipText=Elke (herkende, compressie) syntaxoverdracht accepteren die via het netwerk of bij het importeren uit het bestandssysteem wordt ontvangen, zelfs als er geen codec voor decompressie beschikbaar is
+
+configureButtonLabelText=Configureren
+configureButtonToolTipText=De toepassing configureren, inclusief DICOM-netwerkinstellingen
+
+logButtonLabelText=Logboek
+logButtonToolTipText=Het activiteitenlogboek tonen
+
+queryButtonLabelText=Opvragen
+queryButtonToolTipText=Een externe netwerkhost opvragen
+querySelectDialogTitle=Opvragen
+querySelectMessage=Extern systeem selecteren
+
+retrieveButtonLabelText=Ophalen
+retrieveButtonToolTipText=Vraagselectie ophalen bij de externe host
+
+importButtonLabelText=Importeren
+importButtonToolTipText=Vanaf media naar originele database importeren
+
+cleanButtonLabelText=Opruimen
+cleanButtonToolTipText=Ruim de geselecteerde originele bestanden op en kopieer deze naar de opgeruimde database
+
+blackoutButtonLabelText=Verduisteren
+blackoutButtonToolTipText=Verduistering in annotatie gebrand in de geselecteerde opgeruimde databasebestanden
+
+exportButtonLabelText=Exporteren
+exportButtonToolTipText=Vanuit opgeruimde database exporteren naar map met DICOMCDIR voor branden op media
+
+sendButtonLabelText=Verzenden
+sendButtonToolTipText=De geselecteerde, opgeruimde objecten via het netwerk verzenden
+sendSelectDialogTitle=Verzenden
+sendSelectMessage=Bestemming selecteren
+
+purgeButtonLabelText=Wissen
+purgeButtonToolTipText=Geselecteerde invoer uit het origineel en opgeruimde databases verwijderen en lokale kopieën van bestanden verwijderen
+
+cancelButtonLabelText=Annuleren
+cancelButtonToolTipText=De huidige activiteit in uitvoering verwijderen als deze nog niet is voltooid
+
+earliestYearButtonLabelText=Vroegste jaar
+earliestYearButtonToolTipText=De datum invullen met 1 januari van het vroegste jaar in de geselecteerde set
+
+randomYearButtonLabelText=Willekeurig jaar
+randomYearButtonToolTipText=De datum invullen met 1 januari van een willekeurig jaar tussen 1970 en 2070
+
+defaultYearButtonLabelText=Standaardjaar
+defaultYearButtonToolTipText=De datum invullen met 1 januari van het standaardjaar 2000
+
+randomReplacementButtonLabelText=Willekeurig
+randomReplacementButtonToolTipText=Vervangende tekst invullen met willekeurige waarden
+
+defaultReplacementButtonLabelText=Standaard
+defaultReplacementButtonToolTipText=Vervangende tekst invullen met standaardwaarden

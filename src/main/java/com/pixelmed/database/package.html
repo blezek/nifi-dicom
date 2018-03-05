@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	1.60 98/01/27
+
+  Copyright (c) 2001-2017, David A. Clunie DBA Pixelmed Publishing. All rights reserved.
+
+-->
+</head>
+<body bgcolor="white">
+<p>Abstracts any underlying database support for applications using the DICOM toolkit
+and needing access to persistent storage of entities in the DICOM information
+model.</p>
+
+<p>The primary class of this package is the abstract {@link com.pixelmed.database.DatabaseInformationModel DatabaseInformationModel}. It
+provides general facilities for connecting to the underlying database, creating
+tables, inserting, modifying, deleting and selecting records. In addition it
+provdes abstract methods for describing the types of entities mapped to
+records in tables and their relationships.</p>
+
+<p>Concrete implementations of the {@link com.pixelmed.database.DatabaseInformationModel DatabaseInformationModel} are provided for
+commonly used models, including the {@link com.pixelmed.database.PatientStudySeriesConcatenationInstanceModel PatientStudySeriesConcatenationInstanceModel}
+and the {@link com.pixelmed.database.StudySeriesInstanceModel StudySeriesInstanceModel}.</p>
+
+<p>The models make use of specialized forms of the generic {@link com.pixelmed.dicom.DicomDictionary com.pixelmed.dicom.DicomDictionary}
+in order to make sure particular DICOM attributes are mapped to the correct
+information entity (i.e. database table) appropriate to the model in use.</p>
+
+<p>Tree and table browsers and models are provided that may be used to form the basis of
+application specific browsers.</p>
+
+<p>The following is a simple example of how a database is created, populated by
+one or more DICOM files, and a browser created:</p>
+<pre>
+public static void main(String arg[]) {
+	try {
+		final DatabaseInformationModel d = new PatientStudySeriesConcatenationInstanceModel("test");
+		for (int j=0; j&lt;arg.length; ++j) {
+			String fileName = arg[j];
+			DicomInputStream dfi = new DicomInputStream(new BufferedInputStream(new FileInputStream(fileName)));
+			AttributeList list = new AttributeList();
+			list.read(dfi);
+			dfi.close();
+			d.insertObject(list,fileName);
+		}
+		final JFrame frame = new JFrame();
+		frame.setSize(400,800);
+		frame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				frame.dispose();
+				d.close();
+				System.exit(0);
+			}
+		});
+		DatabaseTreeBrowser tree = new DatabaseTreeBrowser(d,frame);
+		frame.show(); 
+	} catch (Exception e) {
+		System.out.println(e);
+		e.printStackTrace();
+		System.exit(0);
+	}
+}
+</pre>
+
+<h2>Package Specification</h2>
+
+<ul>
+  <li><a href=""></a>
+</ul>
+
+<h2>Related Documentation</h2>
+
+For overviews, tutorials, examples, guides, and tool documentation, please see:
+<ul>
+  <li><a href=""></a>
+</ul>
+
+<!-- Put @see and @since tags down here. -->
+
+</body>
+</html>

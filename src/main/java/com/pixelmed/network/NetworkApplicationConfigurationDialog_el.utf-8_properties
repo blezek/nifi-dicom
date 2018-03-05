@@ -1,0 +1,34 @@
+addButtonLabelText=Προσθήκη
+editButtonLabelText=Επεξεργασία
+removeButtonLabelText=Διαγραφή
+doneButtonLabelText=Τέλος
+
+addButtonToolTipText=Προσθέστε ένα AE στη λίστα απομακρυσμένων οντοτήτων εφαρμογών
+editButtonToolTipText=Επεξεργαστείτε ένα AE στη λίστα απομακρυσμένων οντοτήτων εφαρμογών
+removeButtonToolTipText=Καταργήστε ένα AE από τη λίστα απομακρυσμένων οντοτήτων εφαρμογών
+doneButtonToolTipText=Οι επεξεργασίες έχουν ολοκληρωθεί, επαναφέρετε την εφαρμογή για να χρησιμοποιηθεί η νέα διαμόρφωση
+
+selectNetworkTargetToEditLabelText=Επιλέξτε ένα AE για επεξεργασία
+selectNetworkTargetToRemoveLabelText=Επιλέξτε ένα AE για κατάργηση
+
+listenerHeaderLabelText=Ιδιότητες δικτύου DICOM
+callingAETitleLabelText=Καλών τίτλος AE
+calledAETitleLabelText=Κληθείς τίτλος AE
+listeningPortLabelText=Θύρα ακρόασης
+acceptorMaximumLengthReceivedLabelText=Μέγιστο μήκος PDU του άκρου λήψης του αποδέκτη
+acceptorSocketReceiveBufferSizeLabelText=Μέγεθος buffer του άκρου λήψης της υποδοχής TCP του αποδέκτη
+acceptorSocketSendBufferSizeLabelText=Μέγεθος buffer του άκρου αποστολής της υποδοχής TCP του αποδέκτη
+initiatorMaximumLengthReceivedLabelText=Μέγιστο μήκος PDU του άκρου λήψης του εκκινητή
+initiatorSocketReceiveBufferSizeLabelText=Μέγεθος buffer του άκρου λήψης της υποδοχής TCP του εκκινητή
+initiatorSocketSendBufferSizeLabelText=Μέγεθος buffer του άκρου αποστολής της υποδοχής TCP του εκκινητή
+remoteHeaderPanelLabelText=Ιδιότητες απομακρυσμένου δικτύου AE DICOM
+
+callingAETitleJLabelToolTipText=Ο Τίτλος AE που χρησιμοποιούμε κατά την κλήση σε (προετοιμασία συσχέτισης με) ένα άλλο AE
+calledAETitleJLabelToolTipText=Ο Τίτλος AE που αναμένουμε να κληθεί από (κατά την αποδοχή μιας συσχέτισης από) ένα άλλο AE, συνήθως ίδιος με τον καλούντα τίτλο AE
+listeningPortJLabelToolTipText=Η θύρα στην οποία πραγματοποιούμε ακρόαση για εισερχόμενες συνδέσεις από κάποιο άλλο AE
+acceptorMaximumLengthReceivedJLabelToolTipText=Το μέγιστο μήκος PDU που θα γίνει αποδεκτό από εισερχόμενες συσχετίσεις (0 εάν είναι απεριόριστο)
+acceptorSocketReceiveBufferSizeJLabelToolTipText=Το μέγεθος buffer του άκρου λήψης της υποδοχής TCP που πρέπει να οριστεί κατά την αποδοχή συσχετίσεων (ή 0 για να παραμείνει αμετάβλητο και να χρησιμοποιηθεί η προεπιλογή πλατφόρμας)
+acceptorSocketSendBufferSizeJLabelToolTipText=Το μέγεθος buffer του άκρου αποστολής της υποδοχής TCP που πρέπει να οριστεί κατά την αποδοχή συσχετίσεων (ή 0 για να παραμείνει αμετάβλητο και να χρησιμοποιηθεί η προεπιλογή πλατφόρμας)
+initiatorMaximumLengthReceivedJLabelToolTipText=Το μέγιστο μήκος PDU που θα ζητηθεί από τους αποδέκτες κατά την προετοιμασία συσχετίσεων (0 εάν είναι απεριόριστο)
+initiatorSocketReceiveBufferSizeJLabelToolTipText=Το μέγεθος buffer του άκρου λήψης της υποδοχής TCP που πρέπει να οριστεί κατά την προετοιμασία συσχετίσεων (ή 0 για να παραμείνει αμετάβλητο και να χρησιμοποιηθεί η προεπιλογή πλατφόρμας)
+initiatorSocketSendBufferSizeJLabelToolTipText=Το μέγεθος buffer του άκρου αποστολής της υποδοχής TCP που πρέπει να οριστεί κατά την προετοιμασία συσχετίσεων (ή 0 για να παραμείνει αμετάβλητο και να χρησιμοποιηθεί η προεπιλογή πλατφόρμας)

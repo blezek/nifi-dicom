@@ -1,0 +1,25 @@
+applicationTitle=Затемнение изображения DICOM
+
+blackoutPreviousButtonLabelText=Предыдущее
+blackoutApplyButtonLabelText=Применить
+blackoutSaveButtonLabelText=Сохранить
+blackoutNextButtonLabelText=Следующее
+blackoutApplySaveAllButtonLabelText=Применить все и сохранить
+blackoutCancelButtonLabelText=Отмена
+
+blackoutPreviousButtonToolTipText=Переход к предыдущему изображению, пропуская текущее, если оно не сохранено
+blackoutApplyButtonToolTipText=Затемнить области
+blackoutSaveButtonToolTipText=Сохранить затемненное изображение
+blackoutNextButtonToolTipText=Переход к следующему изображению, пропуская текущее, если оно не сохранено
+blackoutApplySaveAllButtonToolTipText=Затемнение областей и сохранение затемненной версии этого и остальных выбранных изображений
+blackoutCancelButtonToolTipText=Отмена внесенных в изображение изменений, которые еще не были сохранены, и пропуск остальных изображений
+
+keepOverlaysCheckBoxLabelText=Наложения
+usePixelPaddingBlackoutValueCheckBoxLabelText=Использовать заполнение
+useZeroBlackoutValueCheckBoxLabelText=Использовать нулевое значение
+
+keepOverlaysCheckBoxToolTipText=Включение/выключение отображения наложений; при включенном отображении выполняется запись наложений на изображение и удаление их из заголовка
+usePixelPaddingBlackoutValueCheckBoxToolTipText=Включение/выключение использования значения заполнения для пикселей затемнения вместо минимально возможного значения по умолчанию, основанного на знаковости и разрядности
+useZeroBlackoutValueCheckBoxToolTipText=Включение/выключение использования нулевого значения для затемненных пикселей вместо минимально возможного значения по умолчанию, основанного на знаковости и разрядности
+
+statusBarHelpText=Кнопки: левая — настройка окон; правая — перемещение окна; щелчок правой кнопкой — выбор окна; клавиша «Delete» — отмена выбора

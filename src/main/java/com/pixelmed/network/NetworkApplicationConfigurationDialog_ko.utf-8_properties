@@ -1,0 +1,34 @@
+addButtonLabelText=추가
+editButtonLabelText=편집
+removeButtonLabelText=제거
+doneButtonLabelText=완료
+
+addButtonToolTipText=원격 애플리케이션 엔터티에 AE 추가
+editButtonToolTipText=원격 애플리케이션 엔터티 목록의 AE 편집
+removeButtonToolTipText=원격 애플리케이션 엔터티 목록에서 AE 삭제
+doneButtonToolTipText=편집 완료, 애플리케이션을 재설정하여 새 구성을 사용하십시오.
+
+selectNetworkTargetToEditLabelText=편집할 AE 선택
+selectNetworkTargetToRemoveLabelText=삭제할 AE 선택
+
+listenerHeaderLabelText=DICOM 네트워크 속성
+callingAETitleLabelText=AE 제목 호출
+calledAETitleLabelText=피호출 AE 제목
+listeningPortLabelText=수신 대기 포트
+acceptorMaximumLengthReceivedLabelText=억셉터 PDU 최대 수신 길이
+acceptorSocketReceiveBufferSizeLabelText=억셉터 TCP 소켓 수신 버퍼 크기
+acceptorSocketSendBufferSizeLabelText=억셉터 TCP 소켓 송신 버퍼 크기
+initiatorMaximumLengthReceivedLabelText=이니시에이터 PDU 최대 수신 길이
+initiatorSocketReceiveBufferSizeLabelText=이니시에이터 TCP 소켓 수신 버퍼 크기
+initiatorSocketSendBufferSizeLabelText=이니시에이터 TCP 소켓 송신 버퍼 크기
+remoteHeaderPanelLabelText=원격 AE DICOM 네트워크 속성
+
+callingAETitleJLabelToolTipText=다른 AE를 호출 시(다른 AE로 연결 시작 시) 자체 사용하는 AE 제목
+calledAETitleJLabelToolTipText=다른 AE가 호출 시(다른 AE로부터 연결 수락 시) 예상 AE 제목, 대개 호출 AE 제목과 동일
+listeningPortJLabelToolTipText=다른 AE로부터 인바운드 연결 수신 대기 시 사용하는 포트
+acceptorMaximumLengthReceivedJLabelToolTipText=들어오는 연결에서 수락될 최대 PDU 길이(무제한인 경우 0)
+acceptorSocketReceiveBufferSizeJLabelToolTipText=연결 수락 시 설정할 TCP 소켓 수신 버퍼 크기(또는 변경 없이 플랫폼 기본값을 사용하려면 0)
+acceptorSocketSendBufferSizeJLabelToolTipText=연결 수락 시 설정할 TCP 소켓 송신 버퍼 크기(또는 변경 없이 플랫폼 기본값을 사용하려면 0)
+initiatorMaximumLengthReceivedJLabelToolTipText=연결 시작 시 억셉터로부터 요청될 최대 PDU 길이(무제한인 경우 0)
+initiatorSocketReceiveBufferSizeJLabelToolTipText=연결 시작 시 설정할 TCP 소켓 수신 버퍼 크기(또는 변경 없이 플랫폼 기본값을 사용하려면 0)
+initiatorSocketSendBufferSizeJLabelToolTipText=연결 시작 시 설정할 TCP 소켓 송신 버퍼 크기(또는 변경 없이 플랫폼 기본값을 사용하려면 0)

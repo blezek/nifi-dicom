@@ -1,0 +1,34 @@
+addButtonLabelText=Добавить
+editButtonLabelText=Правка
+removeButtonLabelText=Удалить
+doneButtonLabelText=Готово
+
+addButtonToolTipText=Добавить AE к списку удаленных прикладных объектов
+editButtonToolTipText=Редактировать AE в списке удаленных прикладных объектов
+removeButtonToolTipText=Удалить AE из списка удаленных прикладных объектов
+doneButtonToolTipText=Редактирование завершено, перезапустите приложение, чтобы использовать новые настройки
+
+selectNetworkTargetToEditLabelText=Выберите AE для редактирования
+selectNetworkTargetToRemoveLabelText=Выберите AE для удаления
+
+listenerHeaderLabelText=Свойства нашей сети DICOM
+callingAETitleLabelText=Заголовок вызывающего AE
+calledAETitleLabelText=Заголовок вызываемого AE
+listeningPortLabelText=Порт прослушивания
+acceptorMaximumLengthReceivedLabelText=Максимальная длина данных PDU, принимаемых получателем
+acceptorSocketReceiveBufferSizeLabelText=Размер буфера данных, принимаемых получателем от TCP-сокета
+acceptorSocketSendBufferSizeLabelText=Размер буфера данных, отправляемых получателем на TCP-сокет
+initiatorMaximumLengthReceivedLabelText=Максимальная длина данных PDU, принимаемых отправителем
+initiatorSocketReceiveBufferSizeLabelText=Размер буфера данных, принимаемых отправителем от TCP-сокета
+initiatorSocketSendBufferSizeLabelText=Размер буфера данных, отправляемых отправителем на TCP-сокет
+remoteHeaderPanelLabelText=Свойства удаленной сети DICOM AE
+
+callingAETitleJLabelToolTipText=Заголовок AE, который мы используем для себя, когда вызываем (инициируем подключение) другой AE
+calledAETitleJLabelToolTipText=Заголовок AE, с помощью которого нас вызывает (при входящем подключении) другой AE; обычно совпадает с заголовком вызывающего AE
+listeningPortJLabelToolTipText=Порт, через который мы ожидаем входящие подключения от другого AE
+acceptorMaximumLengthReceivedJLabelToolTipText=Максимальная длина протокольного блока данных, которая принимается при входящем подключении (0 означает отсутствие ограничений)
+acceptorSocketReceiveBufferSizeJLabelToolTipText=Размер буфера для данных, получаемых от TCP-сокета при входящем подключении (если оставить значение 0, используется платформа по умолчанию)
+acceptorSocketSendBufferSizeJLabelToolTipText=Размер буфера для данных, отправляемых на TCP-сокет при входящем подключении (если оставить значение 0, используется платформа по умолчанию)
+initiatorMaximumLengthReceivedJLabelToolTipText=Максимальная длина протокольного блока данных, запрашиваемая получателями при инициации подключений (0 означает отсутствие ограничений)
+initiatorSocketReceiveBufferSizeJLabelToolTipText=Размер буфера для данных, получаемых от TCP-сокета при инициации подключений (если оставить значение 0, используется платформа по умолчанию)
+initiatorSocketSendBufferSizeJLabelToolTipText=Размер буфера для данных, отправляемых на TCP-сокет при инициации подключений (если оставить значение 0, используется платформа по умолчанию)

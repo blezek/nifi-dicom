@@ -1,0 +1,104 @@
+applicationTitle=Dicom-puhdistin
+
+DatabaseRootTitleForOriginal=Alkuperäinen
+DatabaseRootTitleForCleaned=Puhdistettu
+
+defaultReplacementPatientName=NIMI^EI
+defaultReplacementPatientID=EITUNNUSTA
+defaultReplacementAccessionNumber=
+defaultRandomReplacementPatientNamePrefix=Nimetön^
+defaultModifyDatesEpoch=20000101
+
+queryIntroductionLabelText=Haku
+queryPatientNameLabelText=Potilaan nimi
+queryPatientIDLabelText=Potilastunnus
+queryStudyDateLabelText=Tutkimuksen pvm
+queryAccessionNumberLabelText=Käsittelyn nro
+
+queryPatientNameToolTipText=Teksti, jota käytetään potilaan nimenä haettaessa
+queryPatientIDToolTipText=Teksti, jota käytetään potilastunnuksena haettaessa
+queryStudyDateToolTipText=Teksti, jota käytetään tutkimuksen päivänä haettaessa
+queryAccessionNumberToolTipText=Teksti, jota käytetään käsittelyn numerona haettaessa
+
+replacementIntroductionLabelText=Korvaa
+replacementPatientNameLabelText=Potilaan nimi
+replacementPatientIDLabelText=Potilastunnus
+replacementAccessionNumberLabelText=Käsittelyn nro
+modifyDatesIntroductionLabelText=Päivämäärät ja ajat
+modifyDatesLabelText=Aseta aikaisimmaksi päivämääräksi
+
+replacementPatientNameToolTipText=Teksti, jota käytetään potilaan nimenä puhdistettaessa (ohitetaan muussa tapauksessa)
+replacementPatientIDToolTipText=Teksti, jota käytetään potilastunnuksena puhdistettaessa (ohitetaan muussa tapauksessa)
+replacementAccessionNumberToolTipText=Teksti, jota käytetään käsittelyn numerona puhdistettaessa (ohitetaan muussa tapauksessa)
+modifyDatesToolTipText=Kauden aloituspäivä, johon aikaisin päivämäärä ja aika ja kaikki muut siihen liittyvät siirretään (ohitetaan muussa tapauksessa)
+
+removeIdentityLabelText=Poista kaikki korvaamattomat henkilöllisyydet
+removeDescriptionsLabelText=Poista kuvaukset
+removeSeriesDescriptionsLabelText=Poista sarjojen kuvaukset
+removeProtocolNameLabelText=Poista kuvausprotokollan nimi
+removeCharacteristicsLabelText=Poista potilaan ominaisuudet
+removeDeviceIdentityLabelText=Poista laitteen tunnisteet
+removeInstitutionIdentityLabelText=Poista laitoksen tunnisteet
+cleanUIDsLabelText=Korvaa kaikki UID-tunnukset
+removePrivateLabelText=Poista kaikki suojaamattomat, yksityiset määritteet
+addContributingEquipmentLabelText=Lisää avustava laitteisto
+removeClinicalTrialAttributesLabelText=Poista kliinisen kokeen määritteet
+zipExportLabelText=Pakkaa viedyt tiedostot
+
+hierarchicalExportLabelText=Vietävät hierarkkiset nimet
+hierarchicalExportToolTipText=Käytä kansio- ja tiedostonimien kuvaavaa potilas-/tutkimus-/sarja-/esiintymähierarkiaa (laiton DICOM-tallennusvälineessä ja virheellinen DICOMDIR:n CS VR:ssä)
+
+acceptAnyTransferSyntaxLabelText=Hyväksy mikä tahansa siirtosyntaksi
+acceptAnyTransferSyntaxToolTipText=Hyväksy mikä tahansa (tunnistettu, pakkaus) siirtosyntaksi, joka vastaanotetaan verkon kautta tai tuodaan tiedostojärjestelmästä, vaikka purkukoodekkia ei olisi käytettävissä
+
+configureButtonLabelText=Määritä
+configureButtonToolTipText=Määritä sovellus ja DICOM-verkon ominaisuudet
+
+logButtonLabelText=Loki
+logButtonToolTipText=Näytä toimintaloki
+
+queryButtonLabelText=Haku
+queryButtonToolTipText=Hae etäverkon isäntää
+querySelectDialogTitle=Haku
+querySelectMessage=Valitse etäjärjestelmä
+
+retrieveButtonLabelText=Hae
+retrieveButtonToolTipText=Hae valittu haku etäisännästä
+
+importButtonLabelText=Tuo
+importButtonToolTipText=Tuo mediatiedostoista alkuperäisten tietokantaan
+
+cleanButtonLabelText=Puhdista
+cleanButtonToolTipText=Puhdista valitut alkuperäiset ja kopioi puhdistettuun tietokantaan
+
+blackoutButtonLabelText=Tummennus
+blackoutButtonToolTipText=Tummennus tallennettu tietokannan valittujen puhdistettujen tiedostojen merkintään
+
+exportButtonLabelText=Vie
+exportButtonToolTipText=Vie puhdistetusta tietokannasta DICOMDIR:n sisältävään kansioon tallennusvälineeseen tallennusta varten
+
+sendButtonLabelText=Lähetä
+sendButtonToolTipText=Lähetä valitut puhdistetut kohteet verkon kautta
+sendSelectDialogTitle=Lähetä
+sendSelectMessage=Valitse kohde
+
+purgeButtonLabelText=Poista
+purgeButtonToolTipText=Poista valitut merkinnät alkuperäisestä ja puhdistetusta tietokannasta ja poista kaikki paikalliset tiedostokopiot
+
+cancelButtonLabelText=Peruuta
+cancelButtonToolTipText=Peruuta nykyinen käynnissä oleva toiminto, jos se ei ole vielä valmis
+
+earliestYearButtonLabelText=Aikaisin vuosi
+earliestYearButtonToolTipText=Täytä ajanjakso, joka alkaa 1.1. valitun sarjan aikaisimpana vuonna
+
+randomYearButtonLabelText=Satunnainen vuosi
+randomYearButtonToolTipText=Täytä ajanjakso, joka alkaa 1.1. satunnaisena vuonna 1970–2070
+
+defaultYearButtonLabelText=Oletusvuosi
+defaultYearButtonToolTipText=Täytä ajanjakso, joka alkaa 1.1. oletusvuonna 2000
+
+randomReplacementButtonLabelText=Satunnainen
+randomReplacementButtonToolTipText=Täytä korvaava teksti satunnaisilla arvoilla
+
+defaultReplacementButtonLabelText=Oletus
+defaultReplacementButtonToolTipText=Täytä korvaava teksti oletusarvoilla

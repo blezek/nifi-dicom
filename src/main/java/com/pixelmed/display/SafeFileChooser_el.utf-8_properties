@@ -1,0 +1,30 @@
+FileChooser.acceptAllFileFilterText=Όλα τα αρχεία
+
+FileChooser.cancelButtonText=Ακύρωση
+
+FileChooser.chooseButtonText=Επιλέξτε
+
+FileChooser.folderNameLabelText=Όνομα φακέλου:
+FileChooser.fileNameLabelText=Αρχείο:
+FileChooser.filesOfTypeLabelText=Μορφή αρχείου:
+
+FileChooser.lookInLabelText=Διερεύνηση σε:
+
+FileChooser.openButtonText=Άνοιγμα
+
+FileChooser.openDialogTitleText=Άνοιγμα
+
+FileChooser.win32.newFolder=Νέος φάκελος
+FileChooser.win32.newFolder.subsequent=Νέος φάκελος {0}
+
+FileChooser.detailsViewActionLabelText=Λεπτομέρειες
+FileChooser.listViewActionLabelText=Λίστα
+FileChooser.newFolderActionLabelText=Νέος φάκελος
+FileChooser.refreshActionLabelText=Ανανέωση
+FileChooser.viewMenuLabelText=Προβολή μενού
+
+FileChooser.cancelButtonToolTipText=Ματαίωση παραθύρου διαλόγου επιλογής αρχείου
+FileChooser.newFolderToolTipText=Δημιουργία νέου φακέλου
+FileChooser.openButtonToolTipText=Άνοιγμα επιλεγμένου αρχείου
+FileChooser.upFolderToolTipText=Ένα επίπεδο επάνω
+FileChooser.viewMenuButtonToolTipText=Προβολή μενού

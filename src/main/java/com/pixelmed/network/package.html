@@ -1,0 +1,44 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	1.60 98/01/27
+
+  Copyright (c) 2001-2017, David A. Clunie DBA Pixelmed Publishing. All rights reserved.
+
+-->
+</head>
+<body bgcolor="white">
+<p>Classes for sending, receiving, querying and retrieving DICOM composite objects on the network,
+as well as supporting lower level functions.</p>
+
+<h2>Package Specification</h2>
+
+<p>Currently the StorageSOPClassSCP supports not only the Storage Service Class as an SCP, but also contains
+support for the Verification Sevice Class and the Query/Retrieve Service Class as an SCP. In future this may
+change, and the individual service classes may be factored out seperately into individual services and
+assembled into user-customizable combinations. As a consequence of the current expedient approach, there
+is an implicit coupling between the association acceptance behavior in
+AssociationAcceptor.applyAbstractSyntaxSelectionPolicy() used by AssociationFactory and the implementation
+of the DIMSE service primitives for the corresponding SOP Classes in StorageSOPClassSCP that is
+probably completely inappropriate, and again is likely to be factored out in future. In particular
+AssociationFactory will probably in future require more explicit user control over which SOP Classes
+to accept or reject. Where possible the current API will be replicated on top of a more robust approach
+so as not to break existing code, but this is not guaranteed.</p>
+
+<ul>
+  <li><a href=""></a>
+</ul>
+
+<h2>Related Documentation</h2>
+
+For overviews, tutorials, examples, guides, and tool documentation, please see:
+<ul>
+  <li><a href=""></a>
+</ul>
+
+<!-- Put @see and @since tags down here. -->
+
+</body>
+</html>

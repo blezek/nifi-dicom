@@ -1,0 +1,34 @@
+addButtonLabelText=Hozzáadás
+editButtonLabelText=Szerkesztés
+removeButtonLabelText=Eltávolítás
+doneButtonLabelText=Kész
+
+addButtonToolTipText=Alkalmazásegyed hozzáadása a távoli alkalmazásegyedek listájához
+editButtonToolTipText=Egy a távoli alkalmazásegyedek listáján szereplő alkalmazásegyed szerkesztése
+removeButtonToolTipText=Alkalmazásegyed eltávolítása a távoli alkalmazásegyedek listájáról
+doneButtonToolTipText=Módosítások befejezve; az új konfiguráció használatához állítsa alaphelyzetbe az alkalmazást
+
+selectNetworkTargetToEditLabelText=Szerkeszteni kívánt alkalmazásegyedek kiválasztása
+selectNetworkTargetToRemoveLabelText=Eltávolítani kívánt alkalmazásegyed kiválasztása
+
+listenerHeaderLabelText=A DICOM hálózat tulajdonságai
+callingAETitleLabelText=Hívó alkalmazásegyed neve
+calledAETitleLabelText=Meghívott alkalmazásegyed neve
+listeningPortLabelText=Figyelt port
+acceptorMaximumLengthReceivedLabelText=Fogadó PDU által fogadott maximális hossz
+acceptorSocketReceiveBufferSizeLabelText=Fogadó TCP-csatorna fogadó pufferének mérete
+acceptorSocketSendBufferSizeLabelText=Fogadó TCP-csatorna küldő pufferének mérete
+initiatorMaximumLengthReceivedLabelText=Kezdeményező PDU által fogadott maximális hossz
+initiatorSocketReceiveBufferSizeLabelText=Kezdeményező TCP-csatorna fogadó pufferének mérete
+initiatorSocketSendBufferSizeLabelText=Kezdeményező TCP-csatorna küldő pufferének mérete
+remoteHeaderPanelLabelText=Távoli AE DICOM hálózat tulajdonságai
+
+callingAETitleJLabelToolTipText=A más alkalmazásegyedek meghívásához (hozzárendelés kezdeményezésekor) használt saját alkalmazásegyed neve
+calledAETitleJLabelToolTipText=Az az alkalmazásegyed-név, amelyen más alkalmazásegyedek meghívják a programot (hozzárendelés elfogadásakor); általában megegyezik a meghívó alkalmazásegyed-névvel
+listeningPortJLabelToolTipText=Az a port, amelyen a program figyeli a más alkalmazásegyedektől bejövő kapcsolatokat
+acceptorMaximumLengthReceivedJLabelToolTipText=A bejövő hozzárendelésektől fogadott maximális PDU-hossz (0 = korlátlan)
+acceptorSocketReceiveBufferSizeJLabelToolTipText=A hozzárendelések fogadásakor a TCP-csatorna fogadó pufferének beállított mérete (0 = nincs módosítás, a platform alapbeállításának használata)
+acceptorSocketSendBufferSizeJLabelToolTipText=A hozzárendelések fogadásakor a TCP-csatorna küldő pufferének beállított mérete (0 = nincs módosítás, a platform alapbeállításának használata)
+initiatorMaximumLengthReceivedJLabelToolTipText=Hozzárendelések kezdeményezésekor a fogadótól kért maximális PDU-hossz (0 = korlátlan)
+initiatorSocketReceiveBufferSizeJLabelToolTipText=A hozzárendelések kezdeményezésekor a TCP-csatorna fogadó pufferének beállított mérete (0 = nincs módosítás, a platform alapbeállításának használata)
+initiatorSocketSendBufferSizeJLabelToolTipText=A hozzárendelések kezdeményezésekor a TCP-csatorna küldő pufferének beállított mérete (0 = nincs módosítás, a platform alapbeállításának használata)

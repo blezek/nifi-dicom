@@ -1,0 +1,9 @@
+localNameLabelText=Lokalt navn
+dicomAETitleLabelText=AE-titel
+hostnameLabelText=Værtsnavn eller IP-adresse
+portLabelText=Port
+
+localNameToolTipText=Det navn, vi bruger til at omtale fjern-AE (som kan være forskellige fra dens AE-titel)
+dicomAETitleToolTipText=Den kaldte AE-titel for fjern-AE (den AE-titel, som den forventes at kaldes)
+hostnameToolTipText=Navnet på fjernværten i det aktuelle domæne eller fuldt egnet værtsnavn eller IPV4-adressen for fjern-AE
+portToolTipText=Porten på fjernværten, som der skal etableres forbindelse til (porten, fra hvilken fjern-AE'en lytter efter indgående forbindelser fra en anden AE)

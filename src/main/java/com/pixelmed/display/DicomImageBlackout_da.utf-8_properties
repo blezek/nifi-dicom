@@ -1,0 +1,25 @@
+applicationTitle=Mørklægning af Dicom-billede
+
+blackoutPreviousButtonLabelText=Forrige
+blackoutApplyButtonLabelText=Anvend
+blackoutSaveButtonLabelText=Gem
+blackoutNextButtonLabelText=Næste
+blackoutApplySaveAllButtonLabelText=Anvend alle og gem
+blackoutCancelButtonLabelText=Annullér
+
+blackoutPreviousButtonToolTipText=Gå til forrige, og spring dette billede over, hvis det ikke allerede er gemt
+blackoutApplyButtonToolTipText=Mørklæg områderne
+blackoutSaveButtonToolTipText=Gem det mørklagte billede
+blackoutNextButtonToolTipText=Gå til næste, og spring dette billede over, hvis det ikke allerede er gemt
+blackoutApplySaveAllButtonToolTipText=Mørklæg områderne, og gem det mørklagte billede for dette og alle resterende valgte billeder
+blackoutCancelButtonToolTipText=Annuller arbejde på dette billede, hvis det ikke allerede er gemt, og spring alle resterende billeder over
+
+keepOverlaysCheckBoxLabelText=Overlægninger
+usePixelPaddingBlackoutValueCheckBoxLabelText=Brug udfyldning
+useZeroBlackoutValueCheckBoxLabelText=Brug nul
+
+keepOverlaysCheckBoxToolTipText=Slå til eller fra, om overlægninger skal vises, og hvis de vises, skal de brændes ind i billedet og fjernes fra overskriften
+usePixelPaddingBlackoutValueCheckBoxToolTipText=Slå til eller fra, om pixeludfyldningsværdien skal bruges eller ej for mørklægningspixels fremfor den mindst mulige standardpixelværdi baseret på fortegn og bitdybde
+useZeroBlackoutValueCheckBoxToolTipText=Slå til eller fra, om en nulværdi skal bruges eller ej for mørklægningspixels fremfor pixeludfyldningsværdien eller den mindst mulige standardpixelværdi baseret på fortegn og bitdybde
+
+statusBarHelpText=Knapper: venstre (knap) - vinduer; højre (knap) - træk tegner boks; højreklik - vælger boks; delete-tast - kasserer valg

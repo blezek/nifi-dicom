@@ -1,0 +1,30 @@
+FileChooser.acceptAllFileFilterText=Összes fájl
+
+FileChooser.cancelButtonText=Mégse
+
+FileChooser.chooseButtonText=Válasszon
+
+FileChooser.folderNameLabelText=Mappa neve:
+FileChooser.fileNameLabelText=Fájl:
+FileChooser.filesOfTypeLabelText=Fájlformátum:
+
+FileChooser.lookInLabelText=Keresés itt:
+
+FileChooser.openButtonText=Megnyitás
+
+FileChooser.openDialogTitleText=Megnyitás
+
+FileChooser.win32.newFolder=Új mappa
+FileChooser.win32.newFolder.subsequent=Új mappa: {0}
+
+FileChooser.detailsViewActionLabelText=Részletek
+FileChooser.listViewActionLabelText=Lista
+FileChooser.newFolderActionLabelText=Új mappa
+FileChooser.refreshActionLabelText=Frissítés
+FileChooser.viewMenuLabelText=Nézet menü
+
+FileChooser.cancelButtonToolTipText=Fájlválasztó párbeszédablak bezárása
+FileChooser.newFolderToolTipText=Új mappa létrehozása
+FileChooser.openButtonToolTipText=Kijelölt fájl megnyitása
+FileChooser.upFolderToolTipText=Egy szinttel feljebb
+FileChooser.viewMenuButtonToolTipText=Nézet menü

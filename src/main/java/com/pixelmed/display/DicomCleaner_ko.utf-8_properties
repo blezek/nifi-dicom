@@ -1,0 +1,104 @@
+applicationTitle=Dicom 클리너
+
+DatabaseRootTitleForOriginal=원본
+DatabaseRootTitleForCleaned=정리
+
+defaultReplacementPatientName=이름^없음
+defaultReplacementPatientID=ID없음
+defaultReplacementAccessionNumber=
+defaultRandomReplacementPatientNamePrefix=익명^
+defaultModifyDatesEpoch=20000101
+
+queryIntroductionLabelText=쿼리
+queryPatientNameLabelText=환자 이름
+queryPatientIDLabelText=환자 ID
+queryStudyDateLabelText=검사 날짜
+queryAccessionNumberLabelText=접근 번호
+
+queryPatientNameToolTipText=쿼리할 때 환자 이름에 사용할 텍스트
+queryPatientIDToolTipText=쿼리할 때 환자 ID에 사용할 텍스트
+queryStudyDateToolTipText=쿼리할 때 검사 날짜에 사용할 텍스트
+queryAccessionNumberToolTipText=쿼리할 때 접근 번호에 사용할 텍스트
+
+replacementIntroductionLabelText=바꾸기
+replacementPatientNameLabelText=환자 이름
+replacementPatientIDLabelText=환자 ID
+replacementAccessionNumberLabelText=접근 번호
+modifyDatesIntroductionLabelText=날짜 및 시간
+modifyDatesLabelText=가장 이른 날짜 이동 대상:
+
+replacementPatientNameToolTipText=정리할 때 환자 이름에 사용할 텍스트(다른 경우 무시됨)
+replacementPatientIDToolTipText=정리할 때 환자 ID에 사용할 텍스트(다른 경우 무시됨)
+replacementAccessionNumberToolTipText=정리할 때 접근 번호에 사용할 텍스트(다른 경우 무시됨)
+modifyDatesToolTipText=가장 이른 날짜 및 시간을 이동할 대상 기간에 사용할 날짜와 그와 관련된 모든 기타 날짜(다른 경우 무시됨)
+
+removeIdentityLabelText=모든 미교체 ID 삭제
+removeDescriptionsLabelText=설명 삭제
+removeSeriesDescriptionsLabelText=시리즈 설명 삭제
+removeProtocolNameLabelText=획득 프로토콜 이름 삭제
+removeCharacteristicsLabelText=환자 특징 삭제
+removeDeviceIdentityLabelText=장치 ID 삭제
+removeInstitutionIdentityLabelText=기관 ID 삭제
+cleanUIDsLabelText=모든 UID 교체
+removePrivateLabelText=안전하지 않은 비공개 속성 삭제
+addContributingEquipmentLabelText=기여 장비 추가
+removeClinicalTrialAttributesLabelText=임상시험 속성 삭제
+zipExportLabelText=내보낸 파일 압축
+
+hierarchicalExportLabelText=내보내기에서의 계층적 이름
+hierarchicalExportToolTipText=폴더 및 파일 이름(DICOM 미디어에서 불법이고 DICOMDIR의 CS VR에 대해 유효하지 않음)에 설명적 환자/검사/시리즈/인스턴스 계층 사용
+
+acceptAnyTransferSyntaxLabelText=전송 구문 분석 수락
+acceptAnyTransferSyntaxToolTipText=압축 해제용 코덱을 사용할 수 없는 경우에도 네트워크를 통해 수신되거나 파일 시스템에서 가져올 때 전송 구분 분석(인식, 압축) 수락
+
+configureButtonLabelText=구성
+configureButtonToolTipText=DICOM 네트워크 속성을 포함하여 애플리케이션 구성
+
+logButtonLabelText=로그
+logButtonToolTipText=활동 로그 표시
+
+queryButtonLabelText=쿼리
+queryButtonToolTipText=원격 네트워크 호스트 쿼리
+querySelectDialogTitle=쿼리
+querySelectMessage=원격 시스템 선택
+
+retrieveButtonLabelText=찾아오기
+retrieveButtonToolTipText=원격 호스트에서 쿼리 선택 항목 찾아오기
+
+importButtonLabelText=가져오기
+importButtonToolTipText=미디어에서 원본 데이터베이스로 가져오기
+
+cleanButtonLabelText=정리
+cleanButtonToolTipText=선택한 원본을 정리하고 정리된 데이터베이스로 복사하기
+
+blackoutButtonLabelText=블랙아웃
+blackoutButtonToolTipText=선택 및 정리된 데이터베이스 파일에서 주석에 기록된 블랙아웃
+
+exportButtonLabelText=내보내기
+exportButtonToolTipText=정리된 데이터베이스에서 미디어에 기록하기 위해 DICOMDIR이 있는 폴더로 내보내기
+
+sendButtonLabelText=전송
+sendButtonToolTipText=네트워크를 통해 선택 및 정리된 객체 전송
+sendSelectDialogTitle=전송
+sendSelectMessage=대상 선택
+
+purgeButtonLabelText=비우기
+purgeButtonToolTipText=선택한 항목을 원본 및 정리된 데이터베이스에서 제거하고 로컬 파일 복사본 삭제
+
+cancelButtonLabelText=취소
+cancelButtonToolTipText=아직 완료되지 않은 진행 중인 현재 활동 취소
+
+earliestYearButtonLabelText=가장 이른 연도
+earliestYearButtonToolTipText=선택된 세트에서 가장 이른 연도의 1월 1일로 날짜 기간 채우기
+
+randomYearButtonLabelText=무작위 연도
+randomYearButtonToolTipText=1970 ~ 2070년 사이에서 무작위로 선택된 연도의 1월 1일로 날짜 기간 채우기
+
+defaultYearButtonLabelText=기본 연도
+defaultYearButtonToolTipText=기본 연도인 2000년 1월 1일로 날짜 기간 채우기
+
+randomReplacementButtonLabelText=무작위
+randomReplacementButtonToolTipText=교체 텍스트를 무작위 값으로 채우기
+
+defaultReplacementButtonLabelText=기본값
+defaultReplacementButtonToolTipText=교체 텍스트를 기본값으로 채우기

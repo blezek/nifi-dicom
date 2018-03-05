@@ -1,0 +1,104 @@
+applicationTitle=Dicom Temizleyici
+
+DatabaseRootTitleForOriginal=Orijinal
+DatabaseRootTitleForCleaned=Temizlendi
+
+defaultReplacementPatientName=AD^YOK
+defaultReplacementPatientID=KİMLİKYOK
+defaultReplacementAccessionNumber=
+defaultRandomReplacementPatientNamePrefix=Bilinmiyor^
+defaultModifyDatesEpoch=20000101
+
+queryIntroductionLabelText=Sorgu
+queryPatientNameLabelText=Hasta Adı
+queryPatientIDLabelText=Hasta Kimliği
+queryStudyDateLabelText=Çalışma Tarihi
+queryAccessionNumberLabelText=Erişim No.
+
+queryPatientNameToolTipText=Sorgu sırasında Hasta Adı olarak kullanılan metin
+queryPatientIDToolTipText=Sorgu sırasında Hasta Kimliği olarak kullanılan metin
+queryStudyDateToolTipText=Sorgu sırasında Çalışma Tarihi olarak kullanılan metin
+queryAccessionNumberToolTipText=Sorgu sırasında Erişim No. olarak kullanılan metin
+
+replacementIntroductionLabelText=Değiştir
+replacementPatientNameLabelText=Hasta Adı
+replacementPatientIDLabelText=Hasta Kimliği
+replacementAccessionNumberLabelText=Erişim No.
+modifyDatesIntroductionLabelText=Tarih ve saat bilgileri
+modifyDatesLabelText=En erken tarihi şuraya taşı
+
+replacementPatientNameToolTipText=Temizleme işlemi sırasında Hasta Adı olarak kullanılan metin (aksi takdirde yoksayılır)
+replacementPatientIDToolTipText=Temizleme işlemi sırasında Hasta Kimliği olarak kullanılan metin (aksi takdirde yoksayılır)
+replacementAccessionNumberToolTipText=Temizleme işlemi sırasında Erişim No. olarak kullanılan metin (aksi takdirde yoksayılır)
+modifyDatesToolTipText=En erken tarih ve saat bilgileri ile bunlarla ilgili diğer tarih bilgilerinin taşınacağı zaman dilimi için kullanılan tarih (aksi takdirde yoksayılır)
+
+removeIdentityLabelText=Değiştirilmemiş tüm kimlikleri kaldır
+removeDescriptionsLabelText=Açıklamaları kaldır
+removeSeriesDescriptionsLabelText=Seri açıklamasını kaldır
+removeProtocolNameLabelText=Görüntü alma protokolü adını kaldır
+removeCharacteristicsLabelText=Hasta özelliklerini kaldır
+removeDeviceIdentityLabelText=Cihaz kimliklerini kaldır
+removeInstitutionIdentityLabelText=Kurum kimliklerini kaldır
+cleanUIDsLabelText=Tüm UID'leri değiştir
+removePrivateLabelText=Güvenli olmayan özel nitelikleri kaldır
+addContributingEquipmentLabelText=Katkıda bulunan ekipman ekle
+removeClinicalTrialAttributesLabelText=Klinik çalışma niteliklerini kaldır
+zipExportLabelText=Dışa aktarılmış dosyaları sıkıştır
+
+hierarchicalExportLabelText=Dışa aktarım sırasında hiyerarşik adlar
+hierarchicalExportToolTipText=Hasta/Çalışma/Seri/Klasör ve dosya adı örnek hiyerarşisi gibi açıklayıcı bilgileri kullan (DICOM ortamında YASA DIŞIDIR ve CS VR için DICOMDIR ortamında GEÇERSİZDİR)
+
+acceptAnyTransferSyntaxLabelText=Tüm Aktarım Söz Dizimlerini kabul et
+acceptAnyTransferSyntaxToolTipText=Sıkıştırılmış dosyaları tekrar açmak için kullanılabilecek bir codec olmasa dahi ağ üzerinden veya dosya sisteminden içe aktarılırken alınan tüm (tanınan, sıkıştırma) Aktarım Söz Dizimlerini kabul et
+
+configureButtonLabelText=Yapılandır
+configureButtonToolTipText=DICOM ağ özellikleri de dahil olmak üzere uygulamayı yapılandır
+
+logButtonLabelText=Günlük
+logButtonToolTipText=Etkinlik günlüğünü göster
+
+queryButtonLabelText=Sorgu
+queryButtonToolTipText=Uzak bir ağ ana bilgisayarını sorgula
+querySelectDialogTitle=Sorgu
+querySelectMessage=Uzak sistemi seç
+
+retrieveButtonLabelText=Al
+retrieveButtonToolTipText=Uzak ana bilgisayardan sorgu seçimini al
+
+importButtonLabelText=İçe aktar
+importButtonToolTipText=Ortamdan orijinal görüntü veritabanına içe aktar
+
+cleanButtonLabelText=Temizle
+cleanButtonToolTipText=Seçilen orijinal görüntüleri temizle ve temizlenmiş görüntü veritabanına kopyala
+
+blackoutButtonLabelText=Karart
+blackoutButtonToolTipText=Seçilen temizlenmiş veritabanı dosyalarındaki ek açıklamaya yazarken görüntüleri karart
+
+exportButtonLabelText=Dışa aktar
+exportButtonToolTipText=DICOMDIR ile verileri bir ortama yazmak üzere temizlenmiş veritabanından klasöre dışa aktar
+
+sendButtonLabelText=Gönder
+sendButtonToolTipText=Seçilen temizlenmiş nesneleri ağ üzerinden gönder
+sendSelectDialogTitle=Gönder
+sendSelectMessage=Hedef seç
+
+purgeButtonLabelText=Kalıcı Olarak Sil
+purgeButtonToolTipText=Seçilen girişleri orijinal ve temizlenmiş görüntü veritabanlarından kaldır ve tüm yerel dosya kopyalarını sil
+
+cancelButtonLabelText=İptal
+cancelButtonToolTipText=Henüz tamamlanmadıysa devam etmekte olan etkinliği iptal et
+
+earliestYearButtonLabelText=En Erken Yıl
+earliestYearButtonToolTipText=Seçilen setin girildiği en erken yılın tarih alanını 1 Ocak olarak doldur
+
+randomYearButtonLabelText=Rastgele Yıl
+randomYearButtonToolTipText=1970 ile 2070 arasında rastgele bir yılın tarih alanını 1 Ocak olarak doldur
+
+defaultYearButtonLabelText=Varsayılan Yıl
+defaultYearButtonToolTipText=Varsayılan olarak 2000 yılının tarih alanını 1 Ocak olarak doldur
+
+randomReplacementButtonLabelText=Rastgele
+randomReplacementButtonToolTipText=Değişiklik metni alanını rastgele değerlerle doldur
+
+defaultReplacementButtonLabelText=Varsayılan
+defaultReplacementButtonToolTipText=Değişiklik metni alanını varsayılan değerlerle doldur

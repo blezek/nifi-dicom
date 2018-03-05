@@ -1,0 +1,9 @@
+localNameLabelText=Lokaler Name
+dicomAETitleLabelText=AE-Titel
+hostnameLabelText=Hostname oder IP-Adresse
+portLabelText=Port
+
+localNameToolTipText=Name, mit dem wir diese Remote-AE bezeichnen (kann von deren AE-Titel abweichen)
+dicomAETitleToolTipText=Aufgerufener AE-Titel der Remote-AE (der AE-Titel, mit dem sie erwartet, aufgerufen zu werden)
+hostnameToolTipText=Der Name des Remote-Hosts innerhalb der aktuellen Domäne oder der vollständig qualifizierte Hostname oder die IPv4-Adresse der Remote-AE
+portToolTipText=Der Port des Remote-Hosts, mit dem eine Verbindung hergestellt wird (der Port, den die Remote-AE auf eingehende Verbindungen von einer anderen AE hin überwacht)

@@ -1,0 +1,25 @@
+applicationTitle=Oscurecimiento de imagen DICOM
+
+blackoutPreviousButtonLabelText=Anterior
+blackoutApplyButtonLabelText=Aplicar
+blackoutSaveButtonLabelText=Guard
+blackoutNextButtonLabelText=Sig.
+blackoutApplySaveAllButtonLabelText=Aplicar todo y guardar
+blackoutCancelButtonLabelText=Cancelar
+
+blackoutPreviousButtonToolTipText=Ir a anterior, omitir esta imagen si no está ya guardada
+blackoutApplyButtonToolTipText=Oscurecer regiones
+blackoutSaveButtonToolTipText=Guardar imagen oscurecida
+blackoutNextButtonToolTipText=Ir a siguiente, omitir esta imagen si no está ya guardada
+blackoutApplySaveAllButtonToolTipText=Oscurecer regiones y guardar la imagen oscurecida para esta y todas las imágenes restantes seleccionadas
+blackoutCancelButtonToolTipText=Cancelar el trabajo en esta imagen si no se ha guardado ya y omitir todas las imágenes restantes
+
+keepOverlaysCheckBoxLabelText=Superposiciones
+usePixelPaddingBlackoutValueCheckBoxLabelText=Usar relleno
+useZeroBlackoutValueCheckBoxLabelText=Usar cero
+
+keepOverlaysCheckBoxToolTipText=Alternar si mostrar o no superposiciones. Si se muestran, grabarlas en la imagen y eliminarlas del encabezado
+usePixelPaddingBlackoutValueCheckBoxToolTipText=Alternar si usar o no el valor de relleno de píxeles para píxeles oscurecidos, en lugar del valor de píxel mínimo posible predet. a partir del tipo signed/unsigned y la profundidad en bits
+useZeroBlackoutValueCheckBoxToolTipText=Alternar si usar o no el valor cero para píxeles oscurecidos, en lugar del valor de relleno de píxeles o el valor de píxel mínimo posible predet. a partir del tipo signed/unsigned y la profundidad en bits
+
+statusBarHelpText=Botones: izq, cambia la ventana; dcho, arrastra el cuadro; clic derecho, selecciona un cuadro; tecla eliminar descarta selección

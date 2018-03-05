@@ -1,0 +1,34 @@
+addButtonLabelText=Ekle
+editButtonLabelText=Düzenle
+removeButtonLabelText=Kaldır
+doneButtonLabelText=Bitti
+
+addButtonToolTipText=Uzak Uygulama Varlıkları listesine AE ekle
+editButtonToolTipText=Uzak Uygulama Varlıkları listesinde AE düzenle
+removeButtonToolTipText=Uzak Uygulama Varlıkları listesinden AE kaldır
+doneButtonToolTipText=Düzenleme işlemi bitti; yeni yapılandırmayı kullanmak için uygulamayı sıfırla
+
+selectNetworkTargetToEditLabelText=Düzenlenecek AE'yi seç
+selectNetworkTargetToRemoveLabelText=Kaldırılacak AE'yi seç
+
+listenerHeaderLabelText=DICOM ağ özelliklerimiz
+callingAETitleLabelText=Arayan AE Başlığı
+calledAETitleLabelText=Aranan AE Başlığı
+listeningPortLabelText=Dinleme bağlantı noktası
+acceptorMaximumLengthReceivedLabelText=Alınan Maksimum Alıcı PDU Uzunluğu
+acceptorSocketReceiveBufferSizeLabelText=Alıcı TCP Yuva Alma Arabellek Boyutu
+acceptorSocketSendBufferSizeLabelText=Alıcı TCP Yuva Gönderme Arabellek Boyutu
+initiatorMaximumLengthReceivedLabelText=Alınan Maksimum Başlatıcı PDU Uzunluğu
+initiatorSocketReceiveBufferSizeLabelText=Başlatıcı TCP Yuva Alma Arabellek Boyutu
+initiatorSocketSendBufferSizeLabelText=Başlatıcı TCP Yuva Gönderme Arabellek Boyutu
+remoteHeaderPanelLabelText=Uzak AE DICOM ağ özellikleri
+
+callingAETitleJLabelToolTipText=Başka bir AE ararken (ilişki başlatırken) kullanılan AE Başlığı
+calledAETitleJLabelToolTipText=Başka bir AE tarafından aranması (başlatılan ilişkiyi kabul etmesi) beklenen AE Başlığı (genellikle Arayan AE Başlığı ile aynı)
+listeningPortJLabelToolTipText=Başka bir AE'den gelen bağlantıların dinlendiği bağlantı noktası
+acceptorMaximumLengthReceivedJLabelToolTipText=Gelen ilişkilerde kabul edilen maksimum PDU uzunluğu (sınırsız ise 0)
+acceptorSocketReceiveBufferSizeJLabelToolTipText=İlişkileri kabul ederken ayarlanan (veya değişiklik yapmadan platform varsayılanını kullanmak üzere 0 olarak belirlenen) TCP yuva alma arabellek boyutu
+acceptorSocketSendBufferSizeJLabelToolTipText=İlişkileri kabul ederken ayarlanan (veya değişiklik yapmadan platform varsayılanını kullanmak üzere 0 olarak belirlenen) TCP yuva gönderme arabellek boyutu
+initiatorMaximumLengthReceivedJLabelToolTipText=İlişkileri başlatırken alıcılardan istenen maksimum PDU uzunluğu (sınırsız ise 0)
+initiatorSocketReceiveBufferSizeJLabelToolTipText=İlişkileri başlatırken ayarlanan (veya değişiklik yapmadan platform varsayılanını kullanmak üzere 0 olarak belirlenen) TCP yuva alma arabellek boyutu
+initiatorSocketSendBufferSizeJLabelToolTipText=İlişkileri başlatırken ayarlanan (veya değişiklik yapmadan platform varsayılanını kullanmak üzere 0 olarak belirlenen) TCP yuva gönderme arabellek boyutu

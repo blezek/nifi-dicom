@@ -1,0 +1,25 @@
+applicationTitle=Dicom-bildanonymisering
+
+blackoutPreviousButtonLabelText=Föregående
+blackoutApplyButtonLabelText=Tillämpa
+blackoutSaveButtonLabelText=Spara
+blackoutNextButtonLabelText=Nästa
+blackoutApplySaveAllButtonLabelText=Tillämpa alla och spara
+blackoutCancelButtonLabelText=Avbryt
+
+blackoutPreviousButtonToolTipText=Flytta till föregående och hoppa över den här bilden om den inte redan har sparats
+blackoutApplyButtonToolTipText=Anonymisera områden
+blackoutSaveButtonToolTipText=Spara den anonymiserade bilden
+blackoutNextButtonToolTipText=Flytta till nästa och hoppa över den här bilden om den inte redan har sparats
+blackoutApplySaveAllButtonToolTipText=Anonymisera områdena och spara den anonymiserade bilden för den här och alla kvarvarande valda bilder
+blackoutCancelButtonToolTipText=Avbryt arbetet med bilden, om den inte redan har sparats, och hoppa över alla kvarvarande bilder
+
+keepOverlaysCheckBoxLabelText=Överlagringar
+usePixelPaddingBlackoutValueCheckBoxLabelText=Använd utfyllnad
+useZeroBlackoutValueCheckBoxLabelText=Använd noll
+
+keepOverlaysCheckBoxToolTipText=Växla mellan om överlagringar ska användas eller inte och, om de visas, bränns de in i bilden och tas bort från rubriken
+usePixelPaddingBlackoutValueCheckBoxToolTipText=Växla mellan om pixelutfyllnadsvärde ska användas för anonymiserade pixlar eller inte, istället för det minsta möjliga standardpixelvärdet baserat på underteckningsstatus och bitdjup
+useZeroBlackoutValueCheckBoxToolTipText=Växla mellan om ett nollvärde ska användas för anonymiserade pixlar eller inte, istället för standardpixelvärdet baserat på underteckningsstatus och bitdjup
+
+statusBarHelpText=Knappar: vänster - inställning; höger - dra ritningsruta; högerklicka - välj ruta; Delete-knapp - ta bort markering

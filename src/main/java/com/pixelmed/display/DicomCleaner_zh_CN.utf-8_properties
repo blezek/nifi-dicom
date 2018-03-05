@@ -1,0 +1,104 @@
+applicationTitle=Dicom 清除器
+
+DatabaseRootTitleForOriginal=原始
+DatabaseRootTitleForCleaned=已清除
+
+defaultReplacementPatientName=姓名^无
+defaultReplacementPatientID=无ID
+defaultReplacementAccessionNumber=
+defaultRandomReplacementPatientNamePrefix=匿名^
+defaultModifyDatesEpoch=20000101
+
+queryIntroductionLabelText=查询
+queryPatientNameLabelText=患者姓名
+queryPatientIDLabelText=患者 ID
+queryStudyDateLabelText=研究日期
+queryAccessionNumberLabelText=登记号
+
+queryPatientNameToolTipText=查询时用于患者姓名的文本
+queryPatientIDToolTipText=查询时用于患者 ID 的文本
+queryStudyDateToolTipText=查询时用于研究日期的文本
+queryAccessionNumberToolTipText=查询时用于登记号的文本
+
+replacementIntroductionLabelText=替换
+replacementPatientNameLabelText=患者姓名
+replacementPatientIDLabelText=患者 ID
+replacementAccessionNumberLabelText=登记号
+modifyDatesIntroductionLabelText=日期和时间
+modifyDatesLabelText=将最早日期移至
+
+replacementPatientNameToolTipText=清除时用于患者姓名的文本（否则忽略）
+replacementPatientIDToolTipText=清除时用于患者 ID 的文本（否则忽略）
+replacementAccessionNumberToolTipText=清除时用于患者登记号的文本（否则忽略）
+modifyDatesToolTipText=用于将最早日期和时间移至的时间的日期，以及所有与其相关的日期（否则忽略）
+
+removeIdentityLabelText=删除所有未替换的识别符
+removeDescriptionsLabelText=删除描述
+removeSeriesDescriptionsLabelText=删除系列描述
+removeProtocolNameLabelText=删除采集协议名称
+removeCharacteristicsLabelText=删除患者特征
+removeDeviceIdentityLabelText=删除设备标识符
+removeInstitutionIdentityLabelText=删除机构标识符
+cleanUIDsLabelText=替换所有 UID
+removePrivateLabelText=删除不安全私有属性
+addContributingEquipmentLabelText=添加功能性设备
+removeClinicalTrialAttributesLabelText=删除临床试验属性
+zipExportLabelText=压缩导出的文件
+
+hierarchicalExportLabelText=导出中的层级名称
+hierarchicalExportToolTipText=使用文件夹和文件名称的描述性患者/研究/系列/实例层级（即 DICOM 媒介上为“非法”，而 DICOMDIR 中的 CS VR 为“无效”）
+
+acceptAnyTransferSyntaxLabelText=接受任何传输语法
+acceptAnyTransferSyntaxToolTipText=接受任何从网络接收的、或即使无解压编码解码器可用的情况下从文件系统导入时的任何（识别的、压缩的）Transfer Syntax
+
+configureButtonLabelText=配置
+configureButtonToolTipText=配置应用程序，包括 DICOM 网络属性
+
+logButtonLabelText=日志
+logButtonToolTipText=显示活动日志
+
+queryButtonLabelText=查询
+queryButtonToolTipText=查询远程网络主机
+querySelectDialogTitle=查询
+querySelectMessage=选择远程系统
+
+retrieveButtonLabelText=检索
+retrieveButtonToolTipText=从远程主机检索查询选择
+
+importButtonLabelText=导入
+importButtonToolTipText=从媒介导入到原始数据库
+
+cleanButtonLabelText=清除
+cleanButtonToolTipText=清除选定原始数据并复制到已清除的数据库
+
+blackoutButtonLabelText=黑色像素填充
+blackoutButtonToolTipText=刻录在选定已清除数据库文件的注释中的黑色像素填充
+
+exportButtonLabelText=导出
+exportButtonToolTipText=从已清除数据库导出到带 DICOMDIR 的文件夹以刻录到媒介
+
+sendButtonLabelText=发送
+sendButtonToolTipText=通过网络发送选定的已清除对象
+sendSelectDialogTitle=发送
+sendSelectMessage=选择目的地
+
+purgeButtonLabelText=清除
+purgeButtonToolTipText=从原始和已清除数据库删除选定的条目，并删除文件的任何本地副本
+
+cancelButtonLabelText=取消
+cancelButtonToolTipText=如尚未完成，取消正在进行的当前活动
+
+earliestYearButtonLabelText=最早年份
+earliestYearButtonToolTipText=使用选定集最早年份的一月的第一天填写日期时间
+
+randomYearButtonLabelText=随机年份
+randomYearButtonToolTipText=使用 1970 至 2070 之间的随机年份的一月的第一天填写日期时间
+
+defaultYearButtonLabelText=默认年份
+defaultYearButtonToolTipText=使用默认的 2000 年一月的第一天填写日期时间
+
+randomReplacementButtonLabelText=随机
+randomReplacementButtonToolTipText=使用随机值填写替代文本
+
+defaultReplacementButtonLabelText=默认
+defaultReplacementButtonToolTipText=使用默认值填写替代文本

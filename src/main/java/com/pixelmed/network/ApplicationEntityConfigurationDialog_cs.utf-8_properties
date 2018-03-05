@@ -1,0 +1,9 @@
+localNameLabelText=Místní název
+dicomAETitleLabelText=Název AE
+hostnameLabelText=Název hostitelského počítače nebo IP adresa
+portLabelText=Port
+
+localNameToolTipText=Název, pomocí kterého odkazujeme na toto vzdálené AE (který se může lišit od jeho názvu AE)
+dicomAETitleToolTipText=Používaný název AE vzdáleného AE (název AE, jehož používání je očekáváno)
+hostnameToolTipText=Název vzdáleného hostitelského počítače v rámci aktuální domény nebo plně kvalifikovaný název hostitelského počítače nebo adresa IPV4 vzdáleného AE
+portToolTipText=Port k připojení na vzdáleném hostitelském počítači (port, kterému naslouchá vzdálené AE u příchozích připojení z dalšího AE)

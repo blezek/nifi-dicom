@@ -1,0 +1,104 @@
+applicationTitle=Dicom-Bereinigung
+
+DatabaseRootTitleForOriginal=Original
+DatabaseRootTitleForCleaned=Bereinigt
+
+defaultReplacementPatientName=NAME^KEINER
+defaultReplacementPatientID=KEINEID
+defaultReplacementAccessionNumber=
+defaultRandomReplacementPatientNamePrefix=Anon^
+defaultModifyDatesEpoch=20000101
+
+queryIntroductionLabelText=Abfragen
+queryPatientNameLabelText=Name des Patienten
+queryPatientIDLabelText=ID des Patienten
+queryStudyDateLabelText=Studiendatum
+queryAccessionNumberLabelText=Vorgangsnummer
+
+queryPatientNameToolTipText=Bei der Abfrage zu verwendender Text für den Namen des Patienten
+queryPatientIDToolTipText=Bei der Abfrage zu verwendender Text für die ID des Patienten
+queryStudyDateToolTipText=Bei der Abfrage zu verwendender Text für das Studiendatum
+queryAccessionNumberToolTipText=Bei der Abfrage zu verwendender Text für die Vorgangsnummer
+
+replacementIntroductionLabelText=Ersetzen
+replacementPatientNameLabelText=Name des Patienten
+replacementPatientIDLabelText=ID des Patienten
+replacementAccessionNumberLabelText=Vorgangsnummer
+modifyDatesIntroductionLabelText=Datum und Uhrzeit
+modifyDatesLabelText=Frühestes Datum legen auf
+
+replacementPatientNameToolTipText=Bei der Bereinigung zu verwendender Text für den Namen des Patienten (wird ansonsten ignoriert)
+replacementPatientIDToolTipText=Bei der Bereinigung zu verwendender Text für die Patienten-ID (wird ansonsten ignoriert)
+replacementAccessionNumberToolTipText=Bei der Bereinigung zu verwendender Text für die Vorgangsnummer (wird ansonsten ignoriert)
+modifyDatesToolTipText=Frühestes Datum und früheste Uhrzeit der Zeitspanne, auf das/die sich alle anderen Daten beziehen sollen (wird ansonsten ignoriert)
+
+removeIdentityLabelText=Alle nicht ersetzten Identitäten entfernen
+removeDescriptionsLabelText=Beschreibungen entfernen
+removeSeriesDescriptionsLabelText=Serienbeschreibung entfernen
+removeProtocolNameLabelText=Namen des Aufnahmeprotokolls entfernen
+removeCharacteristicsLabelText=Patientencharakteristika entfernen
+removeDeviceIdentityLabelText=Geräte-IDs entfernen
+removeInstitutionIdentityLabelText=Einrichtungs-IDs entfernen
+cleanUIDsLabelText=Alle UIDs entfernen
+removePrivateLabelText=Unsichere private Attribute entfernen
+addContributingEquipmentLabelText=Unterstützende Geräte hinzufügen
+removeClinicalTrialAttributesLabelText=Attribute aus klinischen Studien entfernen
+zipExportLabelText=Exportierte ZIP-Dateien
+
+hierarchicalExportLabelText=Hierarchische Namen bei Export
+hierarchicalExportToolTipText=Deskriptive Patienten-/Studien-/Serien-/Instanzenhierarchie für Ordner- und Dateinamen (NICHT ERLAUBT bei DICOM-Medien und UNGÜLTIG für CS VR in DICOMDIR) verwenden
+
+acceptAnyTransferSyntaxLabelText=Beliebige Übertragungssyntax akzeptieren
+acceptAnyTransferSyntaxToolTipText=Beliebige (erkannte, Komprimierung verwendende) über das Netzwerk oder beim Import vom Dateisystem empfangene Übertragungssyntax akzeptieren, auch wenn kein Codec für die Dekomprimierung verfügbar ist
+
+configureButtonLabelText=Konfigurieren
+configureButtonToolTipText=Anwendung inklusive DICOM-Netzwerkeigenschaften konfigurieren
+
+logButtonLabelText=Protokoll
+logButtonToolTipText=Aktivitätenprotokoll anzeigen
+
+queryButtonLabelText=Abfragen
+queryButtonToolTipText=Einen Remote-Netzwerkhost abfragen
+querySelectDialogTitle=Abfragen
+querySelectMessage=Remote-System auswählen
+
+retrieveButtonLabelText=Abrufen
+retrieveButtonToolTipText=Abfrageauswahl vom Remote-Host abrufen
+
+importButtonLabelText=Importieren
+importButtonToolTipText=Von Medium in Originaldatenbank importieren
+
+cleanButtonLabelText=Bereinigen
+cleanButtonToolTipText=Ausgewählte Originale bereinigen und in bereinigte Datenbank kopieren
+
+blackoutButtonLabelText=Schwärzen
+blackoutButtonToolTipText=Eingebrannte Annotation in ausgewählten bereinigten Datenbankdateien schwärzen
+
+exportButtonLabelText=Exportieren
+exportButtonToolTipText=Aus bereinigter Datenbank in Ordner mit DICOMDIR zum Brennen auf Medium exportieren
+
+sendButtonLabelText=Senden
+sendButtonToolTipText=Ausgewählte bereinigte Objekte via Netzwerk senden
+sendSelectDialogTitle=Senden
+sendSelectMessage=Ziel auswählen
+
+purgeButtonLabelText=Löschen
+purgeButtonToolTipText=Ausgewählte Einträge aus Original- und bereinigten Datenbanken entfernen und alle lokalen Kopien der Dateien löschen
+
+cancelButtonLabelText=Abbrechen
+cancelButtonToolTipText=Laufende Aktivität abbrechen, falls nicht bereits abgeschlossen
+
+earliestYearButtonLabelText=Frühestes Jahr
+earliestYearButtonToolTipText=Datenepoche mit dem 1. Januar des frühesten Jahres des ausgewählten Satzes aktualisieren
+
+randomYearButtonLabelText=Beliebiges Jahr
+randomYearButtonToolTipText=Datenepoche mit dem 1. Januar eines beliebigen Jahres zwischen 1970 und 2070 aktualisieren
+
+defaultYearButtonLabelText=Standardjahr
+defaultYearButtonToolTipText=Datenepoche mit dem 1. Januar des Standardjahres 2000 aktualisieren
+
+randomReplacementButtonLabelText=Beliebig
+randomReplacementButtonToolTipText=Ersetzungstext mit beliebigen Werten aktualisieren
+
+defaultReplacementButtonLabelText=Standard
+defaultReplacementButtonToolTipText=Ersetzungstext mit Standardwerten aktualisieren

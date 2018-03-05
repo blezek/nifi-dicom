@@ -1,0 +1,104 @@
+113345001;0;Abdominal structure (body structure);Xa1gd;T-D4000;1
+23451007;0;Adrenal structure (body structure);Xa06C;T-B3000;1
+70258002;0;Ankle joint structure (body structure);Xa1Q6;T-15750;1
+15825003;0;Aortic structure (body structure);XM0PZ;T-42000;1
+40983000;0;Upper arm structure (body structure);XUDX1;T-D8200;1
+34797008;0;Axilla structure (body structure);Xa1h2;T-D8100;1
+77568009;0;Back structure, excluding neck (body structure);XUKl4;T-D2100;1
+89837001;0;Urinary bladder structure (body structure);XM0Py;T-74000;1
+12738006;0;Brain structure (body structure);XM0Oj;T-A0100;1
+76752008;0;Breast structure (body structure);XM0QG;T-04000;1
+955009;0;Bronchial structure (body structure);Xa0v9;T-26000;1
+46862004;0;Buttock structure (body structure);XUEh0;T-D2600;1
+80144004;0;Bone structure of calcaneum (body structure);XM0RR;T-12770;1
+53840002;0;Structure of calf of leg (body structure);XUG4S;T-D9440;1
+69105007;0;Carotid artery structure (body structure);XU8yU;T-45010;1
+180924008;0;Entire cerebellum (body structure);7N004;T-A600A;1
+122494005;0;Cervical spine structure (body structure);Xa9ZB;T-11501;1
+71252005;0;Cervix uteri structure (body structure);Xa0L8;T-83200;1
+60819002;0;Cheek structure (body structure);Xa2E3;T-D1206;1
+51185008;0;Thoracic structure (body structure);Xa1ga;T-D3000;1
+362047009;0;Entire circle of Willis (body structure);XU8yg;T-45526;1
+51299004;0;Bone structure of clavicle (body structure);XM0Qi;T-12310;1
+64688005;0;Bone structure of coccyx (body structure);XaEjq;T-11BF0;1
+71854001;0;Colon structure (body structure);Xa1Fw;T-59300;1
+28726007;0;Corneal structure (body structure);XM0P7;T-AA200;1
+41801008;0;Coronary artery structure (body structure);XUDhI;T-43000;1
+38848004;0;Duodenal structure (body structure);Xa1Fq;T-58200;1
+1910005;0;Entire ear (body structure);X80zT;T-AB000;1
+76248009;0;Entire elbow region (body structure);XS0AX;T-D8300;1
+38266002;0;Entire body as a whole (body structure);XS0ui;T-D0010;1
+32849002;0;Esophageal structure (body structure);Xa11N;T-56000;1
+66019005;0;Limb structure (body structure);Xa1Z8;T-D0300;1
+81745001;0;Structure of eye proper (body structure);Xa1S4;T-AA000;1
+80243003;0;Eyelid structure (body structure);Xa1S7;T-AA810;1
+89545001;0;Face structure (body structure);XaADe;T-D1200;1
+71341001;0;Bone structure of femur (body structure);XM0RJ;T-12710;1
+7569003;0;Finger structure (body structure);Xa1tw;T-D8800;1
+56459004;0;Foot structure (body structure);Xa1fX;T-D9700;1
+55797009;0;Bone structure of forearm (body structure);XUGSZ;T-12402;1
+28231008;0;Gallbladder structure (body structure);XM0Pt;T-63000;1
+85562004;0;Hand structure (body structure);Xa1fW;T-D8700;1
+69536005;0;Head structure (body structure);Xa1gv;T-D1100;1
+774007;0;Head and neck structure (body structure);Xa1gI;T-D1000;1
+80891009;0;Heart structure (body structure);XULPo;T-32000;1
+24136001;0;Hip joint structure (body structure);Xa1Q5;T-15710;1
+85050009;0;Bone structure of humerus (body structure);XM0Ql;T-12410;1
+34516001;0;Ileal structure (body structure);Xa9Ez;T-58600;1
+22356005;0;Bone structure of ilium (body structure);XM0RD;T-12340;1
+361078006;0;Area of internal auditory canal (body structure);XaFZX;T-AB959;1
+661005;0;Jaw region structure (body structure);XaA1q;T-D1213;1
+21306003;0;Jejunal structure (body structure);Xa9Ey;T-58400;1
+64033007;0;Kidney structure (body structure);XM0Pw;T-71000;1
+72696002;0;Knee region structure (body structure);Xa9oM;T-D9200;1
+4596009;0;Laryngeal structure (body structure);XM0PL;T-24100;1
+30021000;0;Lower leg structure (body structure);Xa8pt;T-D9400;1
+10200004;0;Liver structure (body structure);XM0Ps;T-62000;1
+122496007;0;Lumbar spine structure (body structure);Xa9ZD;T-11503;1
+39607008;0;Lung structure (body structure);XM0PM;T-28000;1
+91609006;0;Bone structure of mandible (body structure);X75HF;T-11180;1
+70925003;0;Bone structure of maxilla (body structure);XM0Qa;T-11170;1
+72410000;0;Mediastinal structure (body structure);XM0Oa;T-D3300;1
+21082005;0;Entire mouth region (body structure);XU9W7;T-51000;1
+45048000;0;Neck structure (body structure);Xa1h1;T-D1600;1
+45206002;0;Nasal structure (body structure);Xa06M;T-21000;1
+371398005;0;Eye region structure (body structure);XUUnM;T-D0801;1
+15497006;0;Ovarian structure (body structure);Xa1Db;T-87000;1
+181277001;0;Entire pancreas (body structure);7N340;T-D4034;1
+45289007;0;Parotid gland structure (body structure);XaEiS;T-61100;1
+64234005;0;Bone structure of patella (body structure);XM0RK;T-12730;1
+12921003;0;Pelvic structure (body structure);Xa1gg;T-D6000;1
+18911002;0;Penile structure (body structure);XM0Q1;T-91000;1
+181211006;0;Entire pharynx (body structure);7N220;T-55002;1
+181422007;0;Entire prostate (body structure);7N511;T-9200B;1
+34402009;0;Rectum structure (body structure);Xa1G1;T-59600;1
+113197003;0;Bone structure of rib (body structure);XM0R9;T-11300;1
+54735007;0;Bone structure of sacrum (body structure);Xa1xo;T-11AD0;1
+41695006;0;Scalp structure (body structure);XUDfy;T-D1160;1
+79601000;0;Bone structure of scapula (body structure);XM0Qh;T-12280;1
+18619003;0;Scleral structure (body structure);Xa1TD;T-AA110;1
+20233005;0;Scrotal structure (body structure);XM0Q3;T-98000;1
+16982005;0;Shoulder region structure (body structure);Xa9Yc;T-D2220;1
+89546000;0;Bone structure of cranium (body structure);XM0QR;T-11100;1
+280717001;0;Spinal structure (body structure);Xa1W1;T-D0146;1
+78961009;0;Splenic structure (body structure);Xa0am;T-C3000;1
+56873002;0;Bone structure of sternum (body structure);XM0RA;T-11210;1
+69695003;0;Stomach structure (body structure);Xa1Fn;T-57000;1
+54019009;0;Submandibular salivary apparatus (body structure);Xa3XV;T-61300;1
+53620006;0;Temporomandibular joint structure (body structure);Xa9U3;T-15290;1
+40689003;0;Testis structure (body structure);Xa1GA;T-94000;1
+68367000;0;Thigh structure (body structure);XUIwC;T-D9100;1
+122495006;0;Thoracic spine structure (body structure);Xa9ZC;T-11502;1
+76505004;0;Thumb structure (body structure);Xa1tv;T-D8810;1
+118507000;0;Entire thymus (body structure);7N112;T-C8001;1
+69748006;0;Thyroid structure (body structure);Xa06B;T-B6000;1
+29707007;0;Toe structure (body structure);Xa1tt;T-D9800;1
+21974007;0;Tongue structure (body structure);XM0Pm;T-53000;1
+44567001;0;Tracheal structure (body structure);Xa0v7;T-25000;1
+65364008;0;Both ureters (body structure);Xa2W8;T-73800;1
+13648007;0;Urethral structure (body structure);XM0Q0;T-75000;1
+35039007;0;Uterine structure (body structure);XM0Q7;T-83000;1
+76784001;0;Vaginal structure (body structure);XM0Q6;T-82000;1
+45292006;0;Vulval structure (body structure);XM0Q5;T-81000;1
+74670003;0;Wrist joint structure (body structure);Xa1Q9;T-15460;1
+51204001;0;Zygomatic arch structure (body structure);XM0QV;T-11167;1

@@ -1,0 +1,9 @@
+localNameLabelText=Yerel ad
+dicomAETitleLabelText=AE Başlığı
+hostnameLabelText=Ana bilgisayar adı veya IP adresi
+portLabelText=Bağlantı noktası
+
+localNameToolTipText=Söz konusu uzak AE adı (AE Başlığından farklı olabilir)
+dicomAETitleToolTipText=Uzak AE'nin Aranan AE Başlığı (bu şekilde aranması beklenen AE Başlığı)
+hostnameToolTipText=Geçerli etki alanındaki uzak bilgisayar adı, tamamen uygun ana bilgisayar adı veya uzak AE IPV4 adresi
+portToolTipText=Bağlantı kurulan uzak ana bilgisayar bağlantı noktası (uzak AE'nin başka bir AE'den gelen bağlantıları dinlediği bağlantı noktası)

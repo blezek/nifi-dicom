@@ -1,0 +1,30 @@
+FileChooser.acceptAllFileFilterText=Alle filer
+
+FileChooser.cancelButtonText=Annullér
+
+FileChooser.chooseButtonText=Vælg
+
+FileChooser.folderNameLabelText=Mappenavn:
+FileChooser.fileNameLabelText=Fil:
+FileChooser.filesOfTypeLabelText=Filformat:
+
+FileChooser.lookInLabelText=Søg i:
+
+FileChooser.openButtonText=Åbn
+
+FileChooser.openDialogTitleText=Åbn
+
+FileChooser.win32.newFolder=Ny mappe
+FileChooser.win32.newFolder.subsequent=Ny mappe {0}
+
+FileChooser.detailsViewActionLabelText=Detaljer
+FileChooser.listViewActionLabelText=Liste
+FileChooser.newFolderActionLabelText=Ny mappe
+FileChooser.refreshActionLabelText=Opdatér
+FileChooser.viewMenuLabelText=Vis menu
+
+FileChooser.cancelButtonToolTipText=Annullér filvælgerdialogboksen
+FileChooser.newFolderToolTipText=Opret ny mappe
+FileChooser.openButtonToolTipText=Åbn valgte fil
+FileChooser.upFolderToolTipText=Et niveau op
+FileChooser.viewMenuButtonToolTipText=Vis menu

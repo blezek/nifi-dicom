@@ -1,0 +1,25 @@
+applicationTitle=DICOM-Bilder schwärzen
+
+blackoutPreviousButtonLabelText=Zurück
+blackoutApplyButtonLabelText=Anwenden
+blackoutSaveButtonLabelText=Speichern
+blackoutNextButtonLabelText=Weiter
+blackoutApplySaveAllButtonLabelText=Alle anwenden und speichern
+blackoutCancelButtonLabelText=Abbrechen
+
+blackoutPreviousButtonToolTipText=Zum vorherigen Bild wechseln und dieses Bild überspringen, falls nicht bereits gespeichert
+blackoutApplyButtonToolTipText=Bereiche schwärzen
+blackoutSaveButtonToolTipText=Bilder mit Schwärzungen speichern
+blackoutNextButtonToolTipText=Zum nächsten Bild wechseln und dieses Bild überspringen, falls nicht bereits gespeichert
+blackoutApplySaveAllButtonToolTipText=Bereiche schwärzen und Bilder mit Schwärzungen speichern für dieses und alle weiteren ausgewählten Bilder
+blackoutCancelButtonToolTipText=Bearbeitung dieses Bildes abbrechen, falls nicht bereits gespeichert, und alle weiteren Bilder überspringen
+
+keepOverlaysCheckBoxLabelText=Überlagerungen
+usePixelPaddingBlackoutValueCheckBoxLabelText=Auffüllung verwenden
+useZeroBlackoutValueCheckBoxLabelText=Nullwert verwenden
+
+keepOverlaysCheckBoxToolTipText=Aktivieren/deaktivieren, um Überlagerungen ein-/auszublenden und um diese – wenn eingeblendet – in das Bild zu brennen und aus dem Header zu entfernen
+usePixelPaddingBlackoutValueCheckBoxToolTipText=Aktivieren/deaktivieren, um (nicht) den Auffüllpixelwert für schwarze Pixel anstatt des niedrigstmöglichen Standardpixelwertes auf Basis von Signierung und Bittiefe zu verwenden
+useZeroBlackoutValueCheckBoxToolTipText=Aktivieren/deaktivieren, um (nicht) den Nullwert für schwarze Pixel anstatt des Auffüllpixelwertes oder des niedrigstmöglichen Standardpixelwertes auf Basis von Signierung und Bittiefe zu verwenden
+
+statusBarHelpText=Tasten: links – Fenster; rechts – Ziehen zum Zeichnen eines Feldes; rechtsklicken – Auswählen eines Feldes; Taste „Entf“ – Verwerfen der Auswahl

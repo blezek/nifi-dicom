@@ -1,0 +1,9 @@
+localNameLabelText=로컬 이름
+dicomAETitleLabelText=AE 제목
+hostnameLabelText=호스트 이름 또는 IP 주소
+portLabelText=포트
+
+localNameToolTipText=이 원격 AE를 지칭하는 이름(AE 제목과 다를 수 있음)
+dicomAETitleToolTipText=원격 AE의 피호출 AE 제목(피호출 예상 AE 제목)
+hostnameToolTipText=현재 도메인 내의 원격 호스트 이름 또는 원격 AE의 정규화 호스트 이름 또는 IPV4 주소
+portToolTipText=원격 호스트에서의 연결 대상 포트(원격 AE가 다른 AE로부터 인바운드 연결 수신 대기 포트)

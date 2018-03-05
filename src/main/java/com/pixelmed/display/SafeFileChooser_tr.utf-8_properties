@@ -1,0 +1,30 @@
+FileChooser.acceptAllFileFilterText=Tüm Dosyalar
+
+FileChooser.cancelButtonText=İptal
+
+FileChooser.chooseButtonText=Seç
+
+FileChooser.folderNameLabelText=Klasör adı:
+FileChooser.fileNameLabelText=Dosya:
+FileChooser.filesOfTypeLabelText=Dosya Formatı:
+
+FileChooser.lookInLabelText=Arama yeri:
+
+FileChooser.openButtonText=Aç
+
+FileChooser.openDialogTitleText=Aç
+
+FileChooser.win32.newFolder=Yeni Klasör
+FileChooser.win32.newFolder.subsequent=Yeni Klasör {0}
+
+FileChooser.detailsViewActionLabelText=Detaylar
+FileChooser.listViewActionLabelText=Liste
+FileChooser.newFolderActionLabelText=Yeni Klasör
+FileChooser.refreshActionLabelText=Yenile
+FileChooser.viewMenuLabelText=Menüyü Görüntüle
+
+FileChooser.cancelButtonToolTipText=Dosya seçici iletişim kutusunu kapat
+FileChooser.newFolderToolTipText=Yeni Klasör Oluştur
+FileChooser.openButtonToolTipText=Seçili dosyayı aç
+FileChooser.upFolderToolTipText=Bir Üst Dizine Git
+FileChooser.viewMenuButtonToolTipText=Menüyü Görüntüle

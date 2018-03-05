@@ -1,0 +1,34 @@
+addButtonLabelText=Tilføj
+editButtonLabelText=Redigér
+removeButtonLabelText=Fjern
+doneButtonLabelText=Udført
+
+addButtonToolTipText=Tilføj en AE til listen over eksterne applikationsenheder
+editButtonToolTipText=Rediger en AE i listen over eksterne applikationsenheder
+removeButtonToolTipText=Fjern en AE fra listen over eksterne applikationsenheder
+doneButtonToolTipText=Redigering er udført. Nulstil applikationen for at bruge den nye konfiguration
+
+selectNetworkTargetToEditLabelText=Vælg AE, som skal redigeres
+selectNetworkTargetToRemoveLabelText=Vælg AE, som skal fjernes
+
+listenerHeaderLabelText=Vores DICOM-netværksegenskaber
+callingAETitleLabelText=AE-kaldetitel
+calledAETitleLabelText=Kaldt AE-titel
+listeningPortLabelText=Lytteport
+acceptorMaximumLengthReceivedLabelText=Maksimal længde modtaget for acceptor-PDU
+acceptorSocketReceiveBufferSizeLabelText=Modtag-bufferstørrelse for acceptor-TCP-stik
+acceptorSocketSendBufferSizeLabelText=Send-bufferstørrelse for acceptor-TCP-stik
+initiatorMaximumLengthReceivedLabelText=Maksimal længde modtaget for initiator-PDU
+initiatorSocketReceiveBufferSizeLabelText=Modtag-bufferstørrelse for initiator-TCP-stik
+initiatorSocketSendBufferSizeLabelText=Send-bufferstørrelse for initiator-TCP-stik
+remoteHeaderPanelLabelText=Fjern-AE DICOM-netværksegenskaber
+
+callingAETitleJLabelToolTipText=AE-titlen, som vi bruger, når vi kalder (starter en tilknytning til) en anden AE
+calledAETitleJLabelToolTipText=AE-titlen, som vi forventer at blive kaldt af (ved accept af en tilknytning fra) en anden AE; som regel den samme som AE-kaldetitlen
+listeningPortJLabelToolTipText=Porten på hvilken, vi lytter efter indgående forbindelser fra en anden AE
+acceptorMaximumLengthReceivedJLabelToolTipText=Den maksimale PDU-længde, som accepteres fra indgående tilknytninger (0 hvis ubegrænset)
+acceptorSocketReceiveBufferSizeJLabelToolTipText=Modtag-bufferstørrelse for TCP-stikket, som skal indstilles ved accept af tilknytninger (eller 0, hvis den ikke skal ændres, og standard for platformen skal bruges)
+acceptorSocketSendBufferSizeJLabelToolTipText=Send-bufferstørrelse for TCP-stikket, som skal indstilles ved accept af tilknytninger (eller 0, hvis den ikke skal ændres, og standard for platformen skal bruges)
+initiatorMaximumLengthReceivedJLabelToolTipText=Den maximale PDU-længde, der kan anmodes om fra acceptorer ved start af tilknytninger (0 hvis ubegrænset)
+initiatorSocketReceiveBufferSizeJLabelToolTipText=Modtag-bufferstørrelse for TCP-stikket, som skal indstilles ved start af tilknytninger (eller 0, hvis den ikke skal ændres, og standard for platformen skal bruges)
+initiatorSocketSendBufferSizeJLabelToolTipText=Send-bufferstørrelse for TCP-stikket, som skal indstilles ved start af tilknytninger (eller 0, hvis den ikke skal ændres, og standard for platformen skal bruges)

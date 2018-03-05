@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+<!--
+
+  @(#)package.html	1.60 98/01/27
+
+  Copyright (c) 2001-2017, David A. Clunie DBA Pixelmed Publishing. All rights reserved.
+
+-->
+</head>
+<body bgcolor="white">
+<p>Encapsulation of DICOM queries into a higher level abstraction that supports creation of
+a tree model based on the results of a query, and a graphical user interface to that model.</p>
+
+<p>An abstract class {@link com.pixelmed.query.QueryInformationModel QueryInformationModel}
+class is supplied that encapsulates the behavior of performing a query using the
+supplied information and returns the results as a {@link com.pixelmed.query.QueryTreeModel QueryTreeModel}.</p>
+
+<p>A concrete sub-class {@link com.pixelmed.query.StudyRootQueryInformationModel StudyRootQueryInformationModel}
+class can be used to perform such a query using the most commonly supported DICOM query model.</p>
+
+<p>Any such query is based on a list of user-supplied DICOM attribute values used
+to define the matching and return keys. A {@link com.pixelmed.query.FilterPanel FilterPanel}
+class is supplied that provides a graphical user interface for editing the values of
+attributes in list.</p>
+
+<p>A user interface for displaying and traversing the result of a query is supplied,
+{@link com.pixelmed.query.QueryTreeBrowser QueryTreeBrowser}, which may be sub-classed
+in an application to provide specific functionality when selecting a path in the
+tree, by overriding the various methods which return a
+{@link javax.swing.event.TreeSelectionListener TreeSelectionListener}.</p>
+
+<h2>Package Specification</h2>
+
+<ul>
+  <li><a href=""></a>
+</ul>
+
+<h2>Related Documentation</h2>
+
+For overviews, tutorials, examples, guides, and tool documentation, please see:
+<ul>
+  <li><a href=""></a>
+</ul>
+
+<!-- Put @see and @since tags down here. -->
+
+</body>
+</html>
