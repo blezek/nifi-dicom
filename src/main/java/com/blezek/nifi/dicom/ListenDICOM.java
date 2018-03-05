@@ -18,6 +18,7 @@ import org.apache.nifi.annotation.behavior.WritesAttribute;
 import org.apache.nifi.annotation.behavior.WritesAttributes;
 import org.apache.nifi.annotation.documentation.CapabilityDescription;
 import org.apache.nifi.annotation.documentation.Tags;
+import org.apache.nifi.annotation.lifecycle.OnEnabled;
 import org.apache.nifi.annotation.lifecycle.OnStopped;
 import org.apache.nifi.components.PropertyDescriptor;
 import org.apache.nifi.flowfile.FlowFile;
@@ -90,7 +91,7 @@ public class ListenDICOM extends AbstractSessionFactoryProcessor {
         startDICOM(context, session);
       } catch (Exception ex) {
         device = null;
-        getLogger().error("Unable to start SMTP server due to " + ex.getMessage(), ex);
+        getLogger().error("Unable to start DICOM server due to " + ex.getMessage(), ex);
       }
     }
     // nothing really to do here since threading managed by DICOM server
@@ -113,6 +114,7 @@ public class ListenDICOM extends AbstractSessionFactoryProcessor {
 
   Device device = null;
 
+  @OnEnabled
   void startDICOM(final ProcessContext context, final ProcessSessionFactory sessionFactory)
       throws IOException, GeneralSecurityException {
     String aeTitle = context.getProperty("AE_TITLE").evaluateAttributeExpressions().getValue();

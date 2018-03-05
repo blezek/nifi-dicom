@@ -11,9 +11,6 @@ import org.apache.nifi.util.TestRunners;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.blezek.nifi.dicom.DeidentifyDICOM;
-import com.blezek.nifi.dicom.ExtractDICOMTags;
-
 public class ExtractDICOMTagsTest {
   private TestRunner runner;
 
@@ -26,7 +23,7 @@ public class ExtractDICOMTagsTest {
   public void extractModality() {
 
     runner.setProperty("Modality", "unknown");
-    InputStream r = getClass().getResourceAsStream("/Denoising/CTE_4/Axial/IM-0002-0001.dcm");
+    InputStream r = getClass().getResourceAsStream("/dicom/LGG-104_SPGR_000.dcm");
     runner.setProperty(ExtractDICOMTags.ALL_TAGS, "false");
     runner.enqueue(r);
     runner.run();
@@ -34,7 +31,7 @@ public class ExtractDICOMTagsTest {
 
     List<MockFlowFile> flowFiles = runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_SUCCESS);
     for (MockFlowFile flowFile : flowFiles) {
-      flowFile.assertAttributeEquals("Modality", "CT");
+      flowFile.assertAttributeEquals("Modality", "MR");
     }
 
   }
@@ -42,7 +39,7 @@ public class ExtractDICOMTagsTest {
   @Test
   public void extractAllTags() {
 
-    InputStream r = getClass().getResourceAsStream("/Denoising/CTE_4/Axial/IM-0002-0001.dcm");
+    InputStream r = getClass().getResourceAsStream("/dicom/LGG-104_SPGR_000.dcm");
     runner.setProperty(ExtractDICOMTags.ALL_TAGS, "true");
     runner.enqueue(r);
     runner.run();
@@ -50,8 +47,8 @@ public class ExtractDICOMTagsTest {
 
     List<MockFlowFile> flowFiles = runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_SUCCESS);
     for (MockFlowFile flowFile : flowFiles) {
-      assertEquals("flowfile has correct number of attributes", 100, flowFile.getAttributes().keySet().size());
-      flowFile.assertAttributeEquals("Modality", "CT");
+      assertEquals("flowfile has correct number of attributes", 95, flowFile.getAttributes().keySet().size());
+      flowFile.assertAttributeEquals("Modality", "MR");
     }
 
   }

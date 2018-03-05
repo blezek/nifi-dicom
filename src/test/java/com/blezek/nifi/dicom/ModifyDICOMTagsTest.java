@@ -13,9 +13,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.blezek.nifi.dicom.DeidentifyDICOM;
-import com.blezek.nifi.dicom.ModifyDICOMTags;
-
 public class ModifyDICOMTagsTest {
   private TestRunner runner;
 
@@ -29,7 +26,8 @@ public class ModifyDICOMTagsTest {
 
     runner.setProperty("Modality", "MR");
     runner.setProperty("SliceThickness", "100");
-    InputStream r = getClass().getResourceAsStream("/Denoising/CTE_4/Axial/IM-0002-0001.dcm");
+    InputStream r = getClass().getResourceAsStream("/dicom/LGG-104_SPGR_000.dcm");
+
     runner.enqueue(r);
     runner.run();
     runner.assertAllFlowFilesTransferred(DeidentifyDICOM.RELATIONSHIP_SUCCESS, 1);

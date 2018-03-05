@@ -6,69 +6,60 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
-import java.util.Set;
 
 import org.apache.nifi.reporting.InitializationException;
 import org.apache.nifi.util.MockFlowFile;
 import org.apache.nifi.util.TestRunner;
 import org.apache.nifi.util.TestRunners;
 import org.dcm4che3.data.Attributes;
-import org.dcm4che3.data.Tag;
-import org.junit.Assert;
+import org.jdbi.v3.core.Jdbi;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 
-import com.blezek.nifi.dicom.AttributeStorageController;
-import com.blezek.nifi.dicom.AttributesMap;
-import com.blezek.nifi.dicom.DeidentifyDICOM;
-import com.google.common.io.Files;
+import com.zaxxer.hikari.HikariDataSource;
 
 public class DeidentifyDICOMTest {
+  @Rule
+  public TemporaryFolder folder = new TemporaryFolder();
 
   private DeidentifyDICOM deidentifyDICOM;
   private TestRunner runner;
-  private AttributeStorageController attributeStorageController;
 
   @Before
   public void setup() throws IOException, InitializationException {
     deidentifyDICOM = new DeidentifyDICOM();
     runner = TestRunners.newTestRunner(deidentifyDICOM);
-
-    attributeStorageController = new AttributeStorageController();
-    File tempDir = Files.createTempDir();
-    runner.addControllerService("asc", attributeStorageController);
-    runner.setProperty(attributeStorageController, AttributeStorageController.DIRECTORY, tempDir.getAbsolutePath());
-    runner.enableControllerService(attributeStorageController);
-    runner.assertValid(attributeStorageController);
-
-    runner.setProperty(DeidentifyDICOM.ATTRIBUTE_STORAGE_CONTROLLER, "asc");
   }
 
   @Test
   public void deidentify() throws IOException {
     // Queue up a DICOM file
-    InputStream r = getClass().getResourceAsStream("/Denoising/CTE_4/Axial/IM-0002-0001.dcm");
+    InputStream r = getClass().getResourceAsStream("/dicom/LGG-104_SPGR_000.dcm");
     runner.enqueue(r);
-    runner.setValidateExpressionUsage(false);
+
+    runner.setProperty(DeidentifyDICOM.dbDirectory, folder.getRoot().getAbsolutePath());
+
     runner.run();
     runner.assertAllFlowFilesTransferred(DeidentifyDICOM.RELATIONSHIP_SUCCESS, 1);
 
     // Check the deidentified attributes
-    Attributes attributes = TestUtil.getAttributes("/Denoising/CTE_4/Axial/IM-0002-0001.dcm");
+    Attributes attributes = TestUtil.getAttributes("/dicom/LGG-104_SPGR_000.dcm");
 
     List<MockFlowFile> flowFiles = runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_SUCCESS);
     for (MockFlowFile flowFile : flowFiles) {
       Attributes actualAttributes = TestUtil.getAttributes(flowFile);
-
-      // Find the map
-      Set<AttributesMap> maps = attributeStorageController.getAttributeStorage().getAttributesMap(actualAttributes.getString(Tag.StudyInstanceUID));
-      assertEquals("one map generated", 1, maps.size());
-      AttributesMap map = maps.toArray(new AttributesMap[1])[0];
-
-      Attributes deidentified = map.deidentifed;
-
-      Assert.assertEquals("Deidentified studyInstanceUID", actualAttributes.getString(Tag.StudyInstanceUID), deidentified.getString(Tag.StudyInstanceUID));
     }
-  }
 
+    // Check the database
+    String dbPath = new File(folder.getRoot(), "database").getAbsolutePath();
+    HikariDataSource ds = new HikariDataSource();
+    ds.setDriverClassName("org.apache.derby.jdbc.EmbeddedDriver");
+    ds.setJdbcUrl("jdbc:derby:" + dbPath + ";create=true");
+    Jdbi jdbi = Jdbi.create(ds);
+    assertEquals("Number of UID mappings", 4, jdbi.withHandle(handle -> {
+      return handle.createQuery("select count(*) from uid_map").mapTo(Integer.class).findOnly();
+    }));
+  }
 }
