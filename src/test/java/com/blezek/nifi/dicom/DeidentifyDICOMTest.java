@@ -3,8 +3,8 @@ package com.blezek.nifi.dicom;
 import static org.junit.Assert.assertEquals;
 
 import com.google.common.io.Files;
-import com.zaxxer.hikari.HikariDataSource;
 
+import org.apache.derby.jdbc.EmbeddedDataSource;
 import org.apache.nifi.reporting.InitializationException;
 import org.apache.nifi.util.MockFlowFile;
 import org.apache.nifi.util.TestRunner;
@@ -121,14 +121,61 @@ public class DeidentifyDICOMTest {
 	    assertEquals("Deidentified AccessionNumber", "7408465417966656",
 		    actualAttributes.getString(Tag.AccessionNumber));
 	}
+	assertEquals("Number of UID mappings", 0, getNumberOfMappings());
+    }
 
+    @Test
+    public void generate() throws IOException {
+	// Queue up a DICOM file
+	runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_000.dcm"));
+	runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_001.dcm"));
+	runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_002.dcm"));
+	setCSVFile("/empty.csv");
+	runner.setProperty(DeidentifyDICOM.generateIfNotMatchedProperty, "true");
+	runner.setProperty(DeidentifyDICOM.DB_DIRECTORY, folder.getRoot().getAbsolutePath());
+
+	runner.assertValid();
+	runner.run();
+	runner.assertAllFlowFilesTransferred(DeidentifyDICOM.RELATIONSHIP_SUCCESS, 3);
+
+	for (MockFlowFile flowFile : runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_SUCCESS)) {
+	    Attributes actualAttributes = TestUtil.getAttributes(flowFile);
+	    assertEquals("Deidentified PatientID", "E16BA065442DC4C7305B40C6AE70189A",
+		    actualAttributes.getString(Tag.PatientID));
+	    assertEquals("Deidentified PatientName", "7600272A48E4412C1458F5D9B4522F5C",
+		    actualAttributes.getString(Tag.PatientName));
+	    assertEquals("Deidentified AccessionNumber", "1996733833677301",
+		    actualAttributes.getString(Tag.AccessionNumber));
+	}
+	assertEquals("Number of UID mappings", 6, getNumberOfMappings());
+    }
+
+    @Test
+    public void garbage() throws IOException {
+	// Queue up a DICOM file
+	runner.enqueue(getClass().getResourceAsStream("/empty.csv"));
+	runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_001.dcm"));
+	runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_002.dcm"));
+	setCSVFile("/empty.csv");
+	runner.setProperty(DeidentifyDICOM.generateIfNotMatchedProperty, "true");
+	runner.setProperty(DeidentifyDICOM.DB_DIRECTORY, folder.getRoot().getAbsolutePath());
+
+	runner.assertValid();
+	runner.run();
+	// 2 success, 1 failure
+	assertEquals("Number of of files in success relationship", 2,
+		runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_SUCCESS).size());
+	assertEquals("Number of of files in reject relationship", 1,
+		runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_REJECT).size());
+	assertEquals("Number of UID mappings", 5, getNumberOfMappings());
     }
 
     private int getNumberOfMappings() {
-	String dbPath = new File(folder.getRoot(), "database").getAbsolutePath();
-	HikariDataSource ds = new HikariDataSource();
-	ds.setDriverClassName("org.apache.derby.jdbc.EmbeddedDriver");
-	ds.setJdbcUrl("jdbc:derby:" + dbPath + ";create=true");
+
+	EmbeddedDataSource ds = new EmbeddedDataSource();
+	ds.setDatabaseName(new File(folder.getRoot(), "database").getAbsolutePath());
+	ds.setCreateDatabase("create");
+
 	Jdbi jdbi = Jdbi.create(ds);
 
 	return jdbi.withHandle(handle -> {
@@ -146,7 +193,7 @@ public class DeidentifyDICOMTest {
 	r.read(buffer);
 
 	Files.write(buffer, csv);
-	runner.setProperty(DeidentifyDICOM.MAP_FILE, csv.getAbsolutePath());
+	runner.setProperty(DeidentifyDICOM.DEIDENTIFICATION_MAP_CVS_FILE, csv.getAbsolutePath());
 
     }
 }

@@ -22,9 +22,9 @@ import com.pixelmed.dicom.ShortStringAttribute;
 import com.pixelmed.dicom.TagFromName;
 import com.pixelmed.dicom.TransferSyntax;
 import com.pixelmed.dicom.UniqueIdentifierAttribute;
-import com.zaxxer.hikari.HikariDataSource;
 
 import org.apache.derby.drda.NetworkServerControl;
+import org.apache.derby.jdbc.EmbeddedDataSource;
 import org.apache.nifi.annotation.behavior.InputRequirement;
 import org.apache.nifi.annotation.documentation.CapabilityDescription;
 import org.apache.nifi.annotation.documentation.Tags;
@@ -95,7 +95,8 @@ public class DeidentifyDICOM extends AbstractProcessor {
 	    .addValidator(StandardValidators.createLongValidator(0, 65535, true))
 	    .addValidator(StandardValidators.NON_EMPTY_VALIDATOR).defaultValue("8082").build();
 
-    static final PropertyDescriptor MAP_FILE = new PropertyDescriptor.Builder().name("Identifier map CVS file")
+    static final PropertyDescriptor DEIDENTIFICATION_MAP_CVS_FILE = new PropertyDescriptor.Builder()
+	    .name("Identifier map CVS file")
 	    .description(
 		    "CVS file containing the columns 'PatientId', 'PatientName', 'DeidentifiedPatientId', 'DeidentifiedPatientName' used to map IDs")
 	    .required(true).expressionLanguageSupported(true).addValidator(StandardValidators.FILE_EXISTS_VALIDATOR)
@@ -159,9 +160,9 @@ public class DeidentifyDICOM extends AbstractProcessor {
 	// descriptors
 	final List<PropertyDescriptor> descriptors = new ArrayList<>();
 	descriptors.add(DB_DIRECTORY);
-	descriptors.add(DB_PORT);
-	descriptors.add(DB_CONSOLE);
-	descriptors.add(MAP_FILE);
+	// descriptors.add(DB_PORT);
+	// descriptors.add(DB_CONSOLE);
+	descriptors.add(DEIDENTIFICATION_MAP_CVS_FILE);
 	descriptors.add(generateIfNotMatchedProperty);
 	descriptors.add(keepDescriptorsProperty);
 	descriptors.add(keepSeriesDescriptorsProperty);
@@ -195,7 +196,7 @@ public class DeidentifyDICOM extends AbstractProcessor {
     boolean generateIfNotMatched;
 
     Server server = null;
-    private HikariDataSource ds;
+    private EmbeddedDataSource ds;
     private NetworkServerControl networkServerControl;
     Jdbi jdbi;
     Cache<String, String> uidCache;
@@ -221,26 +222,25 @@ public class DeidentifyDICOM extends AbstractProcessor {
 		.asBoolean();
 
 	String dbPath = context.getProperty(DB_DIRECTORY).evaluateAttributeExpressions().getValue();
-	ds = new HikariDataSource();
-	ds.setDriverClassName("org.apache.derby.jdbc.EmbeddedDriver");
-	dbPath = new File(dbPath, "database").getAbsolutePath();
-	ds.setJdbcUrl("jdbc:derby:" + dbPath + ";create=true");
-	ds.setMaximumPoolSize(50);
+
+	ds = new EmbeddedDataSource();
+	ds.setDatabaseName(new File(dbPath, "database").getAbsolutePath());
+	ds.setCreateDatabase("create");
 
 	Flyway flyway = new Flyway();
 	flyway.setDataSource(ds);
 	flyway.migrate();
 
-	Integer port;
-
 	jdbi = Jdbi.create(ds);
 	uidCache = CacheBuilder.newBuilder().maximumSize(3000).expireAfterWrite(1, TimeUnit.MINUTES).build();
-	// Start up the DB
-	port = context.getProperty(DB_CONSOLE).evaluateAttributeExpressions().asInteger();
-	if (port != null && port > 0) {
-	    server = Server.createWebServer("-web", "-webPort", Integer.toString(port));
-	    server.start();
-	}
+	// // Start up the DB
+	// Integer port;
+	// port =
+	// context.getProperty(DB_CONSOLE).evaluateAttributeExpressions().asInteger();
+	// if (port != null && port > 0) {
+	// server = Server.createWebServer("-web", "-webPort", Integer.toString(port));
+	// server.start();
+	// }
 
 	identityMap.clear();
 
@@ -249,7 +249,7 @@ public class DeidentifyDICOM extends AbstractProcessor {
 	String[] memberFieldsToBindTo = { "patientId", "patientName", "deidentifiedPatientId",
 		"deidentifiedPatientName" };
 	strategy.setColumnMapping(memberFieldsToBindTo);
-	String csvFile = context.getProperty(MAP_FILE).evaluateAttributeExpressions().getValue();
+	String csvFile = context.getProperty(DEIDENTIFICATION_MAP_CVS_FILE).evaluateAttributeExpressions().getValue();
 
 	try (InputStreamReader in = new FileReader(csvFile)) {
 	    CsvToBean<IdentityEntry> csvToBean = new CsvToBeanBuilder<IdentityEntry>(in).withMappingStrategy(strategy)
@@ -275,7 +275,7 @@ public class DeidentifyDICOM extends AbstractProcessor {
 	try {
 	    DriverManager.getConnection("jdbc:derby:" + dbPath + ";shutdown=true");
 	} catch (SQLException e) {
-	    getLogger().error("Error shutting down db", e);
+	    getLogger().warn("Error shutting down db: " + e.getLocalizedMessage());
 	}
 	jdbi = null;
 	ds = null;
@@ -310,10 +310,9 @@ public class DeidentifyDICOM extends AbstractProcessor {
 		deidentifyUsingPixelMed(session, flowfile);
 
 	    } catch (Exception e) {
-		destinationRelationship = Optional.of(RELATIONSHIP_REJECT);
+		session.transfer(flowfile, RELATIONSHIP_REJECT);
 		getLogger().error("Flowfile is nat a DICOM file, could not read attributes", e);
 	    }
-
 	}
 	session.commit();
     }
@@ -322,7 +321,6 @@ public class DeidentifyDICOM extends AbstractProcessor {
 	String ourCalledAETitle = "nifi-dicom";
 	AttributeList list;
 	String outputTransferSyntaxUID = TransferSyntax.ExplicitVRLittleEndian;
-	boolean isMatched = false;
 
 	try (InputStream flowfileInputStream = session.read(flowfile)) {
 
@@ -343,6 +341,22 @@ public class DeidentifyDICOM extends AbstractProcessor {
 	    id = list.get(TagFromName.PatientID).getSingleStringValueOrDefault("unknown");
 	}
 
+	Optional<IdentityEntry> newId = Optional.empty();
+	if (identityMap.containsKey(id)) {
+	    newId = Optional.of(identityMap.get(id));
+	} else if (generateIfNotMatched) {
+	    String oldName = "Unknown^Pat";
+	    if (list.containsKey(TagFromName.PatientName)) {
+		oldName = list.get(TagFromName.PatientName).getSingleStringValueOrDefault(oldName);
+	    }
+	    newId = Optional.of(IdentityEntry.createPseudoEntry(id, oldName));
+	} else {
+	    // We can exit early, there is nothing to do
+	    // Transfer the incoming flowfile to the Not Matched relationship
+	    session.transfer(flowfile, RELATIONSHIP_NOT_MATCHED);
+	    return;
+	}
+
 	list.removeGroupLengthAttributes();
 	list.correctDecompressedImagePixelModule(true);
 	list.insertLossyImageCompressionHistoryIfDecompressed(true);
@@ -353,15 +367,6 @@ public class DeidentifyDICOM extends AbstractProcessor {
 		keepDescriptors, keepSeriesDescriptors, keepProtocolName, keepPatientCharacteristics,
 		keepDeviceIdentity, keepInstitutionIdentity, ClinicalTrialsAttributes.HandleDates.keep,
 		null/* epochForDateModification */, null/* earliestDateInSet */);
-
-	Optional<IdentityEntry> newId = Optional.empty();
-	if (identityMap.containsKey(id)) {
-	    isMatched = true;
-	    newId = Optional.of(identityMap.get(id));
-	} else if (generateIfNotMatched) {
-	    newId = Optional.of(IdentityEntry.createPseudoEntry(id));
-	    isMatched = true;
-	}
 
 	if (newId.isPresent()) {
 	    AttributeTag tag;
@@ -470,24 +475,18 @@ public class DeidentifyDICOM extends AbstractProcessor {
 	FileMetaInformation.addFileMetaInformation(list, outputTransferSyntaxUID, ourCalledAETitle);
 	list.insertSuitableSpecificCharacterSetForAllStringValues();
 
-	if (isMatched) {
-
-	    FlowFile outputFlowFile = session.create();
-	    outputFlowFile = session.write(outputFlowFile, (OutputStream out) -> {
-		try {
-		    list.write(out, outputTransferSyntaxUID, true, true);
-		} catch (DicomException e) {
-		    throw new IOException("Could not write " + e.getLocalizedMessage(), e);
-		}
-	    });
-	    // Remove the incoming flowfile from the input queue, transfer the new
-	    // deidentified file to the output
-	    session.remove(flowfile);
-	    session.transfer(outputFlowFile, RELATIONSHIP_SUCCESS);
-	} else {
-	    // Transfer the incoming flowfile to the Not Matched relationship
-	    session.transfer(flowfile, RELATIONSHIP_NOT_MATCHED);
-	}
+	FlowFile outputFlowFile = session.create();
+	outputFlowFile = session.write(outputFlowFile, (OutputStream out) -> {
+	    try {
+		list.write(out, outputTransferSyntaxUID, true, true);
+	    } catch (DicomException e) {
+		throw new IOException("Could not write " + e.getLocalizedMessage(), e);
+	    }
+	});
+	// Remove the incoming flowfile from the input queue, transfer the new
+	// deidentified file to the output
+	session.remove(flowfile);
+	session.transfer(outputFlowFile, RELATIONSHIP_SUCCESS);
 
     }
 

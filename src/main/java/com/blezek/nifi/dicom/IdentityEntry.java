@@ -18,8 +18,10 @@ public class IdentityEntry {
     }
 
     // Create a synthetic entry
-    public static IdentityEntry createPseudoEntry(String id) throws NoSuchAlgorithmException {
+    public static IdentityEntry createPseudoEntry(String id, String patientName) throws NoSuchAlgorithmException {
 	IdentityEntry entry = new IdentityEntry();
+	entry.patientId = id;
+	entry.patientName = patientName;
 	MessageDigest md = MessageDigest.getInstance("MD5");
 	entry.deidentifiedPatientName = (new HexBinaryAdapter()).marshal(md.digest(id.getBytes()));
 
