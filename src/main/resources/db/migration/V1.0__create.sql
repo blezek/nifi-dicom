@@ -1,5 +1,5 @@
 create table uid_map (
-  original varchar(128),
+  original varchar(128) primary key,
   replaced varchar(128)
 );
 
