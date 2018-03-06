@@ -12,11 +12,12 @@ import org.apache.nifi.util.TestRunners;
 import org.dcm4che3.data.Attributes;
 import org.dcm4che3.data.Tag;
 import org.jdbi.v3.core.Jdbi;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -24,6 +25,7 @@ import java.io.InputStream;
 import java.util.List;
 
 public class DeidentifyDICOMTest {
+    static final Logger logger = LoggerFactory.getLogger(DeidentifyDICOMTest.class);
 
     @Rule
     public TemporaryFolder folder = new TemporaryFolder();
@@ -31,15 +33,19 @@ public class DeidentifyDICOMTest {
     private DeidentifyDICOM deidentifyDICOM;
     private TestRunner runner;
 
+    private DeidentificationController deidentificationController;
+
     @Before
     public void setup() throws IOException, InitializationException {
 	deidentifyDICOM = new DeidentifyDICOM();
 	runner = TestRunners.newTestRunner(deidentifyDICOM);
-    }
 
-    @After
-    public void shutdown() throws Exception {
-	deidentifyDICOM.shutdown(runner.getProcessContext());
+	deidentificationController = new DeidentificationController();
+
+	runner.addControllerService("dc", deidentificationController);
+	runner.setProperty(deidentificationController, DeidentificationController.DB_DIRECTORY,
+		folder.getRoot().getAbsolutePath());
+	runner.setProperty(DeidentifyDICOM.DEIDENTIFICATION_STORAGE_CONTROLLER, "dc");
     }
 
     @Test
@@ -49,8 +55,6 @@ public class DeidentifyDICOMTest {
 	runner.enqueue(r);
 
 	setCSVFile("/map.csv");
-
-	runner.setProperty(DeidentifyDICOM.DB_DIRECTORY, folder.getRoot().getAbsolutePath());
 
 	runner.assertValid();
 	runner.run();
@@ -79,10 +83,9 @@ public class DeidentifyDICOMTest {
 	runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_001.dcm"));
 	runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_002.dcm"));
 	setCSVFile("/map.csv");
-	runner.setProperty(DeidentifyDICOM.DB_DIRECTORY, folder.getRoot().getAbsolutePath());
 
 	runner.assertValid();
-	runner.run();
+	runner.run(3);
 	runner.assertAllFlowFilesTransferred(DeidentifyDICOM.RELATIONSHIP_SUCCESS, 3);
 
 	List<MockFlowFile> flowFiles = runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_SUCCESS);
@@ -107,10 +110,9 @@ public class DeidentifyDICOMTest {
 	runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_002.dcm"));
 	setCSVFile("/empty.csv");
 	runner.setProperty(DeidentifyDICOM.generateIfNotMatchedProperty, "false");
-	runner.setProperty(DeidentifyDICOM.DB_DIRECTORY, folder.getRoot().getAbsolutePath());
 
 	runner.assertValid();
-	runner.run();
+	runner.run(3);
 	runner.assertAllFlowFilesTransferred(DeidentifyDICOM.RELATIONSHIP_NOT_MATCHED, 3);
 
 	List<MockFlowFile> flowFiles = runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_NOT_MATCHED);
@@ -132,10 +134,9 @@ public class DeidentifyDICOMTest {
 	runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_002.dcm"));
 	setCSVFile("/empty.csv");
 	runner.setProperty(DeidentifyDICOM.generateIfNotMatchedProperty, "true");
-	runner.setProperty(DeidentifyDICOM.DB_DIRECTORY, folder.getRoot().getAbsolutePath());
 
 	runner.assertValid();
-	runner.run();
+	runner.run(3);
 	runner.assertAllFlowFilesTransferred(DeidentifyDICOM.RELATIONSHIP_SUCCESS, 3);
 
 	for (MockFlowFile flowFile : runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_SUCCESS)) {
@@ -158,10 +159,9 @@ public class DeidentifyDICOMTest {
 	runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_002.dcm"));
 	setCSVFile("/empty.csv");
 	runner.setProperty(DeidentifyDICOM.generateIfNotMatchedProperty, "true");
-	runner.setProperty(DeidentifyDICOM.DB_DIRECTORY, folder.getRoot().getAbsolutePath());
 
 	runner.assertValid();
-	runner.run();
+	runner.run(3);
 	// 2 success, 1 failure
 	assertEquals("Number of of files in success relationship", 2,
 		runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_SUCCESS).size());
@@ -178,6 +178,12 @@ public class DeidentifyDICOMTest {
 
 	Jdbi jdbi = Jdbi.create(ds);
 
+	jdbi.useHandle(handle -> {
+	    handle.createQuery("select * from uid_map").mapToMap().forEach(it -> {
+		logger.debug(it.toString());
+	    });
+	});
+
 	return jdbi.withHandle(handle -> {
 	    return handle.createQuery("select count(*) from uid_map").mapTo(Integer.class).findOnly();
 	});
@@ -193,7 +199,9 @@ public class DeidentifyDICOMTest {
 	r.read(buffer);
 
 	Files.write(buffer, csv);
-	runner.setProperty(DeidentifyDICOM.DEIDENTIFICATION_MAP_CVS_FILE, csv.getAbsolutePath());
-
+	runner.setProperty(deidentificationController, DeidentificationController.DEIDENTIFICATION_MAP_CVS_FILE,
+		csv.getAbsolutePath());
+	runner.assertValid(deidentificationController);
+	runner.enableControllerService(deidentificationController);
     }
 }
