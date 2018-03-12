@@ -14,6 +14,8 @@ import org.apache.nifi.annotation.documentation.SeeAlso;
 import org.apache.nifi.annotation.documentation.Tags;
 import org.apache.nifi.annotation.lifecycle.OnEnabled;
 import org.apache.nifi.components.PropertyDescriptor;
+import org.apache.nifi.components.ValidationContext;
+import org.apache.nifi.components.ValidationResult;
 import org.apache.nifi.controller.AbstractControllerService;
 import org.apache.nifi.controller.ConfigurationContext;
 import org.apache.nifi.processor.util.StandardValidators;
@@ -48,8 +50,26 @@ public class DeidentificationController extends AbstractControllerService implem
 	    .name("Identifier map CVS file")
 	    .description(
 		    "CVS file containing the columns 'PatientId', 'PatientName', 'DeidentifiedPatientId', 'DeidentifiedPatientName' used to map IDs")
-	    .required(true).expressionLanguageSupported(true).addValidator(StandardValidators.FILE_EXISTS_VALIDATOR)
-	    .addValidator(StandardValidators.NON_EMPTY_EL_VALIDATOR).build();
+	    .required(false).addValidator((String subject, String value, ValidationContext context) -> {
+		// If the value is non-empty, make sure the file exists
+		String substituted;
+		try {
+		    substituted = context.newPropertyValue(value).evaluateAttributeExpressions().getValue();
+		} catch (final Exception e) {
+		    return new ValidationResult.Builder().subject(subject).input(value).valid(false)
+			    .explanation("Not a valid Expression Language value: " + e.getMessage()).build();
+		}
+		if (substituted == null || substituted.equals("")) {
+		    return new ValidationResult.Builder().subject(subject).input(value).valid(true)
+			    .explanation("Empty file").build();
+		}
+		final File file = new File(substituted);
+		final boolean valid = file.exists();
+		final String explanation = valid ? null : "File " + file + " does not exist";
+		return new ValidationResult.Builder().subject(subject).input(value).valid(valid)
+			.explanation(explanation).build();
+
+	    }).expressionLanguageSupported(true).build();
 
     @Override
     protected List<PropertyDescriptor> getSupportedPropertyDescriptors() {
@@ -109,16 +129,17 @@ public class DeidentificationController extends AbstractControllerService implem
 		"deidentifiedPatientName" };
 	strategy.setColumnMapping(memberFieldsToBindTo);
 	String csvFile = context.getProperty(DEIDENTIFICATION_MAP_CVS_FILE).evaluateAttributeExpressions().getValue();
-
-	try (InputStreamReader in = new FileReader(csvFile)) {
-	    CsvToBean<IdentityEntry> csvToBean = new CsvToBeanBuilder<IdentityEntry>(in).withMappingStrategy(strategy)
-		    .withSkipLines(1).withIgnoreLeadingWhiteSpace(true).build();
-	    csvToBean.parse().forEach(it -> {
-		identityMap.put(it.getPatientId(), it);
-	    });
-	} catch (Exception e) {
-	    getLogger().error("Error parsing CSV file " + csvFile + ": " + e.getLocalizedMessage());
-	    throw e;
+	if (csvFile != null && !csvFile.equals("")) {
+	    try (InputStreamReader in = new FileReader(csvFile)) {
+		CsvToBean<IdentityEntry> csvToBean = new CsvToBeanBuilder<IdentityEntry>(in)
+			.withMappingStrategy(strategy).withSkipLines(1).withIgnoreLeadingWhiteSpace(true).build();
+		csvToBean.parse().forEach(it -> {
+		    identityMap.put(it.getPatientId(), it);
+		});
+	    } catch (Exception e) {
+		getLogger().error("Error parsing CSV file " + csvFile + ": " + e.getLocalizedMessage());
+		throw e;
+	    }
 	}
     }
 
