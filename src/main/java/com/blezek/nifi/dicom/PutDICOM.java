@@ -3,6 +3,7 @@ package com.blezek.nifi.dicom;
 
 import org.apache.nifi.annotation.behavior.InputRequirement;
 import org.apache.nifi.annotation.behavior.InputRequirement.Requirement;
+import org.apache.nifi.annotation.behavior.SideEffectFree;
 import org.apache.nifi.annotation.behavior.SupportsBatching;
 import org.apache.nifi.annotation.documentation.CapabilityDescription;
 import org.apache.nifi.annotation.documentation.SeeAlso;
@@ -46,10 +47,10 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-@SupportsBatching
 @InputRequirement(Requirement.INPUT_REQUIRED)
-
 @Tags({ "send", "dicom", "imaging", "network" })
+@SupportsBatching
+@SideEffectFree
 @CapabilityDescription("This processor implements a DICOM sender, sending DICOM images to the specified destination.")
 @SeeAlso(ListenDICOM.class)
 public class PutDICOM extends AbstractProcessor {
@@ -209,7 +210,8 @@ public class PutDICOM extends AbstractProcessor {
 	    } catch (Exception e) {
 		getLogger().error("error connecting to " + remote.getDevice(), e);
 		session.transfer(validDICOMFlowFiles, RELATIONSHIP_FAILURE);
-		session.commit();
+		// I don't believe this is needed?
+		// session.commit();
 		return;
 	    }
 
@@ -255,7 +257,8 @@ public class PutDICOM extends AbstractProcessor {
 	    executorService.shutdown();
 	    scheduledExecutorService.shutdown();
 	}
-	session.commit();
+	// I don't believe this is needed because we are doing only one file at a time.
+	// session.commit();
     }
 
 }
