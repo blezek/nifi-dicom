@@ -257,7 +257,8 @@ public class PutDICOM extends AbstractProcessor {
 	    executorService.shutdown();
 	    scheduledExecutorService.shutdown();
 	}
-	session.commit();
+	// I don't believe this is needed because we are doing only one file at a time.
+	// session.commit();
     }
 
 }
