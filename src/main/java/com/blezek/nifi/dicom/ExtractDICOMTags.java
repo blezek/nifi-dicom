@@ -1,6 +1,8 @@
 package com.blezek.nifi.dicom;
 
 import org.apache.nifi.annotation.behavior.InputRequirement;
+import org.apache.nifi.annotation.behavior.SideEffectFree;
+import org.apache.nifi.annotation.behavior.SupportsBatching;
 import org.apache.nifi.annotation.documentation.CapabilityDescription;
 import org.apache.nifi.annotation.documentation.Tags;
 import org.apache.nifi.components.PropertyDescriptor;
@@ -35,6 +37,8 @@ import java.util.Optional;
 import java.util.Set;
 
 @Tags({ "tag", "attribute", "dicom", "imaging" })
+@SupportsBatching
+@SideEffectFree
 @InputRequirement(InputRequirement.Requirement.INPUT_REQUIRED)
 @CapabilityDescription("This processor extracts DICOM tags from the DICOM image and sets the values at attributes of the flowfile.")
 public class ExtractDICOMTags extends AbstractProcessor {
