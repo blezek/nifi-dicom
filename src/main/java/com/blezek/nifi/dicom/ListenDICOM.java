@@ -22,6 +22,7 @@ import org.apache.nifi.processor.util.StandardValidators;
 import org.apache.nifi.util.StopWatch;
 import org.dcm4che3.data.Attributes;
 import org.dcm4che3.data.Tag;
+import org.dcm4che3.data.UID;
 import org.dcm4che3.data.VR;
 import org.dcm4che3.io.DicomOutputStream;
 import org.dcm4che3.net.ApplicationEntity;
@@ -147,7 +148,7 @@ public class ListenDICOM extends AbstractSessionFactoryProcessor {
 		try {
 		    FlowFile flowFile = processSession.create();
 		    flowFile = processSession.write(flowFile, (OutputStream out) -> {
-			try (DicomOutputStream dout = new DicomOutputStream(out, tsuid)) {
+			try (DicomOutputStream dout = new DicomOutputStream(out, UID.ExplicitVRLittleEndian)) {
 			    dout.writeFileMetaInformation(as.createFileMetaInformation(iuid, cuid, tsuid));
 			    data.copyTo(dout);
 			}
