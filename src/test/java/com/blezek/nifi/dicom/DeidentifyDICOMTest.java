@@ -152,6 +152,35 @@ public class DeidentifyDICOMTest {
     }
 
     @Test
+    public void noCSVFile() throws IOException {
+	// Queue up a DICOM file
+	runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_000.dcm"));
+	runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_001.dcm"));
+	runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_002.dcm"));
+
+	runner.setProperty(deidentificationController, DeidentificationController.DEIDENTIFICATION_MAP_CVS_FILE, "");
+	runner.assertValid(deidentificationController);
+	runner.enableControllerService(deidentificationController);
+
+	runner.setProperty(DeidentifyDICOM.generateIfNotMatchedProperty, "true");
+
+	runner.assertValid();
+	runner.run(3);
+	runner.assertAllFlowFilesTransferred(DeidentifyDICOM.RELATIONSHIP_SUCCESS, 3);
+
+	for (MockFlowFile flowFile : runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_SUCCESS)) {
+	    Attributes actualAttributes = TestUtil.getAttributes(flowFile);
+	    assertEquals("Deidentified PatientID", "E16BA065442DC4C7305B40C6AE70189A",
+		    actualAttributes.getString(Tag.PatientID));
+	    assertEquals("Deidentified PatientName", "7600272A48E4412C1458F5D9B4522F5C",
+		    actualAttributes.getString(Tag.PatientName));
+	    assertEquals("Deidentified AccessionNumber", "1996733833677301",
+		    actualAttributes.getString(Tag.AccessionNumber));
+	}
+	assertEquals("Number of UID mappings", 6, getNumberOfMappings());
+    }
+
+    @Test
     public void garbage() throws IOException {
 	// Queue up a DICOM file
 	runner.enqueue(getClass().getResourceAsStream("/empty.csv"));
