@@ -41,7 +41,7 @@ import java.util.Set;
 @SeeAlso(ExtractDICOMTags.class)
 public class ModifyDICOMTags extends AbstractProcessor {
     public static final Relationship RELATIONSHIP_SUCCESS = new Relationship.Builder().name("success")
-	    .description("All deidentified DICOM images will be routed as FlowFiles to this relationship").build();
+	    .description("All modified DICOM images will be routed as FlowFiles to this relationship").build();
     public static final Relationship RELATIONSHIP_REJECT = new Relationship.Builder().name("failure")
 	    .description("FlowFiles that are not DICOM images").build();
 
@@ -94,7 +94,7 @@ public class ModifyDICOMTags extends AbstractProcessor {
 	    if (tag == -1) {
 		return new ValidationResult.Builder().subject(subject).input(input).valid(false)
 			.explanation("Expected tag to return a " + ResultType.STRING
-				+ " representing a tag name or a hex value of a tag but '" + input
+				+ " representing a tag name or a hex value of a tag but '" + subject
 				+ "' is not recognized as a valid DICOM tag.")
 			.build();
 	    }
@@ -128,7 +128,7 @@ public class ModifyDICOMTags extends AbstractProcessor {
 			int tag = TagUtils.forName(tagName);
 			VR vr = ElementDictionary.getStandardElementDictionary().vrOf(tag);
 			attributes.setString(tag, vr,
-				context.getProperty(descriptor).evaluateAttributeExpressions().toString());
+				context.getProperty(descriptor).evaluateAttributeExpressions(flowfile).toString());
 		    }
 
 		    // Create a new FlowFile

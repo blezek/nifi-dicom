@@ -2,15 +2,22 @@ package com.blezek.nifi.dicom;
 
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
 
+import com.opencsv.bean.CsvBindByName;
+
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Optional;
 
 public class IdentityEntry {
 
+    @CsvBindByName
     public String patientId;
+    @CsvBindByName
     public String patientName;
+    @CsvBindByName
     public String deidentifiedPatientId;
+    @CsvBindByName
     public String deidentifiedPatientName;
 
     // Empty constructor
@@ -66,9 +73,9 @@ public class IdentityEntry {
 
     public String generateAccessionNumber(String accessionNumber) throws NoSuchAlgorithmException {
 	MessageDigest md = MessageDigest.getInstance("MD5");
-	md.update(patientId.getBytes());
-	md.update(patientName.getBytes());
-	md.update(accessionNumber.getBytes());
+	md.update(Optional.ofNullable(patientId).orElse("patientid").getBytes());
+	md.update(Optional.ofNullable(patientName).orElse("patientname").getBytes());
+	md.update(Optional.ofNullable(accessionNumber).orElse("accessionnumber").getBytes());
 	return new BigInteger(1, md.digest()).toString().substring(0, 16);
     }
 }

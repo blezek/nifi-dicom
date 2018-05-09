@@ -233,18 +233,19 @@ public class DeidentifyDICOM extends AbstractProcessor {
 	}
 
 	Optional<IdentityEntry> newId = controller.lookupById(id);
-	if (!newId.isPresent() && generateIfNotMatched) {
-	    String oldName = "Unknown^Pat";
-	    if (list.containsKey(TagFromName.PatientName)) {
-		oldName = list.get(TagFromName.PatientName).getSingleStringValueOrDefault(oldName);
-	    }
-	    newId = Optional.of(IdentityEntry.createPseudoEntry(id, oldName));
-	}
 	if (!newId.isPresent()) {
-	    // We can exit early, there is nothing to do
-	    // Transfer the incoming flowfile to the Not Matched relationship
-	    session.transfer(flowfile, RELATIONSHIP_NOT_MATCHED);
-	    return;
+	    if (generateIfNotMatched) {
+		String oldName = "Unknown^Pat";
+		if (list.containsKey(TagFromName.PatientName)) {
+		    oldName = list.get(TagFromName.PatientName).getSingleStringValueOrDefault(oldName);
+		}
+		newId = Optional.of(IdentityEntry.createPseudoEntry(id, oldName));
+	    } else {
+		// We can exit early, there is nothing to do
+		// Transfer the incoming flowfile to the Not Matched relationship
+		session.transfer(flowfile, RELATIONSHIP_NOT_MATCHED);
+		return;
+	    }
 	}
 
 	list.removeGroupLengthAttributes();

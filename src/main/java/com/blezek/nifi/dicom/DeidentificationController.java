@@ -4,9 +4,9 @@ import com.google.common.cache.CacheBuilder;
 import com.google.common.cache.CacheLoader;
 import com.google.common.cache.CacheStats;
 import com.google.common.cache.LoadingCache;
-import com.opencsv.bean.ColumnPositionMappingStrategy;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
+import com.opencsv.bean.HeaderColumnNameMappingStrategy;
 
 import org.apache.derby.jdbc.EmbeddedDataSource;
 import org.apache.nifi.annotation.documentation.CapabilityDescription;
@@ -123,18 +123,26 @@ public class DeidentificationController extends AbstractControllerService implem
 		});
 	identityMap.clear();
 
-	ColumnPositionMappingStrategy<IdentityEntry> strategy = new ColumnPositionMappingStrategy<>();
+	// ColumnPositionMappingStrategy<IdentityEntry> strategy = new
+	// ColumnPositionMappingStrategy<>();
+	// String[] memberFieldsToBindTo = { "patientId", "patientName",
+	// "deidentifiedPatientId",
+	// "deidentifiedPatientName" };
+	// strategy.setColumnMapping(memberFieldsToBindTo);
+	HeaderColumnNameMappingStrategy<IdentityEntry> strategy = new HeaderColumnNameMappingStrategy<>();
 	strategy.setType(IdentityEntry.class);
-	String[] memberFieldsToBindTo = { "patientId", "patientName", "deidentifiedPatientId",
-		"deidentifiedPatientName" };
-	strategy.setColumnMapping(memberFieldsToBindTo);
+
 	String csvFile = context.getProperty(DEIDENTIFICATION_MAP_CVS_FILE).evaluateAttributeExpressions().getValue();
 	if (csvFile != null && !csvFile.equals("")) {
 	    try (InputStreamReader in = new FileReader(csvFile)) {
 		CsvToBean<IdentityEntry> csvToBean = new CsvToBeanBuilder<IdentityEntry>(in)
-			.withMappingStrategy(strategy).withSkipLines(1).withIgnoreLeadingWhiteSpace(true).build();
+			.withMappingStrategy(strategy).withSkipLines(0).withIgnoreLeadingWhiteSpace(true).build();
 		csvToBean.parse().forEach(it -> {
-		    identityMap.put(it.getPatientId(), it);
+		    if (it.getPatientId() == null) {
+			getLogger().error("Got line in CSV without a PatientId, discarding");
+		    } else {
+			identityMap.put(it.getPatientId(), it);
+		    }
 		});
 	    } catch (Exception e) {
 		getLogger().error("Error parsing CSV file " + csvFile + ": " + e.getLocalizedMessage());
