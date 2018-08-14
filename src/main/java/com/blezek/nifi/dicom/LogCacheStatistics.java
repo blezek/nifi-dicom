@@ -24,39 +24,39 @@ import java.util.Set;
 @CapabilityDescription("Fetches deidentification service statistics")
 public class LogCacheStatistics extends AbstractProcessor {
 
-    public static final Relationship RELATIONSHIP_SUCCESS = new Relationship.Builder().name("success")
-	    .description("Log statistics").build();
-    // Properties
-    public static final PropertyDescriptor DEIDENTIFICATION_STORAGE_CONTROLLER = new PropertyDescriptor.Builder()
-	    .name("Deidentification controller")
-	    .description("Specified the deidentification controller for DICOM deidentification").required(true)
-	    .identifiesControllerService(DeidentificationService.class).build();
+  public static final Relationship RELATIONSHIP_SUCCESS = new Relationship.Builder().name("success")
+      .description("Log statistics").build();
+  // Properties
+  public static final PropertyDescriptor DEIDENTIFICATION_STORAGE_CONTROLLER = new PropertyDescriptor.Builder()
+      .name("Deidentification controller")
+      .description("Specified the deidentification controller for DICOM deidentification").required(true)
+      .identifiesControllerService(DeidentificationService.class).build();
 
-    @Override
-    public Set<Relationship> getRelationships() {
-	HashSet<Relationship> relationships = new HashSet<>();
-	relationships.add(RELATIONSHIP_SUCCESS);
-	return relationships;
-    }
+  @Override
+  public Set<Relationship> getRelationships() {
+    HashSet<Relationship> relationships = new HashSet<>();
+    relationships.add(RELATIONSHIP_SUCCESS);
+    return relationships;
+  }
 
-    @Override
-    protected List<PropertyDescriptor> getSupportedPropertyDescriptors() {
-	List<PropertyDescriptor> properties = new ArrayList<>();
-	properties.add(DEIDENTIFICATION_STORAGE_CONTROLLER);
-	return properties;
-    }
+  @Override
+  protected List<PropertyDescriptor> getSupportedPropertyDescriptors() {
+    List<PropertyDescriptor> properties = new ArrayList<>();
+    properties.add(DEIDENTIFICATION_STORAGE_CONTROLLER);
+    return properties;
+  }
 
-    @Override
-    public void onTrigger(ProcessContext context, ProcessSession session) throws ProcessException {
-	DeidentificationService controller = context.getProperty(DEIDENTIFICATION_STORAGE_CONTROLLER)
-		.asControllerService(DeidentificationService.class);
-	FlowFile flowfile = session.create();
-	flowfile = session.write(flowfile, (OutputStream out) -> {
-	    Gson gson = new Gson();
-	    out.write(gson.toJson(controller.getCacheStats()).getBytes());
-	});
-	session.putAttribute(flowfile, "filename", "cache_stats.json");
-	session.transfer(flowfile, RELATIONSHIP_SUCCESS);
-    }
+  @Override
+  public void onTrigger(ProcessContext context, ProcessSession session) throws ProcessException {
+    DeidentificationService controller = context.getProperty(DEIDENTIFICATION_STORAGE_CONTROLLER)
+        .asControllerService(DeidentificationService.class);
+    FlowFile flowfile = session.create();
+    flowfile = session.write(flowfile, (OutputStream out) -> {
+      Gson gson = new Gson();
+      out.write(gson.toJson(controller.getCacheStats()).getBytes());
+    });
+    session.putAttribute(flowfile, "filename", "cache_stats.json");
+    session.transfer(flowfile, RELATIONSHIP_SUCCESS);
+  }
 
 }
