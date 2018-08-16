@@ -160,9 +160,19 @@ public class DeidentifyDICOMTest {
     // $JAVA_HOME/lib/security/
     byte[] encryptedBuffer = createPasswordEnvelopedObject(passwd.toCharArray(), salt.getBytes(), 100,
         os.toByteArray());
-    byte[] decryptedBuffer = extractPasswordEnvelopedData(passwd.toCharArray(), encryptedBuffer);
 
+    byte[] decryptedBuffer = extractPasswordEnvelopedData(passwd.toCharArray(), encryptedBuffer);
     assertArrayEquals(os.toByteArray(), decryptedBuffer);
+
+    // can we read the DICOM tags?
+    try (DicomInputStream dis = new DicomInputStream(new ByteArrayInputStream(decryptedBuffer),
+        UID.ExplicitVRLittleEndian)) {
+      dis.setIncludeBulkData(IncludeBulkData.NO);
+      Attributes newTags = dis.readDataset(-1, -1);
+      Attributes modified = newTags.getRemovedOrModified(tags);
+      assertEquals(0, modified.size());
+    }
+
     /*
      * Tag.EncryptedAttributesSequence; Tag.EncryptedContentTransferSyntaxUID;
      * Tag.EncryptedContent; Tag.ModifiedAttributesSequence;
