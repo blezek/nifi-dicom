@@ -166,4 +166,20 @@ public class DeidentifyEncryptDICOMTest {
       assertEquals(deidentified.getString(tag), UIDUtils.createNameBasedUID(uid.getBytes()));
     }
   }
+
+  @Test
+  public void testPasswordValidation() {
+    TestRunner runner = TestRunners.newTestRunner(DeidentifyEncryptDICOM.class);
+    runner.setProperty(DecryptReidentifyDICOM.PASSWORD, "");
+    runner.assertNotValid();
+    runner.setProperty(DecryptReidentifyDICOM.PASSWORD, "password");
+    runner.assertValid();
+
+    runner = TestRunners.newTestRunner(DecryptReidentifyDICOM.class);
+    runner.setProperty(DecryptReidentifyDICOM.PASSWORD, "");
+    runner.assertNotValid();
+    runner.setProperty(DecryptReidentifyDICOM.PASSWORD, "password");
+    runner.assertValid();
+
+  }
 }
