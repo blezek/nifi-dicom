@@ -4,7 +4,9 @@ import com.blezek.nifi.dicom.util.Encryption;
 import com.google.common.base.Stopwatch;
 import com.pixelmed.dicom.Attribute;
 import com.pixelmed.dicom.AttributeList;
+import com.pixelmed.dicom.AttributeTag;
 import com.pixelmed.dicom.ClinicalTrialsAttributes;
+import com.pixelmed.dicom.ClinicalTrialsAttributes.HandleUIDs;
 import com.pixelmed.dicom.CodeStringAttribute;
 import com.pixelmed.dicom.CodedSequenceItem;
 import com.pixelmed.dicom.FileMetaInformation;
@@ -12,6 +14,7 @@ import com.pixelmed.dicom.SequenceAttribute;
 import com.pixelmed.dicom.SequenceItem;
 import com.pixelmed.dicom.TagFromName;
 import com.pixelmed.dicom.TransferSyntax;
+import com.pixelmed.dicom.UniqueIdentifierAttribute;
 
 import org.apache.nifi.annotation.behavior.InputRequirement;
 import org.apache.nifi.annotation.behavior.SideEffectFree;
@@ -38,6 +41,7 @@ import org.dcm4che3.io.DicomInputStream;
 import org.dcm4che3.io.DicomInputStream.IncludeBulkData;
 import org.dcm4che3.io.DicomOutputStream;
 import org.dcm4che3.util.TagUtils;
+import org.dcm4che3.util.UIDUtils;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -201,7 +205,7 @@ public class DeidentifyEncryptDICOM extends AbstractProcessor {
     long ms = stopwatch.elapsed(TimeUnit.MILLISECONDS);
     if (count > 0) {
       float avg = ms / (float) count;
-      getLogger().info("processed " + count + " in " + ms + " ms / " + df.format(avg) + " ms average");
+      getLogger().debug("processed " + count + " in " + ms + " ms / " + df.format(avg) + " ms average");
     }
     session.commit();
   }
@@ -270,7 +274,22 @@ public class DeidentifyEncryptDICOM extends AbstractProcessor {
     }
 
     // ToDo: Make sure UIDS are remapped consistently
-    ClinicalTrialsAttributes.remapUIDAttributes(list);
+    // ClinicalTrialsAttributes.remapUIDAttributes(list);
+    List<AttributeTag> forRemovalOrRemapping = ClinicalTrialsAttributes.findUIDToRemap(list, HandleUIDs.remap);
+    Iterator<AttributeTag> i2 = forRemovalOrRemapping.iterator();
+    while (i2.hasNext()) {
+      AttributeTag tag = (i2.next());
+      String originalUIDValue = Attribute.getSingleStringValueOrNull(list, tag);
+      if (originalUIDValue != null) {
+        // Use the DCM4CHE method of generating a hash, this keeps Series and Studies
+        // together...
+        String replacementUIDValue = UIDUtils.createNameBasedUID(originalUIDValue.getBytes());
+        list.remove(tag);
+        Attribute a = new UniqueIdentifierAttribute(tag);
+        a.addValue(replacementUIDValue);
+        list.put(tag, a);
+      }
+    }
 
     aDeidentificationMethod.addValue("UIDs remapped");
 

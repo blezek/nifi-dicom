@@ -15,6 +15,7 @@ import org.dcm4che3.data.UID;
 import org.dcm4che3.io.DicomInputStream;
 import org.dcm4che3.io.DicomInputStream.IncludeBulkData;
 import org.dcm4che3.io.DicomOutputStream;
+import org.dcm4che3.util.UIDUtils;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
 
@@ -27,6 +28,7 @@ public class DeidentifyEncryptDICOMTest {
   private static final String IdentifiedDICOM = "/dicom/LGG-104_SPGR_000.dcm";
   static Encryption e;
   String password = "password";
+  boolean saveIntermediateResults = true;
 
   @Test
   @DisplayName("when encrypted, ensure proper tags are saved")
@@ -47,8 +49,7 @@ public class DeidentifyEncryptDICOMTest {
       assertEquals(null, actualAttributes.getString(Tag.PatientID));
       assertEquals(null, actualAttributes.getString(Tag.AccessionNumber));
       // Optionally save...
-      boolean saveDeidentified = true;
-      if (saveDeidentified) {
+      if (saveIntermediateResults) {
         /*
          * To modify the Series and SOPInstance UIDs
          *
@@ -100,11 +101,19 @@ public class DeidentifyEncryptDICOMTest {
     List<MockFlowFile> flowFiles = runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_SUCCESS);
     for (MockFlowFile flowFile : flowFiles) {
       Attributes actualAttributes = TestUtil.getAttributes(flowFile);
+      if (saveIntermediateResults) {
+        try (DicomOutputStream dos = new DicomOutputStream(new File("reidentified.dcm"))) {
+          dos.writeDataset(null, actualAttributes);
+        }
+      }
       Attributes originalAttributes = TestUtil.getAttributes(getClass().getResourceAsStream(IdentifiedDICOM));
       Attributes diff = originalAttributes.getRemovedOrModified(actualAttributes);
-      assertEquals(2, diff.size());
+      // Bulk data, DeidentificationMethod and DeidentificationCodeSequence
+      assertEquals(3, diff.size());
       assertTrue(diff.contains(Tag.DeidentificationMethod));
       assertTrue(diff.contains(Tag.DeidentificationMethodCodeSequence));
+
+      diff.remove(Tag.PixelData);
       diff.remove(Tag.DeidentificationMethod);
       diff.remove(Tag.DeidentificationMethodCodeSequence);
       assertEquals(0, diff.size());
@@ -134,14 +143,27 @@ public class DeidentifyEncryptDICOMTest {
     List<MockFlowFile> flowFiles = runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_SUCCESS);
     for (MockFlowFile flowFile : flowFiles) {
       Attributes actualAttributes = TestUtil.getAttributes(flowFile);
-      assertEquals("1.2.276.0.7230010.3.1.4.0.86932.1534864733.490723", actualAttributes.getString(Tag.SOPInstanceUID));
-      assertEquals("1.2.276.0.7230010.3.1.3.0.86932.1534864733.490722",
+      assertEquals("1.2.276.0.7230010.3.1.4.0.42985.1535026754.317707", actualAttributes.getString(Tag.SOPInstanceUID));
+      assertEquals("1.2.276.0.7230010.3.1.3.0.42985.1535026754.317706",
           actualAttributes.getString(Tag.SeriesInstanceUID));
 
       // Study UID will be from the original DICOM, i.e. it's not replaced...
       // see dicom/LGG-104_SPGR_000.dcm
       assertEquals("1.3.6.1.4.1.14519.5.2.1.3344.2526.291265840929678567019499305523",
           actualAttributes.getString(Tag.StudyInstanceUID));
+
+    }
+  }
+
+  @Test
+  public void testUIDGeneration() throws Exception {
+    Attributes originalAttributes = TestUtil.getAttributes(getClass().getResourceAsStream(IdentifiedDICOM));
+    Attributes deidentified = TestUtil.getAttributes(getClass().getResourceAsStream("/dicom/deidentified.dcm"));
+
+    int tags[] = { Tag.StudyInstanceUID, Tag.SOPInstanceUID, Tag.SeriesInstanceUID };
+    for (int tag : tags) {
+      String uid = originalAttributes.getString(tag);
+      assertEquals(deidentified.getString(tag), UIDUtils.createNameBasedUID(uid.getBytes()));
     }
   }
 }
