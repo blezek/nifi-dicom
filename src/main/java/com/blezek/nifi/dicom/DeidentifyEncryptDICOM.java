@@ -10,8 +10,11 @@ import com.pixelmed.dicom.ClinicalTrialsAttributes.HandleUIDs;
 import com.pixelmed.dicom.CodeStringAttribute;
 import com.pixelmed.dicom.CodedSequenceItem;
 import com.pixelmed.dicom.FileMetaInformation;
+import com.pixelmed.dicom.LongStringAttribute;
+import com.pixelmed.dicom.PersonNameAttribute;
 import com.pixelmed.dicom.SequenceAttribute;
 import com.pixelmed.dicom.SequenceItem;
+import com.pixelmed.dicom.ShortStringAttribute;
 import com.pixelmed.dicom.TagFromName;
 import com.pixelmed.dicom.TransferSyntax;
 import com.pixelmed.dicom.UniqueIdentifierAttribute;
@@ -235,6 +238,18 @@ public class DeidentifyEncryptDICOM extends AbstractProcessor {
         originalTags = dis.readDataset(-1, -1);
       }
     }
+    // Deal with patient demographics
+    String oldName = "Unknown^Pat";
+    String id = "unknown";
+    if (list.containsKey(TagFromName.PatientName)) {
+      oldName = list.get(TagFromName.PatientName).getSingleStringValueOrDefault(oldName);
+    }
+    if (list.containsKey(TagFromName.PatientID)) {
+      id = list.get(TagFromName.PatientID).getSingleStringValueOrDefault("unknown");
+    }
+    IdentityEntry newId = IdentityEntry.createPseudoEntry(id, oldName);
+    String newStudyId = list.get(TagFromName.StudyID).getSingleStringValueOrDefault("1234");
+    newStudyId = Encryption.hash(newStudyId).substring(0, 8);
 
     list.removeGroupLengthAttributes();
     list.correctDecompressedImagePixelModule(true);
@@ -249,6 +264,35 @@ public class DeidentifyEncryptDICOM extends AbstractProcessor {
                                                                                  */, null/*
                                                                                           * earliestDateInSet
                                                                                           */);
+    {
+      AttributeTag tag;
+      Attribute a;
+
+      tag = TagFromName.PatientName;
+      list.remove(tag);
+      a = new PersonNameAttribute(tag);
+      a.addValue(newId.getDeidentifiedPatientName());
+      list.put(tag, a);
+
+      // Deidentify PatientId
+      tag = TagFromName.PatientID;
+      list.remove(tag);
+      a = new LongStringAttribute(tag);
+      a.addValue(newId.getDeidentifiedPatientId());
+      list.put(tag, a);
+
+      // Deidentify Accession number
+      tag = TagFromName.AccessionNumber;
+      String an = list.get(tag).getSingleStringValueOrDefault("0");
+      list.remove(tag);
+      a = new ShortStringAttribute(tag);
+      a.addValue(newId.generateAccessionNumber(an));
+      list.put(tag, a);
+
+      list.get(TagFromName.StudyID).removeValues();
+      list.get(TagFromName.StudyID).setValue(newStudyId);
+
+    }
 
     Attribute aDeidentificationMethod = list.get(TagFromName.DeidentificationMethod);
     SequenceAttribute aDeidentificationMethodCodeSequence = (SequenceAttribute) (list
@@ -411,7 +455,7 @@ public class DeidentifyEncryptDICOM extends AbstractProcessor {
     FlowFile outputFlowFile = session.create(flowfile);
     outputFlowFile = session.write(outputFlowFile, (OutputStream out) -> {
       try (DicomOutputStream dos = new DicomOutputStream(out, UID.ExplicitVRLittleEndian)) {
-        dos.writeDataset(null, deidentifiedTags);
+        dos.writeDataset(deidentifiedTags.createFileMetaInformation(UID.ExplicitVRLittleEndian), deidentifiedTags);
       }
     });
     // Remove the incoming flowfile from the input queue, transfer the new

@@ -283,6 +283,7 @@ public class DeidentifyDICOM extends AbstractProcessor {
       a = new ShortStringAttribute(tag);
       a.addValue(newId.get().generateAccessionNumber(an));
       list.put(tag, a);
+
     }
 
     Attribute aDeidentificationMethod = list.get(TagFromName.DeidentificationMethod);

@@ -45,9 +45,6 @@ public class DeidentifyEncryptDICOMTest {
     for (MockFlowFile flowFile : flowFiles) {
       Attributes actualAttributes = TestUtil.getAttributes(flowFile);
 
-      assertEquals(null, actualAttributes.getString(Tag.PatientName));
-      assertEquals(null, actualAttributes.getString(Tag.PatientID));
-      assertEquals(null, actualAttributes.getString(Tag.AccessionNumber));
       // Optionally save...
       if (saveIntermediateResults) {
         /*
@@ -60,9 +57,12 @@ public class DeidentifyEncryptDICOMTest {
          * cp -f deidentified.dcm src/test/resources/dicom/deidentified_new_series.dcm
          */
         try (DicomOutputStream dos = new DicomOutputStream(new File("deidentified.dcm"))) {
-          dos.writeDataset(null, actualAttributes);
+          dos.writeDataset(actualAttributes.createFileMetaInformation(UID.ExplicitVRLittleEndian), actualAttributes);
         }
       }
+      assertEquals("Anonymous^7600272A48", actualAttributes.getString(Tag.PatientName));
+      assertEquals("E16BA065442DC4C7305B40C6AE70189A", actualAttributes.getString(Tag.PatientID));
+      assertEquals("1996733833677301", actualAttributes.getString(Tag.AccessionNumber));
       assertTrue(actualAttributes.contains(Tag.EncryptedAttributesSequence));
       Sequence eas = actualAttributes.getSequence(Tag.EncryptedAttributesSequence);
       assertEquals(1, eas.size());
