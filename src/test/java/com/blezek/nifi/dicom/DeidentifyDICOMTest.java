@@ -137,8 +137,7 @@ public class DeidentifyDICOMTest {
       Attributes actualAttributes = TestUtil.getAttributes(flowFile);
       assertEquals("Deidentified PatientID", "E16BA065442DC4C7305B40C6AE70189A",
           actualAttributes.getString(Tag.PatientID));
-      assertEquals("Deidentified PatientName", "7600272A48E4412C1458F5D9B4522F5C",
-          actualAttributes.getString(Tag.PatientName));
+      assertEquals("Deidentified PatientName", "Anonymous^7600272A48", actualAttributes.getString(Tag.PatientName));
       assertEquals("Deidentified AccessionNumber", "1996733833677301", actualAttributes.getString(Tag.AccessionNumber));
     }
     assertEquals("Number of UID mappings", 6, getNumberOfMappings());
@@ -165,8 +164,7 @@ public class DeidentifyDICOMTest {
       Attributes actualAttributes = TestUtil.getAttributes(flowFile);
       assertEquals("Deidentified PatientID", "E16BA065442DC4C7305B40C6AE70189A",
           actualAttributes.getString(Tag.PatientID));
-      assertEquals("Deidentified PatientName", "7600272A48E4412C1458F5D9B4522F5C",
-          actualAttributes.getString(Tag.PatientName));
+      assertEquals("Deidentified PatientName", "Anonymous^7600272A48", actualAttributes.getString(Tag.PatientName));
       assertEquals("Deidentified AccessionNumber", "1996733833677301", actualAttributes.getString(Tag.AccessionNumber));
     }
     assertEquals("Number of UID mappings", 6, getNumberOfMappings());

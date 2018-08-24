@@ -16,11 +16,11 @@ apply plugin: 'de.fanero.gradle.plugin.nar'
 
 
 ext {
-  nifiVersion = '1.5.0'
+  nifiVersion = '1.7.1'
 }
 
 group = 'com.blezek.nifi.dicom'
-version = '1.1'
+version = '1.2'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8

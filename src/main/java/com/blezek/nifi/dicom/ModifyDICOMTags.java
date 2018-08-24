@@ -9,6 +9,7 @@ import org.apache.nifi.components.ValidationContext;
 import org.apache.nifi.components.ValidationResult;
 import org.apache.nifi.components.Validator;
 import org.apache.nifi.expression.AttributeExpression.ResultType;
+import org.apache.nifi.expression.ExpressionLanguageScope;
 import org.apache.nifi.flowfile.FlowFile;
 import org.apache.nifi.processor.AbstractProcessor;
 import org.apache.nifi.processor.ProcessContext;
@@ -101,7 +102,8 @@ public class ModifyDICOMTags extends AbstractProcessor {
     };
 
     PropertyDescriptor descriptor = new PropertyDescriptor.Builder().dynamic(true).name(propertyDescriptorName)
-        .expressionLanguageSupported(true).displayName(propertyDescriptorName).addValidator(validator).build();
+        .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES).displayName(propertyDescriptorName)
+        .addValidator(validator).build();
 
     return descriptor;
   }
