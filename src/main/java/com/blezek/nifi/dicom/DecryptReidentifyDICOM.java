@@ -190,11 +190,14 @@ public class DecryptReidentifyDICOM extends AbstractProcessor {
               originalTags.remove(DeidentifyEncryptDICOM.PRIVATE_CREATOR, DeidentifyEncryptDICOM.PRIVATE_TAG);
               tags.updateRecursive(originalTags);
 
+              tags.remove(Tag.PatientIdentityRemoved);
+              tags.remove(Tag.DeidentificationMethod);
+
               // Great! everything back together
               FlowFile outputFlowFile = session.create(flowFile);
               outputFlowFile = session.write(outputFlowFile, (OutputStream out) -> {
                 try (DicomOutputStream dos = new DicomOutputStream(out, UID.ExplicitVRLittleEndian)) {
-                  dos.writeDataset(null, tags);
+                  dos.writeDataset(tags.createFileMetaInformation(UID.ExplicitVRLittleEndian), tags);
                 }
               });
               // Remove the incoming flowfile from the input queue, transfer the new

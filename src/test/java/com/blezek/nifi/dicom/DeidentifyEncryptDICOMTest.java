@@ -103,20 +103,17 @@ public class DeidentifyEncryptDICOMTest {
       Attributes actualAttributes = TestUtil.getAttributes(flowFile);
       if (saveIntermediateResults) {
         try (DicomOutputStream dos = new DicomOutputStream(new File("reidentified.dcm"))) {
-          dos.writeDataset(null, actualAttributes);
+          dos.writeDataset(actualAttributes.createFileMetaInformation(UID.ExplicitVRLittleEndian), actualAttributes);
         }
       }
       Attributes originalAttributes = TestUtil.getAttributes(getClass().getResourceAsStream(IdentifiedDICOM));
       Attributes diff = originalAttributes.getRemovedOrModified(actualAttributes);
       // Bulk data, DeidentificationMethod and DeidentificationCodeSequence
-      assertEquals(3, diff.size());
+      assertEquals(4, diff.size());
       assertTrue(diff.contains(Tag.DeidentificationMethod));
       assertTrue(diff.contains(Tag.DeidentificationMethodCodeSequence));
-
-      diff.remove(Tag.PixelData);
-      diff.remove(Tag.DeidentificationMethod);
-      diff.remove(Tag.DeidentificationMethodCodeSequence);
-      assertEquals(0, diff.size());
+      assertTrue(diff.contains(Tag.PatientIdentityRemoved));
+      assertTrue(diff.contains(Tag.PixelData));
     }
   }
 
