@@ -84,7 +84,7 @@ public class DeidentifyEncryptDICOM extends AbstractProcessor {
       .displayName("Encryption password")
       .description(
           "Encryption password, leave empty or unset if deidintified or removed attributes are not to be encripted")
-      .required(false).expressionLanguageSupported(true)
+      .required(false).expressionLanguageSupported(true).sensitive(false)
       .addValidator(StandardValidators.ATTRIBUTE_EXPRESSION_LANGUAGE_VALIDATOR)
       .addValidator(StandardValidators.NON_BLANK_VALIDATOR).build();
 
