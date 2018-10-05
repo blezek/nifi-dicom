@@ -1,5 +1,7 @@
 package com.blezek.nifi.dicom;
 
+import static org.junit.Assume.assumeTrue;
+
 import com.google.common.base.Charsets;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.io.Resources;
@@ -7,6 +9,7 @@ import com.google.common.io.Resources;
 import org.apache.nifi.reporting.InitializationException;
 import org.apache.nifi.util.TestRunner;
 import org.apache.nifi.util.TestRunners;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -20,6 +23,18 @@ class PutBoxTest {
   BoxController boxController;
   PutBox putBox;
   TestRunner runner;
+  static String token = null;
+
+  @BeforeAll
+  public static void checkBox() {
+    URL url;
+    try {
+      url = Resources.getResource("boxToken.txt");
+      token = Resources.toString(url, Charsets.UTF_8).trim();
+    } catch (Exception e) {
+      assumeTrue("to run the Box tests, please create src/test/resources/boxToken.txt", false);
+    }
+  }
 
   @BeforeEach
   void configureBox() throws IOException, InitializationException {
@@ -28,9 +43,6 @@ class PutBoxTest {
     boxController = new BoxController();
 
     runner.addControllerService("boxController", boxController);
-
-    URL url = Resources.getResource("boxToken.txt");
-    String token = Resources.toString(url, Charsets.UTF_8).trim();
     runner.setProperty(boxController, BoxController.DeveloperToken, token);
     runner.setProperty(boxController, BoxController.UserID, userId);
     runner.setProperty(boxController, BoxController.UserSpace, "2000");

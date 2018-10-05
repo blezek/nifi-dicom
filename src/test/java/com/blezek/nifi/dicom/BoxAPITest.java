@@ -1,5 +1,6 @@
 package com.blezek.nifi.dicom;
 
+import static org.junit.Assume.assumeTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.blezek.nifi.dicom.util.BoxUtil;
@@ -29,10 +30,16 @@ class BoxAPITest {
   static String userId = "testuser";
   static BoxUser user;
 
+  static String token;
+
   @BeforeAll
   public static void connect() throws IOException {
-    URL url = Resources.getResource("boxToken.txt");
-    String token = Resources.toString(url, Charsets.UTF_8).trim();
+    try {
+      URL url = Resources.getResource("boxToken.txt");
+      token = Resources.toString(url, Charsets.UTF_8).trim();
+    } catch (Exception e) {
+      assumeTrue("to run the Box tests, please create src/test/resources/boxToken.txt", false);
+    }
     api = new BoxAPIConnection(token);
     user = BoxUtil.getOrCreateBoxUser(api, userId);
     BoxUser.Info info = user.new Info();

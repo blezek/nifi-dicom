@@ -31,6 +31,7 @@ public class IdentityEntry {
     entry.patientName = patientName;
     MessageDigest md = MessageDigest.getInstance("MD5");
     entry.deidentifiedPatientName = (new HexBinaryAdapter()).marshal(md.digest(id.getBytes()));
+    entry.deidentifiedPatientName = "Anonymous^" + entry.deidentifiedPatientName.substring(0, 10);
 
     md.reset();
     md.update(id.getBytes());

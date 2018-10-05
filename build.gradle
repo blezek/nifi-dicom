@@ -16,11 +16,11 @@ apply plugin: 'de.fanero.gradle.plugin.nar'
 
 
 ext {
-  nifiVersion = '1.5.0'
+  nifiVersion = '1.7.1'
 }
 
 group = 'com.blezek.nifi.dicom'
-version = '1.0'
+version = '1.2'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -52,6 +52,9 @@ repositories {
   mavenCentral()
   maven { url "https://www.dcm4che.org/maven2/" }
   maven { url "http://jcenter.bintray.com/" }
+  flatDir {
+    dirs 'libs'
+  }
 }
 
 dependencies {
@@ -62,7 +65,7 @@ dependencies {
     "org.apache.nifi:nifi-mock:" + project.nifiVersion,
     'org.hamcrest:hamcrest-library:1.3',
   )
-  
+
   compile 'com.box:box-java-sdk:2.18.0'
   compile group: 'javax.json', name: 'javax.json-api', version: '1.0'
   compile group: 'com.google.guava', name: 'guava', version: '23.0'
@@ -94,6 +97,11 @@ dependencies {
   compile "org.flywaydb:flyway-core:5.0.7"
   compile 'com.google.code.gson:gson:2.8.2'
 
+  // Encryption
+  // compile name: 'bc-fips-1.0.1'
+  compile 'org.bouncycastle:bcprov-jdk15on:1.60'
+  compile 'org.bouncycastle:bcprov-ext-jdk15on:1.60'
+  
   // handle CSV files
   compile "com.opencsv:opencsv:4.0"
 

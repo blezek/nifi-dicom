@@ -1,5 +1,6 @@
 package com.blezek.nifi.dicom;
 
+import com.blezek.nifi.dicom.util.Encryption;
 import com.google.common.base.Stopwatch;
 import com.pixelmed.dicom.Attribute;
 import com.pixelmed.dicom.AttributeList;
@@ -8,7 +9,6 @@ import com.pixelmed.dicom.ClinicalTrialsAttributes;
 import com.pixelmed.dicom.ClinicalTrialsAttributes.HandleUIDs;
 import com.pixelmed.dicom.CodeStringAttribute;
 import com.pixelmed.dicom.CodedSequenceItem;
-import com.pixelmed.dicom.DicomException;
 import com.pixelmed.dicom.FileMetaInformation;
 import com.pixelmed.dicom.LongStringAttribute;
 import com.pixelmed.dicom.PersonNameAttribute;
@@ -23,19 +23,33 @@ import org.apache.nifi.annotation.behavior.InputRequirement;
 import org.apache.nifi.annotation.behavior.SideEffectFree;
 import org.apache.nifi.annotation.behavior.SupportsBatching;
 import org.apache.nifi.annotation.documentation.CapabilityDescription;
+import org.apache.nifi.annotation.documentation.SeeAlso;
 import org.apache.nifi.annotation.documentation.Tags;
 import org.apache.nifi.annotation.lifecycle.OnScheduled;
 import org.apache.nifi.components.PropertyDescriptor;
+import org.apache.nifi.components.PropertyValue;
 import org.apache.nifi.flowfile.FlowFile;
 import org.apache.nifi.processor.AbstractProcessor;
 import org.apache.nifi.processor.ProcessContext;
 import org.apache.nifi.processor.ProcessSession;
-import org.apache.nifi.processor.ProcessorInitializationContext;
 import org.apache.nifi.processor.Relationship;
 import org.apache.nifi.processor.exception.ProcessException;
 import org.apache.nifi.processor.util.StandardValidators;
+import org.dcm4che3.data.Attributes;
+import org.dcm4che3.data.Sequence;
+import org.dcm4che3.data.Tag;
+import org.dcm4che3.data.UID;
+import org.dcm4che3.data.VR;
+import org.dcm4che3.io.DicomInputStream;
+import org.dcm4che3.io.DicomInputStream.IncludeBulkData;
+import org.dcm4che3.io.DicomOutputStream;
+import org.dcm4che3.util.TagUtils;
+import org.dcm4che3.util.UIDUtils;
 
-import java.io.IOException;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.text.DecimalFormat;
@@ -44,39 +58,47 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
+import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-@Tags({ "deidentify", "dicom", "imaging" })
+@Tags({ "deidentify", "dicom", "imaging", "encrypt" })
 @SupportsBatching
 @SideEffectFree
 @InputRequirement(InputRequirement.Requirement.INPUT_REQUIRED)
-@CapabilityDescription("This processor implements a DICOM deidentifier.  The DeidentifyDICOM processor substitutes DICOM tags with deidentified values and stores the values.")
-public class DeidentifyDICOM extends AbstractProcessor {
+@CapabilityDescription("This processor implements a DICOM deidentifier.  Deidentified DICOM tags are encrypted using a password for later decription and re-identification.")
+@SeeAlso(DecryptReidentifyDICOM.class)
+public class DeidentifyEncryptDICOM extends AbstractProcessor {
+
+  public static final String PRIVATE_CREATOR = "nifi-dicom private";
+  public static final int PRIVATE_TAG = TagUtils.toTag(0x47, 0x10);
 
   // Relationships
   public static final Relationship RELATIONSHIP_SUCCESS = new Relationship.Builder().name("success")
       .description("All deidentified DICOM images will be routed as FlowFiles to this relationship").build();
-  public static final Relationship RELATIONSHIP_NOT_MATCHED = new Relationship.Builder().name("not_matched")
-      .description("DICOM files that do not match the patient remapping are routed to this relationship").build();
   public static final Relationship RELATIONSHIP_REJECT = new Relationship.Builder().name("failure")
       .description("FlowFiles that are not DICOM images").build();
 
   // Properties
-  public static final PropertyDescriptor DEIDENTIFICATION_STORAGE_CONTROLLER = new PropertyDescriptor.Builder()
-      .name("Deidentification controller")
-      .description("Specified the deidentification controller for DICOM deidentification").required(true)
-      .identifiesControllerService(DeidentificationService.class).build();
+  static final PropertyDescriptor PASSWORD = new PropertyDescriptor.Builder().name("password")
+      .displayName("Encryption password")
+      .description(
+          "Encryption password, leave empty or unset if deidintified or removed attributes are not to be encripted")
+      .required(false).expressionLanguageSupported(true).sensitive(false)
+      .addValidator(StandardValidators.ATTRIBUTE_EXPRESSION_LANGUAGE_VALIDATOR)
+      .addValidator(StandardValidators.NON_BLANK_VALIDATOR).build();
+
+  static final PropertyDescriptor ITERATIONS = new PropertyDescriptor.Builder().name("iterations")
+      .displayName("Encryption iterations")
+      .description(
+          "Number of encription rounds.  Higher number of iterations are typically more secure, but require more per-image computation")
+      .required(false).defaultValue("100").expressionLanguageSupported(true)
+      .addValidator(StandardValidators.INTEGER_VALIDATOR).addValidator(StandardValidators.POSITIVE_INTEGER_VALIDATOR)
+      .build();
 
   static final PropertyDescriptor BATCH_SIZE = new PropertyDescriptor.Builder().name("Batch size").defaultValue("100")
       .description("Number of DICOM files to process in batch").required(false)
       .addValidator(StandardValidators.NON_NEGATIVE_INTEGER_VALIDATOR).expressionLanguageSupported(false).build();
-
-  static final PropertyDescriptor generateIfNotMatchedProperty = new PropertyDescriptor.Builder()
-      .name("Generate identification")
-      .description("Create generated identifiers if the patient name did not match the Identifier CSV file")
-      .required(true).allowableValues("true", "false").defaultValue("false").build();
 
   static final PropertyDescriptor keepDescriptorsProperty = new PropertyDescriptor.Builder().name("Keep descriptors")
       .description("Keep text description and comment attributes").required(true).allowableValues("true", "false")
@@ -113,24 +135,24 @@ public class DeidentifyDICOM extends AbstractProcessor {
       .description("Add tags indicating the software used for deidentification").required(true)
       .allowableValues("true", "false").defaultValue("true").build();
 
-  private List<PropertyDescriptor> properties;
-  private Set<Relationship> relationships;
   static final DecimalFormat df = new DecimalFormat("#.00");
 
   @Override
-  public void init(ProcessorInitializationContext context) {
+  public Set<Relationship> getRelationships() {
     // relationships
     final Set<Relationship> procRels = new HashSet<>();
     procRels.add(RELATIONSHIP_SUCCESS);
-    procRels.add(RELATIONSHIP_NOT_MATCHED);
     procRels.add(RELATIONSHIP_REJECT);
-    relationships = Collections.unmodifiableSet(procRels);
+    return Collections.unmodifiableSet(procRels);
+  }
 
+  @Override
+  protected List<PropertyDescriptor> getSupportedPropertyDescriptors() {
     // descriptors
     final List<PropertyDescriptor> descriptors = new ArrayList<>();
-    descriptors.add(DEIDENTIFICATION_STORAGE_CONTROLLER);
+    descriptors.add(PASSWORD);
+    descriptors.add(ITERATIONS);
     descriptors.add(BATCH_SIZE);
-    descriptors.add(generateIfNotMatchedProperty);
     descriptors.add(keepDescriptorsProperty);
     descriptors.add(keepSeriesDescriptorsProperty);
     descriptors.add(keepProtocolNameProperty);
@@ -139,17 +161,7 @@ public class DeidentifyDICOM extends AbstractProcessor {
     descriptors.add(keepInstitutionIdentityProperty);
     descriptors.add(keepAllPrivateProperty);
     descriptors.add(addContributingEquipmentSequenceProperty);
-    properties = Collections.unmodifiableList(descriptors);
-  }
-
-  @Override
-  public Set<Relationship> getRelationships() {
-    return relationships;
-  }
-
-  @Override
-  protected List<PropertyDescriptor> getSupportedPropertyDescriptors() {
-    return properties;
+    return Collections.unmodifiableList(descriptors);
   }
 
   boolean keepDescriptors;
@@ -173,15 +185,10 @@ public class DeidentifyDICOM extends AbstractProcessor {
     keepInstitutionIdentity = context.getProperty(keepInstitutionIdentityProperty).asBoolean();
     keepAllPrivate = context.getProperty(keepAllPrivateProperty).asBoolean();
     addContributingEquipmentSequence = context.getProperty(addContributingEquipmentSequenceProperty).asBoolean();
-    generateIfNotMatched = context.getProperty(generateIfNotMatchedProperty).asBoolean();
-
   }
 
   @Override
   public void onTrigger(ProcessContext context, ProcessSession session) throws ProcessException {
-
-    DeidentificationService controller = context.getProperty(DEIDENTIFICATION_STORAGE_CONTROLLER)
-        .asControllerService(DeidentificationService.class);
 
     Stopwatch stopwatch = Stopwatch.createStarted();
     int count = 0;
@@ -191,8 +198,7 @@ public class DeidentifyDICOM extends AbstractProcessor {
       count++;
       try {
         // deidentifyUsingDCM4CHE(session, attributeStorage, flowfile);
-        deidentifyUsingPixelMed(controller, context, session, flowFile);
-
+        deifentifyAndEncrypt(context, session, flowFile);
       } catch (Exception e) {
         flowFile = session.penalize(flowFile);
         session.transfer(flowFile, RELATIONSHIP_REJECT);
@@ -202,19 +208,19 @@ public class DeidentifyDICOM extends AbstractProcessor {
     long ms = stopwatch.elapsed(TimeUnit.MILLISECONDS);
     if (count > 0) {
       float avg = ms / (float) count;
-      getLogger().info("processed " + count + " in " + ms + " ms / " + df.format(avg) + " ms average");
+      getLogger().debug("processed " + count + " in " + ms + " ms / " + df.format(avg) + " ms average");
     }
     session.commit();
   }
 
-  void deidentifyUsingPixelMed(DeidentificationService controller, ProcessContext context, ProcessSession session,
-      FlowFile flowfile) throws Exception {
+  void deifentifyAndEncrypt(ProcessContext context, ProcessSession session, FlowFile flowfile) throws Exception {
     String ourCalledAETitle = "nifi-dicom";
     AttributeList list;
+    Attributes originalTags;
+    Attributes deidentifiedTags;
     String outputTransferSyntaxUID = TransferSyntax.ExplicitVRLittleEndian;
 
     try (InputStream flowfileInputStream = session.read(flowfile)) {
-
       try (com.pixelmed.dicom.DicomInputStream i = new com.pixelmed.dicom.DicomInputStream(flowfileInputStream)) {
         list = new AttributeList();
 
@@ -226,27 +232,24 @@ public class DeidentifyDICOM extends AbstractProcessor {
       }
     }
 
-    // Grab the patient id before we do anything else
+    try (InputStream flowfileInputStream = session.read(flowfile)) {
+      try (DicomInputStream dis = new DicomInputStream(flowfileInputStream)) {
+        dis.setIncludeBulkData(IncludeBulkData.URI);
+        originalTags = dis.readDataset(-1, -1);
+      }
+    }
+    // Deal with patient demographics
+    String oldName = "Unknown^Pat";
     String id = "unknown";
+    if (list.containsKey(TagFromName.PatientName)) {
+      oldName = list.get(TagFromName.PatientName).getSingleStringValueOrDefault(oldName);
+    }
     if (list.containsKey(TagFromName.PatientID)) {
       id = list.get(TagFromName.PatientID).getSingleStringValueOrDefault("unknown");
     }
-
-    Optional<IdentityEntry> newId = controller.lookupById(id);
-    if (!newId.isPresent()) {
-      if (generateIfNotMatched) {
-        String oldName = "Unknown^Pat";
-        if (list.containsKey(TagFromName.PatientName)) {
-          oldName = list.get(TagFromName.PatientName).getSingleStringValueOrDefault(oldName);
-        }
-        newId = Optional.of(IdentityEntry.createPseudoEntry(id, oldName));
-      } else {
-        // We can exit early, there is nothing to do
-        // Transfer the incoming flowfile to the Not Matched relationship
-        session.transfer(flowfile, RELATIONSHIP_NOT_MATCHED);
-        return;
-      }
-    }
+    IdentityEntry newId = IdentityEntry.createPseudoEntry(id, oldName);
+    String newStudyId = list.get(TagFromName.StudyID).getSingleStringValueOrDefault("1234");
+    newStudyId = Encryption.hash(newStudyId).substring(0, 8);
 
     list.removeGroupLengthAttributes();
     list.correctDecompressedImagePixelModule(true);
@@ -256,24 +259,26 @@ public class DeidentifyDICOM extends AbstractProcessor {
     ClinicalTrialsAttributes.removeClinicalTrialsAttributes(list);
     ClinicalTrialsAttributes.removeOrNullIdentifyingAttributes(list, ClinicalTrialsAttributes.HandleUIDs.keep,
         keepDescriptors, keepSeriesDescriptors, keepProtocolName, keepPatientCharacteristics, keepDeviceIdentity,
-        keepInstitutionIdentity, ClinicalTrialsAttributes.HandleDates.keep, null/* epochForDateModification */,
-        null/* earliestDateInSet */);
-
-    if (newId.isPresent()) {
+        keepInstitutionIdentity, ClinicalTrialsAttributes.HandleDates.keep, null/*
+                                                                                 * epochForDateModification
+                                                                                 */, null/*
+                                                                                          * earliestDateInSet
+                                                                                          */);
+    {
       AttributeTag tag;
       Attribute a;
 
       tag = TagFromName.PatientName;
       list.remove(tag);
       a = new PersonNameAttribute(tag);
-      a.addValue(newId.get().getDeidentifiedPatientName());
+      a.addValue(newId.getDeidentifiedPatientName());
       list.put(tag, a);
 
       // Deidentify PatientId
       tag = TagFromName.PatientID;
       list.remove(tag);
       a = new LongStringAttribute(tag);
-      a.addValue(newId.get().getDeidentifiedPatientId());
+      a.addValue(newId.getDeidentifiedPatientId());
       list.put(tag, a);
 
       // Deidentify Accession number
@@ -281,8 +286,11 @@ public class DeidentifyDICOM extends AbstractProcessor {
       String an = list.get(tag).getSingleStringValueOrDefault("0");
       list.remove(tag);
       a = new ShortStringAttribute(tag);
-      a.addValue(newId.get().generateAccessionNumber(an));
+      a.addValue(newId.generateAccessionNumber(an));
       list.put(tag, a);
+
+      list.get(TagFromName.StudyID).removeValues();
+      list.get(TagFromName.StudyID).setValue(newStudyId);
 
     }
 
@@ -317,13 +325,13 @@ public class DeidentifyDICOM extends AbstractProcessor {
       AttributeTag tag = (i2.next());
       String originalUIDValue = Attribute.getSingleStringValueOrNull(list, tag);
       if (originalUIDValue != null) {
-        String replacementUIDValue = controller.mapUid(originalUIDValue);
+        // Use the DCM4CHE method of generating a hash, this keeps Series and Studies
+        // together...
+        String replacementUIDValue = UIDUtils.createNameBasedUID(originalUIDValue.getBytes());
         list.remove(tag);
         Attribute a = new UniqueIdentifierAttribute(tag);
         a.addValue(replacementUIDValue);
         list.put(tag, a);
-      } else {
-        list.remove(tag);
       }
     }
 
@@ -367,18 +375,93 @@ public class DeidentifyDICOM extends AbstractProcessor {
     FileMetaInformation.addFileMetaInformation(list, outputTransferSyntaxUID, ourCalledAETitle);
     list.insertSuitableSpecificCharacterSetForAllStringValues();
 
+    // We need to save the remapped UIDs. When the series is re-identified,
+    // if the UIDs match, we assume this is the original data. If the Series and
+    // Instance
+    // UIDs do not match, we assume this is a new series and preserve the UIDs from
+    // the other system.
+    Attributes remappedUIDs = new Attributes();
+    remappedUIDs.setString(Tag.StudyInstanceUID, VR.UI,
+        Attribute.getSingleStringValueOrDefault(list, TagFromName.StudyInstanceUID, "unknown"));
+    remappedUIDs.setString(Tag.SeriesInstanceUID, VR.UI,
+        Attribute.getSingleStringValueOrDefault(list, TagFromName.SeriesInstanceUID, "unknown"));
+    remappedUIDs.setString(Tag.SOPInstanceUID, VR.UI,
+        Attribute.getSingleStringValueOrDefault(list, TagFromName.SOPInstanceUID, "unknown"));
+
+    // Write the PixelMed DICOM out to a temp file, re-read with DCM4CHE and save
+    File tempDICOMFile = File.createTempFile("nifi-dicom", ".dcm");
+    try {
+      // Save
+      try (FileOutputStream out = new FileOutputStream(tempDICOMFile)) {
+        list.write(out, outputTransferSyntaxUID, true, true);
+      }
+      // try to GC the list
+      list = null;
+      try (InputStream in = new FileInputStream(tempDICOMFile)) {
+        try (DicomInputStream dis = new DicomInputStream(in)) {
+          dis.setIncludeBulkData(IncludeBulkData.URI);
+          deidentifiedTags = dis.readDataset(-1, -1);
+        }
+      }
+    } finally {
+      tempDICOMFile.delete();
+    }
+
+    // Optionally encrypt
+    PropertyValue passwordProperty = context.getProperty(PASSWORD);
+    if (passwordProperty.isSet()) {
+      String password = passwordProperty.evaluateAttributeExpressions().toString();
+
+      Attributes differenceTags = originalTags.getRemovedOrModified(deidentifiedTags);
+      differenceTags.remove(Tag.DeidentificationMethod);
+      differenceTags.remove(Tag.DeidentificationMethodCodeSequence);
+
+      // Our private tag...
+      Sequence sequence = differenceTags.ensureSequence(PRIVATE_CREATOR, PRIVATE_TAG, 0);
+      sequence.add(remappedUIDs);
+
+      // The modified tags need to be in a Modified Attribute Sequence
+      Attributes ma = new Attributes();
+      Sequence s = ma.ensureSequence(Tag.ModifiedAttributesSequence, 0);
+      s.add(differenceTags);
+
+      // Note:
+      // Need to install JCE Unlimited Strength Extension, both in the JRE and the JDK
+      // https://stackoverflow.com/a/6388603/334619
+      // See
+      // $JAVA_HOME/jre/lib/security/
+      // $JAVA_HOME/lib/security/
+      ByteArrayOutputStream os = new ByteArrayOutputStream();
+      try (DicomOutputStream dos = new DicomOutputStream(os, UID.ExplicitVRLittleEndian)) {
+        dos.writeDataset(null, ma);
+      }
+      os.close();
+
+      String salt = UUID.randomUUID().toString();
+      int iterations = context.getProperty(ITERATIONS).evaluateAttributeExpressions().asInteger();
+      byte[] encryptedBuffer = Encryption.createPasswordEnvelopedObject(password.toCharArray(), salt.getBytes(),
+          iterations, os.toByteArray());
+
+      // put it in the tags
+      Attributes encryptedAttributes = new Attributes();
+      encryptedAttributes.setString(Tag.EncryptedContentTransferSyntaxUID, VR.UI, UID.ExplicitVRLittleEndian);
+      encryptedAttributes.setBytes(Tag.EncryptedContent, VR.OB, encryptedBuffer);
+
+      // Add the sequence into the deidentified tags
+      Sequence encryptedAttributesSequence = deidentifiedTags.ensureSequence(Tag.EncryptedAttributesSequence, 0);
+      encryptedAttributesSequence.add(encryptedAttributes);
+    }
+
     FlowFile outputFlowFile = session.create(flowfile);
     outputFlowFile = session.write(outputFlowFile, (OutputStream out) -> {
-      try {
-        list.write(out, outputTransferSyntaxUID, true, true);
-      } catch (DicomException e) {
-        throw new IOException("Could not write " + e.getLocalizedMessage(), e);
+      try (DicomOutputStream dos = new DicomOutputStream(out, UID.ExplicitVRLittleEndian)) {
+        dos.writeDataset(deidentifiedTags.createFileMetaInformation(UID.ExplicitVRLittleEndian), deidentifiedTags);
       }
     });
     // Remove the incoming flowfile from the input queue, transfer the new
     // deidentified file to the output
     session.remove(flowfile);
     session.transfer(outputFlowFile, RELATIONSHIP_SUCCESS);
-  }
 
+  }
 }
