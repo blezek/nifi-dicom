@@ -4,6 +4,5 @@ com.blezek.nifi.dicom.DeidentifyDICOM
 com.blezek.nifi.dicom.ExtractDICOMTags
 com.blezek.nifi.dicom.ModifyDICOMTags
 com.blezek.nifi.dicom.LogCacheStatistics
-com.blezek.nifi.dicom.PutBox
 com.blezek.nifi.dicom.DecryptReidentifyDICOM
 com.blezek.nifi.dicom.DeidentifyEncryptDICOM
