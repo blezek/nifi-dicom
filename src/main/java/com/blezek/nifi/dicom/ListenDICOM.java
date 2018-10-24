@@ -10,6 +10,7 @@ import org.apache.nifi.annotation.lifecycle.OnEnabled;
 import org.apache.nifi.annotation.lifecycle.OnStopped;
 import org.apache.nifi.components.PropertyDescriptor;
 import org.apache.nifi.components.PropertyValue;
+import org.apache.nifi.expression.ExpressionLanguageScope;
 import org.apache.nifi.flowfile.FlowFile;
 import org.apache.nifi.processor.AbstractSessionFactoryProcessor;
 import org.apache.nifi.processor.ProcessContext;
@@ -62,12 +63,14 @@ public class ListenDICOM extends AbstractSessionFactoryProcessor {
 
   static final PropertyDescriptor DICOM_PORT = new PropertyDescriptor.Builder().name("DICOM_PORT")
       .displayName("Listening port").description("The TCP port the ListenDICOM processor will bind to.").required(true)
-      .expressionLanguageSupported(true).addValidator(StandardValidators.PORT_VALIDATOR).defaultValue("4096").build();
+      .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
+      .addValidator(StandardValidators.PORT_VALIDATOR).defaultValue("4096").build();
   static final PropertyDescriptor AE_TITLE = new PropertyDescriptor.Builder().name("AE_TITLE")
       .displayName("Local Application Entity Title").defaultValue("*")
       .description(
           "ListenDICOM requires that remote DICOM Application Entities use this AE Title when sending DICOM, default is to accept all called AE Titles")
-      .expressionLanguageSupported(true).addValidator(new AETitleValidator()).build();
+      .expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES).addValidator(new AETitleValidator())
+      .build();
 
   public static final Relationship RELATIONSHIP_SUCCESS = new Relationship.Builder().name("success")
       .description("All new DICOM images will be routed as FlowFiles to this relationship").build();

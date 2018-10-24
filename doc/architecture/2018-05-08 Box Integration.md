@@ -2,13 +2,15 @@
 
 ## Status
 
-accepted
+rejected
 
 ## Context
 
 [Box](https://www.box.com) is cloud data storage platform.  The `nifi-dicom` project desires the ability to upload `FlowFiles` to Box.  This feature is not limited to DICOM, and is independent of DICOM.
 
 ## Decision
+
+**2018-10-23** Removing Box features.  Could be extracted into a different project.
 
 The Box upload feature will include these components:
 

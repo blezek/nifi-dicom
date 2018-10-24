@@ -9,6 +9,7 @@ import org.apache.nifi.annotation.documentation.CapabilityDescription;
 import org.apache.nifi.annotation.documentation.SeeAlso;
 import org.apache.nifi.annotation.documentation.Tags;
 import org.apache.nifi.components.PropertyDescriptor;
+import org.apache.nifi.expression.ExpressionLanguageScope;
 import org.apache.nifi.flowfile.FlowFile;
 import org.apache.nifi.processor.AbstractProcessor;
 import org.apache.nifi.processor.ProcessContext;
@@ -57,19 +58,24 @@ public class PutDICOM extends AbstractProcessor {
 
   static final PropertyDescriptor DICOM_PORT = new PropertyDescriptor.Builder().name("DICOM_PORT")
       .displayName("Remote Port").description("The TCP port to send to.").required(true)
-      .expressionLanguageSupported(true).addValidator(StandardValidators.PORT_VALIDATOR).defaultValue("4096").build();
+      .expressionLanguageSupported(ExpressionLanguageScope.VARIABLE_REGISTRY)
+      .addValidator(StandardValidators.PORT_VALIDATOR).defaultValue("4096").build();
   static final PropertyDescriptor CALLING_AE_TITLE = new PropertyDescriptor.Builder().name("CALLING_AE_TITLE")
-      .displayName("Local Application Entity").required(true).expressionLanguageSupported(true)
+      .displayName("Local Application Entity").required(true)
+      .expressionLanguageSupported(ExpressionLanguageScope.VARIABLE_REGISTRY)
       .addValidator(StandardValidators.NON_BLANK_VALIDATOR).addValidator(new AETitleValidator()).build();
   static final PropertyDescriptor CALLED_AE_TITLE = new PropertyDescriptor.Builder().name("CALLED_AE_TITLE")
-      .displayName("Remote Application Entity Title").required(true).expressionLanguageSupported(true)
+      .displayName("Remote Application Entity Title").required(true)
+      .expressionLanguageSupported(ExpressionLanguageScope.VARIABLE_REGISTRY)
       .addValidator(StandardValidators.NON_BLANK_VALIDATOR).addValidator(new AETitleValidator()).build();
   static final PropertyDescriptor DICOM_HOSTNAME = new PropertyDescriptor.Builder().name("DICOM_HOSTNAME")
-      .displayName("Remote hostname of remote DICOM destination").required(true).expressionLanguageSupported(true)
+      .displayName("Remote hostname of remote DICOM destination").required(true)
+      .expressionLanguageSupported(ExpressionLanguageScope.VARIABLE_REGISTRY)
       .addValidator(StandardValidators.NON_BLANK_VALIDATOR).build();
   static final PropertyDescriptor BATCH_SIZE = new PropertyDescriptor.Builder().name("BATCH_SIZE")
-      .displayName("maxmium number of DICOM images to send at once, 0 is unlimited").defaultValue("0").required(true)
-      .expressionLanguageSupported(true).addValidator(StandardValidators.NON_NEGATIVE_INTEGER_VALIDATOR)
+      .displayName("batch size").description("maxmium number of DICOM images to send at once, 0 is unlimited")
+      .defaultValue("0").required(true).expressionLanguageSupported(ExpressionLanguageScope.VARIABLE_REGISTRY)
+      .addValidator(StandardValidators.NON_NEGATIVE_INTEGER_VALIDATOR)
       .addValidator(StandardValidators.NON_BLANK_VALIDATOR).build();
 
   public static final Relationship RELATIONSHIP_SUCCESS = new Relationship.Builder().name("success")

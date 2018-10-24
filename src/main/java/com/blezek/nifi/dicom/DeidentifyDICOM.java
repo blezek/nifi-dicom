@@ -1,6 +1,5 @@
 package com.blezek.nifi.dicom;
 
-import com.google.common.base.Stopwatch;
 import com.pixelmed.dicom.Attribute;
 import com.pixelmed.dicom.AttributeList;
 import com.pixelmed.dicom.AttributeTag;
@@ -33,7 +32,6 @@ import org.apache.nifi.processor.ProcessSession;
 import org.apache.nifi.processor.ProcessorInitializationContext;
 import org.apache.nifi.processor.Relationship;
 import org.apache.nifi.processor.exception.ProcessException;
-import org.apache.nifi.processor.util.StandardValidators;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -46,7 +44,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.concurrent.TimeUnit;
 
 @Tags({ "deidentify", "dicom", "imaging" })
 @SupportsBatching
@@ -68,10 +65,6 @@ public class DeidentifyDICOM extends AbstractProcessor {
       .name("Deidentification controller")
       .description("Specified the deidentification controller for DICOM deidentification").required(true)
       .identifiesControllerService(DeidentificationService.class).build();
-
-  static final PropertyDescriptor BATCH_SIZE = new PropertyDescriptor.Builder().name("Batch size").defaultValue("100")
-      .description("Number of DICOM files to process in batch").required(false)
-      .addValidator(StandardValidators.NON_NEGATIVE_INTEGER_VALIDATOR).expressionLanguageSupported(false).build();
 
   static final PropertyDescriptor generateIfNotMatchedProperty = new PropertyDescriptor.Builder()
       .name("Generate identification")
@@ -129,7 +122,6 @@ public class DeidentifyDICOM extends AbstractProcessor {
     // descriptors
     final List<PropertyDescriptor> descriptors = new ArrayList<>();
     descriptors.add(DEIDENTIFICATION_STORAGE_CONTROLLER);
-    descriptors.add(BATCH_SIZE);
     descriptors.add(generateIfNotMatchedProperty);
     descriptors.add(keepDescriptorsProperty);
     descriptors.add(keepSeriesDescriptorsProperty);
@@ -180,29 +172,22 @@ public class DeidentifyDICOM extends AbstractProcessor {
   @Override
   public void onTrigger(ProcessContext context, ProcessSession session) throws ProcessException {
 
+    FlowFile flowFile = session.get();
+    if (flowFile == null) {
+      return;
+    }
+
     DeidentificationService controller = context.getProperty(DEIDENTIFICATION_STORAGE_CONTROLLER)
         .asControllerService(DeidentificationService.class);
 
-    Stopwatch stopwatch = Stopwatch.createStarted();
-    int count = 0;
-    // Process up to 100 in batch
-    Integer batchSize = context.getProperty(BATCH_SIZE).asInteger();
-    for (FlowFile flowFile : session.get(batchSize)) {
-      count++;
-      try {
-        // deidentifyUsingDCM4CHE(session, attributeStorage, flowfile);
-        deidentifyUsingPixelMed(controller, context, session, flowFile);
+    try {
+      // deidentifyUsingDCM4CHE(session, attributeStorage, flowfile);
+      deidentifyUsingPixelMed(controller, context, session, flowFile);
 
-      } catch (Exception e) {
-        flowFile = session.penalize(flowFile);
-        session.transfer(flowFile, RELATIONSHIP_REJECT);
-        getLogger().error("Flowfile is not a DICOM file, could not read attributes", e);
-      }
-    }
-    long ms = stopwatch.elapsed(TimeUnit.MILLISECONDS);
-    if (count > 0) {
-      float avg = ms / (float) count;
-      getLogger().info("processed " + count + " in " + ms + " ms / " + df.format(avg) + " ms average");
+    } catch (Exception e) {
+      flowFile = session.penalize(flowFile);
+      session.transfer(flowFile, RELATIONSHIP_REJECT);
+      getLogger().error("Flowfile is not a DICOM file, could not read attributes", e);
     }
     session.commit();
   }

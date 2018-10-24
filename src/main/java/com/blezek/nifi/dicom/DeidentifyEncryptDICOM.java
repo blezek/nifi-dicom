@@ -1,7 +1,6 @@
 package com.blezek.nifi.dicom;
 
 import com.blezek.nifi.dicom.util.Encryption;
-import com.google.common.base.Stopwatch;
 import com.pixelmed.dicom.Attribute;
 import com.pixelmed.dicom.AttributeList;
 import com.pixelmed.dicom.AttributeTag;
@@ -28,6 +27,7 @@ import org.apache.nifi.annotation.documentation.Tags;
 import org.apache.nifi.annotation.lifecycle.OnScheduled;
 import org.apache.nifi.components.PropertyDescriptor;
 import org.apache.nifi.components.PropertyValue;
+import org.apache.nifi.expression.ExpressionLanguageScope;
 import org.apache.nifi.flowfile.FlowFile;
 import org.apache.nifi.processor.AbstractProcessor;
 import org.apache.nifi.processor.ProcessContext;
@@ -60,7 +60,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.UUID;
-import java.util.concurrent.TimeUnit;
 
 @Tags({ "deidentify", "dicom", "imaging", "encrypt" })
 @SupportsBatching
@@ -84,7 +83,7 @@ public class DeidentifyEncryptDICOM extends AbstractProcessor {
       .displayName("Encryption password")
       .description(
           "Encryption password, leave empty or unset if deidintified or removed attributes are not to be encripted")
-      .required(false).expressionLanguageSupported(true).sensitive(false)
+      .required(false).expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES).sensitive(false)
       .addValidator(StandardValidators.ATTRIBUTE_EXPRESSION_LANGUAGE_VALIDATOR)
       .addValidator(StandardValidators.NON_BLANK_VALIDATOR).build();
 
@@ -92,13 +91,15 @@ public class DeidentifyEncryptDICOM extends AbstractProcessor {
       .displayName("Encryption iterations")
       .description(
           "Number of encription rounds.  Higher number of iterations are typically more secure, but require more per-image computation")
-      .required(false).defaultValue("100").expressionLanguageSupported(true)
+      .required(false).defaultValue("100").expressionLanguageSupported(ExpressionLanguageScope.FLOWFILE_ATTRIBUTES)
       .addValidator(StandardValidators.INTEGER_VALIDATOR).addValidator(StandardValidators.POSITIVE_INTEGER_VALIDATOR)
       .build();
 
-  static final PropertyDescriptor BATCH_SIZE = new PropertyDescriptor.Builder().name("Batch size").defaultValue("100")
-      .description("Number of DICOM files to process in batch").required(false)
-      .addValidator(StandardValidators.NON_NEGATIVE_INTEGER_VALIDATOR).expressionLanguageSupported(false).build();
+  // static final PropertyDescriptor BATCH_SIZE = new
+  // PropertyDescriptor.Builder().name("Batch size").defaultValue("100")
+  // .description("Number of DICOM files to process in batch").required(false)
+  // .addValidator(StandardValidators.NON_NEGATIVE_INTEGER_VALIDATOR)
+  // .expressionLanguageSupported(ExpressionLanguageScope.NONE).build();
 
   static final PropertyDescriptor keepDescriptorsProperty = new PropertyDescriptor.Builder().name("Keep descriptors")
       .description("Keep text description and comment attributes").required(true).allowableValues("true", "false")
@@ -152,7 +153,6 @@ public class DeidentifyEncryptDICOM extends AbstractProcessor {
     final List<PropertyDescriptor> descriptors = new ArrayList<>();
     descriptors.add(PASSWORD);
     descriptors.add(ITERATIONS);
-    descriptors.add(BATCH_SIZE);
     descriptors.add(keepDescriptorsProperty);
     descriptors.add(keepSeriesDescriptorsProperty);
     descriptors.add(keepProtocolNameProperty);
@@ -190,12 +190,8 @@ public class DeidentifyEncryptDICOM extends AbstractProcessor {
   @Override
   public void onTrigger(ProcessContext context, ProcessSession session) throws ProcessException {
 
-    Stopwatch stopwatch = Stopwatch.createStarted();
-    int count = 0;
-    // Process up to 100 in batch
-    Integer batchSize = context.getProperty(BATCH_SIZE).asInteger();
-    for (FlowFile flowFile : session.get(batchSize)) {
-      count++;
+    FlowFile flowFile = session.get();
+    if (flowFile != null) {
       try {
         // deidentifyUsingDCM4CHE(session, attributeStorage, flowfile);
         deifentifyAndEncrypt(context, session, flowFile);
@@ -204,11 +200,6 @@ public class DeidentifyEncryptDICOM extends AbstractProcessor {
         session.transfer(flowFile, RELATIONSHIP_REJECT);
         getLogger().error("Flowfile is not a DICOM file, could not read attributes", e);
       }
-    }
-    long ms = stopwatch.elapsed(TimeUnit.MILLISECONDS);
-    if (count > 0) {
-      float avg = ms / (float) count;
-      getLogger().debug("processed " + count + " in " + ms + " ms / " + df.format(avg) + " ms average");
     }
     session.commit();
   }
@@ -410,7 +401,7 @@ public class DeidentifyEncryptDICOM extends AbstractProcessor {
     // Optionally encrypt
     PropertyValue passwordProperty = context.getProperty(PASSWORD);
     if (passwordProperty.isSet()) {
-      String password = passwordProperty.evaluateAttributeExpressions().toString();
+      String password = passwordProperty.evaluateAttributeExpressions(flowfile).toString();
 
       Attributes differenceTags = originalTags.getRemovedOrModified(deidentifiedTags);
       differenceTags.remove(Tag.DeidentificationMethod);
@@ -438,7 +429,7 @@ public class DeidentifyEncryptDICOM extends AbstractProcessor {
       os.close();
 
       String salt = UUID.randomUUID().toString();
-      int iterations = context.getProperty(ITERATIONS).evaluateAttributeExpressions().asInteger();
+      int iterations = context.getProperty(ITERATIONS).evaluateAttributeExpressions(flowfile).asInteger();
       byte[] encryptedBuffer = Encryption.createPasswordEnvelopedObject(password.toCharArray(), salt.getBytes(),
           iterations, os.toByteArray());
 

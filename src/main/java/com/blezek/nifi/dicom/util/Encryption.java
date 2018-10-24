@@ -2,6 +2,7 @@ package com.blezek.nifi.dicom.util;
 
 import javax.xml.bind.annotation.adapters.HexBinaryAdapter;
 
+import org.bouncycastle.asn1.ASN1ObjectIdentifier;
 import org.bouncycastle.cms.CMSAlgorithm;
 import org.bouncycastle.cms.CMSEnvelopedData;
 import org.bouncycastle.cms.CMSEnvelopedDataGenerator;
@@ -43,18 +44,14 @@ public class Encryption {
   public static byte[] createPasswordEnvelopedObject(char[] passwd, byte[] salt, int iterationCount, byte[] data)
       throws GeneralSecurityException, CMSException, IOException {
 
+    ASN1ObjectIdentifier algorithm = CMSAlgorithm.AES256_CBC;
     CMSEnvelopedDataGenerator envelopedGen = new CMSEnvelopedDataGenerator();
-    envelopedGen.addRecipientInfoGenerator(new JcePasswordRecipientInfoGenerator(CMSAlgorithm.AES256_CBC, passwd)
-        // .setProvider("BCFIPS")
+    envelopedGen.addRecipientInfoGenerator(new JcePasswordRecipientInfoGenerator(algorithm, passwd)
         .setPasswordConversionScheme(PasswordRecipient.PKCS5_SCHEME2_UTF8)
-
-        // .setPRF(PasswordRecipient.PRF.HMacSHA384)
         .setSaltAndIterationCount(salt, iterationCount));
-    return envelopedGen.generate(new CMSProcessableByteArray(data),
-        new JceCMSContentEncryptorBuilder(CMSAlgorithm.AES256_CBC)
-            // .setProvider("BCFIPS")
-            .build())
-        .getEncoded();
+
+    return envelopedGen
+        .generate(new CMSProcessableByteArray(data), new JceCMSContentEncryptorBuilder(algorithm).build()).getEncoded();
   }
 
   /*
