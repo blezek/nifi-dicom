@@ -1,13 +1,11 @@
 package com.blezek.nifi.dicom;
 
-import java.io.IOException;
-
 import org.apache.nifi.util.TestRunner;
 import org.apache.nifi.util.TestRunners;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.blezek.nifi.dicom.PutDICOM;
+import java.io.IOException;
 
 public class PutDICOMTest {
   private TestRunner runner;
@@ -36,11 +34,6 @@ public class PutDICOMTest {
 
     runner.setProperty("DICOM_HOSTNAME", "localhost");
     runner.assertValid();
-  }
-
-  @Test
-  public void send() {
-
   }
 
 }
