@@ -1,0 +1,39 @@
+
+stages:
+  - test
+  - nar
+
+test8:
+  image: openjdk:8-jdk
+  stage: test
+  script:
+    - ./gradlew test
+  artifacts:
+    reports:
+      junit: build/test-results/test/TEST-*.xml
+
+test10:
+  image: openjdk:10-jdk
+  stage: test
+  script:
+    - ./gradlew test
+  artifacts:
+    reports:
+      junit: build/test-results/test/TEST-*.xml
+  
+test11:
+  image: openjdk:11-jdk
+  stage: test
+  script:
+    - ./gradlew test
+  artifacts:
+    reports:
+      junit: build/test-results/test/TEST-*.xml
+  
+nar:
+  image: java:8
+  stage: nar
+  script:
+    - ./gradlew nar
+
+    
