@@ -1,5 +1,3 @@
-test_template:
-  
 
 stages:
   - test
