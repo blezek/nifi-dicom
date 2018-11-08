@@ -1,0 +1,23 @@
+image: java:8
+
+stages:
+  - build
+  - test
+  - nar
+
+  build:
+    stage: build
+    script:
+      - ./gradlew clean assemble
+
+  test:
+    stage: test
+    script:
+      - ./gradlew test
+    artifacts:
+      reports:
+        junit: build/test-results/test/TEST-*.xml
+  nar:
+    stage: nar
+    script:
+      - ./gradlew nar
