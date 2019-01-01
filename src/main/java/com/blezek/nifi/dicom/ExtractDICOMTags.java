@@ -132,7 +132,7 @@ public class ExtractDICOMTags extends AbstractProcessor {
         try (DicomInputStream in = new DicomInputStream(flowfileInputStream)) {
           in.setIncludeBulkData(IncludeBulkData.NO);
           Attributes attributes;
-          attributes = in.readDataset(-1, -1);
+          attributes = in.readDataset(-1, Tag.PixelData);
 
           if (constructFilename) {
             String badCharacters = "[^a-zA-Z0-9.^]";
