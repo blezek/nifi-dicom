@@ -2,15 +2,20 @@ package com.blezek.nifi.dicom;
 
 import org.apache.nifi.util.TestRunner;
 import org.apache.nifi.util.TestRunners;
-import org.junit.Before;
-import org.junit.Test;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 import java.io.IOException;
 
 public class PutDICOMTest {
   private TestRunner runner;
 
-  @Before
+  @BeforeEach
   public void setup() throws IOException {
     runner = TestRunners.newTestRunner(PutDICOM.class);
   }
