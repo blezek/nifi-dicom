@@ -212,7 +212,7 @@ public class PutDICOM extends AbstractProcessor {
         getLogger().error("error connecting to " + remote.getDevice(), e);
         session.transfer(validDICOMFlowFiles, RELATIONSHIP_FAILURE);
         // I don't believe this is needed?
-        // session.commit();
+        // session.commitAsync();
         return;
       }
 
@@ -259,7 +259,7 @@ public class PutDICOM extends AbstractProcessor {
       scheduledExecutorService.shutdown();
     }
     // I don't believe this is needed because we are doing only one file at a time.
-    // session.commit();
+    // session.commitAsync();
   }
 
 }

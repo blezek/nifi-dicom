@@ -201,7 +201,7 @@ public class DeidentifyEncryptDICOM extends AbstractProcessor {
         getLogger().error("Flowfile is not a DICOM file, could not read attributes", e);
       }
     }
-    session.commit();
+    session.commitAsync();
   }
 
   void deifentifyAndEncrypt(ProcessContext context, ProcessSession session, FlowFile flowfile) throws Exception {
