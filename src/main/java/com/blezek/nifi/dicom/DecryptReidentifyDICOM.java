@@ -109,7 +109,7 @@ public class DecryptReidentifyDICOM extends AbstractProcessor {
       }
     }
 
-    session.commit();
+    session.commitAsync();
   }
 
   /**

@@ -189,7 +189,7 @@ public class DeidentifyDICOM extends AbstractProcessor {
       session.transfer(flowFile, RELATIONSHIP_REJECT);
       getLogger().error("Flowfile is not a DICOM file, could not read attributes", e);
     }
-    session.commit();
+    session.commitAsync();
   }
 
   void deidentifyUsingPixelMed(DeidentificationService controller, ProcessContext context, ProcessSession session,

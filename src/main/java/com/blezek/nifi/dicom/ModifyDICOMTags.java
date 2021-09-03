@@ -165,7 +165,7 @@ public class ModifyDICOMTags extends AbstractProcessor {
         session.remove(flowfile);
       }
     }
-    session.commit();
+    session.commitAsync();
   }
 
 }

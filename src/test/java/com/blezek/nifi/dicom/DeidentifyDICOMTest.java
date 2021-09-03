@@ -12,30 +12,35 @@ import org.apache.nifi.util.TestRunners;
 import org.dcm4che3.data.Attributes;
 import org.dcm4che3.data.Tag;
 import org.jdbi.v3.core.Jdbi;
-import org.junit.Before;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.TemporaryFolder;
+
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.jupiter.api.io.TempDir;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Path;
 import java.util.List;
 
 public class DeidentifyDICOMTest {
   static final Logger logger = LoggerFactory.getLogger(DeidentifyDICOMTest.class);
 
-  @Rule
-  public TemporaryFolder folder = new TemporaryFolder();
+  @TempDir
+   Path folder;
 
   private DeidentifyDICOM deidentifyDICOM;
   private TestRunner runner;
 
   private DeidentificationController deidentificationController;
 
-  @Before
+  @BeforeEach
   public void setup() throws IOException, InitializationException {
     deidentifyDICOM = new DeidentifyDICOM();
     runner = TestRunners.newTestRunner(deidentifyDICOM);
@@ -44,7 +49,7 @@ public class DeidentifyDICOMTest {
 
     runner.addControllerService("dc", deidentificationController);
     runner.setProperty(deidentificationController, DeidentificationController.DB_DIRECTORY,
-        folder.getRoot().getAbsolutePath());
+        folder.toAbsolutePath().toString());
     runner.setProperty(DeidentifyDICOM.DEIDENTIFICATION_STORAGE_CONTROLLER, "dc");
   }
 
@@ -192,7 +197,7 @@ public class DeidentifyDICOMTest {
   private int getNumberOfMappings() {
 
     EmbeddedDataSource ds = new EmbeddedDataSource();
-    ds.setDatabaseName(new File(folder.getRoot(), "database").getAbsolutePath());
+    ds.setDatabaseName(new File(folder.toFile(), "database").getAbsolutePath());
     ds.setCreateDatabase("create");
 
     Jdbi jdbi = Jdbi.create(ds);
@@ -212,7 +217,7 @@ public class DeidentifyDICOMTest {
     // Copy CSV file
     InputStream r = getClass().getResourceAsStream(string);
 
-    File csv = folder.newFile();
+    File csv = new File(folder.toFile(), "tmp.csv");
 
     byte[] buffer = new byte[r.available()];
     r.read(buffer);

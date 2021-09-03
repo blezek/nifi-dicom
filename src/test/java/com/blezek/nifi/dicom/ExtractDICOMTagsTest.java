@@ -1,21 +1,24 @@
 package com.blezek.nifi.dicom;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import org.apache.nifi.util.MockFlowFile;
 import org.apache.nifi.util.TestRunner;
 import org.apache.nifi.util.TestRunners;
-import org.junit.Before;
-import org.junit.Test;
+
 
 import java.io.InputStream;
 import java.util.List;
 
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.*;
+
 public class ExtractDICOMTagsTest {
   private TestRunner runner;
 
-  @Before
+  @BeforeEach
   public void setup() {
     runner = TestRunners.newTestRunner(new ExtractDICOMTags());
   }
@@ -48,7 +51,7 @@ public class ExtractDICOMTagsTest {
 
     List<MockFlowFile> flowFiles = runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_SUCCESS);
     for (MockFlowFile flowFile : flowFiles) {
-      assertEquals("flowfile has correct number of attributes", 94, flowFile.getAttributes().keySet().size());
+      assertEquals( 94, flowFile.getAttributes().keySet().size(), "flowfile has correct number of attributes");
       flowFile.assertAttributeEquals("Modality", "MR");
     }
 
@@ -69,8 +72,8 @@ public class ExtractDICOMTagsTest {
     for (MockFlowFile flowFile : flowFiles) {
       String filename = flowFile.getAttribute("filename");
       String path = flowFile.getAttribute("path");
-      assertTrue("path", path.equals("LGG_104/20000626_MR/5_Gad_Ax_SPGR_Straight/"));
-      assertTrue("filename", filename.equals(flowFile.getAttribute("SOPInstanceUID") + ".dcm"));
+      assertTrue( path.equals("LGG_104/20000626_MR/5_Gad_Ax_SPGR_Straight/"), "path");
+      assertTrue( filename.equals(flowFile.getAttribute("SOPInstanceUID") + ".dcm"),"filename");
     }
 
   }

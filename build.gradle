@@ -1,116 +1,111 @@
-buildscript {
-  repositories {
-    mavenCentral()
-    maven {url 'http://dl.bintray.com/sponiro/gradle-plugins'}
-  }
-  dependencies {
-    classpath group: 'de.fanero.gradle.plugin.nar', name: 'gradle-nar-plugin', version: '0.1'
-  }
-}
-
 plugins {
-  id "com.github.breadmoirai.github-release" version "2.0.1"
+    id "me.ragill.nar-plugin" version "1.0.2"
+    id "com.github.breadmoirai.github-release" version "2.2.12"
+    id 'java'
 }
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'de.fanero.gradle.plugin.nar'
-apply plugin: 'project-report'
 
 ext {
-  nifiVersion = '1.7.1'
+    nifiVersion = '1.14.0'
 }
 
-group = 'com.blezek.nifi.dicom'
-version = '1.4'
+group 'com.blezek.nifi.dicom'
+version '1.14'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
 // Adds the NAR taget for NIFI
 nar {
-  manifest {
-    attributes (
-      'Nar-Group': project.group,
-      'Nar-Id': project.name,
-      'Nar-Version': project.version
-    )
-  }
+    manifest {
+        attributes(
+                'Nar-Group': project.group,
+                'Nar-Id': project.name,
+                'Nar-Version': project.version
+        )
+    }
 }
 
 test {
-  useJUnitPlatform()
-  testLogging {
-    events "passed", "skipped", "failed"
-  }
-  reports {
-    html.enabled = true
-  }
+    useJUnitPlatform()
 }
 
 repositories {
-  mavenCentral()
-  // DCM4CHE has their own Maven...
-  maven { url "https://www.dcm4che.org/maven2/" }
-  maven { url "http://jcenter.bintray.com/" }
+    mavenCentral()
+    // DCM4CHE has their own Maven...
+    maven { url "https://www.dcm4che.org/maven2/" }
+    maven { url "https://jcenter.bintray.com/" }
 }
 
 dependencies {
-  testCompile('org.junit.jupiter:junit-jupiter-api:5.2.0')
-  testCompile('org.junit.vintage:junit-vintage-engine:5.2.0')
-  testCompile (
-    "org.apache.nifi:nifi-mock:" + project.nifiVersion,
-    'org.hamcrest:hamcrest-library:1.3',
-  )
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
+    testImplementation(
+            "org.apache.nifi:nifi-mock:" + project.nifiVersion,
+            'org.hamcrest:hamcrest-library:1.3',
+    )
 
-  compile group: 'javax.json', name: 'javax.json-api', version: '1.0'
-  compile group: 'com.google.guava', name: 'guava', version: '23.0'
+    implementation group: 'javax.json', name: 'javax.json-api', version: '1.0'
+    implementation group: 'com.google.guava', name: 'guava', version: '23.0'
 
-  // DCM4CHE
-  compile group: 'org.dcm4che', name: 'dcm4che-core', version: '3.3.8'
-  compile group: 'org.dcm4che', name: 'dcm4che-image', version: '3.3.8'
-  compile group: 'org.dcm4che', name: 'dcm4che-net', version: '3.3.8'
-  compile group: 'org.apache.nifi', name: 'nifi-api', version: project.nifiVersion
-  compile group: 'org.apache.nifi', name: 'nifi-utils', version: project.nifiVersion
+    // DCM4CHE
+    implementation group: 'org.dcm4che', name: 'dcm4che-core', version: '3.3.8'
+    implementation group: 'org.dcm4che', name: 'dcm4che-image', version: '3.3.8'
+    implementation group: 'org.dcm4che', name: 'dcm4che-net', version: '3.3.8'
+    implementation group: 'org.apache.nifi', name: 'nifi-api', version: project.nifiVersion
+    implementation group: 'org.apache.nifi', name: 'nifi-utils', version: project.nifiVersion
 
-  // These are extra PixelMed libraries that hopefully could be removed
-  // https://mvnrepository.com/artifact/javax.vecmath/vecmath
-  compile group: 'javax.vecmath', name: 'vecmath', version: '1.5.2'
-  // https://mvnrepository.com/artifact/org.hsqldb/hsqldb
-  compile group: 'org.hsqldb', name: 'hsqldb', version: '2.4.0'
-  // https://mvnrepository.com/artifact/commons-net/commons-net
-  compile group: 'commons-net', name: 'commons-net', version: '3.6'
-  // https://mvnrepository.com/artifact/javax.jmdns/jmdns
-  compile group: 'javax.jmdns', name: 'jmdns', version: '3.4.1'
+    // These are extra PixelMed libraries that hopefully could be removed
+    // https://mvnrepository.com/artifact/javax.vecmath/vecmath
+    implementation group: 'javax.vecmath', name: 'vecmath', version: '1.5.2'
+    // https://mvnrepository.com/artifact/org.hsqldb/hsqldb
+    implementation group: 'org.hsqldb', name: 'hsqldb', version: '2.4.0'
+    // https://mvnrepository.com/artifact/commons-net/commons-net
+    implementation group: 'commons-net', name: 'commons-net', version: '3.6'
+    // https://mvnrepository.com/artifact/javax.jmdns/jmdns
+    implementation group: 'javax.jmdns', name: 'jmdns', version: '3.4.1'
 
-  // Database and misc
-  compile 'org.apache.derby:derby:10.14.1.0'
-  compile group: 'org.apache.derby', name: 'derbynet', version: '10.14.1.0'
-  compile 'org.jdbi:jdbi3-core:3.1.0'
-  compile "com.h2database:h2:1.3.170"
-  compile "com.google.guava:guava:23.0"
-  compile "org.flywaydb:flyway-core:5.0.7"
-  compile 'com.google.code.gson:gson:2.8.2'
+    // Database and misc
+    implementation 'org.apache.derby:derby:10.14.1.0'
+    implementation group: 'org.apache.derby', name: 'derbynet', version: '10.14.1.0'
+    implementation 'org.jdbi:jdbi3-core:3.1.0'
+    implementation "com.h2database:h2:1.3.170"
+    implementation "com.google.guava:guava:23.0"
+    implementation "org.flywaydb:flyway-core:5.0.7"
+    implementation 'com.google.code.gson:gson:2.8.2'
 
-  // Encryption
-  compile 'org.bouncycastle:bcprov-jdk15on:1.52'
-  compile 'org.bouncycastle:bcpkix-jdk15on:1.52'
-  
-  // CSV
-  compile "com.opencsv:opencsv:4.0"
+    // Encryption
+    implementation 'org.bouncycastle:bcprov-jdk15on:1.52'
+    implementation 'org.bouncycastle:bcpkix-jdk15on:1.52'
 
-  // See https://stackoverflow.com/a/43574427/334619
-  // Need to add back in activation framework that is deprecated from
-  // JDK 9 and removed in 11
-  compile "javax.xml.bind:jaxb-api:2.2.11"
-  compile "com.sun.xml.bind:jaxb-core:2.2.11"
-  compile "com.sun.xml.bind:jaxb-impl:2.2.11"
-  compile "javax.activation:activation:1.1.1"
+    // CSV
+    implementation "com.opencsv:opencsv:4.0"
+
+    // See https://stackoverflow.com/a/43574427/334619
+    // Need to add back in activation framework that is deprecated from
+    // JDK 9 and removed in 11
+    implementation "javax.xml.bind:jaxb-api:2.2.11"
+    implementation "com.sun.xml.bind:jaxb-core:2.2.11"
+    implementation "com.sun.xml.bind:jaxb-impl:2.2.11"
+    implementation "javax.activation:activation:1.1.1"
 }
-FilenameFilter filter = { dir, filename -> filename.contains(".nar") && filename.contains(project.version)}
+FilenameFilter filter = { dir, filename -> filename.contains(".nar") && filename.contains(project.version) }
 
 githubRelease {
-  token System.getenv( 'GITHUB_TOKEN' )
-  owner "blezek"
-  repo "nifi-dicom"
-  releaseAssets = jar.destinationDir.listFiles filter
+    token System.getenv('GITHUB_TOKEN') ?: "0"
+    owner "blezek"
+    repo "nifi-dicom"
+    releaseAssets = jar.destinationDir.listFiles filter
+    dryRun Project.hasProperty("DRYRUN") ?: true
+
+    body = {
+        """\
+# Info
+
+This release updates to NiFi version 1.14 and Gradle 7.3 without introducing any other changes.
+
+## ChangeLog
+
+* ${changelog().call().replace('\n', '\n* ')}
+"""
+    }
 }

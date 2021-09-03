@@ -165,7 +165,7 @@ public class ListenDICOM extends AbstractSessionFactoryProcessor {
           processSession.getProvenanceReporter().receive(flowFile, transitUri, details,
               watch.getDuration(TimeUnit.MILLISECONDS));
           processSession.transfer(flowFile, ListenDICOM.RELATIONSHIP_SUCCESS);
-          processSession.commit();
+          processSession.commitAsync();
         } catch (FlowFileAccessException | IllegalStateException ex) {
           getLogger().error("Unable to fully process input due to " + ex.getMessage(), ex);
           throw ex;

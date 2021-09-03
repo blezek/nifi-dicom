@@ -219,7 +219,7 @@ public class ExtractDICOMTags extends AbstractProcessor {
         session.transfer(flowFile, RELATIONSHIP_SUCCESS);
       }
     }
-    session.commit();
+    session.commitAsync();
   }
 
 }
