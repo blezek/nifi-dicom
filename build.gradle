@@ -88,14 +88,14 @@ dependencies {
     implementation "com.sun.xml.bind:jaxb-impl:2.2.11"
     implementation "javax.activation:activation:1.1.1"
 }
-FilenameFilter filter = { dir, filename -> filename.contains(".nar") && filename.contains(project.version) }
 
 githubRelease {
     token System.getenv('GITHUB_TOKEN') ?: "0"
     owner "blezek"
     repo "nifi-dicom"
-    releaseAssets = jar.destinationDir.listFiles filter
-    dryRun Project.hasProperty("DRYRUN") ?: true
+
+    allowUploadToExisting true
+    releaseAssets = files("build/libs/nifi-dicom-${project.version}.nar")
 
     body = {
         """\
