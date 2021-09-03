@@ -3,15 +3,6 @@ plugins {
     id "com.github.breadmoirai.github-release" version "2.2.12"
     id 'java'
 }
-// plugins {
-// id "com.github.breadmoirai.github-release" version "2.0.1"
-// }
-//apply plugin: 'java'
-//apply plugin: 'eclipse'
-//apply plugin: 'de.fanero.gradle.plugin.nar'
-//apply plugin: 'project-report'
-//apply plugin: 'nar-plugin'
-
 
 ext {
     nifiVersion = '1.14.0'
@@ -20,8 +11,8 @@ ext {
 group 'com.blezek.nifi.dicom'
 version '1.14'
 
-//sourceCompatibility = 1.8
-//targetCompatibility = 1.8
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
 
 // Adds the NAR taget for NIFI
 nar {
@@ -36,12 +27,6 @@ nar {
 
 test {
     useJUnitPlatform()
-//    testLogging {
-//        events "passed", "skipped", "failed"
-//    }
-//    reports {
-//        html.enabled = true
-//    }
 }
 
 repositories {
@@ -110,4 +95,17 @@ githubRelease {
     owner "blezek"
     repo "nifi-dicom"
     releaseAssets = jar.destinationDir.listFiles filter
+    dryRun Project.hasProperty("DRYRUN") ?: true
+
+    body = {
+        """\
+# Info
+
+This release updates to NiFi version 1.14 and Gradle 7.3 without introducing any other changes.
+
+## ChangeLog
+
+* ${changelog().call().replace('\n', '\n* ')}
+"""
+    }
 }
