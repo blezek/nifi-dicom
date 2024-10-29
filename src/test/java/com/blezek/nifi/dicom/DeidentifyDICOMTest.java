@@ -1,6 +1,6 @@
 package com.blezek.nifi.dicom;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import com.google.common.io.Files;
 
@@ -30,202 +30,202 @@ import java.nio.file.Path;
 import java.util.List;
 
 public class DeidentifyDICOMTest {
-  static final Logger logger = LoggerFactory.getLogger(DeidentifyDICOMTest.class);
+    static final Logger logger = LoggerFactory.getLogger(DeidentifyDICOMTest.class);
 
-  @TempDir
-   Path folder;
+    @TempDir
+    Path folder;
 
-  private DeidentifyDICOM deidentifyDICOM;
-  private TestRunner runner;
+    private DeidentifyDICOM deidentifyDICOM;
+    private TestRunner runner;
 
-  private DeidentificationController deidentificationController;
+    private DeidentificationController deidentificationController;
 
-  @BeforeEach
-  public void setup() throws IOException, InitializationException {
-    deidentifyDICOM = new DeidentifyDICOM();
-    runner = TestRunners.newTestRunner(deidentifyDICOM);
+    @BeforeEach
+    public void setup() throws IOException, InitializationException {
+        deidentifyDICOM = new DeidentifyDICOM();
+        runner = TestRunners.newTestRunner(deidentifyDICOM);
 
-    deidentificationController = new DeidentificationController();
+        deidentificationController = new DeidentificationController();
 
-    runner.addControllerService("dc", deidentificationController);
-    runner.setProperty(deidentificationController, DeidentificationController.DB_DIRECTORY,
-        folder.toAbsolutePath().toString());
-    runner.setProperty(DeidentifyDICOM.DEIDENTIFICATION_STORAGE_CONTROLLER, "dc");
-  }
-
-  @Test
-  public void deidentify() throws IOException {
-    // Queue up a DICOM file
-    InputStream r = getClass().getResourceAsStream("/dicom/LGG-104_SPGR_000.dcm");
-    runner.enqueue(r);
-
-    setCSVFile("/map.csv");
-
-    runner.assertValid();
-    runner.run();
-    runner.assertAllFlowFilesTransferred(DeidentifyDICOM.RELATIONSHIP_SUCCESS, 1);
-
-    // Check the deidentified attributes
-    List<MockFlowFile> flowFiles = runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_SUCCESS);
-    for (MockFlowFile flowFile : flowFiles) {
-      Attributes actualAttributes = TestUtil.getAttributes(flowFile);
-      assertEquals("Deidentified PatientID", "1234", actualAttributes.getString(Tag.PatientID));
-      assertEquals("Deidentified PatientName", "Doe^Jane^Alice^Mrs.^III", actualAttributes.getString(Tag.PatientName));
-      assertEquals("Deidentified AccessionNumber", "1996733833677301", actualAttributes.getString(Tag.AccessionNumber));
+        runner.addControllerService("dc", deidentificationController);
+        runner.setProperty(deidentificationController, DeidentificationController.DB_DIRECTORY,
+                folder.toAbsolutePath().toString());
+        runner.setProperty(DeidentifyDICOM.DEIDENTIFICATION_STORAGE_CONTROLLER, "dc");
     }
 
-    // Check the database
-    assertEquals("Number of UID mappings", 4, getNumberOfMappings());
-  }
+    @Test
+    public void deidentify() throws IOException {
+        // Queue up a DICOM file
+        InputStream r = getClass().getResourceAsStream("/dicom/LGG-104_SPGR_000.dcm");
+        runner.enqueue(r);
 
-  @Test
-  public void deidentifyMultiple() throws IOException {
-    // Queue up a DICOM file
-    runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_000.dcm"));
-    runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_001.dcm"));
-    runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_002.dcm"));
-    setCSVFile("/map.csv");
+        setCSVFile("/map.csv");
 
-    runner.assertValid();
-    runner.run(3);
-    runner.assertAllFlowFilesTransferred(DeidentifyDICOM.RELATIONSHIP_SUCCESS, 3);
+        runner.assertValid();
+        runner.run();
+        runner.assertAllFlowFilesTransferred(DeidentifyDICOM.RELATIONSHIP_SUCCESS, 1);
 
-    List<MockFlowFile> flowFiles = runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_SUCCESS);
-    for (MockFlowFile flowFile : flowFiles) {
-      Attributes actualAttributes = TestUtil.getAttributes(flowFile);
-      assertEquals("Deidentified PatientID", "1234", actualAttributes.getString(Tag.PatientID));
-      assertEquals("Deidentified PatientName", "Doe^Jane^Alice^Mrs.^III", actualAttributes.getString(Tag.PatientName));
-      assertEquals("Deidentified AccessionNumber", "1996733833677301", actualAttributes.getString(Tag.AccessionNumber));
+        // Check the deidentified attributes
+        List<MockFlowFile> flowFiles = runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_SUCCESS);
+        for (MockFlowFile flowFile : flowFiles) {
+            Attributes actualAttributes = TestUtil.getAttributes(flowFile);
+            assertEquals("1234", actualAttributes.getString(Tag.PatientID), "Deidentified PatientID");
+            assertEquals("Doe^Jane^Alice^Mrs.^III", actualAttributes.getString(Tag.PatientName), "Deidentified PatientName");
+            assertEquals("1996733833677301", actualAttributes.getString(Tag.AccessionNumber), "Deidentified AccessionNumber");
+        }
+
+        // Check the database
+        assertEquals(4, getNumberOfMappings(), "Number of UID mappings");
     }
 
-    // Check the database
-    assertEquals("Number of UID mappings", 6, getNumberOfMappings());
-  }
+    @Test
+    public void deidentifyMultiple() throws IOException {
+        // Queue up a DICOM file
+        runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_000.dcm"));
+        runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_001.dcm"));
+        runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_002.dcm"));
+        setCSVFile("/map.csv");
 
-  @Test
-  public void notMatched() throws IOException {
-    // Queue up a DICOM file
-    runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_000.dcm"));
-    runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_001.dcm"));
-    runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_002.dcm"));
-    setCSVFile("/empty.csv");
-    runner.setProperty(DeidentifyDICOM.generateIfNotMatchedProperty, "false");
+        runner.assertValid();
+        runner.run(3);
+        runner.assertAllFlowFilesTransferred(DeidentifyDICOM.RELATIONSHIP_SUCCESS, 3);
 
-    runner.assertValid();
-    runner.run(3);
-    runner.assertAllFlowFilesTransferred(DeidentifyDICOM.RELATIONSHIP_NOT_MATCHED, 3);
+        List<MockFlowFile> flowFiles = runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_SUCCESS);
+        for (MockFlowFile flowFile : flowFiles) {
+            Attributes actualAttributes = TestUtil.getAttributes(flowFile);
+            assertEquals("1234", actualAttributes.getString(Tag.PatientID), "Deidentified PatientID");
+            assertEquals("Doe^Jane^Alice^Mrs.^III", actualAttributes.getString(Tag.PatientName), "Deidentified PatientName");
+            assertEquals("1996733833677301", actualAttributes.getString(Tag.AccessionNumber), "Deidentified AccessionNumber");
+        }
 
-    List<MockFlowFile> flowFiles = runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_NOT_MATCHED);
-    for (MockFlowFile flowFile : flowFiles) {
-      Attributes actualAttributes = TestUtil.getAttributes(flowFile);
-      assertEquals("Deidentified PatientID", "LGG-104", actualAttributes.getString(Tag.PatientID));
-      assertEquals("Deidentified PatientName", "LGG-104", actualAttributes.getString(Tag.PatientName));
-      assertEquals("Deidentified AccessionNumber", "7408465417966656", actualAttributes.getString(Tag.AccessionNumber));
+        // Check the database
+        assertEquals(6, getNumberOfMappings(), "Number of UID mappings");
     }
-    assertEquals("Number of UID mappings", 0, getNumberOfMappings());
-  }
 
-  @Test
-  public void generate() throws IOException {
-    // Queue up a DICOM file
-    runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_000.dcm"));
-    runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_001.dcm"));
-    runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_002.dcm"));
-    setCSVFile("/empty.csv");
-    runner.setProperty(DeidentifyDICOM.generateIfNotMatchedProperty, "true");
+    @Test
+    public void notMatched() throws IOException {
+        // Queue up a DICOM file
+        runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_000.dcm"));
+        runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_001.dcm"));
+        runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_002.dcm"));
+        setCSVFile("/empty.csv");
+        runner.setProperty(DeidentifyDICOM.generateIfNotMatchedProperty, "false");
 
-    runner.assertValid();
-    runner.run(3);
-    runner.assertAllFlowFilesTransferred(DeidentifyDICOM.RELATIONSHIP_SUCCESS, 3);
+        runner.assertValid();
+        runner.run(3);
+        runner.assertAllFlowFilesTransferred(DeidentifyDICOM.RELATIONSHIP_NOT_MATCHED, 3);
 
-    for (MockFlowFile flowFile : runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_SUCCESS)) {
-      Attributes actualAttributes = TestUtil.getAttributes(flowFile);
-      assertEquals("Deidentified PatientID", "E16BA065442DC4C7305B40C6AE70189A",
-          actualAttributes.getString(Tag.PatientID));
-      assertEquals("Deidentified PatientName", "Anonymous^7600272A48", actualAttributes.getString(Tag.PatientName));
-      assertEquals("Deidentified AccessionNumber", "1996733833677301", actualAttributes.getString(Tag.AccessionNumber));
+        List<MockFlowFile> flowFiles = runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_NOT_MATCHED);
+        for (MockFlowFile flowFile : flowFiles) {
+            Attributes actualAttributes = TestUtil.getAttributes(flowFile);
+            assertEquals("LGG-104", actualAttributes.getString(Tag.PatientID), "Deidentified PatientID");
+            assertEquals("LGG-104", actualAttributes.getString(Tag.PatientName), "Deidentified PatientName");
+            assertEquals("7408465417966656", actualAttributes.getString(Tag.AccessionNumber), "Deidentified AccessionNumber");
+        }
+        assertEquals(0, getNumberOfMappings(), "Number of UID mappings");
     }
-    assertEquals("Number of UID mappings", 6, getNumberOfMappings());
-  }
 
-  @Test
-  public void noCSVFile() throws IOException {
-    // Queue up a DICOM file
-    runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_000.dcm"));
-    runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_001.dcm"));
-    runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_002.dcm"));
+    @Test
+    public void generate() throws IOException {
+        // Queue up a DICOM file
+        runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_000.dcm"));
+        runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_001.dcm"));
+        runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_002.dcm"));
+        setCSVFile("/empty.csv");
+        runner.setProperty(DeidentifyDICOM.generateIfNotMatchedProperty, "true");
 
-    runner.setProperty(deidentificationController, DeidentificationController.DEIDENTIFICATION_MAP_CVS_FILE, "");
-    runner.assertValid(deidentificationController);
-    runner.enableControllerService(deidentificationController);
+        runner.assertValid();
+        runner.run(3);
+        runner.assertAllFlowFilesTransferred(DeidentifyDICOM.RELATIONSHIP_SUCCESS, 3);
 
-    runner.setProperty(DeidentifyDICOM.generateIfNotMatchedProperty, "true");
-
-    runner.assertValid();
-    runner.run(3);
-    runner.assertAllFlowFilesTransferred(DeidentifyDICOM.RELATIONSHIP_SUCCESS, 3);
-
-    for (MockFlowFile flowFile : runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_SUCCESS)) {
-      Attributes actualAttributes = TestUtil.getAttributes(flowFile);
-      assertEquals("Deidentified PatientID", "E16BA065442DC4C7305B40C6AE70189A",
-          actualAttributes.getString(Tag.PatientID));
-      assertEquals("Deidentified PatientName", "Anonymous^7600272A48", actualAttributes.getString(Tag.PatientName));
-      assertEquals("Deidentified AccessionNumber", "1996733833677301", actualAttributes.getString(Tag.AccessionNumber));
+        for (MockFlowFile flowFile : runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_SUCCESS)) {
+            Attributes actualAttributes = TestUtil.getAttributes(flowFile);
+            assertEquals("E16BA065442DC4C7305B40C6AE70189A",
+                    actualAttributes.getString(Tag.PatientID), "Deidentified PatientID");
+            assertEquals("Anonymous^7600272A48", actualAttributes.getString(Tag.PatientName), "Deidentified PatientName");
+            assertEquals("1996733833677301", actualAttributes.getString(Tag.AccessionNumber), "Deidentified AccessionNumber");
+        }
+        assertEquals(6, getNumberOfMappings(), "Number of UID mappings");
     }
-    assertEquals("Number of UID mappings", 6, getNumberOfMappings());
-  }
 
-  @Test
-  public void garbage() throws IOException {
-    // Queue up a DICOM file
-    runner.enqueue(getClass().getResourceAsStream("/empty.csv"));
-    runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_001.dcm"));
-    runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_002.dcm"));
-    setCSVFile("/empty.csv");
-    runner.setProperty(DeidentifyDICOM.generateIfNotMatchedProperty, "true");
+    @Test
+    public void noCSVFile() throws IOException {
+        // Queue up a DICOM file
+        runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_000.dcm"));
+        runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_001.dcm"));
+        runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_002.dcm"));
 
-    runner.assertValid();
-    runner.run(3);
-    // 2 success, 1 failure
-    assertEquals("Number of of files in success relationship", 2,
-        runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_SUCCESS).size());
-    assertEquals("Number of of files in reject relationship", 1,
-        runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_REJECT).size());
-    assertEquals("Number of UID mappings", 5, getNumberOfMappings());
-  }
+        runner.setProperty(deidentificationController, DeidentificationController.DEIDENTIFICATION_MAP_CVS_FILE, "");
+        runner.assertValid(deidentificationController);
+        runner.enableControllerService(deidentificationController);
 
-  private int getNumberOfMappings() {
+        runner.setProperty(DeidentifyDICOM.generateIfNotMatchedProperty, "true");
 
-    EmbeddedDataSource ds = new EmbeddedDataSource();
-    ds.setDatabaseName(new File(folder.toFile(), "database").getAbsolutePath());
-    ds.setCreateDatabase("create");
+        runner.assertValid();
+        runner.run(3);
+        runner.assertAllFlowFilesTransferred(DeidentifyDICOM.RELATIONSHIP_SUCCESS, 3);
 
-    Jdbi jdbi = Jdbi.create(ds);
+        for (MockFlowFile flowFile : runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_SUCCESS)) {
+            Attributes actualAttributes = TestUtil.getAttributes(flowFile);
+            assertEquals("E16BA065442DC4C7305B40C6AE70189A",
+                    actualAttributes.getString(Tag.PatientID), "Deidentified PatientID");
+            assertEquals("Anonymous^7600272A48", actualAttributes.getString(Tag.PatientName), "Deidentified PatientName");
+            assertEquals("1996733833677301", actualAttributes.getString(Tag.AccessionNumber), "Deidentified AccessionNumber");
+        }
+        assertEquals(6, getNumberOfMappings(), "Number of UID mappings");
+    }
 
-    jdbi.useHandle(handle -> {
-      handle.createQuery("select * from uid_map").mapToMap().forEach(it -> {
-        logger.debug(it.toString());
-      });
-    });
+    @Test
+    public void garbage() throws IOException {
+        // Queue up a DICOM file
+        runner.enqueue(getClass().getResourceAsStream("/empty.csv"));
+        runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_001.dcm"));
+        runner.enqueue(getClass().getResourceAsStream("/dicom/LGG-104_SPGR_002.dcm"));
+        setCSVFile("/empty.csv");
+        runner.setProperty(DeidentifyDICOM.generateIfNotMatchedProperty, "true");
 
-    return jdbi.withHandle(handle -> {
-      return handle.createQuery("select count(*) from uid_map").mapTo(Integer.class).findOnly();
-    });
-  }
+        runner.assertValid();
+        runner.run(3);
+        // 2 success, 1 failure
+        assertEquals(2,
+                runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_SUCCESS).size(), "Number of of files in success relationship");
+        assertEquals(1,
+                runner.getFlowFilesForRelationship(DeidentifyDICOM.RELATIONSHIP_REJECT).size(), "Number of of files in reject relationship");
+        assertEquals(5, getNumberOfMappings(), "Number of UID mappings");
+    }
 
-  private void setCSVFile(String string) throws IOException {
-    // Copy CSV file
-    InputStream r = getClass().getResourceAsStream(string);
+    private int getNumberOfMappings() {
 
-    File csv = new File(folder.toFile(), "tmp.csv");
+        EmbeddedDataSource ds = new EmbeddedDataSource();
+        ds.setDatabaseName(new File(folder.toFile(), "database").getAbsolutePath());
+        ds.setCreateDatabase("create");
 
-    byte[] buffer = new byte[r.available()];
-    r.read(buffer);
+        Jdbi jdbi = Jdbi.create(ds);
 
-    Files.write(buffer, csv);
-    runner.setProperty(deidentificationController, DeidentificationController.DEIDENTIFICATION_MAP_CVS_FILE,
-        csv.getAbsolutePath());
-    runner.assertValid(deidentificationController);
-    runner.enableControllerService(deidentificationController);
-  }
+        jdbi.useHandle(handle -> {
+            handle.createQuery("select * from uid_map").mapToMap().forEach(it -> {
+                logger.debug(it.toString());
+            });
+        });
+
+        return jdbi.withHandle(handle -> {
+            return handle.createQuery("select count(*) from uid_map").mapTo(Integer.class).findOnly();
+        });
+    }
+
+    private void setCSVFile(String string) throws IOException {
+        // Copy CSV file
+        InputStream r = getClass().getResourceAsStream(string);
+
+        File csv = new File(folder.toFile(), "tmp.csv");
+
+        byte[] buffer = new byte[r.available()];
+        r.read(buffer);
+
+        Files.write(buffer, csv);
+        runner.setProperty(deidentificationController, DeidentificationController.DEIDENTIFICATION_MAP_CVS_FILE,
+                csv.getAbsolutePath());
+        runner.assertValid(deidentificationController);
+        runner.enableControllerService(deidentificationController);
+    }
 }

@@ -13,7 +13,7 @@ import java.io.InputStream;
 import java.net.ServerSocket;
 import java.security.GeneralSecurityException;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class DICOMTransferTest {
 
@@ -105,9 +105,9 @@ public class DICOMTransferTest {
 
         putDICOM.run();
         putDICOM.assertQueueEmpty();
-        assertEquals("expected 0 failure", 0, putDICOM.getFlowFilesForRelationship(PutDICOM.RELATIONSHIP_FAILURE).size());
-        assertEquals("expected 1 reject", 1, putDICOM.getFlowFilesForRelationship(PutDICOM.RELATIONSHIP_REJECT).size());
-        assertEquals("expected 3 success", 3, putDICOM.getFlowFilesForRelationship(PutDICOM.RELATIONSHIP_SUCCESS).size());
+        assertEquals(0, putDICOM.getFlowFilesForRelationship(PutDICOM.RELATIONSHIP_FAILURE).size(), "expected 0 failure");
+        assertEquals(1, putDICOM.getFlowFilesForRelationship(PutDICOM.RELATIONSHIP_REJECT).size(), "expected 1 reject");
+        assertEquals(3, putDICOM.getFlowFilesForRelationship(PutDICOM.RELATIONSHIP_SUCCESS).size(), "expected 3 success");
 
         listenProcessor.stop();
         listenDICOM.assertAllFlowFilesTransferred(ListenDICOM.RELATIONSHIP_SUCCESS, 3);
@@ -124,8 +124,8 @@ public class DICOMTransferTest {
         putDICOM.run();
         putDICOM.assertQueueEmpty();
 
-        assertEquals("expected 1 failure", 1, putDICOM.getFlowFilesForRelationship(PutDICOM.RELATIONSHIP_FAILURE).size());
-        assertEquals("expected 1 reject", 1, putDICOM.getFlowFilesForRelationship(PutDICOM.RELATIONSHIP_REJECT).size());
+        assertEquals(1, putDICOM.getFlowFilesForRelationship(PutDICOM.RELATIONSHIP_FAILURE).size(), "expected 1 failure");
+        assertEquals(1, putDICOM.getFlowFilesForRelationship(PutDICOM.RELATIONSHIP_REJECT).size(), "expected 1 reject");
     }
 
     static public int findAvailablePort() throws IOException {
