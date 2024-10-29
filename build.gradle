@@ -1,18 +1,16 @@
+
 plugins {
-    id "me.ragill.nar-plugin" version "1.0.2"
-    id "com.github.breadmoirai.github-release" version "2.2.12"
+     id 'io.github.lhotari.gradle-nar-plugin' version '0.5.1'
+     id "com.github.breadmoirai.github-release" version "2.2.12"
     id 'java'
 }
 
 ext {
-    nifiVersion = '1.14.0'
+    nifiVersion = '1.27.0'
 }
 
 group 'com.blezek.nifi.dicom'
-version '1.14'
-
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
+version project.nifiVersion
 
 // Adds the NAR taget for NIFI
 nar {
@@ -24,6 +22,7 @@ nar {
         )
     }
 }
+
 
 test {
     useJUnitPlatform()
@@ -90,7 +89,7 @@ dependencies {
 }
 
 githubRelease {
-    token System.getenv('GITHUB_TOKEN') ?: "0"
+    token System.getenv('GITHUB_NIFI_TOKEN') ?: "0"
     owner "blezek"
     repo "nifi-dicom"
 
@@ -101,7 +100,7 @@ githubRelease {
         """\
 # Info
 
-This release updates to NiFi version 1.14 and Gradle 7.3 without introducing any other changes.
+This release updates to NiFi version 1.27.0
 
 ## ChangeLog
 
@@ -109,3 +108,5 @@ This release updates to NiFi version 1.14 and Gradle 7.3 without introducing any
 """
     }
 }
+
+
