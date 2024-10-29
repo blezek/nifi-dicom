@@ -89,7 +89,7 @@ dependencies {
 }
 
 githubRelease {
-    token System.getenv('GITHUB_TOKEN') ?: "0"
+    token System.getenv('GITHUB_NIFI_TOKEN') ?: "0"
     owner "blezek"
     repo "nifi-dicom"
 
