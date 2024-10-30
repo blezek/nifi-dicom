@@ -18,6 +18,7 @@ import org.apache.nifi.components.ValidationContext;
 import org.apache.nifi.components.ValidationResult;
 import org.apache.nifi.controller.AbstractControllerService;
 import org.apache.nifi.controller.ConfigurationContext;
+import org.apache.nifi.expression.ExpressionLanguageScope;
 import org.apache.nifi.processor.util.StandardValidators;
 import org.dcm4che3.util.UIDUtils;
 import org.flywaydb.core.Flyway;
@@ -42,7 +43,7 @@ public class DeidentificationController extends AbstractControllerService implem
   static final PropertyDescriptor DB_DIRECTORY = new PropertyDescriptor.Builder().name("DB_DIRECTORY")
       .displayName("Database directory")
       .description("Location of the deidentification database, will be created in the 'database' sub-directory.")
-      .required(true).expressionLanguageSupported(true)
+      .required(true).expressionLanguageSupported(ExpressionLanguageScope.ENVIRONMENT)
       .addValidator(StandardValidators.createDirectoryExistsValidator(true, true))
       .addValidator(StandardValidators.NON_EMPTY_VALIDATOR).build();
 
@@ -69,7 +70,7 @@ public class DeidentificationController extends AbstractControllerService implem
         return new ValidationResult.Builder().subject(subject).input(value).valid(valid).explanation(explanation)
             .build();
 
-      }).expressionLanguageSupported(true).build();
+      }).expressionLanguageSupported(ExpressionLanguageScope.ENVIRONMENT).build();
 
   @Override
   protected List<PropertyDescriptor> getSupportedPropertyDescriptors() {
