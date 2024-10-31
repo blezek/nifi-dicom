@@ -58,23 +58,23 @@ public class PutDICOM extends AbstractProcessor {
 
   static final PropertyDescriptor DICOM_PORT = new PropertyDescriptor.Builder().name("DICOM_PORT")
       .displayName("Remote Port").description("The TCP port to send to.").required(true)
-      .expressionLanguageSupported(ExpressionLanguageScope.VARIABLE_REGISTRY)
+      .expressionLanguageSupported(ExpressionLanguageScope.ENVIRONMENT)
       .addValidator(StandardValidators.PORT_VALIDATOR).defaultValue("4096").build();
   static final PropertyDescriptor CALLING_AE_TITLE = new PropertyDescriptor.Builder().name("CALLING_AE_TITLE")
       .displayName("Local Application Entity").required(true)
-      .expressionLanguageSupported(ExpressionLanguageScope.VARIABLE_REGISTRY)
+      .expressionLanguageSupported(ExpressionLanguageScope.ENVIRONMENT)
       .addValidator(StandardValidators.NON_BLANK_VALIDATOR).addValidator(new AETitleValidator()).build();
   static final PropertyDescriptor CALLED_AE_TITLE = new PropertyDescriptor.Builder().name("CALLED_AE_TITLE")
       .displayName("Remote Application Entity Title").required(true)
-      .expressionLanguageSupported(ExpressionLanguageScope.VARIABLE_REGISTRY)
+      .expressionLanguageSupported(ExpressionLanguageScope.ENVIRONMENT)
       .addValidator(StandardValidators.NON_BLANK_VALIDATOR).addValidator(new AETitleValidator()).build();
   static final PropertyDescriptor DICOM_HOSTNAME = new PropertyDescriptor.Builder().name("DICOM_HOSTNAME")
       .displayName("Remote hostname of remote DICOM destination").required(true)
-      .expressionLanguageSupported(ExpressionLanguageScope.VARIABLE_REGISTRY)
+      .expressionLanguageSupported(ExpressionLanguageScope.ENVIRONMENT)
       .addValidator(StandardValidators.NON_BLANK_VALIDATOR).build();
   static final PropertyDescriptor BATCH_SIZE = new PropertyDescriptor.Builder().name("BATCH_SIZE")
       .displayName("batch size").description("maxmium number of DICOM images to send at once, 0 is unlimited")
-      .defaultValue("0").required(true).expressionLanguageSupported(ExpressionLanguageScope.VARIABLE_REGISTRY)
+      .defaultValue("0").required(true).expressionLanguageSupported(ExpressionLanguageScope.ENVIRONMENT)
       .addValidator(StandardValidators.NON_NEGATIVE_INTEGER_VALIDATOR)
       .addValidator(StandardValidators.NON_BLANK_VALIDATOR).build();
 
