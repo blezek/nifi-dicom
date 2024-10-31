@@ -10,7 +10,8 @@ ext {
 }
 
 group 'com.blezek.nifi.dicom'
-version project.nifiVersion
+version '1.27.2'
+java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 // Adds the NAR taget for NIFI
 nar {
