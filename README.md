@@ -74,12 +74,13 @@ This processor implements a DICOM deidentifier.  The DeidentifyDICOM processor s
 
 ### ExtractDICOMTags
 
-This processor extracts DICOM tags from the DICOM image and sets the values at attributes of the flowfile.
+This processor extracts DICOM tags from the DICOM image and sets the values at attributes of the flowfile.  **Note:** this processor reads the entire file including all pixel data.
 
 #### Properties:
 
 * `Extract all DICOM tags`: Extract all DICOM tags if true, only listed tags if false
 * `Construct suggested filename`: Construct a filename of the pattern 'PatientName/Modality_Date/SeriesNumber_SeriesDescription/SOPInstanceUID.dcm' with all unacceptable characters mapped to '_'
+* `<TagName>`: any named Tag, for instance, `SeriesDescription`, `PatientId`.  Any Tag defined by `dcm4che` is accessable.  Missing Tags, or unknown Tags are ignored.  The `dcm4che` [Tags are generated dynamically from XML files](https://github.com/dcm4che/dcm4che/tree/master/dcm4che-dict/src/main/resources) 
 
 #### Relationships:
 
@@ -135,10 +136,11 @@ This processor implements a DICOM sender, sending DICOM images to the specified 
 
 ### ModifyDICOMTags
 
-This processor modifies DICOM tags. 
+This processor modifies DICOM tags. DICOM Tags listed as Properities are replaced by their value.  Tags are named according to the `ExtractDICOMTags` processor documented above. 
 
 #### Properties:
 
+* `<Tag>`: the value of the property is written as the value to `Tag`
 
 #### Relationships:
 
