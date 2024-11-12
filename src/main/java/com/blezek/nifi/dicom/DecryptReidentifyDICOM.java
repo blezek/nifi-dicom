@@ -9,6 +9,7 @@ import org.apache.nifi.annotation.documentation.CapabilityDescription;
 import org.apache.nifi.annotation.documentation.SeeAlso;
 import org.apache.nifi.annotation.documentation.Tags;
 import org.apache.nifi.components.PropertyDescriptor;
+import org.apache.nifi.expression.ExpressionLanguageScope;
 import org.apache.nifi.flowfile.FlowFile;
 import org.apache.nifi.processor.AbstractProcessor;
 import org.apache.nifi.processor.ProcessContext;
@@ -56,19 +57,19 @@ public class DecryptReidentifyDICOM extends AbstractProcessor {
       .displayName("Encryption password")
       .description(
           "Encryption password, leave empty or unset if deidintified or removed attributes are not to be encripted")
-      .required(true).expressionLanguageSupported(true)
+      .required(true).expressionLanguageSupported(ExpressionLanguageScope.ENVIRONMENT)
       .addValidator(StandardValidators.ATTRIBUTE_EXPRESSION_LANGUAGE_VALIDATOR)
       .addValidator(StandardValidators.NON_BLANK_VALIDATOR).build();
 
   static final PropertyDescriptor BATCH_SIZE = new PropertyDescriptor.Builder().name("Batch size").defaultValue("100")
       .description("Number of DICOM files to process in batch").required(false)
-      .addValidator(StandardValidators.NON_NEGATIVE_INTEGER_VALIDATOR).expressionLanguageSupported(false).build();
+      .addValidator(StandardValidators.NON_NEGATIVE_INTEGER_VALIDATOR).expressionLanguageSupported(ExpressionLanguageScope.ENVIRONMENT).build();
 
   static final PropertyDescriptor ACCEPT_NEW_SERIES = new PropertyDescriptor.Builder().name("accept")
       .displayName("Accept new series")
       .description(
           "If the encrypted, generated Series and Instance UIDs do not match the DICOM object, assume this DICOM image is a new series generated from a deidentified, encrypted DICOM image.  Decrypt the original tags, but do not replace the Series and SOPInstance UIDs, effectively creating a new series")
-      .required(true).expressionLanguageSupported(true).allowableValues("true", "false").defaultValue("true").build();
+      .required(true).expressionLanguageSupported(ExpressionLanguageScope.ENVIRONMENT).allowableValues("true", "false").defaultValue("true").build();
 
   static final DecimalFormat df = new DecimalFormat("#.00");
 
@@ -188,7 +189,8 @@ public class DecryptReidentifyDICOM extends AbstractProcessor {
 
               // Remove the private tag...
               originalTags.remove(DeidentifyEncryptDICOM.PRIVATE_CREATOR, DeidentifyEncryptDICOM.PRIVATE_TAG);
-              tags.updateRecursive(originalTags);
+                Attributes mergedTags = new Attributes();
+                tags.update(Attributes.UpdatePolicy.OVERWRITE, false, originalTags, mergedTags );
 
               tags.remove(Tag.PatientIdentityRemoved);
               tags.remove(Tag.DeidentificationMethod);

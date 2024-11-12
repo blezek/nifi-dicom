@@ -10,3 +10,4 @@ deidentified.dcm
 deidentified.dcm.bak
 reidentified.dcm
 src/test/resources/boxToken.txt
+out

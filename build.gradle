@@ -1,16 +1,16 @@
-
 plugins {
-     id 'io.github.lhotari.gradle-nar-plugin' version '0.5.1'
-     id "com.github.breadmoirai.github-release" version "2.2.12"
+    id 'io.github.lhotari.gradle-nar-plugin' version '0.5.1'
+    id "com.github.breadmoirai.github-release" version "2.2.12"
     id 'java'
 }
 
 ext {
-    nifiVersion = '1.27.0'
+    nifiVersion = '2.0.0'
+    dcm4cheVersion = '5.33.0'
 }
 
 group 'com.blezek.nifi.dicom'
-version '1.27.3'
+version '2.0.0'
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 // Adds the NAR taget for NIFI
@@ -32,8 +32,9 @@ test {
 repositories {
     mavenCentral()
     // DCM4CHE has their own Maven...
-    maven { url "https://www.dcm4che.org/maven2/" }
+    maven { url "https://maven.dcm4che.org/" }
     maven { url "https://jcenter.bintray.com/" }
+    maven { url "https://raw.github.com/nroduit/mvn-repo/master/" }
 }
 
 dependencies {
@@ -48,9 +49,11 @@ dependencies {
     implementation group: 'com.google.guava', name: 'guava', version: '23.0'
 
     // DCM4CHE
-    implementation group: 'org.dcm4che', name: 'dcm4che-core', version: '3.3.8'
-    implementation group: 'org.dcm4che', name: 'dcm4che-image', version: '3.3.8'
-    implementation group: 'org.dcm4che', name: 'dcm4che-net', version: '3.3.8'
+    implementation group: 'org.dcm4che', name: 'dcm4che-core', version: project.dcm4cheVersion
+    implementation group: 'org.dcm4che', name: 'dcm4che-image', version: project.dcm4cheVersion
+    implementation group: 'org.dcm4che', name: 'dcm4che-net', version: project.dcm4cheVersion
+
+    // nifi
     implementation group: 'org.apache.nifi', name: 'nifi-api', version: project.nifiVersion
     implementation group: 'org.apache.nifi', name: 'nifi-utils', version: project.nifiVersion
 
@@ -71,7 +74,7 @@ dependencies {
     implementation "com.h2database:h2:1.3.170"
     implementation "com.google.guava:guava:23.0"
     implementation "org.flywaydb:flyway-core:5.0.7"
-    implementation 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.google.code.gson:gson:2.11.0'
 
     // Encryption
     implementation 'org.bouncycastle:bcprov-jdk15on:1.52'
@@ -89,19 +92,20 @@ dependencies {
     implementation "javax.activation:activation:1.1.1"
 }
 
+
 githubRelease {
     token System.getenv('GITHUB_NIFI_TOKEN') ?: "0"
     owner "blezek"
     repo "nifi-dicom"
 
     allowUploadToExisting true
-    releaseAssets = files("build/libs/nifi-dicom-${project.version}.nar")
+    releaseAssets.from(nar)
 
     body = {
         """\
 # Info
 
-This release updates to NiFi version 1.27.0
+This release updates to NiFi version 2.0.0-M4
 
 ## ChangeLog
 
