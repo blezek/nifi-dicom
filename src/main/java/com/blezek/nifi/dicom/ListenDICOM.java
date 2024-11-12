@@ -1,9 +1,6 @@
 package com.blezek.nifi.dicom;
 
-import org.apache.nifi.annotation.behavior.InputRequirement;
-import org.apache.nifi.annotation.behavior.SideEffectFree;
-import org.apache.nifi.annotation.behavior.WritesAttribute;
-import org.apache.nifi.annotation.behavior.WritesAttributes;
+import org.apache.nifi.annotation.behavior.*;
 import org.apache.nifi.annotation.documentation.CapabilityDescription;
 import org.apache.nifi.annotation.documentation.Tags;
 import org.apache.nifi.annotation.lifecycle.OnEnabled;
@@ -59,6 +56,7 @@ import java.util.concurrent.TimeUnit;
     @WritesAttribute(attribute = "dicom.called.hostname", description = "The receiving hostname"),
     @WritesAttribute(attribute = "dicom.called.hostname", description = "The receiving hostname") })
 @SideEffectFree
+@TriggerSerially
 public class ListenDICOM extends AbstractSessionFactoryProcessor {
 
   static final PropertyDescriptor DICOM_PORT = new PropertyDescriptor.Builder().name("DICOM_PORT")
