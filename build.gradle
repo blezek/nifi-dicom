@@ -5,12 +5,12 @@ plugins {
 }
 
 ext {
-    nifiVersion = '2.0.0-M4'
+    nifiVersion = '2.0.0'
     dcm4cheVersion = '5.33.0'
 }
 
 group 'com.blezek.nifi.dicom'
-version '1.27.3'
+version '2.0.0'
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 // Adds the NAR taget for NIFI
@@ -92,13 +92,14 @@ dependencies {
     implementation "javax.activation:activation:1.1.1"
 }
 
+
 githubRelease {
     token System.getenv('GITHUB_NIFI_TOKEN') ?: "0"
     owner "blezek"
     repo "nifi-dicom"
 
     allowUploadToExisting true
-    releaseAssets = files("build/libs/nifi-dicom-${project.version}.nar")
+    releaseAssets.from(nar)
 
     body = {
         """\
